@@ -1,0 +1,31 @@
+label {
+    padding: 5px;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    padding: 1rem;
+    padding-top: 550px;
+    margin: auto;
+    max-width: 600px;
+    position: relative;
+}
+
+form label {
+    margin-bottom: 0.5rem;
+}
+
+form input, textarea {
+    margin-bottom: 1rem;
+    padding: 10px 18px;
+    font-size: 1.2rem;
+    font-family: 'Roboto Condensed';
+    background: white;
+    color: black;
+}
+
+.radio-column label {
+    display: block;
+    margin-bottom: 10px;
+}

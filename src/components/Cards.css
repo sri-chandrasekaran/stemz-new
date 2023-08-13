@@ -1,0 +1,61 @@
+.card-container {
+    max-width: 1140px;
+    margin: auto;
+    display: grid;
+    grid-gap: 40px;
+    grid-template-columns: repeat(3, 1fr);
+    width: 100%;
+    padding: 6rem 1rem;
+}
+
+.card-container .card {
+    border: 1px solid #eee;
+    color: #eee;
+}
+
+.card {
+    text-align: center;
+    padding: 1rem;
+}
+
+
+.card h3 {
+    font-size: 1.4rem;
+    padding: 1rem;
+    color: rgb(0, 128, 0);
+}
+
+.card .bar {
+    border-bottom: 1px solid black;
+    width: 10%;
+    margin: 1.5rem auto;
+    display: block;
+}
+
+
+.cta-btn {
+    margin-top: 10px;
+}
+
+.courses-button {
+    margin-top: 55px;
+}
+
+.involved-button {
+    margin-top: 25px;
+}
+
+@media screen and (max-width: 800px) {
+    .card-container {
+        max-width: 500px;
+        margin: auto;
+        width: 100%;
+        padding: 6rem 1rem;
+        grid-template-columns: 1fr;
+        margin-top: -150px;
+    }
+
+    .card {
+        width: 100%;
+    }
+}

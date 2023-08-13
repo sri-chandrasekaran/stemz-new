@@ -1,0 +1,43 @@
+.footer {
+    background-color: #f0f0f0;
+    padding: 20px;
+  }
+  
+  .social {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* margin-bottom: 20px; */
+  }
+  
+  .social-icon {
+    margin-right: 1rem;
+    font-size: 24px;
+    color: black;
+  }
+
+  .fixed-footer {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+  }
+
+@media screen and (max-width:800px) {
+    .social {
+        align-items: center;
+    }
+}
+
+html,
+body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+#root {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}

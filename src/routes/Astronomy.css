@@ -1,0 +1,88 @@
+.course-img {
+    height: 450px;
+    width: 450px;
+    margin-top: 540px;
+    margin-left: 100px;
+}
+
+.course-description {
+    margin-left: 610px;
+    margin-top: -320px;
+    max-width: 800px;
+}
+
+.course-description h2 {
+    margin-bottom: 10px; /* Add spacing between each h2 element */
+  }
+  
+  .course-description h3 {
+    margin-top: 20px; /* Add margin to separate h3 element from h2 elements */
+  }
+
+  .student-l1 h1 {
+    margin-left: 162px;
+    margin-top: 230px;
+    font-size: 40px;
+    color: rgb(0, 128, 0);
+  }
+  
+  .student-l1 h2 {
+    margin-left: 164px;
+    margin-top: 40px;
+    font-size: 34px;
+  }
+
+  .dropdown-arrow {
+    font-size: 12px;
+    margin-left: 5px;
+    transition: transform 0.3s ease;
+  }
+
+  .expanded {
+    transform: rotate(180deg);
+  }
+
+  .astrovid {
+    margin-left: 380px;
+    margin-top: 30px;
+  }
+
+  .course-button {
+    padding: 10px 20px;
+    width: 150px;
+    font-size: 1rem;
+    background-color: #f0f0f0;
+    color: #333;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 30px;
+}
+
+.course-button {
+    background-color: #357717;
+    color: white;
+}
+
+.lesson-content {
+    display: flex;
+    align-items: center;
+}
+
+.video-container {
+    flex: 1;
+  }
+
+  .button-column {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin-left: 120px;
+  }
+
+  .button-column h3 {
+    text-align: center;
+    margin-left: -px;
+  }
+
+  

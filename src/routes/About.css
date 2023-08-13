@@ -1,0 +1,147 @@
+
+* {
+    padding: 0;
+    margin: 0;
+}
+
+.about-container {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+  }
+  
+  .content {
+    flex-grow: 1;
+    padding: 2rem;
+    margin-top: -220px;
+  }
+
+  .story {
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* Two columns, equal width */
+    align-items: center;
+    padding: 2rem 0;
+  }
+
+  .story-content {
+    margin-top: 10px;
+  }
+
+.story-header {
+    margin-top: 530px;
+    text-align: center;
+    font-size: 54px;
+    grid-column: span 2;
+}
+
+.text {
+    max-width: 600px;
+    text-align: center;
+    margin-top: 35px;
+    margin-left: 70px;
+    font-size: 20px;
+}
+
+.beaker-img {
+    width: 650px;
+    height: 800px;
+    justify-self: end;
+    margin-top: -400px;
+    margin-left: 800px;
+  }
+
+.container {
+    margin: 20px 40px;
+    color: white;
+}
+
+.heading {
+    font-size: 60px;
+    color: black;
+    text-align: center;
+    margin-top: 170px;
+}
+
+.profiles {
+    display: flex;
+    justify-content: space-around;
+    margin: 65px 80px;
+}
+
+.profile {
+    flex-basis: 260px;
+    text-align: center;
+}
+
+.profile .profile-img {
+    height: 260px;
+    width: 260px;
+    border-radius: 50%;
+    /* filter: grayscale(100%); */
+    cursor: pointer;
+    transition: 400ms;
+}
+
+/* .profile:hover .profile-img {
+    filter: grayscale(0);
+} */
+
+.user-name {
+    margin-top: 30px;
+    font-size: 35px;
+}
+
+.profile h3 {
+    margin-top: 10px;
+}
+
+.profile h5 {
+    font-size: 18px;
+    font-weight: 100;
+    letter-spacing: 3px;
+    color: green;
+    margin-bottom: 10px;
+}
+
+.profile p {
+    font-size: 16px;
+    margin-top: 20px;
+}
+
+@media screen and (max-width: 800px) {
+    
+
+    .story {
+        grid-template-columns: 1fr; /* Single column layout */
+        text-align: center; /* Center text content */
+        padding: 1rem 0;
+        margin-top: 490px;
+      }
+    
+      .story-header,
+      .text {
+        grid-column: span 1; /* Full width for single column */
+        margin: 0 auto; /* Center text content */
+        max-width: 430px;
+      }
+    
+      .beaker-img {
+        justify-self: center; /* Center image for single column */
+        margin-top: -40px;
+        margin-left: 0; /* Remove margin-left */
+        width: 80%; /* Adjust image width */
+        height: auto; /* Allow image height to adjust */
+      }
+
+      .profiles {
+        flex-direction: column;
+        align-items: center;
+        margin: 65px auto;
+      }
+
+      .profile {
+        flex-basis: 100%;
+        margin-bottom: 40px;
+        text-align: center;
+      }
+}

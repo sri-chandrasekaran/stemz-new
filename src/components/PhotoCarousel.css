@@ -1,0 +1,59 @@
+.photo-carousel {
+  position: relative;
+  justify-content: center;
+  align-items: center;
+  height: 850x;
+  width: 700px;
+  margin-left: 370px;
+  margin-top: 120px;
+  margin-bottom: -30px;
+}
+
+.carousel-container {
+  max-width: 80%;
+}
+
+.carousel-slide img {
+  max-width: 100%;
+  height: auto;
+}
+
+.carousel-arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: rgba(255, 255, 255, 1);
+  color: rgb(0, 128, 0);
+  border: none;
+  width: 36px; /* Adjust arrow size */
+  height: 36px; /* Adjust arrow size */
+  font-size: 24px;
+  cursor: pointer;
+  border-radius: 50%;
+  text-align: center;
+  line-height: 2px;
+  z-index: 1;
+}
+
+.next {
+  right: 10px;
+}
+
+.prev {
+  left: 10px;
+}
+
+@media screen and (max-width: 800px) {
+  .photo-carousel {
+    height: 500px;
+    width: 400px;
+    margin: 40px auto -10px auto;
+  }
+
+  .carousel-arrow {
+    width: 24px; /* Adjust arrow size for smaller screens */
+    height: 24px; /* Adjust arrow size for smaller screens */
+    font-size: 14px; /* Adjust font size for smaller screens */
+    line-height: 24px; /* Adjust line-height for centering on smaller screens */
+  }
+}

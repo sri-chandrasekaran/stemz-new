@@ -1,0 +1,40 @@
+.rectangular-box {
+    width: 860px;
+    height: 200px;
+    background-color: #f0f0f0;
+    border: 1px solid #ccc; 
+    margin: 20px auto;
+    padding: 20px;
+}
+
+.boxes-container {
+    padding-top: 520px;
+}
+
+
+.box-button {
+    padding: 10px 20px;
+    font-size: 1rem;
+    background-color: #f0f0f0;
+    color: #333;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 30px;
+}
+
+.box-button {
+    background-color: #357717;
+    color: white;
+}
+
+@media screen and (max-width: 800px){
+    .rectangular-box {
+        width: 360px;
+        height: 300px;
+        background-color: #f0f0f0;
+        border: 1px solid #ccc; 
+        margin: 20px auto;
+        padding: 20px;
+    }
+} 

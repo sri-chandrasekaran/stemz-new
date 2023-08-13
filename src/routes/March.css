@@ -1,0 +1,69 @@
+
+.upcoming {
+    margin-left: 680px;
+    margin-top: 430px;
+}
+
+
+.beaker-img {
+    height: auto;
+    max-width: 100%;
+    width: 400px;
+    z-index: 10000;
+}
+
+.volunteer {
+    text-align: center;
+    margin-top: 100px;
+}
+
+.vol-column {
+    max-width: 500px;
+    margin-left: 160px;
+    
+}
+
+.vol-column-second {
+    max-width: 500px;
+    margin-left: 800px;
+    margin-top: -570px;
+}
+
+.vol-pic {
+    height: 500px;
+    width: 300px;
+}
+
+.vol-pic-second {
+    height: 400px;
+    width: 400px;
+    margin-top: -15px;
+}
+
+.upcoming-other {
+    margin-left: 210px;
+    margin-top: 170px;
+}
+
+.beaker-pic {
+    height: 600px;
+    width: 400px;
+    margin-left: -550px;
+    margin-bottom: -400px;
+}
+
+.class-upcoming {
+    height: 300px;
+    width: 400px;
+    margin-left: 630px;
+    margin-bottom: -200px;
+}
+
+.hyperlink {
+    color: rgb(0, 128, 0);
+    text-decoration: underline;
+}
+
+h3 {
+    margin-top: 20px;
+}
