@@ -44,10 +44,10 @@ const Home = () => {
             palatable, engaging ways that inspire kids to learn more.</p>
         </div>
         <div className="action-buttons">
-            <Link to="/onlineclasses">
+            <Link to="/online-classes">
                 <button className="cta-button">Sign Up for Classes</button>
             </Link>
-            <Link to="/selfpacedclasses">
+            <Link to="/self-paced-classes">
                 <button className="secondary-button">Access Curriculum</button>
             </Link>
         </div>

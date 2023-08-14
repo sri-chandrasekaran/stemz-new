@@ -7,6 +7,11 @@ import logo from '../assets/logo.png'
 
 const Navbar = () => {
 
+
+    const scrollToTop = () => {
+        window.scrollTo(0, 0);
+    }
+
     const[click, setClick] = useState(false)
     const handleClick = () => setClick((prevState) => (!prevState))
 
@@ -27,43 +32,43 @@ const Navbar = () => {
             </Link>
             <ul className={click ? 'nav-menu active' : 'nav-menu'}>
                 <li>
-                    <Link to='/'>Home</Link>
+                    <Link to='/' onClick={scrollToTop}>Home</Link>
                 </li>
                 <li>
-                    <Link to='/about-us'>About Us</Link>
+                    <Link to='/about-us' onClick={scrollToTop}>About Us</Link>
                 </li>
                 <li>
-                    <Link to='/online-classes'>Online Classes</Link>
+                    <Link to='/online-classes' onClick={scrollToTop}>Online Classes</Link>
                 </li>
                 <li>
-                    <Link to='/self-paced-classes'>Self-Paced Classes</Link>
+                    <Link to='/self-paced-classes' onClick={scrollToTop}>Self-Paced Classes</Link>
                     <ul className="dropdown-menu">
                         <li>
-                            <Link to="/self-paced-classes/astronomy">Astronomy</Link>
+                            <Link to="/self-paced-classes/astronomy" onClick={scrollToTop}>Astronomy</Link>
                         </li>
                         <li>
-                            <Link to="/self-paced-classes/basics-of-coding">Basics of Coding</Link>
+                            <Link to="/self-paced-classes/basics-of-coding" onClick={scrollToTop}>Basics of Coding</Link>
                         </li>
                         <li>
-                            <Link to="/self-paced-classes/biochemistry">Biochemistry</Link>
+                            <Link to="/self-paced-classes/biochemistry" onClick={scrollToTop}>Biochemistry</Link>
                         </li>
                         <li>
-                            <Link to="/self-paced-classes/chemistry">Chemistry</Link>
+                            <Link to="/self-paced-classes/chemistry" onClick={scrollToTop}>Chemistry</Link>
                         </li>
                         <li>
-                            <Link to="/self-paced-classes/circuits">Circuits</Link>
+                            <Link to="/self-paced-classes/circuits" onClick={scrollToTop}>Circuits</Link>
                         </li>
                         <li>
-                            <Link to="/self-paced-classes/environmental-science">Environmental Science</Link>
+                            <Link to="/self-paced-classes/environmental-science" onClick={scrollToTop}>Environmental Science</Link>
                         </li>
                         <li>
-                            <Link to="/self-paced-classes/psychology">Psychology</Link>
+                            <Link to="/self-paced-classes/psychology" onClick={scrollToTop}>Psychology</Link>
                         </li>
                         <li>
-                            <Link to="/self-paced-classes/statistics">Statistics</Link>
+                            <Link to="/self-paced-classes/statistics" onClick={scrollToTop}>Statistics</Link>
                         </li>
                         <li>
-                            <Link to="/self-paced-classes/zoology">Zoology</Link>
+                            <Link to="/self-paced-classes/zoology" onClick={scrollToTop}>Zoology</Link>
                         </li>
                     </ul>
                 </li>
@@ -71,10 +76,10 @@ const Navbar = () => {
                     <Link to='/news'>News</Link>
                 </li> */}
                 <li>
-                    <Link to='/get-involved'>Get Involved</Link>
+                    <Link to='/get-involved' onClick={scrollToTop}>Get Involved</Link>
                 </li>
                 <li>
-                    <Link to='/contact'>Contact</Link>
+                    <Link to='/contact' onClick={scrollToTop}>Contact</Link>
                 </li>
             </ul>
             <div className='hamburger' onClick={handleClick}>

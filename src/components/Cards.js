@@ -32,7 +32,7 @@ const Cards = () => {
             <h3>Connecting with Local Community Organizations</h3>
             <span className='bar'></span>
             <p>We are reaching out to local elementary schools and community programs to host in-person events.</p>
-            <Link to="/getinvolved">
+            <Link to="/get-involved">
                 <button className="cta-button involved-button">Get Involved</button>
             </Link>
         </div>
