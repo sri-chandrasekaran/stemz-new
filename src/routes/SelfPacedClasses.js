@@ -34,7 +34,7 @@ const SelfPacedClasses = () => {
                 <img src={Coding} alt="Coding" className="img-course"/>
                 <h1>Basics of Coding</h1>
                 <p>In this course we will learn about movement, variables, conditional statements and many more, using Scratch. No prior experience is needed!</p>
-                <Link to="./basicsofcoding">
+                <Link to="./basics-of-coding">
                 <button className="cta-button courses-button">Access Lessons</button>
                 </Link>
             </div>
@@ -69,7 +69,7 @@ const SelfPacedClasses = () => {
                 <h1>Environmental</h1>
                 <h1>Science</h1>
                 <p>In this course, we will learn about biodiversity, the cycles of the earth, pollution, recycling, and more!</p>
-                <Link to="./environmentalscience">
+                <Link to="./environmental-science">
                 <button className="cta-button courses-button">Access Lessons</button>
                 </Link>
             </div>

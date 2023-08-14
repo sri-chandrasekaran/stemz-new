@@ -85,4 +85,50 @@
     margin-left: -px;
   }
 
-  
+@media screen and (max-width: 800px) {
+  .course-description {
+    margin-top: 20px;
+    margin-left: 20px;
+    font-size: 13px;
+  }
+
+  .course-img {
+    margin-left: 20px;
+  }
+
+  .student-l1 {
+    margin-left: -140px;
+    margin-top: -100px;
+  }
+
+  .student-l1 h1 {
+    font-size: 20px;
+  }
+
+  .lesson1 h2{
+    font-size: 20px;
+  }
+
+  .lesson2 h2{
+    font-size: 20px;
+  }
+
+  .lesson3 h2{
+    font-size: 20px;
+  }
+
+  .lesson4 h2{
+    font-size: 20px;
+  }
+
+  .astrovid {
+    width: 250px;
+    height: 200px;
+    margin-left: 190px;
+  }
+
+  .button-column {
+    margin-left: 30px;
+    margin-bottom: -15px;
+  }
+}
