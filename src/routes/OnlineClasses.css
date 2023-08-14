@@ -6,3 +6,67 @@
 .photo-carousel-container {
     margin-top: -30px;
 }
+
+.course-listing {
+    margin-top: -530px;
+    margin-left: -30px;
+}
+
+.class-button {
+    padding: 10px 70px;
+    width: 300px;
+    font-size: 1rem;
+    background-color: #f0f0f0;
+    color: #333;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 30px;
+    margin-left: 240px;
+}
+
+.class-button {
+    background-color: #357717;
+    color: white;
+}
+
+.class-description h1 {
+    font-size: 42px;
+}
+
+.class-description {
+    margin-top: -210px;
+    max-width: 740px;
+    margin-left: 670px;
+}
+
+.class-img {
+    margin-top: 540px;
+    margin-left: 180px;
+    width: 350px;
+    height: 550px;
+}
+
+@media screen and (max-width: 800px) {
+
+    .class-img {
+        margin-left: 40px;
+    }
+
+    .course-description {
+        margin-left: -40px;
+    }
+    
+    .class-description {
+        margin: 40px auto 0; /* Center the description and add top margin */
+        max-width: 100%; /* Allow the description to take full width */
+        text-align: left; /* Center the text within the description */
+        margin-left: 50px;
+        font-size: 14px;
+      }
+
+    .class-button {
+        margin-left: 30px;
+    }
+}
+

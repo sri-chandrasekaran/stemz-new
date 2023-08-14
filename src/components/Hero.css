@@ -36,6 +36,21 @@
     top: 40vh;
 }
 
+.hero-images {
+    width: 120px;
+    height: 160px;
+    margin-left: 1270px;
+    margin-bottom: 100px;
+}
+
+.hero2-images {
+    width: 150px;
+    height: 140px;
+    margin-left: 25px;
+    position: relative;
+    top: -635px;
+}
+
 @media screen and (max-width: 800px) {
     .hero-title {
         padding-top: 50px; /* Adjust padding for smaller screens */
@@ -56,6 +71,14 @@
     .line-break::before {
         content: '\A';
         white-space: pre;
+    }
+
+    .hero-images {
+        display: none;
+    }
+
+    .hero2-images {
+        display: none;
     }
 }
 
