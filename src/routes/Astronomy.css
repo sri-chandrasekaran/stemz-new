@@ -88,12 +88,14 @@
 @media screen and (max-width: 800px) {
   .course-description {
     margin-top: 20px;
-    margin-left: 20px;
+    margin-left: 10px;
     font-size: 13px;
   }
 
   .course-img {
-    margin-left: 20px;
+    margin-left: -10px;
+    height: 400px;
+    width: 400px;
   }
 
   .student-l1 {
@@ -124,11 +126,20 @@
   .astrovid {
     width: 250px;
     height: 200px;
-    margin-left: 190px;
+    margin-left: 160px;
   }
 
   .button-column {
     margin-left: 30px;
     margin-bottom: -15px;
+  }
+
+  .course-button {
+    padding: 8px 2px 7px 5px;
+    width: 70px;
+    height: 30px;
+    font-size: 8px;
+    text-align: center;
+    line-height: 1;
   }
 }

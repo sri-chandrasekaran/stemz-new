@@ -49,8 +49,13 @@
     }
 
     .hero-homepage {
-        width: 100%;
+        width: 103%;
         overflow-x: hidden;
+    }
+
+    .line-break::before {
+        content: '\A';
+        white-space: pre;
     }
 }
 

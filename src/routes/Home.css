@@ -105,9 +105,14 @@
 }
 
 @media screen and (max-width:800px) {
+
+    .hero {
+        position: relative;
+    }
     .hero-title {
         padding-top: 150px; /* Reduce padding for better fit */
         font-size: 36px; /* Decrease font size for better fit */
+        margin-left: -30px;
     }
 
     .hero-description {
@@ -121,6 +126,7 @@
 
     .mission h1 {
         font-size: 32px; /* Decrease font size for better fit */
+        margin-left: 10px;
     }
 
     .mission p {
@@ -131,7 +137,7 @@
     .us h1 {
         margin-left: 0; /* Remove unnecessary margin */
         font-size: 32px; /* Decrease font size for better fit */
-        margin-left: 60px;
+        margin-left: 12px;
     }
 
     .us p {
@@ -143,7 +149,7 @@
 
     .action-buttons {
         margin-top: 15px; /* Adjust margin for better fit */
-        margin-left: 0; /* Remove unnecessary margin */
+        margin-left: 80px; 
     }
 
     .cta-button,
@@ -154,7 +160,7 @@
     }
 
     .folsom-img {
-        margin-left: -60px; /* Remove unnecessary margin */
+        margin-left: -75px; /* Remove unnecessary margin */
         margin-top: 60px; /* Adjust margin for better fit */
     }
 }
