@@ -26,6 +26,7 @@
 @media screen and (max-width:800px) {
     .social {
         align-items: center;
+        margin-left: 18px;
     }
 }
 
