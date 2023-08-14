@@ -80,11 +80,20 @@
     /* filter: grayscale(100%); */
     cursor: pointer;
     transition: 400ms;
+    object-fit: cover;
+    object-position: center top;
 }
 
 /* .profile:hover .profile-img {
     filter: grayscale(0);
 } */
+
+.profile-img-container {
+  width: 260px;
+  height: 260px;
+  border-radius: 50%;
+  overflow: hidden; /* Clip image within the container */
+}
 
 .user-name {
     margin-top: 30px;

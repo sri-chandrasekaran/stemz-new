@@ -7,6 +7,11 @@ import Sri from '../assets/sri.jpeg'
 import Taleen from '../assets/taleen.jpeg'
 import Erica from '../assets/erica.jpeg'
 import Beaker from '../assets/beaker.png'
+import Braden from '../assets/braden.jpg'
+import Emily from '../assets/emily.jpg'
+import Maanya from '../assets/maanya.jpg'
+import Steven from '../assets/steven.jpg'
+import Vaaruni2 from '../assets/vaaruni2.jpg'
 import Lightbulb from '../assets/lightbulb.png'
 
 const About = () => {
@@ -50,29 +55,31 @@ const About = () => {
         <h1 className='heading'>Our Leaders</h1>
         <div className='profiles'>
           <div className='profile'>
-            <img src={Lightbulb} className='profile-img' alt='Sri Chandrasekaran' />
+            <img src={Emily} className='profile-img' alt='Emily Puthur Simon' />
             <h3>Emily Puthur Simon</h3>
             <h5>Head of Teaching</h5>
           </div>
           <div className='profile'>
-            <img src={Lightbulb} className='profile-img' alt='Taleen Shomar' />
+            <img src={Braden} className='profile-img' alt='Braden Van Buskirk' />
             <h3>Braden Van Buskirk</h3>
             <h5>Head of Curriculum Development</h5>
           </div>
         </div>
         <div className='profiles'>
           <div className='profile'>
-            <img src={Lightbulb} className='profile-img' alt='Sri Chandrasekaran' />
+            <img src={Maanya} className='profile-img' alt='Maanya Shukla' />
             <h3>Maanya Shukla</h3>
             <h5>Programs Director</h5>
           </div>
           <div className='profile'>
-            <img src={Lightbulb} className='profile-img' alt='Taleen Shomar' />
+            <div className='profile-img-container'>
+            <img src={Steven} className='profile-img' alt='Steven Biji' style={{ objectPosition: '-250px center' }}/>
+            </div>
             <h3>Steven Biji</h3>
             <h5>Director of Public Relations</h5>
           </div>
           <div className='profile'>
-            <img src={Lightbulb} className='profile-img' alt='Erica Huang' />
+            <img src={Vaaruni2} className='profile-img' alt='Vaaruni Khanna' />
             <h3>Vaaruni Khanna</h3>
             <h5>Director of Outreach & Recruitment</h5>
           </div>
