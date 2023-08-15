@@ -6,10 +6,12 @@ import Photo4 from '../assets/class_4.jpg'
 import Photo5 from '../assets/class_5.jpg'
 import Photo6 from '../assets/class_6.jpg'
 import Photo7 from '../assets/class_7.jpg'
+import Photo8 from '../assets/class_8.PNG'
+import Photo9 from '../assets/class_9.png'
 import './PhotoCarousel.css'
 
 
-const images = [Photo4, Photo5, Photo6, Photo7]
+const images = [Photo4, Photo5, Photo6, Photo7, Photo8, Photo9]
 
 const PhotoCarousel = () => {
 
