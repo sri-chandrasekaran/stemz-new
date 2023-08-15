@@ -4,11 +4,6 @@ import HeroOther from '../components/HeroOther';
 import Footer from '../components/Footer';
 import Zoology from '../assets/zoology.jpg'
 import { Link } from 'react-router-dom';
-import ZoologyLesson1 from '../assets/videos/Zoology/ZoologyL1.mp4'
-import ZoologyLesson2 from '../assets/videos/Zoology/ZoologyL2.mp4'
-import ZoologyLesson3 from '../assets/videos/Zoology/ZoologyL3.mp4'
-import ZoologyLesson4 from '../assets/videos/Zoology/ZoologyL4.mp4'
-import ZoologyLesson5 from '../assets/videos/Zoology/ZoologyL5.mp4'
 import './Astronomy.css';
 
 const ZoologyPage = () => {
@@ -42,10 +37,7 @@ const ZoologyPage = () => {
           </h2>
             {lessonExpanded[0] && (
               <div className="lesson-content">
-                <video controls className='astrovid' autoplay={false} width="660"
-                  height="415">
-                  <source src={ZoologyLesson1} type="video/mp4" />
-                </video>
+                <iframe className='astrovid' width="660" height="415" src="https://www.youtube.com/embed/pEDK7r21GBM" frameborder="0" allowfullscreen></iframe>
                 <div className="button-column">
                   <Link to="https://docs.google.com/presentation/d/e/2PACX-1vTcUXhVuUmd6Zsu2kvXDKc8wwcx5z4KZLCL5f6iiBpq6G-BpkKR9hao17cfMzxLxkcJ4jXu4egJ5DA8/pub?start=false&loop=false&delayms=3000&slide=id.p" target="_blank" rel="noopener noreferrer">
                     <button className="course-button">Slideshow</button>
@@ -66,10 +58,7 @@ const ZoologyPage = () => {
           </h2>
             {lessonExpanded[1] && (
               <div className="lesson-content">
-                <video controls className='astrovid' autoplay={false} width="660"
-                  height="415">
-                  <source src={ZoologyLesson2} type="video/mp4" />
-                </video>
+                <iframe className='astrovid' width="660" height="415" src="https://www.youtube.com/embed/8IekIaOqmwA" frameborder="0" allowfullscreen></iframe>
                 <div className="button-column">
                   <Link to="https://docs.google.com/presentation/d/e/2PACX-1vTWzAuOlMpTv7WOoo5ux1_gxKypBx2q11d7cHaTQKKI53gDvbfjllWMg0lDbXIJ0LWZ9vREKHRlfaPY/pub?start=false&loop=false&delayms=3000&slide=id.p" target="_blank" rel="noopener noreferrer">
                     <button className="course-button">Slideshow</button>
@@ -90,10 +79,7 @@ const ZoologyPage = () => {
           </h2>
             {lessonExpanded[2] && (
               <div className="lesson-content">
-                <video controls className='astrovid' autoplay={false} width="660"
-                  height="415">
-                  <source src={ZoologyLesson3} type="video/mp4" />
-                </video>
+                <iframe className='astrovid' width="660" height="415" src="https://www.youtube.com/embed/PpDLfndy7zs" frameborder="0" allowfullscreen></iframe>
                 <div className="button-column">
                   <Link to="https://docs.google.com/presentation/d/e/2PACX-1vTU_Vd0cmtxnRjC4UivFUa1_p5Ey-nLQTNbGdbgFZa94iQQ9ydwmbQFBCG5S6lafketSyK8A3WmzV3D/pub?start=false&loop=false&delayms=3000&slide=id.gd52056e2db_1_60" target="_blank" rel="noopener noreferrer">
                     <button className="course-button">Slideshow</button>
@@ -111,10 +97,7 @@ const ZoologyPage = () => {
           </h2>
             {lessonExpanded[3] && (
               <div className="lesson-content">
-                <video controls className='astrovid' autoplay={false} width="660"
-                  height="415">
-                  <source src={ZoologyLesson4} type="video/mp4" />
-                </video>
+                <iframe className='astrovid' width="660" height="415" src="https://www.youtube.com/embed/x8jMSVan1Rc" frameborder="0" allowfullscreen></iframe>
                 <div className="button-column">
                   <Link to="https://docs.google.com/presentation/d/e/2PACX-1vT2rjGGS6lUqifhsPA6Hvvukzh8vNkpgRXzUIadDO3a6KiR_2kmE6yiB6RMx_v8VLir7RIYpypb7cCl/pub?start=false&loop=false&delayms=3000&slide=id.p" target="_blank" rel="noopener noreferrer">
                     <button className="course-button">Slideshow</button>
@@ -135,10 +118,7 @@ const ZoologyPage = () => {
           </h2>
             {lessonExpanded[4] && (
               <div className="lesson-content">
-                <video controls className='astrovid' autoplay={false} width="660"
-                  height="415">
-                  <source src={ZoologyLesson5} type="video/mp4" />
-                </video>
+                <iframe className='astrovid' width="660" height="415" src="https://www.youtube.com/embed/ga7BP8zSDMg" frameborder="0" allowfullscreen></iframe>
                 <div className="button-column">
                   <Link to="https://docs.google.com/presentation/d/e/2PACX-1vRxvs8LSLCVZBubFG78pNWAHghihSw0aE0qUj4CHyr7YiFkB6t_n-Ols8ygeSQCoAoD4kf4-M5SRQpV/pub?start=false&loop=false&delayms=3000&slide=id.gdd06c6ef78_0_62" target="_blank" rel="noopener noreferrer">
                     <button className="course-button">Slideshow</button>
@@ -159,10 +139,7 @@ const ZoologyPage = () => {
           </h2>
             {lessonExpanded[5] && (
               <div className="lesson-content">
-                <video controls className='astrovid' autoplay={false} width="660"
-                  height="415">
-                  <source src={ZoologyLesson1} type="video/mp4" />
-                </video>
+                <iframe className='astrovid' width="660" height="415" src="https://www.youtube.com/embed/pEDK7r21GBM" frameborder="0" allowfullscreen></iframe>
                 <div className="button-column">
                   <Link to="https://docs.google.com/presentation/d/e/2PACX-1vTvPjxLFeVpLdTS1uJpyoehtq_Izx1p6CZnUuIm5MNoOrLpjnIqqzf5aygzWtNlQT4o-_GOP441CaRq/pub?start=false&loop=false&delayms=3000&slide=id.p" target="_blank" rel="noopener noreferrer">
                     <button className="course-button">Slideshow</button>
@@ -183,10 +160,7 @@ const ZoologyPage = () => {
           </h2>
             {lessonExpanded[6] && (
               <div className="lesson-content">
-                <video controls className='astrovid' autoplay={false} width="660"
-                  height="415">
-                  <source src={ZoologyLesson2} type="video/mp4" />
-                </video>
+                <iframe className='astrovid' width="660" height="415" src="https://www.youtube.com/embed/8IekIaOqmwA" frameborder="0" allowfullscreen></iframe>
                 <div className="button-column">
                   <Link to="https://docs.google.com/presentation/d/e/2PACX-1vTrpJwZ_4MIVOnJR9ke9Dqi-Yukr-a4DR_P3uyEuUryiJRbq2UmQyP7QakXQGeXmYChvES5mnK9cYKs/pub?start=false&loop=false&delayms=3000&slide=id.p" target="_blank" rel="noopener noreferrer">
                     <button className="course-button">Slideshow</button>
@@ -207,10 +181,7 @@ const ZoologyPage = () => {
           </h2>
             {lessonExpanded[7] && (
               <div className="lesson-content">
-                <video controls className='astrovid' autoplay={false} width="660"
-                  height="415">
-                  <source src={ZoologyLesson3} type="video/mp4" />
-                </video>
+                <iframe className='astrovid' width="660" height="415" src="https://www.youtube.com/embed/PpDLfndy7zs" frameborder="0" allowfullscreen></iframe>
                 <div className="button-column">
                   <Link to="https://docs.google.com/presentation/d/e/2PACX-1vQzzW2hIV-xbsRbbxnvl_okaQ4Vj9W9_i-VGHe9KT9ORTo0xutFFcoybX5jzpstupNu4z1v0T27hjfh/pub?start=false&loop=false&delayms=3000&slide=id.gd52056e2db_1_60" target="_blank" rel="noopener noreferrer">
                     <button className="course-button">Slideshow</button>
@@ -228,10 +199,7 @@ const ZoologyPage = () => {
           </h2>
             {lessonExpanded[8] && (
               <div className="lesson-content">
-                <video controls className='astrovid' autoplay={false} width="660"
-                  height="415">
-                  <source src={ZoologyLesson4} type="video/mp4" />
-                </video>
+                <iframe className='astrovid' width="660" height="415" src="https://www.youtube.com/embed/x8jMSVan1Rc" frameborder="0" allowfullscreen></iframe>
                 <div className="button-column">
                   <Link to="https://docs.google.com/presentation/d/e/2PACX-1vS5KaeSf32S394bhu9vua0eUfunuux9VhP7ueX67W2R6-v5YfIlm9C2uaAbp2GTzU7nSBzREG_cRvzZ/pub?start=false&loop=false&delayms=3000&slide=id.p" target="_blank" rel="noopener noreferrer">
                     <button className="course-button">Slideshow</button>
@@ -252,10 +220,7 @@ const ZoologyPage = () => {
           </h2>
             {lessonExpanded[9] && (
               <div className="lesson-content">
-                <video controls className='astrovid' autoplay={false} width="660"
-                  height="415">
-                  <source src={ZoologyLesson5} type="video/mp4" />
-                </video>
+                <iframe className='astrovid' width="660" height="415" src="https://www.youtube.com/embed/ga7BP8zSDMg" frameborder="0" allowfullscreen></iframe>
                 <div className="button-column">
                   <Link to="https://docs.google.com/presentation/d/e/2PACX-1vTdHJsVlLgvbQVEjVLWcEgWSbmOx0PCNNTky_exihuMUrmrgj72S5thj3rdtvtdFv2GKV_jzzc-o6GF/pub?start=false&loop=false&delayms=3000&slide=id.gdd06c6ef78_0_62" target="_blank" rel="noopener noreferrer">
                     <button className="course-button">Slideshow</button>

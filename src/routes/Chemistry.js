@@ -4,10 +4,6 @@ import HeroOther from '../components/HeroOther';
 import Footer from '../components/Footer';
 import Chemistry from '../assets/chemistry.jpeg'
 import { Link } from 'react-router-dom';
-import ChemistryLesson1 from '../assets/videos/Chemistry/ChemL1.mp4'
-import ChemistryLesson2 from '../assets/videos/Chemistry/ChemL2.mp4'
-import ChemistryLesson3 from '../assets/videos/Chemistry/ChemL3.mp4'
-import ChemistryLesson4 from '../assets/videos/Chemistry/ChemL4.mp4'
 import './Astronomy.css';
 
 const ChemistryPage = () => {
@@ -42,10 +38,7 @@ const ChemistryPage = () => {
           </h2>
             {lessonExpanded[0] && (
               <div className="lesson-content">
-                <video controls className='astrovid' autoplay={false} width="660"
-                  height="415">
-                  <source src={ChemistryLesson1} type="video/mp4" />
-                </video>
+                  <iframe className='astrovid' width="660" height="415" src="https://www.youtube.com/embed/qUcexzJnLew" frameborder="0" allowfullscreen></iframe>
                 <div className="button-column">
                   <Link to="https://docs.google.com/presentation/d/e/2PACX-1vSH4SI6ficFEAzH_Qg6fRZopBkcqrTotnAt_zoxymblJASNRlUYZZpxQiWg3bEPrOCm_3VYMlt7QI0D/pub?start=false&loop=false&delayms=3000&slide=id.g8e77108816_0_92" target="_blank" rel="noopener noreferrer">
                     <button className="course-button">Slideshow</button>
@@ -63,10 +56,7 @@ const ChemistryPage = () => {
           </h2>
             {lessonExpanded[1] && (
               <div className="lesson-content">
-                <video controls className='astrovid' autoplay={false} width="660"
-                  height="415">
-                  <source src={ChemistryLesson2} type="video/mp4" />
-                </video>
+                <iframe className='astrovid' width="660" height="415" src="https://www.youtube.com/embed/EJpJLOAIHRc" frameborder="0" allowfullscreen></iframe>
                 <div className="button-column">
                   <Link to="https://docs.google.com/presentation/d/e/2PACX-1vRSv4pMB-_1kVHCbb9D_gKSW4EkJKqAyZQxqIqlctucIFtbnyrpoP4AYVm2Sdm3WqW3d6rjp_jYZqte/pub?start=false&loop=false&delayms=3000&slide=id.g5320acc4cf_0_92" target="_blank" rel="noopener noreferrer">
                     <button className="course-button">Slideshow</button>
@@ -84,10 +74,7 @@ const ChemistryPage = () => {
           </h2>
             {lessonExpanded[2] && (
               <div className="lesson-content">
-                <video controls className='astrovid' autoplay={false} width="660"
-                  height="415">
-                  <source src={ChemistryLesson3} type="video/mp4" />
-                </video>
+                  <iframe className='astrovid' width="660" height="415" src="https://www.youtube.com/embed/448XzSXabc4" frameborder="0" allowfullscreen></iframe>
                 <div className="button-column">
                   <Link to="https://docs.google.com/presentation/d/e/2PACX-1vTllezBHZQYNAODvaFlfIOv2ybfjRz1nPW23v-lD1E9F8dmkKKB4JjUQk2O4wd-e0A6NfWSjm58Rfi1/pub?start=false&loop=false&delayms=3000&slide=id.g914a40a4f6_0_92" target="_blank" rel="noopener noreferrer">
                     <button className="course-button">Slideshow</button>
@@ -105,10 +92,7 @@ const ChemistryPage = () => {
           </h2>
             {lessonExpanded[3] && (
               <div className="lesson-content">
-                <video controls className='astrovid' autoplay={false} width="660"
-                  height="415">
-                  <source src={ChemistryLesson4} type="video/mp4" />
-                </video>
+                    <iframe className='astrovid' width="660" height="415" src="https://www.youtube.com/embed/NpQJoCQEa9U" frameborder="0" allowfullscreen></iframe>
                 <div className="button-column">
                   <Link to="https://docs.google.com/presentation/d/e/2PACX-1vT7pJ3jD7xBrpJPYs5pdNhZjROSvuC5ETJclQoR_n9o_xOCnYkPGks8bQfCIpSMvg7Qe6eEGQdFBR7b/pub?start=false&loop=false&delayms=3000&slide=id.g98ed887a27_0_98" target="_blank" rel="noopener noreferrer">
                     <button className="course-button">Slideshow</button>

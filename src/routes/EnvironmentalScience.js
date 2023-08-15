@@ -4,10 +4,6 @@ import HeroOther from '../components/HeroOther';
 import Footer from '../components/Footer';
 import EnvironmentalScience from '../assets/environmentalscience.jpg'
 import { Link } from 'react-router-dom';
-import EnvironmentalScienceLesson1 from '../assets/videos/EnvironmentalScience/ESL1.mp4'
-import EnvironmentalScienceLesson2 from '../assets/videos/EnvironmentalScience/ESL2.mp4'
-import EnvironmentalScienceLesson3 from '../assets/videos/EnvironmentalScience/ESL3.mp4'
-import EnvironmentalScienceLesson4 from '../assets/videos/EnvironmentalScience/ESL4.mp4'
 import './Astronomy.css';
 
 const EnvironmentalSciencePage = () => {
@@ -41,10 +37,7 @@ const EnvironmentalSciencePage = () => {
           </h2>
             {lessonExpanded[0] && (
               <div className="lesson-content">
-                <video controls className='astrovid' autoplay={false} width="660"
-                  height="415">
-                  <source src={EnvironmentalScienceLesson1} type="video/mp4" />
-                </video>
+                <iframe className='astrovid' width="660" height="415" src="https://www.youtube.com/embed/_WRumK_NwfI" frameborder="0" allowfullscreen></iframe>
                 <div className="button-column">
                   <Link to="https://docs.google.com/presentation/d/e/2PACX-1vSMZ0rXwZvnkEKHteN-chdDj8d47dnXJikHhXI20dAmjrbt05-zTfc9pYu6GtukodzHKlnSFM7avdVt/pub?start=false&loop=false&delayms=3000&slide=id.p" target="_blank" rel="noopener noreferrer">
                     <button className="course-button">Slideshow</button>
@@ -65,10 +58,7 @@ const EnvironmentalSciencePage = () => {
           </h2>
             {lessonExpanded[1] && (
               <div className="lesson-content">
-                <video controls className='astrovid' autoplay={false} width="660"
-                  height="415">
-                  <source src={EnvironmentalScienceLesson2} type="video/mp4" />
-                </video>
+                  <iframe className='astrovid' width="660" height="415" src="https://www.youtube.com/embed/mpu_qNfo-dM" frameborder="0" allowfullscreen></iframe>
                 <div className="button-column">
                   <Link to="https://docs.google.com/presentation/d/e/2PACX-1vQM8TeCu7OiUeYlEWYCK7XqdCo7FjM6JzahJZuuzoHf57HrifkMDNthtDcptU1EV2QBQ-CfUHoYbaOD/pub?start=false&loop=false&delayms=3000&slide=id.g13c0851f5cf_0_60" target="_blank" rel="noopener noreferrer">
                     <button className="course-button">Slideshow</button>
@@ -86,10 +76,7 @@ const EnvironmentalSciencePage = () => {
           </h2>
             {lessonExpanded[2] && (
               <div className="lesson-content">
-                <video controls className='astrovid' autoplay={false} width="660"
-                  height="415">
-                  <source src={EnvironmentalScienceLesson3} type="video/mp4" />
-                </video>
+                <iframe className='astrovid' width="660" height="415" src="https://www.youtube.com/embed/3Q8WkWc_Y5M" frameborder="0" allowfullscreen></iframe>
                 <div className="button-column">
                   <Link to="https://docs.google.com/presentation/d/e/2PACX-1vRWqF0ZqHM4m5fHa7xLpIinRGYVCSEk0E8A0Ir7USFMyOVe87dZKlQpNXdiJRWKNDlfNpRGOeFbpjn2/pub?start=false&loop=false&delayms=3000&slide=id.p" target="_blank" rel="noopener noreferrer">
                     <button className="course-button">Slideshow</button>
@@ -107,10 +94,7 @@ const EnvironmentalSciencePage = () => {
           </h2>
             {lessonExpanded[3] && (
               <div className="lesson-content">
-                <video controls className='astrovid' autoplay={false} width="660"
-                  height="415">
-                  <source src={EnvironmentalScienceLesson4} type="video/mp4" />
-                </video>
+                <iframe className='astrovid' width="660" height="415" src="https://www.youtube.com/embed/-0xfaF9ca9k" frameborder="0" allowfullscreen></iframe>
                 <div className="button-column">
                   <Link to="https://docs.google.com/presentation/d/e/2PACX-1vQ0eRR_p7p01KxOb8qli4EvVaOOyPBWgw06a3QWSCaobL0MxYUPiq7Lj2kUo_YnXKzRpYViA1It7SlE/pub?start=false&loop=false&delayms=3000&slide=id.p" target="_blank" rel="noopener noreferrer">
                     <button className="course-button">Slideshow</button>

@@ -4,9 +4,6 @@ import HeroOther from '../components/HeroOther';
 import Footer from '../components/Footer';
 import Circuits from '../assets/circuits.jpg'
 import { Link } from 'react-router-dom';
-import CircuitsLesson1 from '../assets/videos/Circuits/CircuitsL1.mp4'
-import CircuitsLesson2 from '../assets/videos/Circuits/CircuitsL2.mov'
-import CircuitsLesson3 from '../assets/videos/Circuits/CircuitsL3.mov'
 import './Astronomy.css';
 
 const CircuitsPage = () => {
@@ -40,10 +37,7 @@ const CircuitsPage = () => {
           </h2>
             {lessonExpanded[0] && (
               <div className="lesson-content">
-                <video controls className='astrovid' autoplay={false} width="660"
-                  height="415">
-                  <source src={CircuitsLesson1} type="video/mp4" />
-                </video>
+                <iframe className='astrovid' width="660" height="415" src="https://www.youtube.com/embed/MFr0Y52UICk" frameborder="0" allowfullscreen></iframe>
                 <div className="button-column">
                   <Link to="https://docs.google.com/presentation/d/e/2PACX-1vQSHuZnFgGlPvQEZBQxa3JhWmkwNsaoUv90r_7W1pwLdVQaTPEL2qRZUxwYkKad9brPcZpztqYX8pIj/pub?start=false&loop=false&delayms=3000&slide=id.p" target="_blank" rel="noopener noreferrer">
                     <button className="course-button">Slideshow</button>
@@ -61,10 +55,7 @@ const CircuitsPage = () => {
           </h2>
             {lessonExpanded[1] && (
               <div className="lesson-content">
-                <video controls className='astrovid' autoplay={false} width="660"
-                  height="415">
-                  <source src={CircuitsLesson2} type="video/mp4" />
-                </video>
+                <iframe className='astrovid' width="660" height="415" src="https://www.youtube.com/embed/pK9h_Ts3gWw" frameborder="0" allowfullscreen></iframe>
                 <div className="button-column">
                   <Link to="https://docs.google.com/presentation/d/e/2PACX-1vQkBQUIrCPwy-b1jqDqHwtgY_SrlYd3LDmU9yd-czMHUjY7z6Qk25feHaF6l3RPwNRZ-HZK1Gjg-b8x/pub?start=false&loop=false&delayms=3000&slide=id.p" target="_blank" rel="noopener noreferrer">
                     <button className="course-button">Slideshow</button>
@@ -85,10 +76,7 @@ const CircuitsPage = () => {
           </h2>
             {lessonExpanded[2] && (
               <div className="lesson-content">
-                <video controls className='astrovid' autoplay={false} width="660"
-                  height="415">
-                  <source src={CircuitsLesson3} type="video/mp4" />
-                </video>
+                  <iframe className='astrovid' width="660" height="415" src="https://www.youtube.com/embed/4ZBUoBPdojA" frameborder="0" allowfullscreen></iframe>
                 <div className="button-column">
                   <Link to="https://docs.google.com/presentation/d/e/2PACX-1vTRj5F3Swa-S0FgMDD3vt6s5pQcaTdbtNQzlCSi5Tsk9AtHyqKB7hv9Jaui1WsnodAPqEu9Mv0VBOOl/pub?start=false&loop=false&delayms=3000&slide=id.p" target="_blank" rel="noopener noreferrer">
                     <button className="course-button">Slideshow</button>
@@ -109,10 +97,7 @@ const CircuitsPage = () => {
           </h2>
             {lessonExpanded[3] && (
               <div className="lesson-content">
-                <video controls className='astrovid' autoplay={false} width="660"
-                  height="415">
-                  <source src={CircuitsLesson1} type="video/mp4" />
-                </video>
+                  <iframe className='astrovid' width="660" height="415" src="https://www.youtube.com/embed/MFr0Y52UICk" frameborder="0" allowfullscreen></iframe>
                 <div className="button-column">
                   <Link to="https://docs.google.com/presentation/d/e/2PACX-1vQKAf_i5GcJ5NLMVARGI32fjWtfZJJ4dXyTJH1NUmf-YBm7noYATMPS2z3ahF4oXNZMoAkyDsA5WsuP/pub?start=false&loop=false&delayms=3000&slide=id.p" target="_blank" rel="noopener noreferrer">
                     <button className="course-button">Slideshow</button>
@@ -130,10 +115,7 @@ const CircuitsPage = () => {
           </h2>
             {lessonExpanded[4] && (
               <div className="lesson-content">
-                <video controls className='astrovid' autoplay={false} width="660"
-                  height="415">
-                  <source src={CircuitsLesson2} type="video/mp4" />
-                </video>
+                  <iframe className='astrovid' width="660" height="415" src="https://www.youtube.com/embed/pK9h_Ts3gWw" frameborder="0" allowfullscreen></iframe>
                 <div className="button-column">
                   <Link to="https://docs.google.com/presentation/d/e/2PACX-1vSZHWzC6yGjZEVx_cw3e-6srvnp6UVFtpplHoAz2hqFL97-Wqe82YqqqtwTgXqFLvB9BJanvSfq038c/pub?start=false&loop=false&delayms=3000&slide=id.p" target="_blank" rel="noopener noreferrer">
                     <button className="course-button">Slideshow</button>
@@ -154,10 +136,7 @@ const CircuitsPage = () => {
           </h2>
             {lessonExpanded[5] && (
               <div className="lesson-content">
-                <video controls className='astrovid' autoplay={false} width="660"
-                  height="415">
-                  <source src={CircuitsLesson3} type="video/mp4" />
-                </video>
+                <iframe className='astrovid' width="660" height="415" src="https://www.youtube.com/embed/4ZBUoBPdojA" frameborder="0" allowfullscreen></iframe>
                 <div className="button-column">
                   <Link to="https://docs.google.com/presentation/d/e/2PACX-1vQ2vtI1WYDdlJWtJZ4Wlvq2yN7fFZqfH_7eBemE4sndj8ojLaaHi0w355JvoDnyWS5JI6Stm7xx2Lf8/pub?start=false&loop=false&delayms=3000&slide=id.p" target="_blank" rel="noopener noreferrer">
                     <button className="course-button">Slideshow</button>

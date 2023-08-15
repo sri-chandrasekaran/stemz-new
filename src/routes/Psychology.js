@@ -4,10 +4,6 @@ import HeroOther from '../components/HeroOther';
 import Footer from '../components/Footer';
 import Psychology from '../assets/psych.jpeg'
 import { Link } from 'react-router-dom';
-import PsychologyLesson1 from '../assets/videos/Psychology/PsychologyL1.mp4'
-import PsychologyLesson2 from '../assets/videos/Psychology/PsychologyL2.mp4'
-import PsychologyLesson3 from '../assets/videos/Psychology/PsychologyL3.mp4'
-import PsychologyLesson4 from '../assets/videos/Psychology/PsychologyL4.mp4'
 import './Astronomy.css';
 
 const PsychologyPage = () => {
@@ -41,10 +37,7 @@ const PsychologyPage = () => {
           </h2>
             {lessonExpanded[0] && (
               <div className="lesson-content">
-                <video controls className='astrovid' autoplay={false} width="660"
-                  height="415">
-                  <source src={PsychologyLesson1} type="video/mp4" />
-                </video>
+                <iframe className='astrovid' width="660" height="415" src="https://www.youtube.com/embed/TjGatGI4CJM" frameborder="0" allowfullscreen></iframe>
                 <div className="button-column">
                   <Link to="https://docs.google.com/presentation/d/e/2PACX-1vT-IotPr9rnAl9EnP7OC1syv8VALJ4XpTj_goQuVe_91KrbQHW6EcujmGBLWwAZcqS_fBqGZ1kq2EAO/pub?start=false&loop=false&delayms=3000&slide=id.g8bd6f3a396_0_248" target="_blank" rel="noopener noreferrer">
                     <button className="course-button">Slideshow</button>
@@ -65,10 +58,7 @@ const PsychologyPage = () => {
           </h2>
             {lessonExpanded[1] && (
               <div className="lesson-content">
-                <video controls className='astrovid' autoplay={false} width="660"
-                  height="415">
-                  <source src={PsychologyLesson2} type="video/mp4" />
-                </video>
+                <iframe className='astrovid' width="660" height="415" src="https://www.youtube.com/embed/ieBDGtmN2fI" frameborder="0" allowfullscreen></iframe>
                 <div className="button-column">
                   <Link to="https://docs.google.com/presentation/d/e/2PACX-1vRu1MRyY9AN-5afsNMAgbQ2l4DdANdx90fxjmU_t2JZgHwBdsg4tl1OS_5SD0c8LXNSGt8ZEV8FYyV-/pub?start=false&loop=false&delayms=3000&slide=id.p" target="_blank" rel="noopener noreferrer">
                     <button className="course-button">Slideshow</button>
@@ -89,10 +79,7 @@ const PsychologyPage = () => {
           </h2>
             {lessonExpanded[2] && (
               <div className="lesson-content">
-                <video controls className='astrovid' autoplay={false} width="660"
-                  height="415">
-                  <source src={PsychologyLesson3} type="video/mp4" />
-                </video>
+                <iframe className='astrovid' width="660" height="415" src="https://www.youtube.com/embed/Y3OVQ2mD9mo" frameborder="0" allowfullscreen></iframe>
                 <div className="button-column">
                   <Link to="https://docs.google.com/presentation/d/e/2PACX-1vQsXq7DkKQwF4H-JqjTUfKHKFEg9eO37cQuWksOhaezRVzvalO55dZk7xDBGI3QKfC5rVN_MGksr34v/pub?start=false&loop=false&delayms=3000&slide=id.p" target="_blank" rel="noopener noreferrer">
                     <button className="course-button">Slideshow</button>
@@ -110,10 +97,7 @@ const PsychologyPage = () => {
           </h2>
             {lessonExpanded[3] && (
               <div className="lesson-content">
-                <video controls className='astrovid' autoplay={false} width="660"
-                  height="415">
-                  <source src={PsychologyLesson4} type="video/mp4" />
-                </video>
+                <iframe className='astrovid' width="660" height="415" src="https://www.youtube.com/embed/0KVSJrtktCY" frameborder="0" allowfullscreen></iframe>
                 <div className="button-column">
                   <Link to="https://docs.google.com/presentation/d/e/2PACX-1vRHm_GUb_AY2oRcIeCeha4NZUWV3mfAEi31zfBHKhsbO33y6nCDCm4isrZtbwD-JpUJ_F6m8zSLJ9ts/pub?start=false&loop=false&delayms=3000&slide=id.p" target="_blank" rel="noopener noreferrer">
                     <button className="course-button">Slideshow</button>
@@ -134,10 +118,7 @@ const PsychologyPage = () => {
           </h2>
             {lessonExpanded[4] && (
               <div className="lesson-content">
-                <video controls className='astrovid' autoplay={false} width="660"
-                  height="415">
-                  <source src={PsychologyLesson1} type="video/mp4" />
-                </video>
+                <iframe className='astrovid' width="660" height="415" src="https://www.youtube.com/embed/TjGatGI4CJM" frameborder="0" allowfullscreen></iframe>
                 <div className="button-column">
                   <Link to="https://docs.google.com/presentation/d/e/2PACX-1vTBmluPiRNDwDeez2GLN6_fqWknf1e5b9BEMzMCr6AiOUUc8MYRGlVTBNHQkokUrIxFUrXWidRVAPoF/pub?start=false&loop=false&delayms=3000&slide=id.g8bd6f3a396_0_248" target="_blank" rel="noopener noreferrer">
                     <button className="course-button">Slideshow</button>
@@ -158,10 +139,7 @@ const PsychologyPage = () => {
           </h2>
             {lessonExpanded[5] && (
               <div className="lesson-content">
-                <video controls className='astrovid' autoplay={false} width="660"
-                  height="415">
-                  <source src={PsychologyLesson2} type="video/mp4" />
-                </video>
+                <iframe className='astrovid' width="660" height="415" src="https://www.youtube.com/embed/ieBDGtmN2fI" frameborder="0" allowfullscreen></iframe>
                 <div className="button-column">
                   <Link to="https://docs.google.com/presentation/d/e/2PACX-1vSYrQHIdTmkbZqTZgCfC7vQDHfnrFQbbK0jPqOdQeg4fjhbKaMaPM82MVT_GLD5-XQD5bn1ljPmWnoE/pub?start=false&loop=false&delayms=3000&slide=id.p" target="_blank" rel="noopener noreferrer">
                     <button className="course-button">Slideshow</button>
@@ -182,10 +160,7 @@ const PsychologyPage = () => {
           </h2>
             {lessonExpanded[6] && (
               <div className="lesson-content">
-                <video controls className='astrovid' autoplay={false} width="660"
-                  height="415">
-                  <source src={PsychologyLesson3} type="video/mp4" />
-                </video>
+                <iframe className='astrovid' width="660" height="415" src="https://www.youtube.com/embed/Y3OVQ2mD9mo" frameborder="0" allowfullscreen></iframe>
                 <div className="button-column">
                   <Link to="https://docs.google.com/presentation/d/e/2PACX-1vR_y1-gMFgyGJaHz31rcKn-HM8UXxmXJfR598jUgwCWVRlCu9q-ZXaLy6HHI39vqBD_xvfuMcHOOSXx/pub?start=false&loop=false&delayms=3000&slide=id.p" target="_blank" rel="noopener noreferrer">
                     <button className="course-button">Slideshow</button>
@@ -203,10 +178,7 @@ const PsychologyPage = () => {
           </h2>
             {lessonExpanded[7] && (
               <div className="lesson-content">
-                <video controls className='astrovid' autoplay={false} width="660"
-                  height="415">
-                  <source src={PsychologyLesson4} type="video/mp4" />
-                </video>
+                <iframe className='astrovid' width="660" height="415" src="https://www.youtube.com/embed/0KVSJrtktCY" frameborder="0" allowfullscreen></iframe>
                 <div className="button-column">
                   <Link to="https://docs.google.com/presentation/d/e/2PACX-1vS2OyUEQHdhl4_YP-_N2FhFG8u_4W55yE2TSWnpXVy0yBiUWzJT-FA7H4b5AuSHw_MItTgIzinsfuZi/pub?start=false&loop=false&delayms=3000&slide=id.p" target="_blank" rel="noopener noreferrer">
                     <button className="course-button">Slideshow</button>

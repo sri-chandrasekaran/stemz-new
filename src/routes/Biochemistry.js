@@ -4,7 +4,6 @@ import HeroOther from '../components/HeroOther';
 import Footer from '../components/Footer';
 import Biochemistry from '../assets/biochem.PNG'
 import { Link } from 'react-router-dom';
-import BiochemistryLesson1 from '../assets/videos/Biochemistry/BiochemL1.mp4'
 import './Astronomy.css';
 
 const BiochemistryPage = () => {
@@ -38,10 +37,7 @@ const BiochemistryPage = () => {
           </h2>
             {lessonExpanded[0] && (
               <div className="lesson-content">
-                <video controls className='astrovid' autoplay={false} width="660"
-                  height="415">
-                  <source src={BiochemistryLesson1} type="video/mp4" />
-                </video>
+                <iframe className='astrovid' width="660" height="415" src="https://www.youtube.com/embed/Vo_1vhGWER8" frameborder="0" allowfullscreen></iframe>
                 <div className="button-column">
                   <Link to="https://docs.google.com/presentation/d/e/2PACX-1vSRA7OlH1eToF971sBlGf8Vc7ZZsxePtI4Dg39sHZrV8Zce4P6ikdZ2nBUZbhAQYiJZcQPFct3H9rs5/pub?start=false&loop=false&delayms=3000&slide=id.g5320acc4cf_0_92" target="_blank" rel="noopener noreferrer">
                     <button className="course-button">Slideshow</button>
@@ -59,10 +55,7 @@ const BiochemistryPage = () => {
           </h2>
             {lessonExpanded[1] && (
               <div className="lesson-content">
-                <video controls className='astrovid' autoplay={false} width="660"
-                  height="415">
-                  <source src={BiochemistryLesson1} type="video/mp4" />
-                </video>
+                <iframe className='astrovid' width="660" height="415" src="https://www.youtube.com/embed/Vo_1vhGWER8" frameborder="0" allowfullscreen></iframe>
                 <div className="button-column">
                   <Link to="https://docs.google.com/presentation/d/e/2PACX-1vTL1o_Apa39ZYqgeO-gcCEpUGgS7YVJN_yXy-7OKuHHtyGJFvlQv-nVayyCDvboNfDUMrTBznHlSgP_/pub?start=false&loop=false&delayms=3000&slide=id.g5320acc4cf_0_92" target="_blank" rel="noopener noreferrer">
                     <button className="course-button">Slideshow</button>

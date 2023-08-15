@@ -4,10 +4,6 @@ import HeroOther from '../components/HeroOther';
 import Footer from '../components/Footer';
 import Coding from '../assets/coding.jpg'
 import { Link } from 'react-router-dom';
-import CodingLesson1 from '../assets/videos/Coding/CodingL1.mp4'
-import CodingLesson2 from '../assets/videos/Coding/CodingL2.mp4'
-import CodingLesson3 from '../assets/videos/Coding/CodingL3.mp4'
-import CodingLesson4 from '../assets/videos/Coding/CodingL4.mp4'
 import './Astronomy.css'
 
 const BasicsOfCoding = () => {
@@ -40,10 +36,7 @@ const BasicsOfCoding = () => {
             </h2>
               {lessonExpanded[0] && (
                 <div className="lesson-content">
-                  <video controls className='astrovid' autoplay={false} width="660"
-                    height="415">
-                    <source src={CodingLesson1} type="video/mp4" />
-                  </video>
+                  <iframe className='astrovid' width="660" height="415" src="https://www.youtube.com/embed/t7CqLrelByA" frameborder="0" allowfullscreen></iframe>
                   <div className="button-column">
                     <Link to="https://docs.google.com/presentation/d/e/2PACX-1vRZJUwzkTw2zs1zjawrDsbwfZwXGBby1l-tMx4r-cVK2BkfU1M5TW4Rtq2NttiPHgRQXRD16DPDhGkE/pub?start=false&loop=false&delayms=3000&slide=id.p" target="_blank" rel="noopener noreferrer">
                       <button className="course-button">Slideshow</button>
@@ -61,10 +54,7 @@ const BasicsOfCoding = () => {
             </h2>
               {lessonExpanded[1] && (
                 <div className="lesson-content">
-                  <video controls className='astrovid' autoplay={false} width="660"
-                    height="415">
-                    <source src={CodingLesson2} type="video/mp4" />
-                  </video>
+                    <iframe className='astrovid' width="660" height="415" src="https://www.youtube.com/embed/gG1fPD2TrnY" frameborder="0" allowfullscreen></iframe>
                   <div className="button-column">
                     <Link to="https://docs.google.com/presentation/d/e/2PACX-1vRVSX7MJ5aPlzna54_j2i5P8Aumg6ayDLg1z4yyYMv7oFfM-JhvPsBugCvFQe777r4tIVaysHwzjzd5/pub?start=false&loop=false&delayms=3000&slide=id.p" target="_blank" rel="noopener noreferrer">
                       <button className="course-button">Slideshow</button>
@@ -82,10 +72,7 @@ const BasicsOfCoding = () => {
             </h2>
               {lessonExpanded[2] && (
                 <div className="lesson-content">
-                  <video controls className='astrovid' autoplay={false} width="660"
-                    height="415">
-                    <source src={CodingLesson3} type="video/mp4" />
-                  </video>
+                  <iframe className='astrovid' width="660" height="415" src="https://www.youtube.com/embed/qEcc3yjrwOI" frameborder="0" allowfullscreen></iframe>
                   <div className="button-column">
                     <Link to="https://docs.google.com/presentation/d/e/2PACX-1vQJV5awdB80XKfRUDrWAFCt3x1GsAZIny2Lj3cU9gMhf-PXPmb4a1g2DM6JGKEstCgPN5Ur2NSzegWG/pub?start=false&loop=false&delayms=3000&slide=id.p" target="_blank" rel="noopener noreferrer">
                       <button className="course-button">Slideshow</button>
@@ -103,10 +90,7 @@ const BasicsOfCoding = () => {
             </h2>
               {lessonExpanded[3] && (
                 <div className="lesson-content">
-                  <video controls className='astrovid' autoplay={false} width="660"
-                    height="415">
-                    <source src={CodingLesson4} type="video/mp4" />
-                  </video>
+                  <iframe className='astrovid' width="660" height="415" src="https://www.youtube.com/embed/6czRyGrNf_4" frameborder="0" allowfullscreen></iframe>
                   <div className="button-column">
                     <Link to="https://docs.google.com/presentation/d/e/2PACX-1vRcP16GVe61DiNEPyq7Cgze2ZCRYdTr8HRYqPcmhM8bDuDLSCsRnuGeEq6704IZQprAXEphwRzRBQpP/pub?start=false&loop=false&delayms=3000&slide=id.p" target="_blank" rel="noopener noreferrer">
                       <button className="course-button">Slideshow</button>
@@ -127,10 +111,7 @@ const BasicsOfCoding = () => {
             </h2>
               {lessonExpanded[4] && (
                 <div className="lesson-content">
-                  <video controls className='astrovid' autoplay={false} width="660"
-                    height="415">
-                    <source src={CodingLesson1} type="video/mp4" />
-                  </video>
+                  <iframe className='astrovid' width="660" height="415" src="https://www.youtube.com/embed/t7CqLrelByA" frameborder="0" allowfullscreen></iframe>
                   <div className="button-column">
                     <Link to="https://docs.google.com/presentation/d/e/2PACX-1vTtaqTCQT4sZWDjpW223YRhiPjw2gyTc0-GcPcqD4y2gqZhElROyvopqOHfNNF1Vc9JzQdTeJ8LjbNg/pub?start=false&loop=false&delayms=3000&slide=id.p" target="_blank" rel="noopener noreferrer">
                       <button className="course-button">Slideshow</button>
@@ -148,10 +129,7 @@ const BasicsOfCoding = () => {
             </h2>
               {lessonExpanded[5] && (
                 <div className="lesson-content">
-                  <video controls className='astrovid' autoplay={false} width="660"
-                    height="415">
-                    <source src={CodingLesson2} type="video/mp4" />
-                  </video>
+                  <iframe className='astrovid' width="660" height="415" src="https://www.youtube.com/embed/gG1fPD2TrnY" frameborder="0" allowfullscreen></iframe>
                   <div className="button-column">
                     <Link to="https://docs.google.com/presentation/d/e/2PACX-1vRBYP0x_NK0OCDDPh9QSZdif1_uUSr708rmFtat3J3rv9JCtB-m4rr1KgscUtoW5V_PR6v48zPPqbEO/pub?start=false&loop=false&delayms=3000&slide=id.p" target="_blank" rel="noopener noreferrer">
                       <button className="course-button">Slideshow</button>
@@ -169,10 +147,7 @@ const BasicsOfCoding = () => {
             </h2>
               {lessonExpanded[6] && (
                 <div className="lesson-content">
-                  <video controls className='astrovid' autoplay={false} width="660"
-                    height="415">
-                    <source src={CodingLesson3} type="video/mp4" />
-                  </video>
+                  <iframe className='astrovid' width="660" height="415" src="https://www.youtube.com/embed/qEcc3yjrwOI" frameborder="0" allowfullscreen></iframe>
                   <div className="button-column">
                     <Link to="https://docs.google.com/presentation/d/e/2PACX-1vQWsKeSJxdfXS-vDKLZbaNmQnA9tZKasl2b9hOd8-IfnaK7hh4NGzWDv5HqO6Toy3jHgXblVKX8txm_/pub?start=false&loop=false&delayms=3000&slide=id.p" target="_blank" rel="noopener noreferrer">
                       <button className="course-button">Slideshow</button>
@@ -190,10 +165,7 @@ const BasicsOfCoding = () => {
             </h2>
               {lessonExpanded[7] && (
                 <div className="lesson-content">
-                  <video controls className='astrovid' autoplay={false} width="660"
-                    height="415">
-                    <source src={CodingLesson4} type="video/mp4" />
-                  </video>
+                  <iframe className='astrovid' width="660" height="415" src="https://www.youtube.com/embed/6czRyGrNf_4" frameborder="0" allowfullscreen></iframe>
                   <div className="button-column">
                     <Link to="https://docs.google.com/presentation/d/e/2PACX-1vQ1EhlsDcUkJcUQd6slB1zlpJZ8tXROl9-D4j1aLHFFJg6UPijlF2VIg-iZMdWibsGDkMJ_rWcbh2J4/pub?start=false&loop=false&delayms=3000&slide=id.p" target="_blank" rel="noopener noreferrer">
                       <button className="course-button">Slideshow</button>

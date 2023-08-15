@@ -4,11 +4,6 @@ import HeroOther from '../components/HeroOther';
 import Footer from '../components/Footer';
 import Statistics from '../assets/statistics.jpeg'
 import { Link } from 'react-router-dom';
-import StatisticsLesson1 from '../assets/videos/Statistics/StatL1.mp4'
-import StatisticsLesson2 from '../assets/videos/Statistics/StatL2.mp4'
-import StatisticsLesson3 from '../assets/videos/Statistics/StatL3.mp4'
-import StatisticsLesson4 from '../assets/videos/Statistics/StatL4.mp4'
-import StatisticsLesson5 from '../assets/videos/Statistics/StatL5.mp4'
 import './Astronomy.css';
 
 const StatisticsPage = () => {
@@ -42,10 +37,7 @@ const StatisticsPage = () => {
           </h2>
             {lessonExpanded[0] && (
               <div className="lesson-content">
-                <video controls className='astrovid' autoplay={false} width="660"
-                  height="415">
-                  <source src={StatisticsLesson1} type="video/mp4" />
-                </video>
+                <iframe className='astrovid' width="660" height="415" src="https://www.youtube.com/embed/imGo9o7Epo8" frameborder="0" allowfullscreen></iframe>
                 <div className="button-column">
                   <Link to="https://docs.google.com/presentation/d/e/2PACX-1vSRqQAnsVx9tMyhym0HeU6jndMuCKMqE44h_UyAQu-ZCG8G2RV-B1DnqsIiCj18K1kO6ugR838dbyJT/pub?start=false&loop=false&delayms=3000&slide=id.p" target="_blank" rel="noopener noreferrer">
                     <button className="course-button">Slideshow</button>
@@ -66,10 +58,7 @@ const StatisticsPage = () => {
           </h2>
             {lessonExpanded[1] && (
               <div className="lesson-content">
-                <video controls className='astrovid' autoplay={false} width="660"
-                  height="415">
-                  <source src={StatisticsLesson2} type="video/mp4" />
-                </video>
+                <iframe className='astrovid' width="660" height="415" src="https://www.youtube.com/embed/zL7QABzjyxA" frameborder="0" allowfullscreen></iframe>
                 <div className="button-column">
                   <Link to="https://docs.google.com/presentation/d/e/2PACX-1vQoGBwAt4FsNzoE5a09bJZnXY_kNBoZhe5euLcD50Wob2fYyLhnPD2FpeObnv_GqJb-hcM29fmCB9UK/pub?start=false&loop=false&delayms=3000&slide=id.p" target="_blank" rel="noopener noreferrer">
                     <button className="course-button">Slideshow</button>
@@ -87,10 +76,7 @@ const StatisticsPage = () => {
           </h2>
             {lessonExpanded[2] && (
               <div className="lesson-content">
-                <video controls className='astrovid' autoplay={false} width="660"
-                  height="415">
-                  <source src={StatisticsLesson3} type="video/mp4" />
-                </video>
+                <iframe className='astrovid' width="660" height="415" src="https://www.youtube.com/embed/WY7m3HsZf0k" frameborder="0" allowfullscreen></iframe>
                 <div className="button-column">
                   <Link to="https://docs.google.com/presentation/d/e/2PACX-1vQfvuAJ3pkUqQBxgaY5Zljipy-8UfmRSRGh2wed_2S7LrFq_Xa_yUEwknp4iu8pQ_Q_LEbeFIPuVSE0/pub?start=false&loop=false&delayms=3000&slide=id.p" target="_blank" rel="noopener noreferrer">
                     <button className="course-button">Slideshow</button>
@@ -111,10 +97,7 @@ const StatisticsPage = () => {
           </h2>
             {lessonExpanded[3] && (
               <div className="lesson-content">
-                <video controls className='astrovid' autoplay={false} width="660"
-                  height="415">
-                  <source src={StatisticsLesson4} type="video/mp4" />
-                </video>
+                <iframe className='astrovid' width="660" height="415" src="https://www.youtube.com/embed/folkaRAmLWw" frameborder="0" allowfullscreen></iframe>
                 <div className="button-column">
                   <Link to="https://docs.google.com/presentation/d/e/2PACX-1vTtx5ZeNYgQU1XkD2BpOqzw_eCFB6HuBewTR7mcP5u3D9Wv_qPUZNcEjPPKw_PA5qXA5w1o9c7TqYUO/pub?start=false&loop=false&delayms=3000&slide=id.p" target="_blank" rel="noopener noreferrer">
                     <button className="course-button">Slideshow</button>
@@ -135,10 +118,7 @@ const StatisticsPage = () => {
           </h2>
             {lessonExpanded[4] && (
               <div className="lesson-content">
-                <video controls className='astrovid' autoplay={false} width="660"
-                  height="415">
-                  <source src={StatisticsLesson5} type="video/mp4" />
-                </video>
+                <iframe className='astrovid' width="660" height="415" src="https://www.youtube.com/embed/6sI8z3E7S80" frameborder="0" allowfullscreen></iframe>
                 <div className="button-column">
                   <Link to="https://docs.google.com/presentation/d/e/2PACX-1vQ2ipR8H1O0f-WO-3y6j4yCGpq2e3GJADgPgUhDR5p_ajAT0J3uJv2F_5WEv6da3cNG4CLWg2B9iftR/pub?start=false&loop=false&delayms=3000&slide=id.p" target="_blank" rel="noopener noreferrer">
                     <button className="course-button">Slideshow</button>
@@ -159,10 +139,7 @@ const StatisticsPage = () => {
           </h2>
             {lessonExpanded[5] && (
               <div className="lesson-content">
-                <video controls className='astrovid' autoplay={false} width="660"
-                  height="415">
-                  <source src={StatisticsLesson1} type="video/mp4" />
-                </video>
+                <iframe className='astrovid' width="660" height="415" src="https://www.youtube.com/embed/imGo9o7Epo8" frameborder="0" allowfullscreen></iframe>
                 <div className="button-column">
                   <Link to="https://docs.google.com/presentation/d/e/2PACX-1vS_RWoNPIH0ZCNkPKKD5-oi2Pb06JEw-fD4AgUxeytNyJqGadwK8XjEw8CG32N-wrxLtiL4FHwBs68a/pub?start=false&loop=false&delayms=3000&slide=id.p" target="_blank" rel="noopener noreferrer">
                     <button className="course-button">Slideshow</button>
@@ -183,10 +160,7 @@ const StatisticsPage = () => {
           </h2>
             {lessonExpanded[6] && (
               <div className="lesson-content">
-                <video controls className='astrovid' autoplay={false} width="660"
-                  height="415">
-                  <source src={StatisticsLesson2} type="video/mp4" />
-                </video>
+                <iframe className='astrovid' width="660" height="415" src="https://www.youtube.com/embed/zL7QABzjyxA" frameborder="0" allowfullscreen></iframe>
                 <div className="button-column">
                   <Link to="https://docs.google.com/presentation/d/e/2PACX-1vQCowT01nGRMbio93m7LHAC_iFTCcARMZYxQeII30vw_bRhFB6Edy-m8wggKkcDcB7PLH0nMcVFU01T/pub?start=false&loop=false&delayms=3000&slide=id.p" target="_blank" rel="noopener noreferrer">
                     <button className="course-button">Slideshow</button>
@@ -204,10 +178,7 @@ const StatisticsPage = () => {
           </h2>
             {lessonExpanded[7] && (
               <div className="lesson-content">
-                <video controls className='astrovid' autoplay={false} width="660"
-                  height="415">
-                  <source src={StatisticsLesson3} type="video/mp4" />
-                </video>
+                <iframe className='astrovid' width="660" height="415" src="https://www.youtube.com/embed/WY7m3HsZf0k" frameborder="0" allowfullscreen></iframe>
                 <div className="button-column">
                   <Link to="https://docs.google.com/presentation/d/e/2PACX-1vQez6xFKxIp8sZWJb6YWCcNdd5dE4JrsA6QfWn2yKrF5CBiS9lUnmejPkjnEMfIPopUiIejxw1ZQYnX/pub?start=false&loop=false&delayms=3000&slide=id.p" target="_blank" rel="noopener noreferrer">
                     <button className="course-button">Slideshow</button>
@@ -228,10 +199,7 @@ const StatisticsPage = () => {
           </h2>
             {lessonExpanded[8] && (
               <div className="lesson-content">
-                <video controls className='astrovid' autoplay={false} width="660"
-                  height="415">
-                  <source src={StatisticsLesson4} type="video/mp4" />
-                </video>
+                <iframe className='astrovid' width="660" height="415" src="https://www.youtube.com/embed/folkaRAmLWw" frameborder="0" allowfullscreen></iframe>
                 <div className="button-column">
                   <Link to="https://docs.google.com/presentation/d/e/2PACX-1vQb5ES2G2LfCFM-7iZRji5yzrXPA6EA4tiPEG6Sj0WEI-wSs25CJ8JWYNLrMDpQYkBKvu7JWrHPbCt2/pub?start=false&loop=false&delayms=3000&slide=id.p" target="_blank" rel="noopener noreferrer">
                     <button className="course-button">Slideshow</button>
@@ -252,10 +220,7 @@ const StatisticsPage = () => {
           </h2>
             {lessonExpanded[9] && (
               <div className="lesson-content">
-                <video controls className='astrovid' autoplay={false} width="660"
-                  height="415">
-                  <source src={StatisticsLesson5} type="video/mp4" />
-                </video>
+                <iframe className='astrovid' width="660" height="415" src="https://www.youtube.com/embed/6sI8z3E7S80" frameborder="0" allowfullscreen></iframe>
                 <div className="button-column">
                   <Link to="https://docs.google.com/presentation/d/e/2PACX-1vQ6dwcpC8L9Kj4okOPKeVye7x--ddo0ngD9c8SE3k9R6Gd_VGVzOkF8vea74W4YHIfp4IvBcsw7gc80/pub?start=false&loop=false&delayms=3000&slide=id.p" target="_blank" rel="noopener noreferrer">
                     <button className="course-button">Slideshow</button>

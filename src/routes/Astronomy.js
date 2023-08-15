@@ -4,10 +4,6 @@ import HeroOther from '../components/HeroOther';
 import Footer from '../components/Footer';
 import AstronomyImage from '../assets/astronomy.PNG'
 import { Link } from 'react-router-dom';
-import AstronomyLesson1 from '../assets/videos/Astronomy/AstronomyL1.mp4'
-import AstronomyLesson2 from '../assets/videos/Astronomy/AstronomyL2.mp4'
-import AstronomyLesson3 from '../assets/videos/Astronomy/AstronomyL3.mp4'
-import AstronomyLesson4 from '../assets/videos/Astronomy/AstronomyL4.mp4'
 import './Astronomy.css';
 
 const Astronomy = () => {
@@ -41,10 +37,7 @@ const Astronomy = () => {
           </h2>
             {lessonExpanded[0] && (
               <div className="lesson-content">
-                <video controls className='astrovid' autoplay={false} width="660"
-                  height="415">
-                  <source src={AstronomyLesson1} type="video/mp4" />
-                </video>
+                <iframe className='astrovid' width="660" height="415" src="https://www.youtube.com/embed/vy2NuP1ITFo" frameborder="0" allowfullscreen></iframe>
                 <div className="button-column">
                   <Link to="https://docs.google.com/presentation/d/e/2PACX-1vSr3e9CF977isknsVQzGrdLsDkrC60VyycBj-xdDiz9Ouw_qgwijJR9QIOwujE9jljLv3bhnV9ZQdo_/pub?start=false&loop=false&delayms=3000&slide=id.p" target="_blank" rel="noopener noreferrer">
                     <button className="course-button">Slideshow</button>
@@ -65,10 +58,7 @@ const Astronomy = () => {
           </h2>
             {lessonExpanded[1] && (
               <div className="lesson-content">
-                <video controls className='astrovid' autoplay={false} width="660"
-                  height="415">
-                  <source src={AstronomyLesson2} type="video/mp4" />
-                </video>
+                <iframe className='astrovid' width="660" height="415" src="https://www.youtube.com/embed/0MG58dFzUkU" frameborder="0" allowfullscreen></iframe>
                 <div className="button-column">
                   <Link to="https://docs.google.com/presentation/d/e/2PACX-1vQkBQUIrCPwy-b1jqDqHwtgY_SrlYd3LDmU9yd-czMHUjY7z6Qk25feHaF6l3RPwNRZ-HZK1Gjg-b8x/pub?start=false&loop=false&delayms=3000&slide=id.p" target="_blank" rel="noopener noreferrer">
                     <button className="course-button">Slideshow</button>
@@ -86,10 +76,7 @@ const Astronomy = () => {
           </h2>
             {lessonExpanded[2] && (
               <div className="lesson-content">
-                <video controls className='astrovid' autoplay={false} width="660"
-                  height="415">
-                  <source src={AstronomyLesson3} type="video/mp4" />
-                </video>
+                <iframe className='astrovid' width="660" height="415" src="https://www.youtube.com/embed/v4pT0yllkO0" frameborder="0" allowfullscreen></iframe>
                 <div className="button-column">
                   <Link to="https://docs.google.com/presentation/d/e/2PACX-1vTIWl6sn0OwrcSMNWp1AkQU2R6Gfg2pVw_LvvWUil89HxAighvPdMs0V_fyGRT-GFrUlv0yT1am-Uei/pub?start=false&loop=false&delayms=3000&slide=id.p" target="_blank" rel="noopener noreferrer">
                     <button className="course-button">Slideshow</button>
@@ -110,10 +97,7 @@ const Astronomy = () => {
           </h2>
             {lessonExpanded[3] && (
               <div className="lesson-content">
-                <video controls className='astrovid' autoplay={false} width="660"
-                  height="415">
-                  <source src={AstronomyLesson4} type="video/mp4" />
-                </video>
+                <iframe className='astrovid' width="660" height="415" src="https://www.youtube.com/embed/ImEEVWosix4" frameborder="0" allowfullscreen></iframe>
                 <div className="button-column">
                   <Link to="https://docs.google.com/presentation/d/e/2PACX-1vSI7VUQXrscGhilpertuTvYvL2HETLKSsbJ4R6AkVBJMjDUw8cxtbeTXbAvsoPCIUrcEqIZ4E42UFK4/pub?start=false&loop=false&delayms=3000&slide=id.p" target="_blank" rel="noopener noreferrer">
                     <button className="course-button">Slideshow</button>
@@ -134,10 +118,7 @@ const Astronomy = () => {
           </h2>
             {lessonExpanded[4] && (
               <div className="lesson-content">
-                <video controls className='astrovid' autoplay={false} width="660"
-                  height="415">
-                  <source src={AstronomyLesson1} type="video/mp4" />
-                </video>
+                <iframe className='astrovid' width="660" height="415" src="https://www.youtube.com/embed/vy2NuP1ITFo" frameborder="0" allowfullscreen></iframe>
                 <div className="button-column">
                   <Link to="https://docs.google.com/presentation/d/e/2PACX-1vSYVLVT9YBNdOLvB4IeNFX45I5m6n6cS6K2qM79gzghPNMcX7NdiT1vJGHRAGKafSeAVo-lPtt3nEAK/pub?start=false&loop=false&delayms=3000&slide=id.p" target="_blank" rel="noopener noreferrer">
                     <button className="course-button">Slideshow</button>
@@ -158,10 +139,7 @@ const Astronomy = () => {
           </h2>
             {lessonExpanded[5] && (
               <div className="lesson-content">
-                <video controls className='astrovid' autoplay={false} width="660"
-                  height="415">
-                  <source src={AstronomyLesson2} type="video/mp4" />
-                </video>
+                <iframe className='astrovid' width="660" height="415" src="https://www.youtube.com/embed/0MG58dFzUkU" frameborder="0" allowfullscreen></iframe>
                 <div className="button-column">
                   <Link to="https://docs.google.com/presentation/d/e/2PACX-1vT0x0wT-PGEetENLuNz1ZN1pxKbloDZDe6ZwiovLLwQhtvuwu-SpFlsYTRkZu-3MluMkyGEbYHY37uK/pub?start=false&loop=false&delayms=3000&slide=id.p" target="_blank" rel="noopener noreferrer">
                     <button className="course-button">Slideshow</button>
@@ -179,10 +157,7 @@ const Astronomy = () => {
           </h2>
             {lessonExpanded[6] && (
               <div className="lesson-content">
-                <video controls className='astrovid' autoplay={false} width="660"
-                  height="415">
-                  <source src={AstronomyLesson3} type="video/mp4" />
-                </video>
+                <iframe className='astrovid' width="660" height="415" src="https://www.youtube.com/embed/v4pT0yllkO0" frameborder="0" allowfullscreen></iframe>
                 <div className="button-column">
                   <Link to="https://docs.google.com/presentation/d/e/2PACX-1vTOmkOYM0vjwk5lSuAZllXWZ3biZJ_XtX9LurhWhyNvjqXqVzvKQKjwPBR0ulv1GDJtgtYEBoCpPuiG/pub?start=false&loop=false&delayms=3000&slide=id.p" target="_blank" rel="noopener noreferrer">
                     <button className="course-button">Slideshow</button>
@@ -203,10 +178,7 @@ const Astronomy = () => {
           </h2>
             {lessonExpanded[7] && (
               <div className="lesson-content">
-                <video controls className='astrovid' autoplay={false} width="660"
-                  height="415">
-                  <source src={AstronomyLesson4} type="video/mp4" />
-                </video>
+                <iframe className='astrovid' width="660" height="415" src="https://www.youtube.com/embed/ImEEVWosix4" frameborder="0" allowfullscreen></iframe>
                 <div className="button-column">
                   <Link to="https://docs.google.com/presentation/d/e/2PACX-1vTAyFyBm7IJI6JEgUwzitEswtFjWfFA2BaMCDEGvbWF8ijEG3G4bU9v3__KpaOowPIwJ1B7vvq6a316/pub?start=false&loop=false&delayms=3000&slide=id.p" target="_blank" rel="noopener noreferrer">
                     <button className="course-button">Slideshow</button>
