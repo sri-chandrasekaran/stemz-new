@@ -15,6 +15,10 @@ import Zoology from '../assets/zoology.jpg'
 import {Link} from 'react-router-dom'
 
 const SelfPacedClasses = () => {
+
+    const scrollToTop = () => {
+        window.scrollTo(0, 0);
+    }
   return (
     <div>
         <Navbar />
@@ -26,7 +30,7 @@ const SelfPacedClasses = () => {
                 <img src={AstronomyImage} alt="Astronomy" className="img-course"/>
                 <h1>Astronomy</h1>
                 <p>In this course we will learn about galaxies, the universe, constellations and much more!</p>
-                <Link to="./astronomy">
+                <Link to="./astronomy" onClick={scrollToTop}>
                 <button className="cta-button courses-button" style={{marginTop:'93px'}}>Access Lessons</button>
                 </Link>
             </div>
@@ -42,7 +46,7 @@ const SelfPacedClasses = () => {
                 <img src={Biochemistry} alt="Biochemistry" className="img-course"/>
                 <h1>Biochemistry</h1>
                 <p>In this course we will learn about molecules, atoms, proteins and more; we encourage the completion of the Chemistry course prior! Parent supervision is needed.</p>
-                <Link to="./biochemistry">
+                <Link to="./biochemistry" onClick={scrollToTop}>
                 <button className="cta-button courses-button">Access Lessons</button>
                 </Link>
             </div>
@@ -60,7 +64,7 @@ const SelfPacedClasses = () => {
                 <img src={Circuits} alt="Circuits" className="img-course"/>
                 <h1>Circuits</h1>
                 <p>In this course, your child will learn about the basics of circuits and how they are used in everyday items. </p>
-                <Link to="./circuits">
+                <Link to="./circuits" onClick={scrollToTop}>
                 <button className="cta-button courses-button" style={{marginTop:'93px'}}>Access Lessons</button>
                 </Link>
             </div>
@@ -69,7 +73,7 @@ const SelfPacedClasses = () => {
                 <h1>Environmental</h1>
                 <h1>Science</h1>
                 <p>In this course, we will learn about biodiversity, the cycles of the earth, pollution, recycling, and more!</p>
-                <Link to="./environmental-science">
+                <Link to="./environmental-science" onClick={scrollToTop}>
                 <button className="cta-button courses-button">Access Lessons</button>
                 </Link>
             </div>
@@ -79,7 +83,7 @@ const SelfPacedClasses = () => {
                 <img src={Psych} alt="Psychology" className="img-course"/>
                 <h1>Psychology</h1>
                 <p>In this course, we will learn about biodiversity, the cycles of the earth, pollution, recycling, and more!</p>
-                <Link to="./psychology">
+                <Link to="./psychology" onClick={scrollToTop}>
                 <button className="cta-button courses-button" style={{marginBottom:'90px'}}>Access Lessons</button>
                 </Link>
             </div>
@@ -87,7 +91,7 @@ const SelfPacedClasses = () => {
                 <img src={Stats} alt="Statistics" className="img-course"/>
                 <h1>Statistics</h1>
                 <p>In this course, we will dive into different subtopics of statistics, such as fractions & percents, graphing, and real world-applications.</p>
-                <Link to="./statistics">
+                <Link to="./statistics" onClick={scrollToTop}>
                 <button className="cta-button courses-button">Access Lessons</button>
                 </Link>
             </div>
@@ -95,7 +99,7 @@ const SelfPacedClasses = () => {
                 <img src={Zoology} alt="Zoology" className="img-course"/>
                 <h1>Zoology</h1>
                 <p>In this course we will learn about the field of zoology, some topics include biodiversity, taxonomy, and anatomy.</p>
-                <Link to="./zoology">
+                <Link to="./zoology" onClick={scrollToTop}>
                 <button className="cta-button courses-button">Access Lessons</button>
                 </Link>
             </div>
