@@ -24,7 +24,7 @@ const Form = () => {
             <label>Email</label>
             <input type='email' name='user_email'></input>
             <label>Reason for Contact</label>
-            <div>
+            <div className='radio-column'>
               <label>
                 <input type='radio' name='reason' value='general' />
                 General Inquiry
@@ -45,7 +45,7 @@ const Form = () => {
             <label>Details</label>
             <textarea rows='6' name='message' placehold='Type your message here'/>
             {/* make the link somehow send to email address */}
-            <button type='submit' className="secondary-button" style={{width: '100px', marginLeft: '220px'}}>Submit</button>
+            <button type='submit' className="secondary-button" style={{width: '100px', marginLeft: window.innerWidth <= 800 ? '130px' : '220px',}}>Submit</button>
         </form>
     </div>
   )

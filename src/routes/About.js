@@ -76,12 +76,12 @@ const About = () => {
             <img src={Steven} className='profile-img' alt='Steven Biji' style={{ objectPosition: '-250px center' }}/>
             </div>
             <h3>Steven Biji</h3>
-            <h5>Director of Public Relations</h5>
+            <h5>Marketing Director</h5>
           </div>
           <div className='profile'>
             <img src={Vaaruni2} className='profile-img' alt='Vaaruni Khanna' />
             <h3>Vaaruni Khanna</h3>
-            <h5>Director of Outreach & Recruitment</h5>
+            <h5>Outreach & Recruitment Director</h5>
           </div>
         </div>
       </div>

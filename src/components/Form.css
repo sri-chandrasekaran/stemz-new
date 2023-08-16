@@ -29,3 +29,11 @@ form input, textarea {
     display: block;
     margin-bottom: 10px;
 }
+
+@media screen and (max-width: 800px) {
+
+    .radio-column {
+        display: flex;
+        flex-direction: column;
+    }
+}
