@@ -53,7 +53,7 @@ const Home = () => {
         </div>
         <div className='us'>
             <h1>Who Are We?</h1>
-            <p> STEMz Learning is a youth-led outreach program based in Folsom, California, that wants 
+            <p> STEMz Learning is a youth-led outreach 501(c)3 nonprofit based in Folsom, California, that wants 
                 to make STEM education more accessible to elementary school students, grades 1-6. We 
                 provide free curriculum for both self-guided and parent-guided learners as well as free
                 online courses.
