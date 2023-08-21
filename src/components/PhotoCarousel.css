@@ -57,3 +57,19 @@
     line-height: 24px; /* Adjust line-height for centering on smaller screens */
   }
 }
+
+@media screen and (max-width: 1200px) {
+  .photo-carousel {
+    height: 500px;
+    width: 400px;
+    margin: 40px auto -10px auto;
+    align-items: center;
+  }
+
+  .carousel-arrow {
+    width: 24px; /* Adjust arrow size for smaller screens */
+    height: 24px; /* Adjust arrow size for smaller screens */
+    font-size: 14px; /* Adjust font size for smaller screens */
+    line-height: 24px; /* Adjust line-height for centering on smaller screens */
+  }
+}
