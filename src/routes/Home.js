@@ -42,14 +42,14 @@ const Home = () => {
             <p>STEMz Learning  strives to provide elementary school students with curriculum centered 
             around experiments and hands-on learning. Our main goal is to introduce complex topics in 
             palatable, engaging ways that inspire kids to learn more.</p>
-        </div>
-        <div className="action-buttons">
+            <div className="action-buttons">
             <Link to="/online-classes">
                 <button className="cta-button">Sign Up for Classes</button>
             </Link>
             <Link to="/self-paced-classes">
                 <button className="secondary-button">Access Curriculum</button>
             </Link>
+            </div>
         </div>
         <div className='us'>
             <h1>Who Are We?</h1>

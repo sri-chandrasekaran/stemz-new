@@ -3,6 +3,7 @@
     margin-top: 100px;
     z-index: 1;
     height: 75vh;
+    position: relative;
 }
 
 .hero-homepage {
@@ -39,16 +40,19 @@
 .hero-images {
     width: 120px;
     height: 160px;
-    margin-left: 1270px;
-    margin-bottom: 100px;
+    position: absolute; 
+    bottom: 25px; 
+    right: 25px; 
 }
 
 .hero2-images {
     width: 150px;
     height: 140px;
     margin-left: 25px;
-    position: relative;
-    top: -635px;
+    margin-top: 0; 
+    position: absolute; 
+    top: 25px;
+    left: 25px; 
 }
 
 @media screen and (max-width: 800px) {
@@ -101,14 +105,18 @@
     .hero-images {
         width: 120px;
         height: 160px;
-        margin-left: 1350px;
-        margin-bottom: 60px;
+        position: absolute;
+        bottom: 25px;
+        right: 25px;
     }
+
     
     .hero2-images {
         width: 150px;
         height: 140px;
         margin-left: 25px;
-        margin-top: 340px;
+        margin-top: 0px;
+        top: 25px;
+        left: 25px;
     }
 }
