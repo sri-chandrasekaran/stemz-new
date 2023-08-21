@@ -82,3 +82,33 @@
     }
 }
 
+
+@media screen and (max-width: 1100px) {
+    .hero-title {
+        font-size: 32px; /* Decrease font size for smaller screens */
+    }
+
+    .hero-description {
+        font-size: 24px; /* Decrease font size for smaller screens */
+    }
+
+
+    .line-break::before {
+        content: '\A';
+        white-space: pre;
+    }
+
+    .hero-images {
+        width: 120px;
+        height: 160px;
+        margin-left: 1350px;
+        margin-bottom: 60px;
+    }
+    
+    .hero2-images {
+        width: 150px;
+        height: 140px;
+        margin-left: 25px;
+        top: -635px;
+    }
+}
