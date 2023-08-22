@@ -56,5 +56,13 @@
       gap: 30px; 
       width: 90%; 
       margin: 0 auto; 
+      overflow-x: auto;
+      scroll-snap-type: x mandatory;
+      white-space: nowrap;
+    }
+
+    .grid-cell {
+      width: 100%; /* Each cell occupies the full width of the viewport */
+      scroll-snap-align: start; /* Snap each cell to the start of the viewport */
     }
   }
