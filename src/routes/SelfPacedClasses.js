@@ -38,7 +38,7 @@ const SelfPacedClasses = () => {
                 <img src={Coding} alt="Coding" className="img-course"/>
                 <h1>Basics of Coding</h1>
                 <p>In this course we will learn about movement, variables, conditional statements and many more, using Scratch. No prior experience is needed!</p>
-                <Link to="./basics-of-coding">
+                <Link to="./basics-of-coding" onClick={scrollToTop}>
                 <button className="cta-button courses-button">Access Lessons</button>
                 </Link>
             </div>
@@ -56,7 +56,7 @@ const SelfPacedClasses = () => {
                 <img src={Chemistry} alt="chemistry" className="img-course"/>
                 <h1>Chemistry</h1>
                 <p>In this course, your child will learn about matter, energy, and chemical reactions. The course culminates in a final project that serves as a launching pad to inspire your child to learn more! Parent supervision needed.</p>
-                <Link to="./chemistry">
+                <Link to="./chemistry" onClick={scrollToTop}>
                 <button className="cta-button courses-button">Access Lessons</button>
                 </Link>
             </div>
