@@ -7,9 +7,9 @@
   width: 700px;
   /* margin-left: 370px;
   margin-top: 120px; */
-  left: 370px;
   top: 50px;
   margin-bottom: -30px;
+  margin: auto;
 }
 
 .carousel-container {
