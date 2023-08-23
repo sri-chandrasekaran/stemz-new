@@ -17,10 +17,16 @@
   }
 
   .story {
-    display: grid;
+    /* display: grid;
     grid-template-columns: 1fr 1fr; /* Two columns, equal width */
+    /* align-items: center;
+    padding: 2rem 0; */ 
+    display: flex;
+    flex-direction: column;
     align-items: center;
-    padding: 2rem 0;
+    text-align: center;
+    padding: 1rem 0;
+    margin-top: 20px;
   }
 
   .story-content {
@@ -37,7 +43,8 @@
 .text {
     max-width: 600px;
     text-align: center;
-    margin-top: 35px;
+    /* margin-top: 35px; */
+    margin-top: 20px;
     margin-left: 70px;
     font-size: 20px;
 }
@@ -48,6 +55,7 @@
     justify-self: end;
     margin-top: -400px;
     margin-left: 800px;
+
   }
 
 .container {
