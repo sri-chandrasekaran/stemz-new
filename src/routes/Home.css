@@ -155,13 +155,12 @@
     .us p {
         margin-top: 20px; /* Adjust margin for better fit */
         font-size: 18px; /* Decrease font size for better fit */
-        margin-left: -80px;
-        margin-right: 20px;
+        margin-left: 10px;
     }
 
     .action-buttons {
         margin-top: 15px; /* Adjust margin for better fit */
-        margin-left: 80px; 
+        margin-left: 2px; 
     }
 
     .cta-button,
@@ -172,7 +171,7 @@
     }
 
     .folsom-img {
-        margin-left: -75px; /* Remove unnecessary margin */
+        margin-left: 65px; /* Remove unnecessary margin */
         margin-top: 60px; /* Adjust margin for better fit */
     }
 }
