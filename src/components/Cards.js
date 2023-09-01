@@ -7,6 +7,10 @@ import {Link} from 'react-router-dom'
 // import organizations from '../assets/organizations.png'
 
 const Cards = () => {
+
+    const scrollToTop = () => {
+        window.scrollTo(0, 0);
+    }
   return (
     <div className='card-container'>
         <div className='card'>
@@ -14,7 +18,7 @@ const Cards = () => {
             <h3>Developing Courses</h3>
             <span className='bar'></span>
             <p>We are constantly creating and improving our curriculum so that your child always has new and exciting things to learn about.</p>
-            <Link to="/contact">
+            <Link to="/contact" onClick={scrollToTop}>
                 <button className="cta-button courses-button">Request a Course</button>
             </Link>
         </div>
@@ -32,7 +36,7 @@ const Cards = () => {
             <h3>Connecting with Local Community Organizations</h3>
             <span className='bar'></span>
             <p>We are reaching out to local elementary schools and community programs to host in-person events.</p>
-            <Link to="/get-involved">
+            <Link to="/get-involved" onClick={scrollToTop}>
                 <button className="cta-button involved-button">Get Involved</button>
             </Link>
         </div>
