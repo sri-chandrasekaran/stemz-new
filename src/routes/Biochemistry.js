@@ -8,15 +8,6 @@ import './Astronomy.css';
 
 const BiochemistryPage = () => {
 
-  const [lessonExpanded, setLessonExpanded] = useState([false, false]);
-
-  const toggleLesson = (lessonIndex) => {
-    setLessonExpanded(prevState => {
-      const newState = [...prevState];
-      newState[lessonIndex] = !newState[lessonIndex];
-      return newState;
-    });
-  };
 
   return (
     <div>
@@ -32,44 +23,30 @@ const BiochemistryPage = () => {
       <div className='student-l1'>
         <h1>Parent-Led Lessons</h1>
         <div className='lesson1'>
-        <h2 onClick={() => toggleLesson(0)}>Lesson 1
-            <span className={`dropdown-arrow ${lessonExpanded[0] ? 'expanded' : ''}`}>&#9660;</span>
-          </h2>
-            {lessonExpanded[0] && (
-              <div className="lesson-content">
-                <iframe className='astrovid' width="660" height="415" src="https://www.youtube.com/embed/Vo_1vhGWER8" frameborder="0" allowfullscreen></iframe>
-                <div className="button-column">
-                  <Link to="https://docs.google.com/presentation/d/e/2PACX-1vSRA7OlH1eToF971sBlGf8Vc7ZZsxePtI4Dg39sHZrV8Zce4P6ikdZ2nBUZbhAQYiJZcQPFct3H9rs5/pub?start=false&loop=false&delayms=3000&slide=id.g5320acc4cf_0_92" target="_blank" rel="noopener noreferrer">
-                    <button className="course-button">Slideshow</button>
-                  </Link>
-                  <Link to="https://docs.google.com/document/d/e/2PACX-1vQlM4liz99AWyrVaKpjk6z6_iMYmDeSIsP3fheQo_i_vtV4xRel8Fcmdz-_jFJq62TgFMHzgTInl-cJ/pub" target="_blank" rel="noopener noreferrer">
-                    <button className="course-button">Parent Notes</button>
-                  </Link>
-              </div>
-              </div>
-            )}
+        {(
+            <div className="lesson-content">
+              <Link to ="/self-paced-classes/biochemistry/bio1">
+              <img
+              src="https://i.ytimg.com/vi/Vo_1vhGWER8/mqdefault.jpg"
+              alt="Lesson 1 Thumbnail"
+              className="astrovid-thumbnail"
+            />
+            <h3 className='vidtitle-small'>Lesson 1: Nucleic Acids</h3>
+            </Link>
+            
+            <Link to ="/self-paced-classes/biochemistry/bio2">
+            <img
+              src="https://i.ytimg.com/vi/Vo_1vhGWER8/mqdefault.jpg"
+              alt="Lesson 2 Thumbnail"
+              className="astrovid-thumbnail"
+            />
+            <h3 className='vidtitle-small'> Lesson 2: Proteins & Carbohydrates</h3>
+            </Link>
+
+            </div>
+)}
         </div>
-        <div className='lesson2'>
-        <h2 onClick={() => toggleLesson(1)}>Lesson 2
-            <span className={`dropdown-arrow ${lessonExpanded[1] ? 'expanded' : ''}`}>&#9660;</span>
-          </h2>
-            {lessonExpanded[1] && (
-              <div className="lesson-content">
-                <iframe className='astrovid' width="660" height="415" src="https://www.youtube.com/embed/Vo_1vhGWER8" frameborder="0" allowfullscreen></iframe>
-                <div className="button-column">
-                  <Link to="https://docs.google.com/presentation/d/e/2PACX-1vTL1o_Apa39ZYqgeO-gcCEpUGgS7YVJN_yXy-7OKuHHtyGJFvlQv-nVayyCDvboNfDUMrTBznHlSgP_/pub?start=false&loop=false&delayms=3000&slide=id.g5320acc4cf_0_92" target="_blank" rel="noopener noreferrer">
-                    <button className="course-button">Slideshow</button>
-                  </Link>
-                  <Link to="https://docs.google.com/document/d/e/2PACX-1vQryoVxTaKuMzfhj25LAxyxWM4rVkQ1z1mMQe1L19FRhN3EgZH_vEyZpfj-OAdOx4kQ5szUXPoQbeHX/pub" target="_blank" rel="noopener noreferrer">
-                    <button className="course-button">Worksheet</button>
-                  </Link>
-                  <Link to="https://docs.google.com/document/d/e/2PACX-1vTqZTd0LqASARcIsOhM94CO2etLbRCUKMt2u0x234m9RvfEbFNV51KL0CBjlXGFl-PNVFT2ccaD3dnf/pub" target="_blank" rel="noopener noreferrer">
-                    <button className="course-button">Parent Notes</button>
-                  </Link>
-              </div>
-              </div>
-            )}
-        </div>
+
       </div>
       <div style={{ paddingBottom: '200px' }} />
       <Footer />

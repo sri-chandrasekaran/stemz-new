@@ -8,15 +8,21 @@ import './Astronomy.css';
 
 const StatisticsPage = () => {
 
-  const [lessonExpanded, setLessonExpanded] = useState([false, false, false, false, false, false, false, false, false, false]);
+  const scrollToTop = () => {
+    window.scrollTo(0, 0);
+}
 
-  const toggleLesson = (lessonIndex) => {
-    setLessonExpanded(prevState => {
-      const newState = [...prevState];
-      newState[lessonIndex] = !newState[lessonIndex];
-      return newState;
-    });
-  };
+  // const [lessonExpanded, setLessonExpanded] = useState([false, false, false, false, false, false, false, false, false, false]);
+
+  // const toggleLesson = (lessonIndex) => {
+  //   setLessonExpanded(prevState => {
+  //     const newState = [...prevState];
+  //     newState[lessonIndex] = !newState[lessonIndex];
+  //     return newState;
+  //   });
+  // };
+
+
 
   return (
     <div>
@@ -32,7 +38,52 @@ const StatisticsPage = () => {
       <div className='student-l1'>
         <h1>Student-Led Lessons</h1>
         <div className='lesson1'>
-        <h2 onClick={() => toggleLesson(0)}>Lesson 1
+        {(<div className='lesson-content'>
+        <Link to ="/self-paced-classes/statistics/stat1s" onClick={scrollToTop}>
+              <img
+              src="https://i.ytimg.com/vi/imGo9o7Epo8/mqdefault.jpg"
+              alt="Lesson 1 Thumbnail"
+              className="astrovid-thumbnail"
+            />
+            <h3 className='vidtitle-small'>Lesson 1: Fractions</h3>
+            </Link>
+            
+            <Link to ="/self-paced-classes/statistics/stat2s" onClick={scrollToTop}>
+            <img
+              src="https://i.ytimg.com/vi/zL7QABzjyxA/mqdefault.jpg"
+              alt="Lesson 2 Thumbnail"
+              className="astrovid-thumbnail"
+            />
+            <h3 className='vidtitle-small'> Lesson 2: Percentages</h3>
+            </Link>
+
+            <Link to ="/self-paced-classes/statistics/stat3s" onClick={scrollToTop}>
+              <img
+              src="https://i.ytimg.com/vi/WY7m3HsZf0k/mqdefault.jpg"
+              alt="Lesson 3 Thumbnail"
+              className="astrovid-thumbnail"
+            />
+            <h3 className='vidtitle-small'>Lesson 3: Advanced Percents</h3>
+            </Link>
+
+            <Link to ="/self-paced-classes/statistics/stat4s" onClick={scrollToTop}>
+              <img
+              src="https://i.ytimg.com/vi/folkaRAmLWw/mqdefault.jpg"
+              alt="Lesson 4 Thumbnail"
+              className="astrovid-thumbnail"
+            />
+            <h3 className='vidtitle-small'>Lesson 4: Types of Graphs</h3>
+            </Link>
+            <Link to ="/self-paced-classes/statistics/stat5s" onClick={scrollToTop}>
+              <img
+              src="https://i.ytimg.com/vi/6sI8z3E7S80/mqdefault.jpg"
+              alt="Lesson 4 Thumbnail"
+              className="astrovid-thumbnail"
+            />
+            <h3 className='vidtitle-small'>Lesson 5: Surveys & Real World</h3>
+            </Link>
+</div>)}
+        {/* <h2 onClick={() => toggleLesson(0)}>Lesson 1
             <span className={`dropdown-arrow ${lessonExpanded[0] ? 'expanded' : ''}`}>&#9660;</span>
           </h2>
             {lessonExpanded[0] && (
@@ -50,9 +101,9 @@ const StatisticsPage = () => {
                   </Link>
               </div>
               </div>
-            )}
+            )} */}
         </div>
-        <div className='lesson2'>
+        {/* <div className='lesson2'>
         <h2 onClick={() => toggleLesson(1)}>Lesson 2
             <span className={`dropdown-arrow ${lessonExpanded[1] ? 'expanded' : ''}`}>&#9660;</span>
           </h2>
@@ -129,12 +180,57 @@ const StatisticsPage = () => {
               </div>
               </div>
             )}
-        </div>
+        </div> */}
       </div>
       <div className='student-l1'>
         <h1>Parent-Led Lessons</h1>
         <div className='lesson1'>
-        <h2 onClick={() => toggleLesson(5)}>Lesson 1
+        {(<div className='lesson-content'>
+        <Link to ="/self-paced-classes/statistics/stat1p" onClick={scrollToTop}>
+              <img
+              src="https://i.ytimg.com/vi/imGo9o7Epo8/mqdefault.jpg"
+              alt="Lesson 1 Thumbnail"
+              className="astrovid-thumbnail"
+            />
+            <h3 className='vidtitle-small'>Lesson 1: Fractions</h3>
+            </Link>
+            
+            <Link to ="/self-paced-classes/statistics/stat2p" onClick={scrollToTop}>
+            <img
+              src="https://i.ytimg.com/vi/zL7QABzjyxA/mqdefault.jpg"
+              alt="Lesson 2 Thumbnail"
+              className="astrovid-thumbnail"
+            />
+            <h3 className='vidtitle-small'> Lesson 2: Percentages</h3>
+            </Link>
+
+            <Link to ="/self-paced-classes/statistics/stat3p" onClick={scrollToTop}>
+              <img
+              src="https://i.ytimg.com/vi/WY7m3HsZf0k/mqdefault.jpg"
+              alt="Lesson 3 Thumbnail"
+              className="astrovid-thumbnail"
+            />
+            <h3 className='vidtitle-small'>Lesson 3: Advanced Percents</h3>
+            </Link>
+
+            <Link to ="/self-paced-classes/statistics/stat4p" onClick={scrollToTop}>
+              <img
+              src="https://i.ytimg.com/vi/folkaRAmLWw/mqdefault.jpg"
+              alt="Lesson 4 Thumbnail"
+              className="astrovid-thumbnail"
+            />
+            <h3 className='vidtitle-small'>Lesson 4: Types of Graphs</h3>
+            </Link>
+            <Link to ="/self-paced-classes/statistics/stat5p" onClick={scrollToTop}>
+              <img
+              src="https://i.ytimg.com/vi/6sI8z3E7S80/mqdefault.jpg"
+              alt="Lesson 4 Thumbnail"
+              className="astrovid-thumbnail"
+            />
+            <h3 className='vidtitle-small'>Lesson 5: Surveys & Real World</h3>
+            </Link>
+</div>)}
+        {/* <h2 onClick={() => toggleLesson(5)}>Lesson 1
             <span className={`dropdown-arrow ${lessonExpanded[5] ? 'expanded' : ''}`}>&#9660;</span>
           </h2>
             {lessonExpanded[5] && (
@@ -152,9 +248,9 @@ const StatisticsPage = () => {
                   </Link>
               </div>
               </div>
-            )}
+            )} */}
         </div>
-        <div className='lesson2'>
+        {/* <div className='lesson2'>
         <h2 onClick={() => toggleLesson(6)}>Lesson 2
             <span className={`dropdown-arrow ${lessonExpanded[6] ? 'expanded' : ''}`}>&#9660;</span>
           </h2>
@@ -231,7 +327,7 @@ const StatisticsPage = () => {
               </div>
               </div>
             )}
-        </div>
+        </div> */}
       </div>
       <div style={{ paddingBottom: '200px' }} />
       <Footer />

@@ -1,0 +1,40 @@
+.vidbig {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    margin-top: 530px;
+}
+
+.course-button {
+    background-color: #357717;
+    color: white;
+    margin-right: 20px;
+}
+
+.centered-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    margin-top: 20px;
+}
+
+@media screen and (max-width: 800px) {
+    
+.vidbig {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    margin-right: 180px;
+}
+
+.centered-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-left: 180px;
+}
+
+}

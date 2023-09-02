@@ -33,76 +33,46 @@ const ChemistryPage = () => {
       <div className='student-l1'>
         <h1>Parent-Led Lessons</h1>
         <div className='lesson1'>
-        <h2 onClick={() => toggleLesson(0)}>Lesson 1
-            <span className={`dropdown-arrow ${lessonExpanded[0] ? 'expanded' : ''}`}>&#9660;</span>
-          </h2>
-            {lessonExpanded[0] && (
-              <div className="lesson-content">
-                  <iframe className='astrovid' width="660" height="415" src="https://www.youtube.com/embed/qUcexzJnLew" frameborder="0" allowfullscreen></iframe>
-                <div className="button-column">
-                  <Link to="https://docs.google.com/presentation/d/e/2PACX-1vSH4SI6ficFEAzH_Qg6fRZopBkcqrTotnAt_zoxymblJASNRlUYZZpxQiWg3bEPrOCm_3VYMlt7QI0D/pub?start=false&loop=false&delayms=3000&slide=id.g8e77108816_0_92" target="_blank" rel="noopener noreferrer">
-                    <button className="course-button">Slideshow</button>
-                  </Link>
-                  <Link to="https://docs.google.com/document/d/e/2PACX-1vTpUYy0Kd3VN49jt4EnwaD38vd97PB0oDKBDEHEhk9s78kYreahI2JqAJZCeRpv9aYpsUzDgefU0Nzf/pub" target="_blank" rel="noopener noreferrer">
-                    <button className="course-button">Parent Notes</button>
-                  </Link>
-              </div>
-              </div>
-            )}
-        </div>
-        <div className='lesson2'>
-        <h2 onClick={() => toggleLesson(1)}>Lesson 2
-            <span className={`dropdown-arrow ${lessonExpanded[1] ? 'expanded' : ''}`}>&#9660;</span>
-          </h2>
-            {lessonExpanded[1] && (
-              <div className="lesson-content">
-                <iframe className='astrovid' width="660" height="415" src="https://www.youtube.com/embed/EJpJLOAIHRc" frameborder="0" allowfullscreen></iframe>
-                <div className="button-column">
-                  <Link to="https://docs.google.com/presentation/d/e/2PACX-1vRSv4pMB-_1kVHCbb9D_gKSW4EkJKqAyZQxqIqlctucIFtbnyrpoP4AYVm2Sdm3WqW3d6rjp_jYZqte/pub?start=false&loop=false&delayms=3000&slide=id.g5320acc4cf_0_92" target="_blank" rel="noopener noreferrer">
-                    <button className="course-button">Slideshow</button>
-                  </Link>
-                  <Link to="https://docs.google.com/document/d/e/2PACX-1vRrTDPHmQEDEqN6jIzSYNTQk-ClPZWZ8EwJyzAhxy18AYViSGk6G_l0lh5RQfTrTdpX6pmAKBILMIEy/pub" target="_blank" rel="noopener noreferrer">
-                    <button className="course-button">Parent Notes</button>
-                  </Link>
-              </div>
-              </div>
-            )}
-        </div>
-        <div className='lesson3'>
-        <h2 onClick={() => toggleLesson(2)}>Lesson 3
-            <span className={`dropdown-arrow ${lessonExpanded[2] ? 'expanded' : ''}`}>&#9660;</span>
-          </h2>
-            {lessonExpanded[2] && (
-              <div className="lesson-content">
-                  <iframe className='astrovid' width="660" height="415" src="https://www.youtube.com/embed/448XzSXabc4" frameborder="0" allowfullscreen></iframe>
-                <div className="button-column">
-                  <Link to="https://docs.google.com/presentation/d/e/2PACX-1vTllezBHZQYNAODvaFlfIOv2ybfjRz1nPW23v-lD1E9F8dmkKKB4JjUQk2O4wd-e0A6NfWSjm58Rfi1/pub?start=false&loop=false&delayms=3000&slide=id.g914a40a4f6_0_92" target="_blank" rel="noopener noreferrer">
-                    <button className="course-button">Slideshow</button>
-                  </Link>
-                  <Link to="https://docs.google.com/document/d/e/2PACX-1vQREjt8_iK_5znGWaV_0HYezNqhQaCnp7RWS7_CJDeMN7s06ndu1PE5cv3fra1ZhQvKJEgjyVKHZiSv/pub" target="_blank" rel="noopener noreferrer">
-                    <button className="course-button">Parent Notes</button>
-                  </Link>
-                </div>
-              </div>
-            )}
-        </div>
-        <div className='lesson4'>
-        <h2 onClick={() => toggleLesson(3)}>Lesson 4
-            <span className={`dropdown-arrow ${lessonExpanded[3] ? 'expanded' : ''}`}>&#9660;</span>
-          </h2>
-            {lessonExpanded[3] && (
-              <div className="lesson-content">
-                    <iframe className='astrovid' width="660" height="415" src="https://www.youtube.com/embed/NpQJoCQEa9U" frameborder="0" allowfullscreen></iframe>
-                <div className="button-column">
-                  <Link to="https://docs.google.com/presentation/d/e/2PACX-1vT7pJ3jD7xBrpJPYs5pdNhZjROSvuC5ETJclQoR_n9o_xOCnYkPGks8bQfCIpSMvg7Qe6eEGQdFBR7b/pub?start=false&loop=false&delayms=3000&slide=id.g98ed887a27_0_98" target="_blank" rel="noopener noreferrer">
-                    <button className="course-button">Slideshow</button>
-                  </Link>
-                  <Link to="https://docs.google.com/document/d/e/2PACX-1vQ00xvBVGfp47ThJkE75BoeRpYFXkqWYZ86btMZrcIcjAbWdBFTETtOOLbCTimydRrMSPJJpl4MdDG2/pub" target="_blank" rel="noopener noreferrer">
-                    <button className="course-button">Parent Notes</button>
-                  </Link>
-              </div>
-              </div>
-            )}
+        {(
+            <div className="lesson-content">
+              <Link to ="/self-paced-classes/chemistry/chem1">
+              <img
+              src="https://i.ytimg.com/vi/qUcexzJnLew/mqdefault.jpg"
+              alt="Lesson 1 Thumbnail"
+              className="astrovid-thumbnail"
+            />
+            <h3 className='vidtitle-small'>Lesson 1: Chemistry & Matter</h3>
+            </Link>
+            
+            <Link to ="/self-paced-classes/chemistry/chem2">
+            <img
+              src="https://i.ytimg.com/vi/EJpJLOAIHRc/mqdefault.jpg"
+              alt="Lesson 2 Thumbnail"
+              className="astrovid-thumbnail"
+            />
+            <h3 className='vidtitle-small'> Lesson 2: Molecules & Atoms</h3>
+            </Link>
+
+            <Link to ="/self-paced-classes/chemistry/chem3">
+              <img
+              src="https://i.ytimg.com/vi/448XzSXabc4/mqdefault.jpg"
+              alt="Lesson 1 Thumbnail"
+              className="astrovid-thumbnail"
+            />
+            <h3 className='vidtitle-small'>Lesson 3: Chemical Reactions</h3>
+            </Link>
+
+            <Link to ="/self-paced-classes/chemistry/chem4">
+              <img
+              src="https://i.ytimg.com/vi/NpQJoCQEa9U/mqdefault.jpg"
+              alt="Lesson 1 Thumbnail"
+              className="astrovid-thumbnail"
+            />
+            <h3 className='vidtitle-small'>Lesson 4: Putting It All Together</h3>
+            </Link>
+
+            </div>
+)}
         </div>
       </div>
       <div style={{ paddingBottom: '200px' }} />
