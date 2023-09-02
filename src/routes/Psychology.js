@@ -8,6 +8,9 @@ import './Astronomy.css';
 
 const PsychologyPage = () => {
 
+  const scrollToTop = () => {
+    window.scrollTo(0, 0);
+}
 
   return (
     <div>
@@ -24,7 +27,7 @@ const PsychologyPage = () => {
         <h1>Student-Led Lessons</h1>
         <div className='lesson1'>
         {(<div className='lesson-content'>
-        <Link to ="/self-paced-classes/psychology/psych1s">
+        <Link to ="/self-paced-classes/psychology/psych1s" onClick={scrollToTop}>
               <img
               src="https://i.ytimg.com/vi/TjGatGI4CJM/mqdefault.jpg"
               alt="Lesson 1 Thumbnail"
@@ -33,7 +36,7 @@ const PsychologyPage = () => {
             <h3 className='vidtitle-small'>Lesson 1: Psychology & Scientific Method</h3>
             </Link>
             
-            <Link to ="/self-paced-classes/psychology/psych2s">
+            <Link to ="/self-paced-classes/psychology/psych2s" onClick={scrollToTop}>
             <img
               src="https://i.ytimg.com/vi/ieBDGtmN2fI/mqdefault.jpg"
               alt="Lesson 2 Thumbnail"
@@ -42,7 +45,7 @@ const PsychologyPage = () => {
             <h3 className='vidtitle-small'> Lesson 2: How the Brain Works</h3>
             </Link>
 
-            <Link to ="/self-paced-classes/psychology/psych3s">
+            <Link to ="/self-paced-classes/psychology/psych3s" onClick={scrollToTop}>
               <img
               src="https://i.ytimg.com/vi/Y3OVQ2mD9mo/mqdefault.jpg"
               alt="Lesson 3 Thumbnail"
@@ -51,7 +54,7 @@ const PsychologyPage = () => {
             <h3 className='vidtitle-small'>Lesson 3: Memory</h3>
             </Link>
 
-            <Link to ="/self-paced-classes/psychology/psych4s">
+            <Link to ="/self-paced-classes/psychology/psych4s" onClick={scrollToTop}>
               <img
               src="https://i.ytimg.com/vi/0KVSJrtktCY/mqdefault.jpg"
               alt="Lesson 4 Thumbnail"
@@ -68,7 +71,7 @@ const PsychologyPage = () => {
         <h1>Parent-Led Lessons</h1>
         <div className='lesson1'>
         {(<div className='lesson-content'>
-        <Link to ="/self-paced-classes/psychology/psych1p">
+        <Link to ="/self-paced-classes/psychology/psych1p" onClick={scrollToTop}>
               <img
               src="https://i.ytimg.com/vi/TjGatGI4CJM/mqdefault.jpg"
               alt="Lesson 1 Thumbnail"
@@ -77,7 +80,7 @@ const PsychologyPage = () => {
             <h3 className='vidtitle-small'>Lesson 1: Psychology & Scientific Method</h3>
             </Link>
             
-            <Link to ="/self-paced-classes/psychology/psych2p">
+            <Link to ="/self-paced-classes/psychology/psych2p" onClick={scrollToTop}>
             <img
               src="https://i.ytimg.com/vi/ieBDGtmN2fI/mqdefault.jpg"
               alt="Lesson 2 Thumbnail"
@@ -86,7 +89,7 @@ const PsychologyPage = () => {
             <h3 className='vidtitle-small'> Lesson 2: How the Brain Works</h3>
             </Link>
 
-            <Link to ="/self-paced-classes/psychology/psych3p">
+            <Link to ="/self-paced-classes/psychology/psych3p" onClick={scrollToTop}>
               <img
               src="https://i.ytimg.com/vi/Y3OVQ2mD9mo/mqdefault.jpg"
               alt="Lesson 3 Thumbnail"
@@ -95,7 +98,7 @@ const PsychologyPage = () => {
             <h3 className='vidtitle-small'>Lesson 3: Memory</h3>
             </Link>
 
-            <Link to ="/self-paced-classes/psychology/psych4p">
+            <Link to ="/self-paced-classes/psychology/psych4p" onClick={scrollToTop}>
               <img
               src="https://i.ytimg.com/vi/0KVSJrtktCY/mqdefault.jpg"
               alt="Lesson 4 Thumbnail"

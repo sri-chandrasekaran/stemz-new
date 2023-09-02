@@ -8,7 +8,9 @@ import './Astronomy.css';
 
 const CircuitsPage = () => {
 
-
+  const scrollToTop = () => {
+    window.scrollTo(0, 0);
+}
 
   return (
     <div>
@@ -25,7 +27,7 @@ const CircuitsPage = () => {
         <h1>Student-Led Lessons</h1>
         <div className='lesson1'>
         {(<div className='lesson-content'>
-        <Link to ="/self-paced-classes/circuits/circuit1s">
+        <Link to ="/self-paced-classes/circuits/circuit1s" onClick={scrollToTop}>
               <img
               src="https://i.ytimg.com/vi/MFr0Y52UICk/mqdefault.jpg"
               alt="Lesson 1 Thumbnail"
@@ -34,7 +36,7 @@ const CircuitsPage = () => {
             <h3 className='vidtitle-small'>Lesson 1: Circuits & Circuit Boards</h3>
             </Link>
             
-            <Link to ="/self-paced-classes/circuits/circuit2s">
+            <Link to ="/self-paced-classes/circuits/circuit2s" onClick={scrollToTop}>
             <img
               src="https://i.ytimg.com/vi/pK9h_Ts3gWw/mqdefault.jpg"
               alt="Lesson 2 Thumbnail"
@@ -43,7 +45,7 @@ const CircuitsPage = () => {
             <h3 className='vidtitle-small'> Lesson 2: More Circuit Board Tools</h3>
             </Link>
 
-            <Link to ="/self-paced-classes/circuits/circuit3s">
+            <Link to ="/self-paced-classes/circuits/circuit3s" onClick={scrollToTop}>
               <img
               src="https://i.ytimg.com/vi/4ZBUoBPdojA/mqdefault.jpg"
               alt="Lesson 1 Thumbnail"
@@ -60,7 +62,7 @@ const CircuitsPage = () => {
         <h1>Parent-Led Lessons</h1>
         <div className='lesson1'>
         {(<div className='lesson-content'>
-        <Link to ="/self-paced-classes/circuits/circuit1p">
+        <Link to ="/self-paced-classes/circuits/circuit1p" onClick={scrollToTop}>
               <img
               src="https://i.ytimg.com/vi/MFr0Y52UICk/mqdefault.jpg"
               alt="Lesson 1 Thumbnail"
@@ -69,7 +71,7 @@ const CircuitsPage = () => {
             <h3 className='vidtitle-small'>Lesson 1: Circuits & Circuit Boards</h3>
             </Link>
             
-            <Link to ="/self-paced-classes/circuits/circuit2p">
+            <Link to ="/self-paced-classes/circuits/circuit2p" onClick={scrollToTop}>
             <img
               src="https://i.ytimg.com/vi/pK9h_Ts3gWw/mqdefault.jpg"
               alt="Lesson 2 Thumbnail"
@@ -78,7 +80,7 @@ const CircuitsPage = () => {
             <h3 className='vidtitle-small'> Lesson 2: More Circuit Board Tools</h3>
             </Link>
 
-            <Link to ="/self-paced-classes/circuits/circuit3p">
+            <Link to ="/self-paced-classes/circuits/circuit3p" onClick={scrollToTop}>
               <img
               src="https://i.ytimg.com/vi/4ZBUoBPdojA/mqdefault.jpg"
               alt="Lesson 1 Thumbnail"

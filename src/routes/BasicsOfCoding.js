@@ -8,6 +8,9 @@ import './Astronomy.css'
 
 const BasicsOfCoding = () => {
   
+  const scrollToTop = () => {
+    window.scrollTo(0, 0);
+}
     return (
       <div>
         <Navbar />
@@ -24,7 +27,7 @@ const BasicsOfCoding = () => {
           <div className='lesson1'>
           {(
             <div className="lesson-content">
-              <Link to ="/self-paced-classes/basics-of-coding/bc1s">
+              <Link to ="/self-paced-classes/basics-of-coding/bc1s" onClick={scrollToTop}>
               <img
               src="https://i.ytimg.com/vi/t7CqLrelByA/mqdefault.jpg"
               alt="Lesson 1 Thumbnail"
@@ -33,7 +36,7 @@ const BasicsOfCoding = () => {
             <h3 className='vidtitle-small'>Lesson 1: Introduction to Scratch</h3>
             </Link>
             
-            <Link to ="/self-paced-classes/basics-of-coding/bc2s">
+            <Link to ="/self-paced-classes/basics-of-coding/bc2s" onClick={scrollToTop}>
             <img
               src="https://i.ytimg.com/vi/gG1fPD2TrnY/mqdefault.jpg"
               alt="Lesson 2 Thumbnail"
@@ -42,7 +45,7 @@ const BasicsOfCoding = () => {
             <h3 className='vidtitle-small'> Lesson 2: Conditional Statements & Loops</h3>
             </Link>
 
-            <Link to ="/self-paced-classes/basics-of-coding/bc3s">
+            <Link to ="/self-paced-classes/basics-of-coding/bc3s" onClick={scrollToTop}>
             <img
               src="https://i.ytimg.com/vi/qEcc3yjrwOI/mqdefault.jpg"
               alt="Lesson 3 Thumbnail"
@@ -51,7 +54,7 @@ const BasicsOfCoding = () => {
             <h3 className='vidtitle-small'>Lesson 3: Wait & Sensors</h3>
             </Link>
 
-            <Link to ="/self-paced-classes/basics-of-coding/bc4s">
+            <Link to ="/self-paced-classes/basics-of-coding/bc4s" onClick={scrollToTop}>
             <img
               src="https://i.ytimg.com/vi/6czRyGrNf_4/mqdefault.jpg"
               alt="Lesson 4 Thumbnail"
@@ -68,7 +71,7 @@ const BasicsOfCoding = () => {
           <div className='lesson1'>
           {(
             <div className="lesson-content">
-              <Link to ="/self-paced-classes/basics-of-coding/bc1p">
+              <Link to ="/self-paced-classes/basics-of-coding/bc1p" onClick={scrollToTop}>
               <img
               src="https://i.ytimg.com/vi/t7CqLrelByA/mqdefault.jpg"
               alt="Lesson 1 Thumbnail"
@@ -77,7 +80,7 @@ const BasicsOfCoding = () => {
             <h3 className='vidtitle-small'>Lesson 1: Introduction to Scratch</h3>
             </Link>
             
-            <Link to ="/self-paced-classes/basics-of-coding/bc2p">
+            <Link to ="/self-paced-classes/basics-of-coding/bc2p" onClick={scrollToTop}>
             <img
               src="https://i.ytimg.com/vi/gG1fPD2TrnY/mqdefault.jpg"
               alt="Lesson 2 Thumbnail"
@@ -86,7 +89,7 @@ const BasicsOfCoding = () => {
             <h3 className='vidtitle-small'> Lesson 2: Conditional Statements & Loops</h3>
             </Link>
 
-            <Link to ="/self-paced-classes/basics-of-coding/bc3p">
+            <Link to ="/self-paced-classes/basics-of-coding/bc3p" onClick={scrollToTop}>
             <img
               src="https://i.ytimg.com/vi/qEcc3yjrwOI/mqdefault.jpg"
               alt="Lesson 3 Thumbnail"
@@ -95,7 +98,7 @@ const BasicsOfCoding = () => {
             <h3 className='vidtitle-small'>Lesson 3: Wait & Sensors</h3>
             </Link>
 
-            <Link to ="/self-paced-classes/basics-of-coding/bc4p">
+            <Link to ="/self-paced-classes/basics-of-coding/bc4p" onClick={scrollToTop}>
             <img
               src="https://i.ytimg.com/vi/6czRyGrNf_4/mqdefault.jpg"
               alt="Lesson 4 Thumbnail"

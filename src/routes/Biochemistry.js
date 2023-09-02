@@ -8,6 +8,9 @@ import './Astronomy.css';
 
 const BiochemistryPage = () => {
 
+  const scrollToTop = () => {
+    window.scrollTo(0, 0);
+}
 
   return (
     <div>
@@ -25,7 +28,7 @@ const BiochemistryPage = () => {
         <div className='lesson1'>
         {(
             <div className="lesson-content">
-              <Link to ="/self-paced-classes/biochemistry/bio1">
+              <Link to ="/self-paced-classes/biochemistry/bio1" onClick={scrollToTop}>
               <img
               src="https://i.ytimg.com/vi/Vo_1vhGWER8/mqdefault.jpg"
               alt="Lesson 1 Thumbnail"
@@ -34,7 +37,7 @@ const BiochemistryPage = () => {
             <h3 className='vidtitle-small'>Lesson 1: Nucleic Acids</h3>
             </Link>
             
-            <Link to ="/self-paced-classes/biochemistry/bio2">
+            <Link to ="/self-paced-classes/biochemistry/bio2" onClick={scrollToTop}>
             <img
               src="https://i.ytimg.com/vi/Vo_1vhGWER8/mqdefault.jpg"
               alt="Lesson 2 Thumbnail"

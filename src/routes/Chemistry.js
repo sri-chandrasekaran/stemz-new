@@ -8,15 +8,9 @@ import './Astronomy.css';
 
 const ChemistryPage = () => {
 
-  const [lessonExpanded, setLessonExpanded] = useState([false, false, false, false]);
-
-  const toggleLesson = (lessonIndex) => {
-    setLessonExpanded(prevState => {
-      const newState = [...prevState];
-      newState[lessonIndex] = !newState[lessonIndex];
-      return newState;
-    });
-  };
+  const scrollToTop = () => {
+    window.scrollTo(0, 0);
+}
 
   return (
     <div>
@@ -35,7 +29,7 @@ const ChemistryPage = () => {
         <div className='lesson1'>
         {(
             <div className="lesson-content">
-              <Link to ="/self-paced-classes/chemistry/chem1">
+              <Link to ="/self-paced-classes/chemistry/chem1" onClick={scrollToTop}>
               <img
               src="https://i.ytimg.com/vi/qUcexzJnLew/mqdefault.jpg"
               alt="Lesson 1 Thumbnail"
@@ -44,7 +38,7 @@ const ChemistryPage = () => {
             <h3 className='vidtitle-small'>Lesson 1: Chemistry & Matter</h3>
             </Link>
             
-            <Link to ="/self-paced-classes/chemistry/chem2">
+            <Link to ="/self-paced-classes/chemistry/chem2" onClick={scrollToTop}>
             <img
               src="https://i.ytimg.com/vi/EJpJLOAIHRc/mqdefault.jpg"
               alt="Lesson 2 Thumbnail"
@@ -53,7 +47,7 @@ const ChemistryPage = () => {
             <h3 className='vidtitle-small'> Lesson 2: Molecules & Atoms</h3>
             </Link>
 
-            <Link to ="/self-paced-classes/chemistry/chem3">
+            <Link to ="/self-paced-classes/chemistry/chem3" onClick={scrollToTop}>
               <img
               src="https://i.ytimg.com/vi/448XzSXabc4/mqdefault.jpg"
               alt="Lesson 1 Thumbnail"
@@ -62,7 +56,7 @@ const ChemistryPage = () => {
             <h3 className='vidtitle-small'>Lesson 3: Chemical Reactions</h3>
             </Link>
 
-            <Link to ="/self-paced-classes/chemistry/chem4">
+            <Link to ="/self-paced-classes/chemistry/chem4" onClick={scrollToTop}>
               <img
               src="https://i.ytimg.com/vi/NpQJoCQEa9U/mqdefault.jpg"
               alt="Lesson 1 Thumbnail"

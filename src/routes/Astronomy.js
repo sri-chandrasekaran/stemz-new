@@ -7,6 +7,9 @@ import { Link } from 'react-router-dom';
 import './Astronomy.css';
 
 const Astronomy = () => {
+  const scrollToTop = () => {
+    window.scrollTo(0, 0);
+}
 
   return (
     <div>
@@ -24,7 +27,7 @@ const Astronomy = () => {
         <div className='lesson1'>
           {(
             <div className="lesson-content">
-              <Link to ="/self-paced-classes/astronomy/astrovid1s">
+              <Link to ="/self-paced-classes/astronomy/astrovid1s" onClick={scrollToTop}>
               <img
               src="https://i.ytimg.com/vi/vy2NuP1ITFo/mqdefault.jpg"
               alt="Lesson 1 Thumbnail"
@@ -33,7 +36,7 @@ const Astronomy = () => {
             <h3 className='vidtitle-small'>Lesson 1: The Solar System</h3>
             </Link>
             
-            <Link to ="/self-paced-classes/astronomy/astrovid2s">
+            <Link to ="/self-paced-classes/astronomy/astrovid2s" onClick={scrollToTop}>
             <img
               src="https://i.ytimg.com/vi/0MG58dFzUkU/mqdefault.jpg"
               alt="Lesson 2 Thumbnail"
@@ -42,7 +45,7 @@ const Astronomy = () => {
             <h3 className='vidtitle-small'> Lesson 2: Galaxies</h3>
             </Link>
 
-            <Link to ="/self-paced-classes/astronomy/astrovid3s">
+            <Link to ="/self-paced-classes/astronomy/astrovid3s" onClick={scrollToTop}>
             <img
               src="https://i.ytimg.com/vi/v4pT0yllkO0/mqdefault.jpg"
               alt="Lesson 3 Thumbnail"
@@ -51,7 +54,7 @@ const Astronomy = () => {
             <h3 className='vidtitle-small'>Lesson 3: Space and Humans</h3>
             </Link>
 
-            <Link to ="/self-paced-classes/astronomy/astrovid4s">
+            <Link to ="/self-paced-classes/astronomy/astrovid4s" onClick={scrollToTop}>
             <img
               src="https://i.ytimg.com/vi/ImEEVWosix4/mqdefault.jpg"
               alt="Lesson 4 Thumbnail"
@@ -69,7 +72,7 @@ const Astronomy = () => {
         <h1>Parent-Led Lessons</h1>
         <div className='lesson1'>
             <div className="lesson-content">
-              <Link to ="/self-paced-classes/astronomy/astrovid1p">
+              <Link to ="/self-paced-classes/astronomy/astrovid1p" onClick={scrollToTop}>
               <img
               src="https://i.ytimg.com/vi/vy2NuP1ITFo/mqdefault.jpg"
               alt="Lesson 1 Thumbnail"
@@ -77,7 +80,7 @@ const Astronomy = () => {
             />
             <h3 className='vidtitle-small'>Lesson 1: The Solar System</h3>
             </Link>
-            <Link to ="/self-paced-classes/astronomy/astrovid2p">
+            <Link to ="/self-paced-classes/astronomy/astrovid2p" onClick={scrollToTop}>
             <img
               src="https://i.ytimg.com/vi/0MG58dFzUkU/mqdefault.jpg"
               alt="Lesson 2 Thumbnail"
@@ -85,7 +88,7 @@ const Astronomy = () => {
             />
             <h3 className='vidtitle-small'> Lesson 2: Galaxies</h3>
             </Link>
-            <Link to ="/self-paced-classes/astronomy/astrovid3p">
+            <Link to ="/self-paced-classes/astronomy/astrovid3p" onClick={scrollToTop}>
             <img
               src="https://i.ytimg.com/vi/v4pT0yllkO0/mqdefault.jpg"
               alt="Lesson 3 Thumbnail"
@@ -93,7 +96,7 @@ const Astronomy = () => {
             />
             <h3 className='vidtitle-small'>Lesson 3: Space and Humans</h3>
             </Link>
-            <Link to ="/self-paced-classes/astronomy/astrovid4p">
+            <Link to ="/self-paced-classes/astronomy/astrovid4p" onClick={scrollToTop}>
             <img
               src="https://i.ytimg.com/vi/ImEEVWosix4/mqdefault.jpg"
               alt="Lesson 4 Thumbnail"
