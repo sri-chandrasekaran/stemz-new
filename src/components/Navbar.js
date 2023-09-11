@@ -72,9 +72,9 @@ const Navbar = () => {
                         </li>
                     </ul>
                 </li>
-                {/* <li>
-                    <Link to='/news'>News</Link>
-                </li> */}
+                <li>
+                    <Link to='/news' onClick={scrollToTop}>News</Link>
+                </li>
                 <li>
                     <Link to='/get-involved' onClick={scrollToTop}>Get Involved</Link>
                 </li>

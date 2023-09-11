@@ -1,0 +1,16 @@
+.nav2 {
+    width: 220px;
+    min-width: 220px;
+    padding: 16px;
+    align-self: flex-start;
+    position: -webkit-sticky;
+    position: sticky;
+    top: 48px;
+    max-height: calc(100vh - 70px);
+    overflow: auto;
+    margin-top: 150px;
+  }
+  
+  .nav2 ul li {
+    margin-bottom: 15px;
+  }
