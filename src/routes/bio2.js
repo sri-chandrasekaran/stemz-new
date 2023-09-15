@@ -11,7 +11,7 @@ const bio2 = () => {
       <Navbar/>
       <HeroOther overlayText="Lesson 2: Proteins & Carbohydrates"/>
       <div className='vidbig'>
-        <iframe className='astrovid' width="700" height="480" src="https://www.youtube.com/embed/Vo_1vhGWER8" frameborder="0" allowfullscreen></iframe>
+        <iframe className='astrovid' width="700" height="480" src="https://www.youtube.com/embed/Vg1nWNNHhok" frameborder="0" allowfullscreen></iframe>
         <div className='centered-container'>
         <Link to="https://docs.google.com/presentation/d/e/2PACX-1vTL1o_Apa39ZYqgeO-gcCEpUGgS7YVJN_yXy-7OKuHHtyGJFvlQv-nVayyCDvboNfDUMrTBznHlSgP_/pub?start=false&loop=false&delayms=3000&slide=id.g5320acc4cf_0_92" target="_blank" rel="noopener noreferrer">
                     <button className="course-button">Slideshow</button>

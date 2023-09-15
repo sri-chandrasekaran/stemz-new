@@ -39,7 +39,7 @@ const BiochemistryPage = () => {
             
             <Link to ="/self-paced-classes/biochemistry/bio2" onClick={scrollToTop}>
             <img
-              src="https://i.ytimg.com/vi/Vo_1vhGWER8/mqdefault.jpg"
+              src="https://i.ytimg.com/vi/Vg1nWNNHhok/mqdefault.jpg"
               alt="Lesson 2 Thumbnail"
               className="astrovid-thumbnail"
             />
