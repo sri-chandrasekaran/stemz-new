@@ -78,6 +78,7 @@ import Stat4s from './routes/stat4s'
 import Stat5p from './routes/stat5p'
 import Stat5s from './routes/stat5s'
 import September from './routes/sept'
+import Login from './routes/Login'
 
 function App() {
   return (
@@ -90,6 +91,7 @@ function App() {
         <Route path='/online-classes' element={<OnlineClasses />} />
         <Route path='/self-paced-classes' element={<SelfPacedClasses />} />
         <Route path='/news' element={<News />} />
+        <Route path='/login' element={<Login />} />
         <Route path='self-paced-classes/astronomy' element={<Astronomy />} />
         <Route path='self-paced-classes/basics-of-coding' element={<BasicsOfCoding />} />
         <Route path='self-paced-classes/biochemistry' element={<Biochemistry />} />

@@ -81,6 +81,9 @@ const Navbar = () => {
                 <li>
                     <Link to='/contact' onClick={scrollToTop}>Contact</Link>
                 </li>
+                <li>
+                    <Link to='/login' onClick={scrollToTop}>Login</Link>
+                </li>
             </ul>
             <div className='hamburger' onClick={handleClick}>
                 {click ? (<FaTimes size={20} style={{color: 'black'}} />) : (<FaBars size={20} style={{color: 'black'}}/>)}
