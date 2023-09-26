@@ -4,7 +4,7 @@ import Navbar from '../components/Navbar'
 import HeroOther from '../components/HeroOther'
 import Footer from '../components/Footer'
 import PhotoCarousel from '../components/PhotoCarousel';
-import Genetics from '../assets/genetics.jpg'
+// import Genetics from '../assets/genetics.jpg'
 import { Link } from 'react-router-dom';
 
 const OnlineClasses = () => {
@@ -14,11 +14,11 @@ const OnlineClasses = () => {
         <HeroOther overlayText="Online Classes"/>
         <div className='main-online'>
           <h3>Sign Up for Classes!</h3>
-          {/* <div className="photo-carousel-container">
+          <div className="photo-carousel-container">
             <PhotoCarousel />
-          </div> */}
+          </div>
         </div>
-        <div className='course-listing'>
+        {/* <div className='course-listing'>
         <img src={Genetics} alt="Genetics" className="class-img"/>
         <div className='class-description'>
           <h1>Genetics</h1>
@@ -29,7 +29,7 @@ const OnlineClasses = () => {
                   <button className="class-button">Register</button>
           </Link>
         </div>
-        </div>
+        </div> */}
         <div style={{ paddingBottom: '230px' }} />
         <Footer />
     </div>
