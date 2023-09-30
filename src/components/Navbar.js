@@ -82,7 +82,7 @@ const Navbar = () => {
                     <Link to='/contact' onClick={scrollToTop}>Contact</Link>
                 </li>
                 {/* <li>
-                    <Link to='/register' onClick={scrollToTop} className="login-link">Sign Up</Link>
+                    <Link to='/login' onClick={scrollToTop} className="login-link">Log In</Link>
                 </li> */}
             </ul>
             <div className='hamburger' onClick={handleClick}>

@@ -16,7 +16,7 @@ const GetInvolved = () => {
             <p>We are recruiting hard-working high-school and college level 
                 students to teach STEM topics to elementary school students and 
                 develop our curriculum! Use the link below to apply.</p>
-            <Link to="https://docs.google.com/forms/d/e/1FAIpQLSe3SXzeHYakAGscITjV7NnBBU6u4n_RHkUVHZrMgRKGYmGHvQ/viewform" target="_blank" rel="noopener noreferrer">
+            <Link to="https://forms.gle/EGUMu61zX2e74fGt9" target="_blank" rel="noopener noreferrer">
                 <button className="box-button">Apply</button>
             </Link>
         </div>
@@ -26,7 +26,7 @@ const GetInvolved = () => {
                 Additionally, members are able to sign up for classes before 
                 everyone else. Membership is completely free! Fill out the form
                 to the left and become a member today!</p>
-            <Link to="https://docs.google.com/forms/d/e/1FAIpQLSekC-k0VG2jRpXqTEj_SKxkrLNSRiuXK2XEPsgiiRYlbeAFaA/viewform" target="_blank" rel="noopener noreferrer">
+            <Link to="https://forms.gle/CU1bpfR8kL6J9kq68" target="_blank" rel="noopener noreferrer">
                 <button className="box-button">Become a Member</button>
             </Link>
         </div>

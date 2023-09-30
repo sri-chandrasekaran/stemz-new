@@ -27,7 +27,7 @@ const Cards = () => {
             <h3>Recruiting Dedicated Volunteers</h3>
             <span className='bar'></span>
             <p>We are recruiting hard-working high-school and college level students to teach STEM topics to elementary school students and develop our curriculum! Use the link below to apply.</p>
-            <Link to="https://docs.google.com/forms/d/e/1FAIpQLSe3SXzeHYakAGscITjV7NnBBU6u4n_RHkUVHZrMgRKGYmGHvQ/viewform?usp=sf_link" target="_blank" rel="noopener noreferrer">
+            <Link to="https://forms.gle/EGUMu61zX2e74fGt9" target="_blank" rel="noopener noreferrer">
                 <button className="cta-button">Apply</button>
             </Link>
         </div>

@@ -13,13 +13,13 @@ const es1s = () => {
       <div className='vidbig'>
         <iframe className='astrovid' width="700" height="480" src="https://www.youtube.com/embed/8IekIaOqmwA" frameborder="0" allowfullscreen></iframe>
         <div className='centered-container'>
-        <Link to="https://docs.google.com/presentation/d/e/2PACX-1vTrpJwZ_4MIVOnJR9ke9Dqi-Yukr-a4DR_P3uyEuUryiJRbq2UmQyP7QakXQGeXmYChvES5mnK9cYKs/pub?start=false&loop=false&delayms=3000&slide=id.p" target="_blank" rel="noopener noreferrer">
+        <Link to="https://docs.google.com/presentation/d/e/2PACX-1vQSZAvS9tPwlxXZnRI3fSwa8i-BRYY5pugaIcj8eZjGDLd4zSLSVuwMsolK_WQLZxs-poIHfuwby_Km/pub?start=false&loop=false&delayms=3000" target="_blank" rel="noopener noreferrer">
                     <button className="course-button">Slideshow</button>
                   </Link>
-                  <Link to="https://docs.google.com/document/d/e/2PACX-1vROqL1txDOdiQJzxPOXR2rVcrFVpVYa5GcBwZi_Xcp325__Zt70FdIDGyf8vah21c7eCuyJcihzuHER/pub" target="_blank" rel="noopener noreferrer">
+                  <Link to="https://docs.google.com/document/d/e/2PACX-1vQE7fuojpn-bDfk_6dHqNvrmIICRwcF2V3wvTrM0teRA6xjP6MNnzecbWXm7NuoPf-Xl6irrsyO6QpI/pub" target="_blank" rel="noopener noreferrer">
                     <button className="course-button">Worksheet</button>
                   </Link>
-                  <Link to="https://docs.google.com/document/d/e/2PACX-1vTny5uKqafmc5Iy89pIi1cBg165BNyIsjbzX4RGMpNioD7A4WvRTJuLQ_CIHsmq2iSNAIBG-8FrWSir/pub" target="_blank" rel="noopener noreferrer">
+                  <Link to="https://docs.google.com/document/d/e/2PACX-1vSVKeeZ_2086uJNoqcx7djBZpQSy22nSzTOF4UinEfqzjgCfN964IOQEH5XxqQuuHUG4_0x1GC59OdO/pub" target="_blank" rel="noopener noreferrer">
                     <button className="course-button">Parent Notes</button>
                   </Link>
         </div>

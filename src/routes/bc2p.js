@@ -13,10 +13,10 @@ const bc2p = () => {
       <div className='vidbig'>
         <iframe className='astrovid' width="700" height="480" src="https://www.youtube.com/embed/gG1fPD2TrnY" frameborder="0" allowfullscreen></iframe>
         <div className='centered-container'>
-        <Link to="https://docs.google.com/presentation/d/e/2PACX-1vRBYP0x_NK0OCDDPh9QSZdif1_uUSr708rmFtat3J3rv9JCtB-m4rr1KgscUtoW5V_PR6v48zPPqbEO/pub?start=false&loop=false&delayms=3000&slide=id.p" target="_blank" rel="noopener noreferrer">
+        <Link to="https://docs.google.com/presentation/d/e/2PACX-1vR8aUGbuGrjxfsfu62phxwh9aK_46HS1evKG6XF9l2hV9vZECiExT5pMtgRtYv8BXqenKyTbSiSWeNd/pub?start=false&loop=false&delayms=3000" target="_blank" rel="noopener noreferrer">
                       <button className="course-button">Slideshow</button>
                     </Link>
-                    <Link to="https://docs.google.com/document/d/e/2PACX-1vTKQXt02Jn5pLdyfr22KKK-DrqjkYHyu4AJE0ri8ZVlD0Fq13s8TBDajo5kBERGQG5qkHpl2sapJd1j/pub" target="_blank" rel="noopener noreferrer">
+                    <Link to="https://docs.google.com/document/d/e/2PACX-1vSL3-yArGxNY6hYaMSbzItgO2SPHlgA4A-58nL0s-A018k6pBsxxBFmsjx2xgBici_UA9Spdkt5u2HK/pub" target="_blank" rel="noopener noreferrer">
                       <button className="course-button">Parent Notes</button>
                     </Link>
         </div>

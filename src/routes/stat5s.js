@@ -13,10 +13,10 @@ const es1s = () => {
       <div className='vidbig'>
         <iframe className='astrovid' width="700" height="480" src="https://www.youtube.com/embed/folkaRAmLWw" frameborder="0" allowfullscreen></iframe>
         <div className='centered-container'>
-        <Link to="https://docs.google.com/presentation/d/e/2PACX-1vQ2ipR8H1O0f-WO-3y6j4yCGpq2e3GJADgPgUhDR5p_ajAT0J3uJv2F_5WEv6da3cNG4CLWg2B9iftR/pub?start=false&loop=false&delayms=3000&slide=id.p" target="_blank" rel="noopener noreferrer">
+        <Link to="https://docs.google.com/presentation/d/e/2PACX-1vSA3MYni_IvxR-V6IFSpxEMkzm6wOXsRwo9yF9m_IuOoFBfGCZkHOIsf6u8_Nau5BhdRXRPeJr31_TJ/pub?start=false&loop=false&delayms=3000" target="_blank" rel="noopener noreferrer">
                     <button className="course-button">Slideshow</button>
                   </Link>
-                  <Link to="https://docs.google.com/document/d/e/2PACX-1vQvlZQ50xky2cW787Mz1qrMx2S8uDbArnIgbfxVYX9uXC797m1XfJp6DRToMNyxJ8ZeOPlHWIwHThWZ/pub" target="_blank" rel="noopener noreferrer">
+                  <Link to="https://docs.google.com/document/d/e/2PACX-1vRub6nhi7MPqAAfqYmWCfCPpS90UZToPJLYEcJPk9nbzbVvnNAwKeiwt0N7a9P525QRRzuT2D6w2NKC/pub" target="_blank" rel="noopener noreferrer">
                     <button className="course-button">Student Notes</button>
                   </Link>
         </div>
