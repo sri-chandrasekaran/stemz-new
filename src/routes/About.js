@@ -49,7 +49,7 @@ const About = () => {
           <div className='profile'>
             <img src={Erica} className='profile-img' alt='Erica Huang' />
             <h3>Erica Huang</h3>
-            <h5>Internal Operations</h5>
+            <h5>Chief Operations Officer</h5>
           </div>
         </div>
         <h1 className='heading'>Our Leaders</h1>
