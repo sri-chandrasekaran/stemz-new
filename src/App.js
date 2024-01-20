@@ -78,7 +78,9 @@ import Stat4s from './routes/stat4s'
 import Stat5p from './routes/stat5p'
 import Stat5s from './routes/stat5s'
 import September from './routes/sept'
-// import Login1 from './routes/Login1'
+import LoginForm from './routes/LoginForm'
+import SignUpForm from './routes/SignUpForm'
+import Dashboard from './routes/dashboard'
 
 function App() {
   return (
@@ -91,7 +93,9 @@ function App() {
         <Route path='/online-classes' element={<OnlineClasses />} />
         <Route path='/self-paced-classes' element={<SelfPacedClasses />} />
         <Route path='/news' element={<News />} />
-        {/* <Route path='login' element={<Login1 />} /> */}
+        <Route path='login' element={<LoginForm />} />
+        <Route path='sign-up' element={<SignUpForm />} />
+        <Route path='dashboard' element={<Dashboard />} />
         <Route path='self-paced-classes/astronomy' element={<Astronomy />} />
         <Route path='self-paced-classes/basics-of-coding' element={<BasicsOfCoding />} />
         <Route path='self-paced-classes/biochemistry' element={<Biochemistry />} />
