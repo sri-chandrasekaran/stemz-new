@@ -18,7 +18,7 @@ function LoginForm() {
 
     try{
 
-      await axios.post("http://localhost:3001/login", {
+      await axios.post("http://localhost:3000/login", {
         email: email, password: password
       })
 
