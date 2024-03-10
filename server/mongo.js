@@ -1,11 +1,10 @@
 const mongoose = require("mongoose")
-
-mongoose.connect("mongodb://localhost:27017/stemz-learning")
+mongoose.connect("mongodb+srv://stemzlearning:stemz123@stemz.ae0vefg.mongodb.net/")
 .then(() => {
     console.log("mongodb connected")
 })
-.catch(() => {
-    console.log("failed")
+.catch((e) => {
+    console.log(e)
 })
 
 const newSchema = new mongoose.Schema({
@@ -20,9 +19,13 @@ const newSchema = new mongoose.Schema({
     password:{
         type:String,
         required:true
+    },
+    grade:{
+        type:String,
+        required:true
     }
 })
 
-const collection = new mongoose.model("collection", newSchema)
+const collection = mongoose.model("collection", newSchema)
 
 module.exports = collection

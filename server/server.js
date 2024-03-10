@@ -76,6 +76,9 @@ app.use(express.static(path.join(__dirname, '../build')));
 //     res.sendFile(path.join(__dirname, '../build', 'index.html'));
 //   });
 
-app.listen(3000, ()=>{
-    console.log("port connected on 3000")
+app.listen(3001, ()=>{
+    console.log("port connected on 3001")
 })
+
+
+
