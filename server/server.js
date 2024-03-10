@@ -47,24 +47,28 @@ app.post("/sign-up", async(req, res) => {
     console.log("Handling signup request");
     const {name, grade, email, password} = req.body
     console.log("Request Body:", req.body);
-
+    
     const data={
         name:name,
         email:email,
-        password:password
+        password:password,
+        grade: grade
     }
-
+    
     try{
         const check = await collection.findOne({email:email})
 
         if(check){
-            res.json("exist")
+            console.log("A user is already registered")
+            //res.json("A user is already registered")
         } else {
             await collection.insertMany([data])
-            res.json("not exist")
+            console.log("A user was added")
+            //res.json("A user was added")
         }
         }catch(e){
-        res.json("not exist")
+        console.log(e)
+        //res.json("Error")
     }
 });
 
@@ -76,6 +80,10 @@ app.use(express.static(path.join(__dirname, '../build')));
 //     res.sendFile(path.join(__dirname, '../build', 'index.html'));
 //   });
 
-app.listen(3000, ()=>{
-    console.log("port connected on 3000")
+app.listen(3001, ()=>{
+    console.log("port connected on 3001")
 })
+
+//app.listen(27017, ()=>{
+//    console.log("database connected")
+//})
