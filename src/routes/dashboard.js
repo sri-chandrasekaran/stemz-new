@@ -8,6 +8,7 @@ function dashboard() {
   return (
     <div>
         <Navbar />
+        <p>Welcome to your Dashboard</p>
     </div>
   )
 }

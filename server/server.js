@@ -2,9 +2,14 @@ const express = require("express")
 const collection = require("./mongo")
 const cors = require("cors")
 const path = require('path');
-const app = express()
+const jwt = require('jsonwebtoken');
+const bodyParser = require("body-parser");
+const passport = require("passport");
+const users = require("./routes/api/users");
 
 // middleware setup
+const app = express()
+const router = express.Router();
 app.use(express.json())
 app.use(express.urlencoded({extended: true }))
 app.use(cors())
@@ -15,12 +20,12 @@ app.get('/', (req, res) => {
     res.sendFile(path.join(__dirname, '../build', 'index.html'));
 });
 
-
-// login code
-app.get("/login", cors(), (req, res) => {
-
-
-})
+// Passport middleware
+app.use(passport.initialize());
+// Passport config
+require("./config/passport")(passport);
+// Routes
+app.use("/api/users", users);
 
 app.post("/login", async(req, res) => {
     console.log("Handling login request");
@@ -76,9 +81,18 @@ app.use(express.static(path.join(__dirname, '../build')));
 //     res.sendFile(path.join(__dirname, '../build', 'index.html'));
 //   });
 
-app.listen(3001, ()=>{
-    console.log("port connected on 3001")
+app.listen(process.env.BACKEND_PORT, ()=>{
+    console.log("port connected")
 })
 
-
-
+const dotenv = require('dotenv');
+dotenv.config();
+console.log("MongoDB URI from environment:", process.env.DB_MONGO);
+const mongoose = require("mongoose")
+mongoose.connect(process.env.DB_MONGO)
+.then(() => {
+    console.log("mongodb connected")
+})
+.catch((e) => {
+    console.log(e)
+})
