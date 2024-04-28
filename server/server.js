@@ -7,12 +7,21 @@ const bodyParser = require("body-parser");
 const passport = require("passport");
 const users = require("./routes/api/users");
 
-// middleware setup
+
+
 const app = express()
 const router = express.Router();
 app.use(express.json())
 app.use(express.urlencoded({extended: true }))
 app.use(cors())
+
+// middleware setup
+app.use(
+    bodyParser.urlencoded({
+      extended: false
+    })
+);
+app.use(bodyParser.json());
 
 // Serve homepage for the root path
 app.get('/', (req, res) => {
@@ -50,7 +59,7 @@ app.post("/login", async(req, res) => {
 
 app.post("/sign-up", async(req, res) => {
     console.log("Handling signup request");
-    const {name, grade, email, password} = req.body
+    const {name, email, password} = req.body
     console.log("Request Body:", req.body);
 
     const data={
@@ -81,8 +90,8 @@ app.use(express.static(path.join(__dirname, '../build')));
 //     res.sendFile(path.join(__dirname, '../build', 'index.html'));
 //   });
 
-app.listen(process.env.BACKEND_PORT, ()=>{
-    console.log("port connected")
+app.listen(3001, ()=>{
+    console.log("port connected", 3001)
 })
 
 const dotenv = require('dotenv');
