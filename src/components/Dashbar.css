@@ -1,0 +1,42 @@
+.grid-side {
+    position: fixed;
+    background-color: rgba(128, 128, 128, 0.3);
+    /*background-color: blue;*/
+    margin-left: 82%;
+    margin-top: 90px;
+    width: 18%;
+    height: 100%;
+    text-align: center;
+}
+
+.badge {
+    position: relative;
+    left: 50%;
+    transform: translate(-50%);
+    margin-top: 50px;
+    background-color: #48A3BF;
+    border-radius: 50%;
+    width: 100px;
+    text-align: center;
+    line-height: 100px;
+    color: white;
+}
+
+.info {
+    margin-top: 30px;
+    font-size: 20px;
+}
+
+.bar-buttons {
+    margin-top: 30px;
+    font-size: 15px;
+    width: 100px;
+    height: 40px;
+    background-color: #357717;
+    color: white;
+    border: transparent;
+    border-radius: 3px;
+}
+.bar-buttons:hover {
+    cursor: pointer;
+}
