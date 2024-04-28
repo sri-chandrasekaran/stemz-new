@@ -34,7 +34,7 @@ const Home = () => {
         {showNotification && (<Notification onClose={handleCloseNotification} />)}
         <Navbar />
         <Hero>
-            <h1 className="hero-title">Education through experimentation.</h1>*/
+            <h1 className="hero-title">Education through experimentation.</h1>
             <p className="hero-description">Making engaging curriculum accessible to all.</p>
         </Hero>
         <div className='mission'>
