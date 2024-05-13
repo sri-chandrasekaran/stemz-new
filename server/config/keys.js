@@ -1,4 +1,4 @@
 module.exports = {
-    mongoURI: process.env.DB_MONGO, 
+    mongoURI: 'mongodb+srv://stemzlearning:stemz123@stemz.ae0vefg.mongodb.net/', 
     secretOrKey: "secret"
   };

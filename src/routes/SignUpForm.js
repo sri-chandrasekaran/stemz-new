@@ -1,13 +1,14 @@
-import React, { useState, useEffect } from 'react';
+//SignUpForm.js
+import React, { useState } from 'react';
 import Navbar from '../components/Navbar';
 import axios from "axios";
 import './SignUpForm.css';
 import { useNavigate, Link } from 'react-router-dom';
 
-function SignUpForm() {
+const SignUpForm = () => {
 
   const history = useNavigate();
-
+    
   const [name, setName] = useState('');
   const [grade, setGrade] = useState('');
   const [email, setEmail] = useState('');
@@ -23,17 +24,17 @@ function SignUpForm() {
         name: name, grade: grade, email: email, password: password
       })
       .then(res=>{
-        if (res.data==="exist"){
+        if (res.data==="Email Already Exists"){
             alert("User already exists.")
         }
-        else if (res.data==="not exist"){
+        else if (res.data==="New User Created"){
             history("/")
         }else {
           alert("Unexpected response from the server");
         }
       })
       .catch(e=>{
-        alert("wrong details")
+        alert(e)
         console.log("there is a problem")
       })
     }

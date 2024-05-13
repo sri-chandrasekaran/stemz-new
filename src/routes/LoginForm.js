@@ -23,11 +23,14 @@ function LoginForm() {
       })
 
       .then(res=>{
-        if (res.data==="exist"){
+        if (res.data==="Correct Password"){
             history("/")
         }
-        else if (res.data==="not exist"){
+        else if (res.data==="Email Not Found"){
             alert("User is not found.")
+        }
+        else if (res.data==="Incorrect Password"){
+            alert("Wrong Password")
         }
       })
       .catch(e=>{

@@ -1,27 +1,34 @@
 const express = require("express")
-const collection = require("./mongo")
-const cors = require("cors")
-const path = require('path');
-const jwt = require('jsonwebtoken');
+const mongoose = require("mongoose")
 const bodyParser = require("body-parser");
 const passport = require("passport");
-const users = require("./routes/api/users");
-
-
-
 const app = express()
-const router = express.Router();
+const bcrypt = require("bcryptjs");
+const jwt = require("jsonwebtoken");
+const keys = require("./config/keys");
+const cors = require("cors")
+const path = require('path');
 app.use(express.json())
 app.use(express.urlencoded({extended: true }))
 app.use(cors())
 
-// middleware setup
-app.use(
-    bodyParser.urlencoded({
-      extended: false
-    })
-);
-app.use(bodyParser.json());
+// Load input validation
+const validateRegisterInput = require("./validation/register");
+const validateLoginInput = require("./validation/login");
+
+// Load User model
+const User = require("./models/User.js");
+
+// DB Config
+const db = require("./config/keys").mongoURI;
+mongoose.connect(db, { useNewUrlParser: true })
+  .then(() => console.log("MongoDB successfully connected"))
+  .catch(err => console.log(err));
+
+//Start Server
+app.listen(3001, ()=>{
+    console.log("port connected", 3001)
+})
 
 // Serve homepage for the root path
 app.get('/', (req, res) => {
@@ -29,79 +36,69 @@ app.get('/', (req, res) => {
     res.sendFile(path.join(__dirname, '../build', 'index.html'));
 });
 
-// Passport middleware
-app.use(passport.initialize());
-// Passport config
-require("./config/passport")(passport);
-// Routes
-app.use("/api/users", users);
-
+//LOGIN PROCESSING
 app.post("/login", async(req, res) => {
-    console.log("Handling login request");
-    const {email, password} = req.body
-    console.log("Request Body:", req.body);
-
-    try{
-        const check = await collection.findOne({ email: email, password: password })
-
-        if(check){
-            res.json("exist")
-        }
-        else{
-            res.json("not exist")
-        }
-    } catch(e){
-        res.json("not exist")
-    }
-});
-
-//signup
-
-app.post("/sign-up", async(req, res) => {
-    console.log("Handling signup request");
-    const {name, email, password} = req.body
-    console.log("Request Body:", req.body);
-
-    const data={
-        name:name,
-        email:email,
-        password:password
-    }
-
-    try{
-        const check = await collection.findOne({email:email})
-
-        if(check){
-            res.json("exist")
+    const email = req.body.email;
+    const password = req.body.password;
+  // Find user by email
+    User.findOne({ email }).then(user => {
+      // Check if user exists
+      if (!user) {
+        return res.json("Email Not Found");
+      }
+  // Check password
+      bcrypt.compare(password, user.password).then(isMatch => {
+        if (isMatch) {
+          // User matched
+          // Create JWT Payload
+          const payload = {
+            id: user.id,
+            name: user.name
+          };
+  // Sign token
+          jwt.sign(
+            payload,
+            keys.secretOrKey,
+            {
+              expiresIn: 31556926 // 1 year in seconds
+            },
+            (err, token) => {
+              res.json("Correct Password");
+            }
+          );
         } else {
-            await collection.insertMany([data])
-            res.json("not exist")
+          return res.json("Incorrect Password");
         }
-        }catch(e){
-        res.json("not exist")
-    }
+      });
+    });
 });
+
+//SIGN UP PROCESSING
+app.post("/sign-up", (req, res) => {
+  User.findOne({ email: req.body.email }).then(user => {
+      if (user) {
+        return res.json("Email Already Exists");
+      } else {
+        const newUser = new User({
+          name: req.body.name,
+          email: req.body.email,
+          password: req.body.password
+        });
+  // Hash password before saving in database
+        bcrypt.genSalt(10, (err, salt) => {
+          bcrypt.hash(newUser.password, salt, (err, hash) => {
+            if (err) throw err;
+            newUser.password = hash;
+            newUser
+              .save()
+              .then(user => res.json("New User Created"))
+              .catch(err => console.log(err));
+          });
+        });
+      }
+    });
+});
+
 
 app.use(express.static(path.join(__dirname, '../build')));
 
-// route for serving index.html
-// app.get('*', (req, res) => {
-//     console.log(`Serving index.html`);
-//     res.sendFile(path.join(__dirname, '../build', 'index.html'));
-//   });
-
-app.listen(3001, ()=>{
-    console.log("port connected", 3001)
-})
-
-const dotenv = require('dotenv');
-dotenv.config();
-console.log("MongoDB URI from environment:", process.env.DB_MONGO);
-const mongoose = require("mongoose")
-mongoose.connect(process.env.DB_MONGO)
-.then(() => {
-    console.log("mongodb connected")
-})
-.catch((e) => {
-    console.log(e)
-})
