@@ -13,7 +13,6 @@ import ES from '../assets/environmentalscience.jpg'
 import Psych from '../assets/psych.jpeg'
 import Stats from '../assets/statistics.jpeg'
 import Zoology from '../assets/zoology.jpg'
-import axios from "axios";
 import { useNavigate, Link } from 'react-router-dom';
 
 const dashboard = () => {
