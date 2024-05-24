@@ -171,6 +171,7 @@ function App() {
         <Route path='self-paced-classes/statistics/stat5p' element={<Stat5p />} />
         <Route path='self-paced-classes/statistics/stat5s' element={<Stat5s />} />
       </Routes>
+      <Analytics />
     </>
   );
 }
