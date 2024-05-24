@@ -23,8 +23,6 @@ const OnlineClasses = () => {
             <PhotoCarousel />
           </div> */}
         </div>
-        <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1278160607803646"
-     crossorigin="anonymous"></script>
         <div className='course-listing'>
         <img src={Anatomy} alt="Genetics" className="class-img"/>
         <div className='class-description'>
