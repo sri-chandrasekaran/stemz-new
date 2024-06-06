@@ -1,3 +1,4 @@
+//LoginForm.js
 import React, { useState, useEffect } from 'react';
 import Navbar from '../components/Navbar';
 import axios from "axios";
@@ -5,44 +6,30 @@ import './LoginForm.css';
 import lightbulbImage from '../assets/lightbulb3.png'
 import { useNavigate, Link } from 'react-router-dom';
 
-function LoginForm() {
-
-  const history = useNavigate();
-
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-
-  async function submit(e){
-    e.preventDefault();
-    console.log("Submitting login data:", { email, password }); 
-
-    try{
-
-      await axios.post("http://localhost:3001/login", {
-        email: email, password: password
-      })
-
-      .then(res=>{
-        if (res.data==="Correct Password"){
-            history("/")
+const LoginForm = () => {
+    const navigate = useNavigate();
+    const [email, setEmail] = useState("");
+    const [password, setPassword] = useState("");
+  
+    const submit = async (e) => {
+      e.preventDefault();
+      try {
+        const response = await axios.post("http://localhost:3001/login", {
+          email,
+          password,
+        }, {
+          withCredentials: true,
+        });
+        if (response.data.success) {
+          navigate("/dashboard");
+        } else {
+          alert(response.data.message);
         }
-        else if (res.data==="Email Not Found"){
-            alert("User is not found.")
-        }
-        else if (res.data==="Incorrect Password"){
-            alert("Wrong Password")
-        }
-      })
-      .catch(e=>{
-        console.error("Axios error:");
-        alert("wrong details")
-      })
-
-    }
-    catch(e){
-      console.log(e)
-    }
-  };
+      } catch (error) {
+        console.error("Axios error:", error);
+        alert("Wrong details");
+      }
+    };
 
   return (
     // <div className="login">

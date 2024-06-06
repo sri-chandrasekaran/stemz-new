@@ -1,3 +1,4 @@
+//dashboard.js
 import React, { useState, useEffect } from 'react';
 import Navbar from '../components/Navbar';
 import HeroOther from '../components/HeroOther';
@@ -14,8 +15,33 @@ import Psych from '../assets/psych.jpeg'
 import Stats from '../assets/statistics.jpeg'
 import Zoology from '../assets/zoology.jpg'
 import { useNavigate, Link } from 'react-router-dom';
+import axios from "axios";
 
-const dashboard = () => {
+
+const Dashboard = () => {
+    const navigate = useNavigate();
+    const [user, setUser] = useState(null);
+    const [dashboardData, setDashboardData] = useState(null);
+  
+    useEffect(() => {
+      const fetchDashboardData = async () => {
+        try {
+          const response = await axios.get('http://localhost:3001/dashboard', {
+            withCredentials: true,
+          });
+          if (response.data.success) {
+            setUser(response.data.dashboardData.user);
+            setDashboardData(response.data.dashboardData);
+          }
+        } catch (error) {
+          console.error('Axios error:', error);
+          // Handle error, e.g., redirect to login if token is invalid
+          navigate('/login');
+        }
+      };
+  
+      fetchDashboardData();
+    }, [navigate]);
   const scrollToTop = () => {
     window.scrollTo(0, 0);
   }
@@ -61,7 +87,7 @@ const dashboard = () => {
         <Navbar />
         <Dashbar/>
         <div className = "hello">
-          <h1 className = "hello-text">Hello Student Name!</h1>
+          <h1 className = "hello-text">Hello {user?.name}!</h1>
         </div>
         <div className = "grid-container-wrapper">
         <h3 className = "header-courses">Courses Enrolled</h3>
@@ -131,4 +157,4 @@ const dashboard = () => {
   )
 }
 
-export default dashboard
+export default Dashboard

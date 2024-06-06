@@ -1,5 +1,6 @@
+//App.js
 import React from 'react';
-import { Routes, Route } from 'react-router-dom'; 
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Contact from './routes/Contact';
 import Home from './routes/Home';
 import About from './routes/About';
@@ -84,7 +85,6 @@ import Dashboard from './routes/dashboard'
 
 function App() {
   return (
-    <>
       <Routes>
         <Route path='/' element={<Home />} />
         <Route path='/about-us' element={<About />} />
@@ -170,7 +170,6 @@ function App() {
         <Route path='self-paced-classes/statistics/stat5p' element={<Stat5p />} />
         <Route path='self-paced-classes/statistics/stat5s' element={<Stat5s />} />
       </Routes>
-    </>
   );
 }
 
