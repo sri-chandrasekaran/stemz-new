@@ -74,6 +74,9 @@ const Navbar = () => {
                     </ul>
                 </li>
                 <li>
+                    <Link to='/course-boxes' onClick={scrollToTop}>Course Boxes</Link>
+                </li>
+                <li>
                     <Link to='/news' onClick={scrollToTop}>News</Link>
                 </li>
                 <li>

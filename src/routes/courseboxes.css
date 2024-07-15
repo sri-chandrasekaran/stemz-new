@@ -1,0 +1,31 @@
+.course-container {
+    display: flex;
+    justify-content: center; /* Center items horizontally */
+    align-items: center; /* Center items vertically */
+    margin-top: 20px; /* Adjust margin as needed */
+  }
+  
+  .image-column {
+    flex: 1; /* Take up remaining space */
+    text-align: center; /* Center contents horizontally */
+  }
+  
+  .description-column {
+    flex: 1; /* Take up remaining space */
+    text-align: center; /* Center contents horizontally */
+  }
+  
+  @media (max-width: 768px) {
+    .course-container {
+      flex-direction: column; /* Stack columns on small screens */
+      align-items: center; /* Center items horizontally on small screens */
+    }
+  
+    .image-column, .description-column {
+      flex: 1; /* Take up full width on small screens */
+      margin-left: 0; /* Reset margin */
+      margin-top: 20px; /* Add space between stacked columns */
+      text-align: center; /* Center contents on small screens */
+    }
+  }
+  
