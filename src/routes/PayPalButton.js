@@ -1,19 +1,19 @@
-import React from 'react';
-import { useState } from 'react';
+import React, { useState } from 'react';
 import { PayPalScriptProvider, PayPalButtons } from "@paypal/react-paypal-js";
 import { sendConfirmationEmail } from './emailsService';
 
-
 const PaymentComponent = () => {
-const [paymentStatus, setPaymentStatus] = useState(null);
+  const [paymentStatus, setPaymentStatus] = useState(null);
 
   const initialOptions = {
-    clientId: "YOUR_CLIENT_ID",
+    clientId: process.env.REACT_APP_PAYPAL_CLIENT_ID,
     currency: "USD",
   };
 
+  console.log("PayPal Client ID:", process.env.REACT_APP_PAYPAL_CLIENT_ID);
 
   const handlePaymentSuccess = (details) => {
+    console.log("Payment Success:", details);
     const payerEmail = details.payer.email_address;
     const orderDetails = {
       transactionId: details.id,
@@ -21,12 +21,10 @@ const [paymentStatus, setPaymentStatus] = useState(null);
       payerName: details.payer.name.given + ' ' + details.payer.name.surname,
     };
 
-    // Send email to customer
     sendConfirmationEmail(payerEmail, orderDetails)
       .then(() => console.log('Confirmation email sent to customer'))
       .catch((error) => console.error('Error sending email to customer:', error));
 
-    // Send email to yourself
     sendConfirmationEmail('course-boxes@stemzlearning.org', orderDetails)
       .then(() => console.log('Confirmation email sent to yourself'))
       .catch((error) => console.error('Error sending email to yourself:', error));
@@ -36,15 +34,17 @@ const [paymentStatus, setPaymentStatus] = useState(null);
     <PayPalScriptProvider options={initialOptions}>
       <PayPalButtons
         createOrder={(data, actions) => {
+          console.log("Creating Order");
           return actions.order.create({
             purchase_units: [{
               amount: {
-                value: '0.00'
+                value: '0.01'
               }
             }]
           });
         }}
         onApprove={(data, actions) => {
+          console.log("Payment Approved");
           return actions.order.capture().then((details) => {
             alert(`Transaction completed by ${details.payer.name.given}`);
             setPaymentStatus(`Transaction completed by ${details.payer.name.given}`);
@@ -52,7 +52,7 @@ const [paymentStatus, setPaymentStatus] = useState(null);
           });
         }}
         onError={(err) => {
-          console.error(err);
+          console.error("Error:", err);
           alert('An error occurred during the transaction');
         }}
       />
