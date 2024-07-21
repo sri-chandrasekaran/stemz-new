@@ -26,9 +26,6 @@ const CourseBoxes = () => {
           <p>Along with the materials we also include a lab notebook and course booklet.</p>
           <p>Price: </p>
           <PaymentComponent />
-          {/* <button style={{ marginTop: '20px', padding: '10px 20px', fontSize: '16px' }}>
-            Price of Box
-          </button> */}
         </div>
       </div>
       <div style={{ paddingBottom: '140px' }} />

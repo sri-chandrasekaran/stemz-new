@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import { PayPalScriptProvider, PayPalButtons } from "@paypal/react-paypal-js";
-import { sendConfirmationEmail } from './emailsService';
 
 const PaymentComponent = () => {
   const [paymentStatus, setPaymentStatus] = useState(null);
@@ -10,24 +9,18 @@ const PaymentComponent = () => {
     currency: "USD",
   };
 
-  console.log("PayPal Client ID:", process.env.REACT_APP_PAYPAL_CLIENT_ID);
+  // console.log("PayPal Environment:", process.env.NODE_ENV === 'production' ? "Live" : "Sandbox");
+  // console.log("PayPal Client ID:", process.env.REACT_APP_PAYPAL_CLIENT_ID);
 
   const handlePaymentSuccess = (details) => {
     console.log("Payment Success:", details);
-    const payerEmail = details.payer.email_address;
     const orderDetails = {
       transactionId: details.id,
       amount: details.purchase_units[0].amount.value,
-      payerName: details.payer.name.given + ' ' + details.payer.name.surname,
+      payerName: `${details.payer.name.given_name} ${details.payer.name.surname}`,
     };
 
-    sendConfirmationEmail(payerEmail, orderDetails)
-      .then(() => console.log('Confirmation email sent to customer'))
-      .catch((error) => console.error('Error sending email to customer:', error));
-
-    sendConfirmationEmail('course-boxes@stemzlearning.org', orderDetails)
-      .then(() => console.log('Confirmation email sent to yourself'))
-      .catch((error) => console.error('Error sending email to yourself:', error));
+    console.log("Order Details:", orderDetails);
   };
 
   return (
@@ -39,6 +32,16 @@ const PaymentComponent = () => {
             purchase_units: [{
               amount: {
                 value: '0.01'
+              },
+              shipping: {
+                address: {
+                  address_line_1: '1234 Test St',
+                  address_line_2: 'Apt 1',
+                  admin_area_2: 'Test City',
+                  admin_area_1: 'CA',
+                  postal_code: '90210',
+                  country_code: 'US'
+                }
               }
             }]
           });
@@ -46,9 +49,18 @@ const PaymentComponent = () => {
         onApprove={(data, actions) => {
           console.log("Payment Approved");
           return actions.order.capture().then((details) => {
-            alert(`Transaction completed by ${details.payer.name.given}`);
-            setPaymentStatus(`Transaction completed by ${details.payer.name.given}`);
-            handlePaymentSuccess(details);
+            console.log("Payment Details:", details);
+            if (details && details.payer && details.payer.name) {
+              alert(`Transaction completed by ${details.payer.name.given_name}`);
+              setPaymentStatus(`Transaction completed by ${details.payer.name.given_name}`);
+              handlePaymentSuccess(details);
+            } else {
+              console.error("Unexpected payment details structure:", details);
+              alert('An error occurred during the transaction');
+            }
+          }).catch((err) => {
+            console.error("Error capturing order:", err);
+            alert('An error occurred during the transaction');
           });
         }}
         onError={(err) => {
