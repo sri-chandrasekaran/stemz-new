@@ -10,6 +10,7 @@ const keys = require("./config/keys");
 const cors = require("cors")
 const path = require('path');
 const cookieParser = require("cookie-parser");
+const collection = require("./mongo")
 
 app.use(express.json())
 app.use(express.urlencoded({extended: true }))
@@ -79,6 +80,14 @@ app.get('/', (req, res) => {
 //       });
 //     });
 // });
+const Course = require("./models/Course.js");
+
+app.get('/get_courses', (req, res) => {
+    Course.find({}).then(cl => {
+      res.send(cl)
+    })
+  })
+  
 app.post("/login", async (req, res) => {
     const { email, password } = req.body;
     try {
