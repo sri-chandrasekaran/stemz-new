@@ -88,8 +88,8 @@ app.post("/login", async (req, res) => {
       }
       const isMatch = await bcrypt.compare(password, user.password);
       if (isMatch) {
-        const token = jwt.sign({ userId: user._id }, keys.secretOrKey, { expiresIn: "1h" });
-        res.cookie("token", token, { httpOnly: true, maxAge: 10 * 60 * 1000 });
+        const token = jwt.sign({ userId: user._id }, keys.secretOrKey);
+        res.cookie("token", token, { httpOnly: true});
         res.json({ success: true, message: "Login successful" });
       } else {
         res.status(401).json({ success: false, message: "Incorrect password" });

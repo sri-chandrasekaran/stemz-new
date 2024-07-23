@@ -3,13 +3,31 @@ import React, { useState, useEffect } from 'react';
 import Navbar from '../components/Navbar';
 import axios from "axios";
 import './LoginForm.css';
-import lightbulbImage from '../assets/lightbulb3.png'
+// import lightbulbImage from '../assets/lightbulb3.png'
 import { useNavigate, Link } from 'react-router-dom';
 
 const LoginForm = () => {
     const navigate = useNavigate();
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
+    useEffect(() => {
+        const fetchDashboardData = async () => {
+          try {
+            const response = await axios.get('http://localhost:3001/dashboard', {
+              withCredentials: true,
+            });
+            if (response.data.success) {
+                navigate("/dashboard");
+            }
+          } catch (error) {
+            console.error('Axios error:', error);
+            // Handle error, e.g., redirect to login if token is invalid
+            navigate('/login');
+          }
+        };
+    
+        fetchDashboardData();
+      }, [navigate]);
   
     const submit = async (e) => {
       e.preventDefault();
