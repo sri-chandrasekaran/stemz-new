@@ -14,46 +14,81 @@ import Psych from '../assets/psych.jpeg'
 import Stats from '../assets/statistics.jpeg'
 import Zoology from '../assets/zoology.jpg'
 import { useNavigate, Link } from 'react-router-dom';
+import axios from "axios";
 
-const dashboard = () => {
+function Dashboard() {
   const scrollToTop = () => {
     window.scrollTo(0, 0);
   }
 
-  const insertClass = (array) => {
+  const [isLoading, setLoading] = useState(true);
+  const [Courses, setCourses] = useState();
+
+  function InsertClass() {
+    useEffect(()=> {  
+      axios.get('http://localhost:3001/get_courses')
+      .then(res => {
+        setCourses(res.data);
+        setLoading(false);
+      });
+    }, []);
+
+    if (isLoading) {
+      return <div className="InsertClass">Loading...</div>;
+    }
+    else {
     let code = []
-    for (var reg_class of array) {
+    for (let i = 0; i < Courses.length; i++) {
+      var reg_class = Courses[i]
+      let image = require('../assets/' + reg_class['Image'])
       code.push(
-        <div>
-        <img src={reg_class[0]} alt= {reg_class[1]} className="img-course"/>
+        <div key = {reg_class['Class']}>
+          <img src = {image} alt= {reg_class['Class']} className="img-course"/>
           <div className='course-info'>
-            <h2>{reg_class[1]}</h2>
-            <h3>{reg_class[2]}</h3>
-            <h3>{reg_class[3]}</h3>
+            <h2>{reg_class['Class']}</h2>
+            <h3>{reg_class['Dates']}</h3>
+            <h3>Teachers: {reg_class['Teachers']}</h3>
             <button style = {{background: '#5D86C5', width: '70px'}} className = "dashboard_buttons">Zoom</button>
             <button style = {{background: '#1D5F1B', width: '100px'}} className = "dashboard_buttons">Worksheet</button>
           </div>
           <br></br><br></br><br></br>
         </div>
-      )
+     )
     }
     return code
+    }
   }
 
-  const addRecommend = (array) => {
+  function AddRecommend () {
+    useEffect(()=> {  
+      axios.get('http://localhost:3001/get_courses')
+      .then(res => {
+        setCourses(res.data);
+        setLoading(false);
+      });
+    }, []);
+
+    if (isLoading) {
+      return <div className="InsertClass">Loading...</div>;
+    }
+    else {
     let code = []
-    for (var recomm of array) {
+    for (let i = 0; i < Courses.length; i++) {
+      var recomm = Courses[i]
+      let image = require('../assets/' + recomm['Image'])
       code.push(
-        <Link to = {recomm[0]} onClick={scrollToTop}>
+        //add actual links to the database
+        <Link to = {recomm[0]} onClick={scrollToTop}> 
             <div className = "recommendation">
               <button className = 'recommend-button'></button>
-              <img src={recomm[1]} alt={recomm[2]} className="img-recommend"/>
-              <h3 className = "text-recommend">{recomm[2]}</h3>
+              <img src={image} alt={recomm['Class']} className="img-recommend"/>
+              <h3 className = "text-recommend">{recomm['Class']}</h3>
             </div>
         </Link>
       )
     }
     return code
+    }
   }
 
   return (
@@ -66,63 +101,11 @@ const dashboard = () => {
         <div className = "grid-container-wrapper">
         <h3 className = "header-courses">Courses Enrolled</h3>
         <div className = "grid-courses">
-          {insertClass([[AstronomyImage, "Astronomy", "Dates: October 1st - November 31st 10-11AM", "Teachers: One, two, three, four"], [Chemistry, "Chemistry", "Dates: October 1st - November 31st 10-11AM", "Teachers: One, two, three, four"]])}
-          {/*<div>
-            <img src={AstronomyImage} alt="Astronomy" className="img-course"/>
-            <div className='course-info'>
-              <h2>Astronomy</h2>
-              <h3>Dates: October 1st - November 31st 10-11AM</h3>
-              <h3>Teachers: One, two, three, four</h3>
-              <button style = {{background: '#5D86C5', width: '70px'}} className = "dashboard_buttons">Zoom</button>
-              <button style = {{background: '#1D5F1B', width: '100px'}} className = "dashboard_buttons">Worksheet</button>
-            </div>
-  </div>
-            <br></br>
-            <br></br>
-            <br></br>
-          <div>
-            <img src={Chemistry} alt="Chemistry" className="img-course"/>
-            <div className='course-info'>
-              <h2>Chemistry</h2>
-              <h3>Dates: October 1st - November 31st 10-11AM</h3>
-              <h3>Teachers: One, two, three, four</h3>
-              <button style = {{background: '#5D86C5', width: '70px'}} className = "dashboard_buttons">Zoom</button>
-              <button style = {{background: '#1D5F1B', width: '100px'}} className = "dashboard_buttons">Worksheet</button>
-            </div>
-  </div>*/}
+          {InsertClass()}
         </div>
-        <h3 className = "header-recommended">Recommended Courses</h3>
+        <h3 className = "header-courses">Courses Recommended</h3>
         <div className = 'grid-recommended'>
-        {addRecommend([["/self-paced-classes/basics-of-coding", Coding, "Coding"], ["/self-paced-classes/circuits", Circuits, "Circuits"],
-      ["/self-paced-classes/statistics", Stats, "Statistics"], ["/self-paced-classes/psychology", Psych, "Psychology"]])}
-        {/*<Link to ="/self-paced-classes/basics-of-coding" onClick={scrollToTop}>
-            <div className = "recommendation">
-              <button className = 'recommend-button'></button>
-              <img src={Coding} alt="Coding" className="img-recommend"/>
-              <h3 className = "text-recommend">Coding</h3>
-            </div>
-</Link>
-        <Link to ="/self-paced-classes/circuits" onClick={scrollToTop}>
-            <div className = "recommendation">
-              <button className = 'recommend-button'></button>
-              <img src={Circuits} alt="Circuits" className="img-recommend"/>
-              <h3 className = "text-recommend">Circuits</h3>
-            </div>
-        </Link>
-        <Link to ="/self-paced-classes/statistics" onClick={scrollToTop}>
-            <div className = "recommendation">
-              <button className = 'recommend-button'></button>
-              <img src={Stats} alt="Stats" className="img-recommend"/>
-              <h3 className = "text-recommend">Stats</h3>
-            </div>
-        </Link>
-        <Link to ="/self-paced-classes/psychology" onClick={scrollToTop}>
-            <div className = "recommendation">
-              <button className = 'recommend-button'></button>
-              <img src={Psych} alt="Psych" className="img-recommend"/>
-              <h3 className = "text-recommend">Psych</h3>
-            </div>
-</Link>*/}
+          {AddRecommend()}
         </div>
         </div>
         <br></br><br></br><br></br><br></br><br></br><br></br><br></br><br></br><br></br><br></br>
@@ -131,4 +114,4 @@ const dashboard = () => {
   )
 }
 
-export default dashboard
+export default Dashboard

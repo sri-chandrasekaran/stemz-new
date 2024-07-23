@@ -19,6 +19,9 @@ const validateLoginInput = require("./validation/login");
 // Load User model
 const User = require("./models/User.js");
 
+//Load Course model
+const Course = require("./models/Course.js");
+
 // DB Config
 const db = require("./config/keys").mongoURI;
 mongoose.connect(db, { useNewUrlParser: true })
@@ -35,6 +38,22 @@ app.get('/', (req, res) => {
     console.log(`Serving homepage`);
     res.sendFile(path.join(__dirname, '../build', 'index.html'));
 });
+
+
+// app.get('/get_courses', (req, res) => {
+//   Course.find({} ,(err, cl)=> {
+//     res.send(cl);
+//   })
+// })
+
+
+app.get('/get_courses', (req, res) => {
+  console.log("hi");
+  console.log('hi2');
+  Course.find({}).then(cl => {
+    res.send(cl)
+  })
+})
 
 //LOGIN PROCESSING
 app.post("/login", async(req, res) => {
