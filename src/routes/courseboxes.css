@@ -1,35 +1,40 @@
 .course-container {
   display: flex;
-  justify-content: center; /* Center items horizontally */
-  align-items: flex-start; /* Align items to the top */
-  margin-top: 20px; /* Adjust margin as needed */
-  padding-bottom: 160px; /* Ensure there is enough space for the footer */
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+  max-width: 1200px;
+  margin: auto;
+  margin-top: 500px; 
 }
 
 .image-column {
-  flex: 1; /* Take up remaining space */
-  text-align: center; /* Center contents horizontally */
+  text-align: center;
+  margin-bottom: 20px;
 }
 
 .description-column {
-  flex: 1; /* Take up remaining space */
-  text-align: center; /* Center contents horizontally */
+  text-align: center;
+  max-width: 600px;
 }
 
-.paypal-buttons {
-  margin-top: 20px; /* Add space above the buttons */
+.course-image {
+  width: 100%;
+  max-width: 300px;
+  height: auto;
 }
 
+/* Media Query for Mobile Devices */
 @media (max-width: 768px) {
   .course-container {
-    flex-direction: column; /* Stack columns on small screens */
-    align-items: center; /* Center items horizontally on small screens */
+    margin-top: 200px; /* Increased margin-top for mobile */
   }
 
-  .image-column, .description-column {
-    flex: 1; /* Take up full width on small screens */
-    margin-left: 0; /* Reset margin */
-    margin-top: 20px; /* Add space between stacked columns */
-    text-align: center; /* Center contents on small screens */
+  .image-column {
+    display: none; /* Hide the image column on mobile */
+  }
+
+  .description-column {
+    text-align: center; /* Center content on mobile */
   }
 }

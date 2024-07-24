@@ -8,7 +8,7 @@ import PhotoCarousel from '../components/PhotoCarousel';
 import Cards from '../components/Cards'
 import Notification from '../components/Notification'
 import Folsom from '../assets/folsom.png'
-import Banner from '../components/banner';
+// import Banner from '../components/banner';
 
 const Home = () => {
 
