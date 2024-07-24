@@ -82,6 +82,7 @@ import September from './routes/sept'
 import LoginForm from './routes/LoginForm'
 import SignUpForm from './routes/SignUpForm'
 import Dashboard from './routes/dashboard'
+import CourseBoxes from './routes/CourseBoxes'
 
 function App() {
   return (
@@ -93,6 +94,7 @@ function App() {
         <Route path='/contact' element={<Contact />} />
         <Route path='/online-classes' element={<OnlineClasses />} />
         <Route path='/self-paced-classes' element={<SelfPacedClasses />} />
+        <Route path='/course-boxes' element={<CourseBoxes />} />
         <Route path='/news' element={<News />} />
         <Route path='login' element={<LoginForm />} />
         <Route path='sign-up' element={<SignUpForm />} />

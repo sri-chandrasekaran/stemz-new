@@ -1,0 +1,40 @@
+.course-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+  max-width: 1200px;
+  margin: auto;
+  margin-top: 500px; 
+}
+
+.image-column {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.description-column {
+  text-align: center;
+  max-width: 600px;
+}
+
+.course-image {
+  width: 100%;
+  max-width: 300px;
+  height: auto;
+}
+
+/* Media Query for Mobile Devices */
+@media (max-width: 768px) {
+  .course-container {
+    margin-top: 200px; /* Increased margin-top for mobile */
+  }
+
+  .image-column {
+    display: none; /* Hide the image column on mobile */
+  }
+
+  .description-column {
+    text-align: center; /* Center content on mobile */
+  }
+}

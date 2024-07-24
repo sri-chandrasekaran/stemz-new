@@ -1,0 +1,14 @@
+.banner {
+  background-color: #d0f0c0; /* Light green color */
+  color: #000; /* Text color */
+  text-align: center;
+  padding: 15px 0;
+  font-size: 24px;
+  font-weight: bold;
+  border-bottom: 2px solid #a0d090; /* Optional: adds a border at the bottom */
+  margin-top: 60px; /* Adjust this value to ensure it is below the navbar */
+}
+
+.banner-text {
+  margin: 0;
+}
