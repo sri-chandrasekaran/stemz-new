@@ -8,11 +8,11 @@ import Taleen from '../assets/taleen.jpeg'
 import Erica from '../assets/erica.jpeg'
 import Beaker from '../assets/beaker.png'
 import Braden from '../assets/braden.jpg'
-import Emily from '../assets/emily8.jpg'
+import Emily from '../assets/emily9.jpg'
 import Maanya from '../assets/maanya.jpg'
 import Steven from '../assets/steven.jpg'
 import Vaaruni2 from '../assets/vaaruni2.jpg'
-import Lightbulb from '../assets/lightbulb.png'
+// import Lightbulb from '../assets/lightbulb.png'
 
 const About = () => {
   return (
