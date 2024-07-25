@@ -6,57 +6,29 @@ import PaymentComponent from './PayPalButton';
 import CourseBox from '../assets/course-boxes.png';
 import './courseboxes.css';
 
-
 const CourseBoxes = () => {
   return (
     <div>
       <Navbar />
       <HeroOther overlayText="Pre-Order a Box Now!" />
 
-      <div 
-        className="course-container" 
-        style={{ 
-          display: 'flex', 
-          flexDirection: 'column', 
-          alignItems: 'center', 
-          marginTop: '500px', 
-          padding: '20px', 
-          maxWidth: '1200px', 
-          margin: 'auto' 
-        }}
-      >
-        <div 
-          className="image-column" 
-          style={{ 
-            textAlign: 'center', 
-            marginBottom: '20px' 
-          }}
-        >
-          <img 
-            src={CourseBox} 
-            alt="Course Box" 
-            style={{ 
-              width: '100%', 
-              maxWidth: '300px', 
-              height: 'auto' 
-            }} 
-          />
+      <div className="course-container">
+        <div className="image-column">
+          <img src={CourseBox} alt="Course Box" className="course-image" />
         </div>
-        <div 
-          className="description-column" 
-          style={{ 
-            textAlign: 'center', 
-            maxWidth: '600px' 
-          }}
-        >
+        <div className="description-column">
           <h2>Chemistry Box</h2>
-          <p>This box includes 5 experiments, with enough materials to do it twice or with a friend!</p>
-          <p>Along with the materials we also include a lab notebook and course booklet.</p>
-          <p>Price: $35.00</p>
+          <p>This box contains:</p>
+          <ul>
+            <li>A booklet with instructions and explanations for five experiments</li>
+            <li>Two lab notebooks</li>
+            <li>Enough materials for each of the five experiments to be done twice (or with a friend)</li>
+          </ul>
+          <p className="price">Price: $39.95</p>
           <PaymentComponent />
         </div>
       </div>
-      <div style={{ paddingBottom: '100px' }} />
+      <div style={{ paddingBottom: '120px' }} />
       <Footer />
     </div>
   );

@@ -5,7 +5,7 @@
   padding: 20px;
   max-width: 1200px;
   margin: auto;
-  margin-top: 500px; 
+  margin-top: 500px; /* Adjusted margin-top for better positioning */
 }
 
 .image-column {
@@ -24,17 +24,28 @@
   height: auto;
 }
 
+.description-column ul {
+  list-style-type: disc;
+  padding-left: 20px;
+  text-align: left; /* Align text to the left for better readability */
+}
+
+.price {
+  font-weight: bold; /* Bold font */
+  font-size: 1.2rem; /* Slightly larger font size */
+}
+
 /* Media Query for Mobile Devices */
 @media (max-width: 768px) {
   .course-container {
-    margin-top: 200px; /* Increased margin-top for mobile */
+    margin-top: 500px;
   }
 
-  .image-column {
-    display: none; /* Hide the image column on mobile */
-  }
+  /* .image-column {
+    display: none; 
+  } */
 
   .description-column {
-    text-align: center; /* Center content on mobile */
+    text-align: center; 
   }
 }
