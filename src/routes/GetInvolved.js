@@ -26,7 +26,7 @@ const GetInvolved = () => {
                 Additionally, members are able to sign up for classes before 
                 everyone else. Membership is completely free! Fill out the form
                 to the left and become a member today!</p>
-            <Link to="https://forms.gle/CU1bpfR8kL6J9kq68" target="_blank" rel="noopener noreferrer">
+            <Link to="https://substack.com/@stemzlearning" target="_blank" rel="noopener noreferrer">
                 <button className="box-button">Become a Member</button>
             </Link>
         </div>
