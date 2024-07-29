@@ -36,6 +36,8 @@ const PaymentComponent = () => {
       message: `Thank you for your order! Your order number is ${orderDetails.transactionId}. Paid Amount: ${orderDetails.amount}.`
     };
 
+    console.log('Sending email with params:', templateParams);
+
     emailjs.send(
       'service_xsextpm', 
       'template_ytjh9hv',
@@ -56,7 +58,7 @@ const PaymentComponent = () => {
           return actions.order.create({
             purchase_units: [{
               amount: {
-                value: '39.95'
+                value: '0.01'
               },
               shipping: {
                 address: {
