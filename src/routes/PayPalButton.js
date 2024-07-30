@@ -21,10 +21,25 @@ const PaymentComponent = () => {
     console.log("Order Details:", orderDetails);
 
     try {
+      const response = await fetch('https://script.google.com/a/macros/stemzlearning.org/s/AKfycbxklO3HHHR4-OJaqHqSX8yAI4ZBtzmHfh39QQij9cYDqNSLWfgbLx9h-jAdJA_cGC2x/exec', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(orderDetails),
+      });
+
+      const result = await response.json();
+      if (result.status === 'success') {
+        console.log('Order details successfully sent to Google Sheets');
+      } else {
+        console.error('Failed to send order details to Google Sheets:', result);
+      }
+
       await sendConfirmationEmail(details.payer.email_address, orderDetails);
       console.log('Confirmation email sent to customer');
     } catch (error) {
-      console.error('Error sending email to customer:', error);
+      console.error('Error processing payment success:', error);
     }
   };
 
@@ -58,7 +73,7 @@ const PaymentComponent = () => {
           return actions.order.create({
             purchase_units: [{
               amount: {
-                value: '39.95'
+                value: '0.01'
               },
               shipping: {
                 address: {
