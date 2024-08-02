@@ -21,7 +21,7 @@ const PaymentComponent = () => {
     console.log("Order Details:", orderDetails);
 
     try {
-      const response = await fetch('https://script.google.com/a/macros/stemzlearning.org/s/AKfycbziCPcTDf9vViuPy78uKexjgVIQ-2EqKDnrH4faZwxAWWu7sBMBBSb7l7vvPuPDomOL/exec', {
+      const response = await fetch('https://script.google.com/a/macros/stemzlearning.org/s/AKfycbyuf2bSlDQ7o-V7BTGraC9LVpBls7e4bvtuacDNuXwW1IIN6GGAFtT849SnO0Tm2qGc/exec', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -73,7 +73,7 @@ const PaymentComponent = () => {
           return actions.order.create({
             purchase_units: [{
               amount: {
-                value: '39.95'
+                value: '0.01'
               },
               shipping: {
                 address: {
