@@ -1,0 +1,5 @@
+@media screen and (min-width: 1200px) {
+    .contact-container {
+        margin-top: calc(35px + 30px);
+    }
+  }

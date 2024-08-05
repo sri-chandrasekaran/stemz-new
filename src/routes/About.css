@@ -162,3 +162,11 @@
         text-align: center;
       }
 }
+
+/* larger computers */
+
+@media screen and (min-width: 1200px) {
+  .story {
+      margin-top: calc(65px + 27px);
+  }
+}

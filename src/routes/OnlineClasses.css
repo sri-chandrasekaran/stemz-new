@@ -88,3 +88,8 @@
     }
 }
 
+@media screen and (min-width: 1200px) {
+    .main-online {
+        margin-top: calc(580px + 27px);
+    }
+  }

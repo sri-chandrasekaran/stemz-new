@@ -116,6 +116,8 @@
     margin-top: -250px;
 }
 
+
+/* phone */
 @media screen and (max-width:800px) {
 
     .hero {
@@ -173,5 +175,13 @@
     .folsom-img {
         margin-left: 65px; /* Remove unnecessary margin */
         margin-top: 60px; /* Adjust margin for better fit */
+    }
+}
+
+/* larger computers */
+
+@media screen and (min-width: 1200px) {
+    .mission {
+        margin-top: calc(815px + 27px);
     }
 }

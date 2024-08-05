@@ -41,3 +41,8 @@
 
 } 
 
+@media screen and (min-width: 1200px) {
+    .boxes-container {
+        margin-top: calc(50px + 30px);
+    }
+  }
