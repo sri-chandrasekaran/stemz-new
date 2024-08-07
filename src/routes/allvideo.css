@@ -1,15 +1,22 @@
 .vidbig {
-    position: relative;
     display: flex;
     flex-direction: column;
+    justify-content: center;
     text-align: center;
-    margin-top: 530px;
+    margin-top: 570px;
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 1450px;
 }
 
 .course-button {
     background-color: #357717;
     color: white;
-    margin-right: 20px;
+    margin: 10px; /* Add some margin for spacing */
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
 }
 
 .centered-container {
@@ -17,9 +24,12 @@
     align-items: center;
     justify-content: center;
     text-align: center;
+    flex-wrap: wrap;
     margin-top: 20px;
+    width: 100%;
 }
 
+/* 
 @media screen and (max-width: 800px) {
     
 .vidbig {
@@ -37,4 +47,28 @@
     margin-left: 180px;
 }
 
+} */
+
+
+
+@media screen and (max-width: 800px) {
+    .vidbig {
+        margin-top: 500px; /* Adjust margin for smaller screens */
+        margin-left: -80px;
+    }
+
+    .centered-container {
+        flex-direction: column; /* Stack buttons vertically on small screens */
+        justify-content: center; /* Ensure buttons are centered */
+        margin-left: 0; /* Reset margin */
+        margin-right: 0; /* Reset margin */
+    }
+
+    .course-button {
+        margin: 5px;
+        padding: 8px 16px;
+        font-size: 1rem;
+        width: 100%; /* Ensure buttons take up a good portion of the width on smaller screens */
+        max-width: 600px;
+    }
 }
