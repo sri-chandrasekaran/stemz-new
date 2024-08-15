@@ -81,6 +81,11 @@ const Navbar = () => {
                 </li>
                 <li>
                     <Link to='/get-involved' onClick={scrollToTop}>Get Involved</Link>
+                    <ul className="dropdown-menu">
+                        <li>
+                            <Link to="/get-involved/volunteers" onClick={scrollToTop}>Volunteers</Link>
+                        </li>
+                    </ul>
                 </li>
                 <li>
                     <Link to='/contact' onClick={scrollToTop}>Contact</Link>

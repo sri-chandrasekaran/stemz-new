@@ -83,6 +83,8 @@ import LoginForm from './routes/LoginForm'
 import SignUpForm from './routes/SignUpForm'
 import Dashboard from './routes/dashboard'
 import CourseBoxes from './routes/CourseBoxes'
+import Volunteers from './routes/volunteers'
+
 
 function App() {
   return (
@@ -91,6 +93,7 @@ function App() {
         <Route path='/' element={<Home />} />
         <Route path='/about-us' element={<About />} />
         <Route path='/get-involved' element={<GetInvolved />} />
+        <Route path='/get-involved/volunteers' element={<Volunteers />} />
         <Route path='/contact' element={<Contact />} />
         <Route path='/online-classes' element={<OnlineClasses />} />
         <Route path='/self-paced-classes' element={<SelfPacedClasses />} />
