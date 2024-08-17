@@ -41,7 +41,7 @@ const Quiz = ({ src }) => {
           <button type="submit">Submit Answers</button>
         </form>
       ) : (
-        <p>Loading quiz...</p>
+        <p>Quiz Load Error</p>
       )}
     </div>
   );

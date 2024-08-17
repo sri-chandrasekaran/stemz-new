@@ -1,0 +1,145 @@
+{
+    "title": "Statistics Quiz",
+    "questions": [
+        {
+            "question": "What is Statistics?",
+            "options": [
+                "A type of cooking technique",
+                "A genre of music",
+                "A type of math that deals with the collection and analysis of numbers",
+                "A kind of storytelling method"
+            ],
+            "correctAnswerIndex": 2
+        },
+        {
+            "question": "What is a fraction?",
+            "options": [
+                "A type of flower",
+                "A part of a whole",
+                "A type of weather phenomenon",
+                "A form of dance"
+            ],
+            "correctAnswerIndex": 1
+        },
+        {
+            "question": "What is a Percent?",
+            "options": [
+                "A measurement of distance",
+                "A unit of time",
+                "A type of fruit",
+                "A number out of a 100"
+            ],
+            "correctAnswerIndex": 3
+        },
+        {
+            "question": "Why do we use Graphs?",
+            "options": [
+                "Graphs are a way to show our data",
+                "Graphs are used to write stories",
+                "Graphs are a method to cook food",
+                "Graphs are tools for making music"
+            ],
+            "correctAnswerIndex": 0
+        },
+        {
+            "question": "What is a Survey?",
+            "options": [
+                "A type of painting",
+                "A tool to help you collect data (aka information)",
+                "A type of exercise routine",
+                "A method of flying a plane"
+            ],
+            "correctAnswerIndex": 1
+        },
+        {
+            "question": "What is a pie chart?",
+            "options": [
+                "A type of dessert",
+                "A tool for gardening",
+                "A kind of musical instrument",
+                "A pie graph is a good way to show parts of a whole"
+            ],
+            "correctAnswerIndex": 3
+        },
+        {
+            "question": "What is a Scatter Chart?",
+            "options": [
+                "A tool for planting seeds",
+                "A type of knitting pattern",
+                "A scatter chart is a good way to compare two variables and how they relate with each other",
+                "A type of dance move"
+            ],
+            "correctAnswerIndex": 2
+        },
+        {
+            "question": "What is a Line Plot?",
+            "options": [
+                "A kind of puzzle",
+                "A line plot is used to show how many of each variable you have",
+                "A form of poetry",
+                "A method of cooking"
+            ],
+            "correctAnswerIndex": 1
+        },
+        {
+            "question": "What is a Histogram?",
+            "options": [
+                "A histogram is like a line graph with two variables",
+                "A type of photograph",
+                "A type of plant",
+                "A method for singing in harmony"
+            ],
+            "correctAnswerIndex": 0
+        },
+        {
+            "question": "How do you find percentages if the total is not 100?",
+            "options": [
+                "Divide the number by 10",
+                "Multiply by a random number",
+                "Guess and check until you find the right answer",
+                "Convert the numbers into a fraction and then a decimal to multiply by 100 and find percent."
+            ],
+            "correctAnswerIndex": 3
+        },
+        {
+            "question": "What is a numerator in a fraction?",
+            "options": [
+                "The part of a plant that grows underground",
+                "A type of clothing",
+                "Number on top",
+                "A kind of bird"
+            ],
+            "correctAnswerIndex": 2
+        },
+        {
+            "question": "What is a denominator in a fraction?",
+            "options": [
+                "A type of tree",
+                "Number on bottom",
+                "A kind of musical instrument",
+                "A type of chemical reaction"
+            ],
+            "correctAnswerIndex": 1
+        },
+        {
+            "question": "What does numerator represent?",
+            "options": [
+                "How many parts we have now",
+                "A way to measure temperature",
+                "A type of animal",
+                "A type of computer software"
+            ],
+            "correctAnswerIndex": 0
+        },
+        {
+            "question": "What does denominator represent?",
+            "options": [
+                "A form of currency",
+                "A type of weather condition",
+                "How many parts in the whole",
+                "A kind of exercise equipment"
+            ],
+            "correctAnswerIndex": 2
+        }
+    ]
+}

@@ -1,0 +1,145 @@
+{
+    "title": "Psychology Quiz",
+    "questions": [
+        {
+            "question": "What is psychology?",
+            "options": [
+                "The study of physical health and exercise.",
+                "The analysis of weather patterns and their effects.",
+                "The branch of science that studies how the brain works and how the mind influences behavior in people and animals.",
+                "The study of ancient artifacts and cultures."
+            ],
+            "correctAnswerIndex": 2
+        },
+        {
+            "question": "What makes us choose one choice over the other?",
+            "options": [
+                "Random chance",
+                "Behavioral Psychology",
+                "Genetic predisposition",
+                "The alignment of stars"
+            ],
+            "correctAnswerIndex": 1
+        },
+        {
+            "question": "How is the brain the control system of the body?",
+            "options": [
+                "It controls only muscle movements.",
+                "It stores all nutrients and energy for the body.",
+                "It processes food and nutrients for the body.",
+                "The brain receives signals from the rest of the body & makes sense of them."
+            ],
+            "correctAnswerIndex": 3
+        },
+        {
+            "question": "What does the cerebrum do?",
+            "options": [
+                "Helps us interpret the world around us with memory, vision, hearing, and our senses.",
+                "Controls digestion and waste elimination.",
+                "Regulates heart rate and blood pressure.",
+                "Manages muscle reflexes and coordination."
+            ],
+            "correctAnswerIndex": 0
+        },
+        {
+            "question": "What does the cerebellum do?",
+            "options": [
+                "Processes emotional responses.",
+                "Conducts motor functions like muscle movement & balance.",
+                "Controls language and communication.",
+                "Manages hunger and thirst."
+            ],
+            "correctAnswerIndex": 1
+        },
+        {
+            "question": "What does the brain stem do?",
+            "options": [
+                "Controls thoughts and decision-making.",
+                "Regulates vision and hearing.",
+                "Manages sensory perceptions.",
+                "Conducts necessary functions like breathing, heart rate, etc."
+            ],
+            "correctAnswerIndex": 3
+        },
+        {
+            "question": "What did Freudian Psychology do?",
+            "options": [
+                "Studied the effects of diet on mental health.",
+                "Focused on brain chemistry and medication.",
+                "Emphasized the importance of childhood memories on the brain.",
+                "Analyzed animal behavior and instincts."
+            ],
+            "correctAnswerIndex": 2
+        },
+        {
+            "question": "What makes us fall for mind tricks?",
+            "options": [
+                "Visual and auditory illusions.",
+                "Speed of Processing and Selective Attention Theory.",
+                "Influence of external stimuli.",
+                "Changes in atmospheric pressure."
+            ],
+            "correctAnswerIndex": 1
+        },
+        {
+            "question": "How do you make a short term memory?",
+            "options": [
+                "Feel/See something and have it registered in your brain.",
+                "Write down information repeatedly.",
+                "Dream about an event.",
+                "Perform a physical activity."
+            ],
+            "correctAnswerIndex": 0
+        },
+        {
+            "question": "How long can memories stay in short term memory for?",
+            "options": [
+                "Several hours.",
+                "A few days.",
+                "Several weeks.",
+                "20-30 seconds."
+            ],
+            "correctAnswerIndex": 3
+        },
+        {
+            "question": "What animal was the hippocampus named after?",
+            "options": [
+                "Dolphin.",
+                "Whale.",
+                "Seahorse.",
+                "Octopus."
+            ],
+            "correctAnswerIndex": 2
+        },
+        {
+            "question": "What makes a memory long term?",
+            "options": [
+                "Experiencing it once.",
+                "Experiencing the memory more than once.",
+                "Forgetting it initially.",
+                "Reading about it in a book."
+            ],
+            "correctAnswerIndex": 1
+        },
+        {
+            "question": "What is memory fading?",
+            "options": [
+                "When you stop reviewing the memory, it fades from your memory and gets replaced.",
+                "When memories get stronger over time.",
+                "When memories become more vivid and detailed.",
+                "When new memories are created quickly."
+            ],
+            "correctAnswerIndex": 0
+        },
+        {
+            "question": "What is targeted forgetting?",
+            "options": [
+                "The inability to remember anything.",
+                "Remembering only selective details.",
+                "Learn new information that is different to old information and 'Delete' old information while you sleep.",
+                "Forgetting all information from the past month."
+            ],
+            "correctAnswerIndex": 2
+        }
+    ]
+}

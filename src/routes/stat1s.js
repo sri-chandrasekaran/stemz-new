@@ -13,15 +13,18 @@ const es1s = () => {
       <div className='vidbig'>
         <iframe className='astrovid' width="700" height="480" src="https://www.youtube.com/embed/imGo9o7Epo8" frameborder="0" allowfullscreen></iframe>
         <div className='centered-container'>
-        <Link to="https://docs.google.com/presentation/d/e/2PACX-1vQXt__U1gRTqP3LdkzYYNiPuh61QC-hbuPGbO7ydDZvms5irzb6pyMMA4RZkQ72Ce2of10c79BA1b48/pub?start=false&loop=false&delayms=3000" target="_blank" rel="noopener noreferrer">
-                    <button className="course-button">Slideshow</button>
-                  </Link>
-                  <Link to="https://docs.google.com/document/d/e/2PACX-1vQqKPBJD-85m_sQdbX__cWr0pS2SNtdPQubY2gr6r3_00jc9zWbn5cfOEUx8Ffs_xM9Fs8H29KCC_vc/pub" target="_blank" rel="noopener noreferrer">
-                    <button className="course-button">Worksheet</button>
-                  </Link>
-                  <Link to="https://docs.google.com/document/d/e/2PACX-1vRFyv-Bf5IJEwIV4rkW60sG8szGUYtIQPvCMYy5hV6qqPgrlERlQfOxg2nyJNLG8SW8WbyggjJhDoiX/pub" target="_blank" rel="noopener noreferrer">
-                    <button className="course-button">Student Notes</button>
-                  </Link>
+          <Link to="https://docs.google.com/presentation/d/e/2PACX-1vQXt__U1gRTqP3LdkzYYNiPuh61QC-hbuPGbO7ydDZvms5irzb6pyMMA4RZkQ72Ce2of10c79BA1b48/pub?start=false&loop=false&delayms=3000" target="_blank" rel="noopener noreferrer">
+            <button className="course-button">Slideshow</button>
+          </Link>
+          <Link to="https://docs.google.com/document/d/e/2PACX-1vQqKPBJD-85m_sQdbX__cWr0pS2SNtdPQubY2gr6r3_00jc9zWbn5cfOEUx8Ffs_xM9Fs8H29KCC_vc/pub" target="_blank" rel="noopener noreferrer">
+            <button className="course-button">Worksheet</button>
+          </Link>
+          <Link to="https://docs.google.com/document/d/e/2PACX-1vRFyv-Bf5IJEwIV4rkW60sG8szGUYtIQPvCMYy5hV6qqPgrlERlQfOxg2nyJNLG8SW8WbyggjJhDoiX/pub" target="_blank" rel="noopener noreferrer">
+            <button className="course-button">Student Notes</button>
+          </Link>
+          <Link to="/self-paced-classes/statistics/statquiz" target="_blank" rel="noopener noreferrer">
+            <button className="course-button">Quiz</button>
+          </Link>
         </div>
       </div>
       <div style={{ paddingBottom: '200px' }} />
