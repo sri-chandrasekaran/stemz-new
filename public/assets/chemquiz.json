@@ -1,0 +1,105 @@
+{
+    "title": "Chemistry Quiz",
+    "questions": [
+        {
+            "question": "What is chemistry?",
+            "options": [
+                "Chemistry is the study of stars and galaxies.",
+                "Chemistry is the art of painting with colors.",
+                "Chemistry is the branch of science that studies the properties of matter and how matter interacts with energy.",
+                "Chemistry is the study of ancient civilizations' artifacts and relics."
+            ],
+            "correctAnswerIndex": 2
+        },
+        {
+            "question": "What makes up matter?",
+            "options": [
+                "Energy",
+                "Atoms",
+                "Subatomic particles",
+                "Magic"
+            ],
+            "correctAnswerIndex": 1
+        },
+        {
+            "question": "What are atoms?",
+            "options": [
+                "Tiny insects that live in the ground.",
+                "Small rocks found in rivers.",
+                "The basic units of all living things.",
+                "Atoms are the extremely small building blocks of all matter."
+            ],
+            "correctAnswerIndex": 3
+        },
+        {
+            "question": "What is the measure of how much matter is in something?",
+            "options": [
+                "Mass",
+                "Volume",
+                "Temperature",
+                "Density"
+            ],
+            "correctAnswerIndex": 0
+        },
+        {
+            "question": "What is a molecule?",
+            "options": [
+                "A tiny creature living in the ocean.",
+                "A group of two or more atoms (the smallest unit of a substance that has the same qualities of that substance).",
+                "A small piece of dirt.",
+                "A type of rock found in caves."
+            ],
+            "correctAnswerIndex": 1
+        },
+        {
+            "question": "What are atoms in molecules held together by?",
+            "options": [
+                "Glue",
+                "Strings",
+                "Carbon Dioxide",
+                "Chemical Bonds"
+            ],
+            "correctAnswerIndex": 3
+        },
+        {
+            "question": "What is a chemical reaction?",
+            "options": [
+                "A game that scientists play in a lab.",
+                "Mixing two colors to get a new color.",
+                "A process where one or more substances change into one or more different substances.",
+                "Pouring water into a cup."
+            ],
+            "correctAnswerIndex": 2
+        },
+        {
+            "question": "What exactly happens in a chemical reaction?",
+            "options": [
+                "Atoms disappear and reappear somewhere else.",
+                "In each and every chemical reaction, the atoms of the first substance are being rearranged to form another substance.",
+                "Atoms become super large.",
+                "Atoms form into different shapes."
+            ],
+            "correctAnswerIndex": 1
+        },
+        {
+            "question": "What changes in a reaction?",
+            "options": [
+                "The number of atoms/The mass.",
+                "The color of the substance.",
+                "The size of the container.",
+                "The temperature of the room."
+            ],
+            "correctAnswerIndex": 0
+        },
+        {
+            "question": "What stays the same in a reaction?",
+            "options": [
+                "The color of the substances.",
+                "The number of atoms.",
+                "The size of the molecules.",
+                "The substances/The properties."
+            ],
+            "correctAnswerIndex": 1
+        }
+    ]
+}

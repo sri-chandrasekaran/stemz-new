@@ -2,7 +2,6 @@ import React, {useState} from 'react';
 import Navbar from '../components/Navbar';
 import HeroOther from '../components/HeroOther';
 import Footer from '../components/Footer';
-import Quiz from '../components/Quiz';
 import AstronomyImage from '../assets/astronomy.PNG'
 import { Link } from 'react-router-dom';
 import './Astronomy.css';
@@ -108,7 +107,6 @@ const Astronomy = () => {
             </div>
         </div>
       </div>
-      <Quiz src="../assets/quiz.json" />
       <div style={{ paddingBottom: '200px' }} />
       <Footer />
     </div>
