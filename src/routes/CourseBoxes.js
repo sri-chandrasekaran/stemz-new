@@ -24,7 +24,9 @@ const CourseBoxes = () => {
             <li>Two lab notebooks</li>
             <li>Enough materials for each of the five experiments to be done twice (or with a friend)</li>
           </ul>
-          <p className="price">Price: $39.95</p>
+          <p className="price">
+            <span className="original-price">Price: $49.95</span> On sale for <span className="sale-price">$39.95</span>
+          </p>
           <PaymentComponent />
         </div>
       </div>
