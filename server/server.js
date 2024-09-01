@@ -82,11 +82,49 @@ app.get('/', (req, res) => {
 // });
 const Course = require("./models/Course.js");
 
-app.get('/get_courses', (req, res) => {
-    Course.find({}).then(cl => {
-      res.send(cl)
-    })
-  })
+// app.get('/get_courses', (req, res) => {
+//     Course.find({}).then(cl => {
+//       res.send(cl)
+//     })
+//   })
+
+app.post('/get_courses', async (req, res) => {
+  let {cl_reg, cl_recomm} = req.body
+  if (cl_reg) {
+  cl_reg = cl_reg.split(", ")
+  cl_recomm = cl_recomm.split(", ")
+  const registered = []
+  const recommended = []
+  const getc = async () => {
+    for (const course of cl_reg) {
+      const c = await Course.findOne({ Class: course })
+      if (c) {
+        registered.push(c)
+        }
+      else{
+        console.log(course, "not found reg")
+      }
+      }
+    for (const course of cl_recomm) {
+      const c = await Course.findOne({ Class: course })
+      if (c) {
+        recommended.push(c)
+        }
+      else{
+        console.log(course, "not found recomm")
+      }
+    }
+      const data = {
+        registered: registered,
+        recommended: recommended
+      }
+      return data
+    }
+    const data = await getc()
+    res.send(data)
+  }
+    
+})
   
 app.post("/login", async (req, res) => {
     const { email, password } = req.body;
@@ -142,6 +180,8 @@ app.get("/dashboard", authenticateToken, async (req, res) => {
         user: {
           name: user.name,
           email: user.email,
+          classes: user.classes,
+          recommend: user.recommend
           // Include other relevant user data
         },
       };
@@ -160,7 +200,9 @@ app.post("/sign-up", (req, res) => {
         const newUser = new User({
           name: req.body.name,
           email: req.body.email,
-          password: req.body.password
+          password: req.body.password,
+          classes: "placeholder",
+          recommend: "placeholder"
         });
   // Hash password before saving in database
         bcrypt.genSalt(10, (err, salt) => {

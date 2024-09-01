@@ -61,6 +61,11 @@
 
 }
 
+.reg_form {
+    text-align:left;
+    margin-top: -500px;
+}
+
 @media screen and (max-width: 800px) {
 
     .class-img {

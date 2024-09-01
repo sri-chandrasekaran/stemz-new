@@ -23,7 +23,8 @@ const Dashboard = () => {
     const [user, setUser] = useState(null);
     const [dashboardData, setDashboardData] = useState(null);
     const [isLoading, setLoading] = useState(true);
-    const [Courses, setCourses] = useState();
+    const [Courses_reg, setCourses_reg] = useState();
+    const [Courses_recomm, setCourses_recomm] = useState();
   
     useEffect(() => {
       const fetchDashboardData = async () => {
@@ -48,22 +49,61 @@ const Dashboard = () => {
     window.scrollTo(0, 0);
   }
 
-  function InsertClass() {
-    useEffect(()=> {  
-      axios.get('http://localhost:3001/get_courses')
-      .then(res => {
-        setCourses(res.data);
-        setLoading(false);
-      });
-    }, []);
 
+  useEffect(() => {
+    const cl_reg = user?.classes
+    const cl_recomm = user?.recommend
+    console.log(user?.classes.split(","))
+    const getclasses = async () => {
+      console.log(user?.email, user?.classes)
+      try {
+        const res = await axios.post('http://localhost:3001/get_courses', {
+          cl_reg: cl_reg, cl_recomm: cl_recomm
+        })
+        if (res.data) {
+          console.log("success")
+          setCourses_reg(res.data.registered);
+          setCourses_recomm(res.data.recommended)
+          setLoading(false);
+        }
+      } catch (error) {
+        console.error('Axios error:', error);
+    }};
+    getclasses();
+   }, [user, Courses_reg, isLoading]);
+
+  // useEffect(()=> {  
+  //   console.log(user?.email, user?.classes_reg)
+  //   axios.get('http://localhost:3001/get_courses', {
+  //     cl_reg: user?.classes_reg, cl_recomm: user?.classes_recomm
+  //   })
+  //   .then(res => {
+  //     setCourses_reg(res.registered);
+  //     setCourses_recomm(res.recommended)
+  //     setLoading(false);
+  //   });
+  // }, []);
+
+  function InsertClass() {
     if (isLoading) {
       return <div className="InsertClass">Loading...</div>;
     }
     else {
+    console.log(Courses_reg)
     let code = []
-    for (let i = 0; i < Courses.length; i++) {
-      var reg_class = Courses[i]
+    if (Courses_reg.length === 0) {
+      return <div classname="InsertClass">
+        <p>You are not registered for any classes yet!</p>
+        <Link to = "../online-classes" onClick={scrollToTop}> 
+            <div className = "recommendation">
+              <button style = {{background: '#357717', padding: '7px', 'border-radius': '3px', 'margin-left': '0px'}} className = 'dashboard_buttons'>Click here to explore the classes</button>
+            </div>
+        </Link>
+      </div>
+
+    }
+    for (let i = 0; i < Courses_reg.length; i++) {
+      var reg_class = Courses_reg[i]
       let image = require('../assets/' + reg_class['Image'])
       code.push(
         <div key = {reg_class['Class']}>
@@ -84,25 +124,29 @@ const Dashboard = () => {
   }
 
   function AddRecommend () {
-    useEffect(()=> {  
-      axios.get('http://localhost:3001/get_courses')
-      .then(res => {
-        setCourses(res.data);
-        setLoading(false);
-      });
-    }, []);
+    // useEffect(()=> {  
+    //   axios.get('http://localhost:3001/get_courses')
+    //   .then(res => {
+    //     setCourses(res.data);
+    //     setLoading(false);
+    //   });
+    // }, []);
 
     if (isLoading) {
       return <div className="InsertClass">Loading...</div>;
     }
     else {
     let code = []
-    for (let i = 0; i < Courses.length; i++) {
-      var recomm = Courses[i]
+    if (Courses_reg.length === 0) {
+      return <div classname="InsertClass">There are no recommended classes for you currently</div>
+    }
+    for (let i = 0; i < Courses_recomm.length; i++) {
+      var recomm = Courses_recomm[i]
       let image = require('../assets/' + recomm['Image'])
+      let link = "../self-paced-classes/" + recomm['Class'].replaceAll(" ", "-")
       code.push(
         //add actual links to the database
-        <Link to = {recomm[0]} onClick={scrollToTop}> 
+        <Link to = {link} onClick={scrollToTop}> 
             <div className = "recommendation">
               <button className = 'recommend-button'></button>
               <img src={image} alt={recomm['Class']} className="img-recommend"/>
@@ -124,7 +168,7 @@ const Dashboard = () => {
         </div>
         <div className = "grid-container-wrapper">
         <h3 className = "header-courses">Courses Enrolled</h3>
-        <div className = "grid-courses">
+        <div>
         {InsertClass()}
         </div>
         <h3 className = "header-recommended">Recommended Courses</h3>
