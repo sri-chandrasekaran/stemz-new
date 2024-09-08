@@ -1,5 +1,5 @@
 //dashboard.js
-import React, { useState, useEffect } from 'react';
+import React, {useState, useEffect } from 'react';
 import Navbar from '../components/Navbar';
 import HeroOther from '../components/HeroOther';
 import Dashbar from '../components/Dashbar';
@@ -14,7 +14,7 @@ import ES from '../assets/environmentalscience.jpg'
 import Psych from '../assets/psych.jpeg'
 import Stats from '../assets/statistics.jpeg'
 import Zoology from '../assets/zoology.jpg'
-import { useNavigate, Link } from 'react-router-dom';
+import { useLocation, useNavigate, Link } from 'react-router-dom';
 import axios from "axios";
 
 
@@ -25,8 +25,10 @@ const Dashboard = () => {
     const [isLoading, setLoading] = useState(true);
     const [Courses_reg, setCourses_reg] = useState();
     const [Courses_recomm, setCourses_recomm] = useState();
+
   
     useEffect(() => {
+      console.log("I'm on dashboard")
       const fetchDashboardData = async () => {
         try {
           const response = await axios.get('http://localhost:3001/dashboard', {
@@ -39,24 +41,27 @@ const Dashboard = () => {
         } catch (error) {
           console.error('Axios error:', error);
           // Handle error, e.g., redirect to login if token is invalid
-          navigate('/login');
+          //navigate('/login');
         }
       };
   
       fetchDashboardData();
     }, [navigate]);
+
+  console.log(user?.email)
+
   const scrollToTop = () => {
     window.scrollTo(0, 0);
   }
 
-
   useEffect(() => {
     const cl_reg = user?.classes
     const cl_recomm = user?.recommend
-    console.log(user?.classes.split(","))
+    console.log(cl_reg)
+    //console.log(user?.classes.split(","))
     const getclasses = async () => {
-      console.log(user?.email, user?.classes)
       try {
+        console.log("here")
         const res = await axios.post('http://localhost:3001/get_courses', {
           cl_reg: cl_reg, cl_recomm: cl_recomm
         })
@@ -70,7 +75,7 @@ const Dashboard = () => {
         console.error('Axios error:', error);
     }};
     getclasses();
-   }, [user, Courses_reg, isLoading]);
+   }, [user]);
 
   // useEffect(()=> {  
   //   console.log(user?.email, user?.classes_reg)
@@ -85,6 +90,7 @@ const Dashboard = () => {
   // }, []);
 
   function InsertClass() {
+    console.log(isLoading)
     if (isLoading) {
       return <div className="InsertClass">Loading...</div>;
     }
@@ -137,7 +143,7 @@ const Dashboard = () => {
     }
     else {
     let code = []
-    if (Courses_reg.length === 0) {
+    if (Courses_recomm.length === 0) {
       return <div classname="InsertClass">There are no recommended classes for you currently</div>
     }
     for (let i = 0; i < Courses_recomm.length; i++) {
@@ -171,10 +177,10 @@ const Dashboard = () => {
         <div>
         {InsertClass()}
         </div>
-        <h3 className = "header-recommended">Recommended Courses</h3>
-        <div className = 'grid-recommended'>
-        {AddRecommend()}
-        </div>
+        {/* {/*<h3 className = "header-recommended">Recommended Courses</h3>
+        <div className = 'grid-recommended'>*/}
+        {/*AddRecommend()*/}
+        {/*</div>/*} */}
         </div>
         <br></br><br></br><br></br><br></br><br></br><br></br><br></br><br></br><br></br><br></br>
         <Footer />

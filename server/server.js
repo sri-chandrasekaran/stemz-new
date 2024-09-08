@@ -89,29 +89,41 @@ const Course = require("./models/Course.js");
 //   })
 
 app.post('/get_courses', async (req, res) => {
+  console.log("getting courses")
   let {cl_reg, cl_recomm} = req.body
-  if (cl_reg) {
+  if (cl_reg !== undefined) {
   cl_reg = cl_reg.split(", ")
   cl_recomm = cl_recomm.split(", ")
   const registered = []
   const recommended = []
   const getc = async () => {
+    console.log("I'm here")
     for (const course of cl_reg) {
-      const c = await Course.findOne({ Class: course })
-      if (c) {
-        registered.push(c)
+      try {
+        const c = await Course.findOne({ _id: course })
+        if (c) {
+          registered.push(c)
+          }
+        else{
+          console.log(course, "not found reg")
         }
-      else{
-        console.log(course, "not found reg")
+        }
+      catch {
+        console.log("wrong id")
       }
-      }
+    }
     for (const course of cl_recomm) {
-      const c = await Course.findOne({ Class: course })
-      if (c) {
-        recommended.push(c)
+      try {
+        const c = await Course.findOne({ _id: course })
+        if (c) {
+          recommended.push(c)
+          }
+        else{
+          console.log(course, "not found recomm")
         }
-      else{
-        console.log(course, "not found recomm")
+      }
+      catch {
+        console.log("wrong id")
       }
     }
       const data = {
@@ -125,6 +137,68 @@ app.post('/get_courses', async (req, res) => {
   }
     
 })
+
+app.post('/get_all_courses', async (req, res) => {
+  const getc = async () => {
+      return await Course.find({})
+  }
+  const data = await getc()
+  res.send(data)
+})
+
+
+app.post('/register-class', async (req, res) => {
+  const {course_id, user_email} = req.body;
+  try {
+    const user = await User.findOne({ email: user_email});
+    const list_courses = user["classes"].split(", ")
+    if (list_courses.includes(course_id)) {
+      res.send("success")
+    }
+    const updated_classes = user["classes"] + ", " + course_id; 
+    await User.updateOne({email: user_email}, {$set: {classes: updated_classes}})
+    try {
+      const course = await Course.findOne({ _id:course_id });
+      const updated_emails = course["Emails"] + ", " + user["email"] + " " + user["name"]
+      await Course.updateOne({_id: course_id}, {$set: {Emails: updated_emails}})
+      res.send("success")
+    }
+    catch {
+      res.status(500).json({ success: false, message: "Server error" });
+    }
+  }
+  catch {
+    res.status(500).json({ success: false, message: "Server error" });
+  }
+})
+
+app.post('/check-class', async (req, res) => {
+  console.log(req.body)
+  let {user_email} = req.body;
+  if (user_email !== undefined) {
+  try {
+    console.log(user_email)
+    const user = await User.findOne({ email: user_email});
+    const list_courses = user["classes"].split(", ")
+    console.log(list_courses)
+    res.send(list_courses)
+  }
+  catch {
+    console.log("error")
+    res.status(500).json({ success: false, message: "Server error" });
+  }
+}
+})
+  // const {course_id, user_email} = req.body;
+  // const regist = async () => {
+  //   const user = await User.findOne({ email: user_email});
+  //   return user
+  // }
+  // const user = await regist()
+  // console.log(user)
+  // const list_courses = user["classes"].split(", ")
+  // res.send(list_courses.includes(course_id))
+
   
 app.post("/login", async (req, res) => {
     const { email, password } = req.body;
@@ -168,6 +242,7 @@ const authenticateToken = (req, res, next) => {
 
 // Dashboard route handler
 app.get("/dashboard", authenticateToken, async (req, res) => {
+    console.log("backend", req.userId)
     try {
       const user = await User.findById(req.userId);
       // Fetch personalized dashboard data based on the user
@@ -211,7 +286,7 @@ app.post("/sign-up", (req, res) => {
             newUser.password = hash;
             newUser
               .save()
-              .then(user => res.json("New User Created"))
+              .then(user => res.json({password: req.body.password, email: req.body.email, message: "New User Created"}))
               .catch(err => console.log(err));
           });
         });

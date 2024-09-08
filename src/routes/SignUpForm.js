@@ -7,7 +7,7 @@ import { useNavigate, Link } from 'react-router-dom';
 
 const SignUpForm = () => {
 
-  const history = useNavigate();
+  const navigate = useNavigate();
     
   const [name, setName] = useState('');
   const [grade, setGrade] = useState('');
@@ -21,14 +21,17 @@ const SignUpForm = () => {
     try{
 
       await axios.post("http://localhost:3001/sign-up", {
+        withCredentials: true,
         name: name, grade: grade, email: email, password: password
       })
       .then(res=>{
+        console.log(res.data)
         if (res.data==="Email Already Exists"){
             alert("User already exists.")
         }
-        else if (res.data==="New User Created"){
-            history("/")
+        else if (res.data.message==="New User Created"){
+          Login(res.data.password, res.data.email)
+          //navigate("/dashboard");
         }else {
           alert("Unexpected response from the server");
         }
@@ -42,6 +45,24 @@ const SignUpForm = () => {
       console.log(e)
     }
   };
+
+  async function Login(password, email) {
+    try {
+      const response = await axios.post("http://localhost:3001/login", {
+        email: email, password: password
+      }, {
+        withCredentials: true,
+      });
+      if (response.data.success) {
+        navigate("/dashboard");
+      } else {
+        alert(response.data.message);
+      }
+    } catch (error) {
+      console.error("Axios error:", error);
+      alert("Wrong details");
+    }
+  }
 
   return (
     <div>

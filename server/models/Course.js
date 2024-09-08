@@ -24,8 +24,19 @@ const CoursesSchema = new mongoose.Schema({
     Worksheet:{
         type: String,
         required: false
+    },
+    Description:{
+        type: String,
+        required: false
+    },
+    Grade:{
+        type: String,
+        required: false
+    },
+    Emails:{
+        type: String,
+        required: false
     }
-
 })
 
 module.exports = Course = mongoose.model("courses", CoursesSchema);
