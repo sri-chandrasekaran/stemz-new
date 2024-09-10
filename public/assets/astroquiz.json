@@ -1,5 +1,6 @@
 {
     "title": "Astronomy Quiz",
+    "total": 29,
     "questions": [
         {
             "question": "What is astronomy?",
@@ -9,6 +10,7 @@
                 "A science that deals with objects and matter outside the earth's atmosphere.",
                 "The study of numbers and how they are related to each other and to the real world."
             ],
+            "score": 1,
             "correctAnswerIndex": 2
         },
         {
@@ -19,6 +21,7 @@
                 "planets",
                 "aestheroids"
             ],
+            "score": 3,
             "correctAnswerIndex": 3
         },
         {
@@ -29,6 +32,7 @@
                 "everything that exists throughout space and time",
                 "a huge collection of gas, dust, and stars and their solar systems, all held by gravity"
             ],
+            "score": 2,
             "correctAnswerIndex": 3
         },
         {
@@ -39,6 +43,7 @@
                 "cosmic snowballs of frozen gasses, rock, and dust",
                 "small rocky object that orbits the Sun"
             ],
+            "score": 1,
             "correctAnswerIndex": 0
         },
         {
@@ -49,6 +54,7 @@
                 "how the human body is structured",
                 "what satellites can go into easily"
             ],
+            "score": 3,
             "correctAnswerIndex": 1
         },
         {
@@ -59,6 +65,7 @@
                 "an instrument for indicating or measuring time",
                 "an instrument we use to see distant objects"
             ],
+            "score": 1,
             "correctAnswerIndex": 3
         },
         {
@@ -69,6 +76,7 @@
                 "a pattern of stars that humans can see",
                 "a device that imparts heat or holds something to be heated"
             ],
+            "score": 2,
             "correctAnswerIndex": 2
         },
         {
@@ -79,6 +87,7 @@
                 "planets that are similar to the solar system's eight planets but are smaller",
                 "a large area of small, icy objects that orbit the sun beyond the planet Neptune"
             ],
+            "score": 2,
             "correctAnswerIndex": 1
         },
         {
@@ -89,6 +98,7 @@
                 "belief that the Earth is fixed at the center of the Universe",
                 "the perception that Earth exists as a flat disk"
             ],
+            "score": 3,
             "correctAnswerIndex": 0
         },
         {
@@ -99,6 +109,7 @@
                 "Nicolaus Copernicus",
                 "Neil Armstrong"
             ],
+            "score": 3,
             "correctAnswerIndex": 3
         },
         {
@@ -109,6 +120,7 @@
                 "Saturn",
                 "Uranus"
             ],
+            "score": 1,
             "correctAnswerIndex": 2
         },
         {
@@ -119,6 +131,7 @@
                 "Electricity",
                 "Nuclear Energy"
             ],
+            "score": 2,
             "correctAnswerIndex": 1
         },
         {
@@ -129,6 +142,7 @@
                 "Keppler",
                 "Sunflower"
             ],
+            "score": 2,
             "correctAnswerIndex": 0
         },
         {
@@ -139,6 +153,7 @@
                 "Astrophysicist",
                 "Police Officer"
             ],
+            "score": 1,
             "correctAnswerIndex": 2
         }
     ]

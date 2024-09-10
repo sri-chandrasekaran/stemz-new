@@ -19,9 +19,6 @@ const bc4p = () => {
           <Link to="https://docs.google.com/document/d/e/2PACX-1vSie8ZIl-MnXPw0MyeRdRi-TjA7K70IBpHKkK9ByoWAtbWP4i4NqRf2l3ejDG2Fd3zAQNzZMDpXoYHi/pub" target="_blank" rel="noopener noreferrer">
             <button className="course-button">Parent Notes</button>
           </Link>
-          <Link to="/self-paced-classes/chemistry/chemquiz" target="_blank" rel="noopener noreferrer">
-            <button className="course-button">Quiz</button>
-          </Link>
         </div>
       </div>
       <div style={{ paddingBottom: '200px' }} />

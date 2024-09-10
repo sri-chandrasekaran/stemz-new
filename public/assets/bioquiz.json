@@ -1,5 +1,6 @@
 {
     "title": "Biochemistry Quiz",
+    "total": 26,
     "questions": [
         {
             "question": "What is Chemistry?",
@@ -9,6 +10,7 @@
                 "The branch of science that studies the properties of matter and how matter interacts with energy",
                 "The study of all living organisms (and dead organisms, like fossils)"
             ],
+            "score": 1,
             "correctAnswerIndex": 2
         },
         {
@@ -19,6 +21,7 @@
                 "Compounds",
                 "Electrons"
             ],
+            "score": 2,
             "correctAnswerIndex": 1
         },
         {
@@ -29,6 +32,7 @@
                 "They are made up of molecules",
                 "They are made up of quarks, which are fundamental particles and cannot be broken up"
             ],
+            "score": 3,
             "correctAnswerIndex": 3
         },
         {
@@ -39,6 +43,7 @@
                 "Atoms are composed solely of protons",
                 "Atoms are imaginary constructs used only in theoretical physics"
             ],
+            "score": 1,
             "correctAnswerIndex": 0
         },
         {
@@ -49,6 +54,7 @@
                 "A large collection of cells",
                 "A subatomic particle"
             ],
+            "score": 1,
             "correctAnswerIndex": 1
         },
         {
@@ -59,6 +65,7 @@
                 "Bonds are electromagnetic fields surrounding atoms",
                 "Chemical bonds that hold together atoms in molecules"
             ],
+            "score": 2,
             "correctAnswerIndex": 3
         },
         {
@@ -69,6 +76,7 @@
                 "Proteins are long chains of amino acids",
                 "Proteins are single atoms"
             ],
+            "score": 2,
             "correctAnswerIndex": 2
         },
         {
@@ -79,6 +87,7 @@
                 "Types of carbohydrates",
                 "Large, complex structures"
             ],
+            "score": 2,
             "correctAnswerIndex": 1
         },
         {
@@ -89,6 +98,7 @@
                 "Carbohydrates are single atoms",
                 "Carbohydrates are proteins found in the body"
             ],
+            "score": 2,
             "correctAnswerIndex": 0
         },
         {
@@ -99,6 +109,7 @@
                 "Polysaccharides",
                 "Carbohydrates are not classified into different types"
             ],
+            "score": 3,
             "correctAnswerIndex": 3
         },
         {
@@ -109,6 +120,7 @@
                 "Nucleic acids are how information is stored and transferred in a cell",
                 "Nucleic acids are only found in plant cells"
             ],
+            "score": 2,
             "correctAnswerIndex": 2
         },
         {
@@ -119,6 +131,7 @@
                 "RNA has uracil and DNA has thymine",
                 "RNA has 1 strand and DNA has 2 strands"
             ],
+            "score": 3,
             "correctAnswerIndex": 1
         },
         {
@@ -129,6 +142,7 @@
                 "RNA is found only in the cell membrane",
                 "RNA is found only in the cytoplasm of the cell"
             ],
+            "score": 1,
             "correctAnswerIndex": 0
         },
         {
@@ -139,6 +153,7 @@
                 "DNA is found primarily in the cell nucleus and in small amounts in mitochondria",
                 "DNA is not found in the cell at all"
             ],
+            "score": 1,
             "correctAnswerIndex": 2
         }
     ]

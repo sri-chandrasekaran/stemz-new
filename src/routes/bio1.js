@@ -19,9 +19,6 @@ const bio1 = () => {
           <Link to="https://docs.google.com/document/d/e/2PACX-1vQIBdNnmb7ZNhqb7dwI7ruLCCrW660HRNd9qzS4JhKO7EuN31WHIeDeiKsvNSxhpn2srjNf_rMF0GnD/pub" target="_blank" rel="noopener noreferrer">
             <button className="course-button">Parent Notes</button>
           </Link>
-          <Link to="/self-paced-classes/biochemistry/bioquiz" target="_blank" rel="noopener noreferrer">
-            <button className="course-button">Quiz</button>
-          </Link>
         </div>
       </div>
       <div style={{ paddingBottom: '200px' }} />

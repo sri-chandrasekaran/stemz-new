@@ -1,5 +1,6 @@
 {
     "title": "Basics of Coding Quiz",
+    "total": 29,
     "questions": [
         {
             "question": "What is Scratch?",
@@ -9,6 +10,7 @@
                 "Scratch is a programming tool created by the students of MIT that is used to learn the basics of coding.",
                 "An online encyclopedia meant for middle schoolers"
             ],
+            "score": 1,
             "correctAnswerIndex": 2
         },
         {
@@ -19,6 +21,7 @@
                 "Diagonally",
                 "It doesn’t move"
             ],
+            "score": 3,
             "correctAnswerIndex": 1
         },
         {
@@ -29,6 +32,7 @@
                 "A statement that’s only found in one coding language",
                 "A set of rules performed if a certain condition is met (tells a program to run different actions based on if a specific condition is true or false)"
             ],
+            "score": 2,
             "correctAnswerIndex": 3
         },
         {
@@ -39,6 +43,7 @@
                 "Anything that can change or be changed within an experiment",
                 "Any characteristic, number, or quantity that can be measured or counted"
             ],
+            "score": 1,
             "correctAnswerIndex": 0
         },
         {
@@ -49,6 +54,7 @@
                 "In & Out",
                 "Left & Right"
             ],
+            "score": 3,
             "correctAnswerIndex": 1
         },
         {
@@ -59,6 +65,7 @@
                 "They repeat a behavior forever",
                 "Control block that allows the cat to wait for a given amount of time"
             ],
+            "score": 1,
             "correctAnswerIndex": 3
         },
         {
@@ -69,6 +76,7 @@
                 "This statement runs a block of code “if” a specific condition is true. “Else” is used to run a block of code if the specific condition is false",
                 "An alternative statement that is executed if the result of a previous test condition"
             ],
+            "score": 2,
             "correctAnswerIndex": 2
         },
         {
@@ -79,6 +87,7 @@
                 "A shape produced by a curve that bends around and crosses itself",
                 "A repeating section of sound material"
             ],
+            "score": 2,
             "correctAnswerIndex": 1
         },
         {
@@ -89,6 +98,7 @@
                 "In & Out",
                 "Diagonally"
             ],
+            "score": 3,
             "correctAnswerIndex": 0
         },
         {
@@ -99,6 +109,7 @@
                 "All the standards to teach technology in the classroom",
                 "Coding is the computer language used to develop apps, websites, and software"
             ],
+            "score": 3,
             "correctAnswerIndex": 3
         },
         {
@@ -109,6 +120,7 @@
                 "A category of blocks used to detect things using the different senses",
                 "An enclosed compartment, as in a kitchen range, for cooking and heating food"
             ],
+            "score": 1,
             "correctAnswerIndex": 0
         },
         {
@@ -119,6 +131,7 @@
                 "It doesn't work at all",
                 "It is a random number"
             ],
+            "score": 2,
             "correctAnswerIndex": 1
         },
         {
@@ -129,6 +142,7 @@
                 "Bad grades",
                 "None"
             ],
+            "score": 2,
             "correctAnswerIndex": 0
         },
         {
@@ -139,6 +153,7 @@
                 "Engineering",
                 "Police Officer"
             ],
+            "score": 3,
             "correctAnswerIndex": 2
         }
     ]

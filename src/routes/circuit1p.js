@@ -19,9 +19,6 @@ const circuit1s = () => {
           <Link to="https://docs.google.com/document/d/e/2PACX-1vTqewhkRFQc22hPOxTK3eWIDkvVYcHimu0YmMy45O446Y34ZnJNLSTN9ToA2Cgsm1d3FtDOXAzSYGu7/pub" target="_blank" rel="noopener noreferrer">
             <button className="course-button">Parent Notes</button>
           </Link>
-          <Link to="/self-paced-classes/circuits/circuitquiz" target="_blank" rel="noopener noreferrer">
-            <button className="course-button">Quiz</button>
-          </Link>
         </div>
       </div>
       <div style={{ paddingBottom: '200px' }} />

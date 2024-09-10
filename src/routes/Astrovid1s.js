@@ -23,9 +23,6 @@ const Astrovid1s = () => {
         <Link to="https://docs.google.com/document/d/e/2PACX-1vRvLzrRtS52Gup_N7UbX3YdJN9DBAhImvR8jqu8yKo7Fwt2pY0UoOfxJlkt2HJKKrA1M3-L-KHihTpF/pub" target="_blank" rel="noopener noreferrer">
           <button className="course-button">Student Notes</button>
         </Link>
-        <Link to="/self-paced-classes/astronomy/astroquiz" target="_blank" rel="noopener noreferrer">
-          <button className="course-button">Quiz</button>
-        </Link>
       </div>
       <div style={{ paddingBottom: '200px' }} />
                   

@@ -19,9 +19,7 @@ const es1s = () => {
           <Link to="https://docs.google.com/document/d/e/2PACX-1vQNkEUq4OOh5YOFgEtbKJwqJMz1io4fJqSb_gljynYnGikMfGcgR1EaBhPcB8EotDx5134PwvsTTqMz/pub" target="_blank" rel="noopener noreferrer">
             <button className="course-button">Student Notes</button>
           </Link>
-          <Link to="/self-paced-classes/zoology/zooquiz" target="_blank" rel="noopener noreferrer">
-            <button className="course-button">Quiz</button>
-          </Link>
+
         </div>
       </div>
       <div style={{ paddingBottom: '200px' }} />

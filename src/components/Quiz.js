@@ -6,6 +6,7 @@ const Quiz = ({ src }) => {
   const [questions, setQuestions] = useState([]);
   const [selectedAnswers, setSelectedAnswers] = useState({});
   const [showResults, setShowResults] = useState(false);
+  const [total, setTotal] = useState(0);
   let score = 0;
   useEffect(() => {
     // Fetch quiz data from the source URL
@@ -14,6 +15,7 @@ const Quiz = ({ src }) => {
       .then(data => {
         // Assuming the data is a JSON string
         setQuestions(JSON.parse(data)['questions']);
+        setTotal(JSON.parse(data)['total']);
       })
       .catch(error => console.error('Error fetching quiz data:', error));
   }, [src]);
@@ -43,8 +45,9 @@ const Quiz = ({ src }) => {
                 const isSelected = selectedAnswers[questionIndex] === optionIndex;
                 const isIncorrect = isSelected && !isCorrect;
                 if (isCorrect && isSelected) {
-                  score++;
+                  score += q.score;
                 }
+                
                 return (
                   <label
                     key={optionIndex}
@@ -76,7 +79,7 @@ const Quiz = ({ src }) => {
       ) : (
         <p>Quiz Load Error</p>
       )}
-      {showResults && <div> Your score is {score} out of {questions.length}</div>}
+      {showResults && <div> Your score is {score} out of {total} (which is {Math.round(score * 100 / total, 2)} %).</div>}
     </div>
   );
 };

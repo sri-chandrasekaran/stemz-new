@@ -22,9 +22,6 @@ const es1s = () => {
           <Link to="https://docs.google.com/document/d/e/2PACX-1vTT4pw3kWlJ4Za6GSGBcnc7tAnI2GupEZwwWg7G8GLHqja_4lf6250YYj58ktt_430OVdCshhh46mWD/pub" target="_blank" rel="noopener noreferrer">
             <button className="course-button">Student Notes</button>
           </Link>
-          <Link to="/self-paced-classes/environmental-science/esquiz" target="_blank" rel="noopener noreferrer">
-            <button className="course-button">Quiz</button>
-          </Link>
         </div>
       </div>
       <div style={{ paddingBottom: '200px' }} />

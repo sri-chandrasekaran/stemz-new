@@ -19,9 +19,6 @@ const chem1 = () => {
           <Link to="https://docs.google.com/document/d/e/2PACX-1vTPBVF7KrSZCQf5VUTaBGSgPTuLC8NvG2hXMHoOhyUmqURO9G-2UEcz_9nFCiRUspfboDLbfpdve260/pub" target="_blank" rel="noopener noreferrer">
             <button className="course-button">Parent Notes</button>
           </Link>
-          <Link to="/self-paced-classes/chemistry/chemquiz" target="_blank" rel="noopener noreferrer">
-            <button className="course-button">Quiz</button>
-          </Link>
         </div>
       </div>
       <div style={{ paddingBottom: '200px' }} />

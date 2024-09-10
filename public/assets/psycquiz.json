@@ -1,5 +1,6 @@
 {
     "title": "Psychology Quiz",
+    "total": 26,
     "questions": [
         {
             "question": "What is psychology?",
@@ -9,6 +10,7 @@
                 "The branch of science that studies how the brain works and how the mind influences behavior in people and animals.",
                 "The study of ancient artifacts and cultures."
             ],
+            "score": 1,
             "correctAnswerIndex": 2
         },
         {
@@ -19,6 +21,7 @@
                 "Genetic predisposition",
                 "The alignment of stars"
             ],
+            "score": 3,
             "correctAnswerIndex": 1
         },
         {
@@ -29,6 +32,7 @@
                 "It processes food and nutrients for the body.",
                 "The brain receives signals from the rest of the body & makes sense of them."
             ],
+            "score": 3,
             "correctAnswerIndex": 3
         },
         {
@@ -39,6 +43,7 @@
                 "Regulates heart rate and blood pressure.",
                 "Manages muscle reflexes and coordination."
             ],
+            "score": 2,
             "correctAnswerIndex": 0
         },
         {
@@ -49,6 +54,7 @@
                 "Controls language and communication.",
                 "Manages hunger and thirst."
             ],
+            "score": 2,
             "correctAnswerIndex": 1
         },
         {
@@ -59,6 +65,7 @@
                 "Manages sensory perceptions.",
                 "Conducts necessary functions like breathing, heart rate, etc."
             ],
+            "score": 2,
             "correctAnswerIndex": 3
         },
         {
@@ -69,6 +76,7 @@
                 "Emphasized the importance of childhood memories on the brain.",
                 "Analyzed animal behavior and instincts."
             ],
+            "score": 3,
             "correctAnswerIndex": 2
         },
         {
@@ -79,6 +87,7 @@
                 "Influence of external stimuli.",
                 "Changes in atmospheric pressure."
             ],
+            "score": 2,
             "correctAnswerIndex": 1
         },
         {
@@ -89,6 +98,7 @@
                 "Dream about an event.",
                 "Perform a physical activity."
             ],
+            "score": 1,
             "correctAnswerIndex": 0
         },
         {
@@ -99,6 +109,7 @@
                 "Several weeks.",
                 "20-30 seconds."
             ],
+            "score": 2,
             "correctAnswerIndex": 3
         },
         {
@@ -109,6 +120,7 @@
                 "Seahorse.",
                 "Octopus."
             ],
+            "score": 1,
             "correctAnswerIndex": 2
         },
         {
@@ -119,6 +131,7 @@
                 "Forgetting it initially.",
                 "Reading about it in a book."
             ],
+            "score": 1,
             "correctAnswerIndex": 1
         },
         {
@@ -129,6 +142,7 @@
                 "When memories become more vivid and detailed.",
                 "When new memories are created quickly."
             ],
+            "score": 1,
             "correctAnswerIndex": 0
         },
         {
@@ -139,6 +153,7 @@
                 "Learn new information that is different to old information and 'Delete' old information while you sleep.",
                 "Forgetting all information from the past month."
             ],
+            "score": 2,
             "correctAnswerIndex": 2
         }
     ]

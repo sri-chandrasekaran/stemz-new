@@ -1,5 +1,6 @@
 {
     "title": "Statistics Quiz",
+    "total": 26,
     "questions": [
         {
             "question": "What is Statistics?",
@@ -9,6 +10,7 @@
                 "A type of math that deals with the collection and analysis of numbers",
                 "A kind of storytelling method"
             ],
+            "score": 1,
             "correctAnswerIndex": 2
         },
         {
@@ -19,6 +21,7 @@
                 "A type of weather phenomenon",
                 "A form of dance"
             ],
+            "score": 2,
             "correctAnswerIndex": 1
         },
         {
@@ -29,6 +32,7 @@
                 "A type of fruit",
                 "A number out of a 100"
             ],
+            "score": 2,
             "correctAnswerIndex": 3
         },
         {
@@ -39,6 +43,7 @@
                 "Graphs are a method to cook food",
                 "Graphs are tools for making music"
             ],
+            "score": 1,
             "correctAnswerIndex": 0
         },
         {
@@ -49,6 +54,7 @@
                 "A type of exercise routine",
                 "A method of flying a plane"
             ],
+            "score": 1,
             "correctAnswerIndex": 1
         },
         {
@@ -59,6 +65,7 @@
                 "A kind of musical instrument",
                 "A pie graph is a good way to show parts of a whole"
             ],
+            "score": 2,
             "correctAnswerIndex": 3
         },
         {
@@ -69,6 +76,7 @@
                 "A scatter chart is a good way to compare two variables and how they relate with each other",
                 "A type of dance move"
             ],
+            "score": 3,
             "correctAnswerIndex": 2
         },
         {
@@ -79,6 +87,7 @@
                 "A form of poetry",
                 "A method of cooking"
             ],
+            "score": 2,
             "correctAnswerIndex": 1
         },
         {
@@ -89,6 +98,7 @@
                 "A type of plant",
                 "A method for singing in harmony"
             ],
+            "score": 3,
             "correctAnswerIndex": 0
         },
         {
@@ -99,6 +109,7 @@
                 "Guess and check until you find the right answer",
                 "Convert the numbers into a fraction and then a decimal to multiply by 100 and find percent."
             ],
+            "score": 3,
             "correctAnswerIndex": 3
         },
         {
@@ -109,6 +120,7 @@
                 "Number on top",
                 "A kind of bird"
             ],
+            "score": 1,
             "correctAnswerIndex": 2
         },
         {
@@ -119,6 +131,7 @@
                 "A kind of musical instrument",
                 "A type of chemical reaction"
             ],
+            "score": 1,
             "correctAnswerIndex": 1
         },
         {
@@ -129,6 +142,7 @@
                 "A type of animal",
                 "A type of computer software"
             ],
+            "score": 2,
             "correctAnswerIndex": 0
         },
         {
@@ -139,6 +153,7 @@
                 "How many parts in the whole",
                 "A kind of exercise equipment"
             ],
+            "score": 2,
             "correctAnswerIndex": 2
         }
     ]

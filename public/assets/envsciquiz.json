@@ -1,5 +1,6 @@
 {
     "title": "Environmental Science Quiz",
+    "total": 32,
     "questions": [
         {
             "question": "What is Environmental Science?",
@@ -9,6 +10,7 @@
                 "The application of scientific knowledge to learn about the environment and how to fix environmental problems.",
                 "The study of ancient civilizations."
             ],
+            "score": 1,
             "correctAnswerIndex": 2
         },
         {
@@ -19,6 +21,7 @@
                 "A region with only one type of plant life.",
                 "A small area within a forest."
             ],
+            "score": 2,
             "correctAnswerIndex": 1
         },
         {
@@ -29,6 +32,7 @@
                 "A forested area near a river.",
                 "Something made up of freshwater and marine regions."
             ],
+            "score": 3,
             "correctAnswerIndex": 3
         },
         {
@@ -39,6 +43,7 @@
                 "A wetland area with a lot of water.",
                 "A mountainous region with rocky terrain."
             ],
+            "score": 3,
             "correctAnswerIndex": 0
         },
         {
@@ -49,6 +54,7 @@
                 "A forest area with many animals.",
                 "A coastal region with sandy beaches."
             ],
+            "score": 3,
             "correctAnswerIndex": 1
         },
         {
@@ -59,6 +65,7 @@
                 "A large open area with only grasses.",
                 "An area filled with many trees as well as plants, animals, and other living things."
             ],
+            "score": 3,
             "correctAnswerIndex": 3
         },
         {
@@ -69,6 +76,7 @@
                 "The Earth is constantly reusing its own materials. This is known as the Earth’s Cycles.",
                 "The orbit of the Earth around the Sun."
             ],
+            "score": 2,
             "correctAnswerIndex": 2
         },
         {
@@ -79,6 +87,7 @@
                 "The rotation of the Earth on its axis.",
                 "The seasonal changes in weather."
             ],
+            "score": 2,
             "correctAnswerIndex": 1
         },
         {
@@ -89,6 +98,7 @@
                 "The creation of new plant life.",
                 "The cycle of water through the atmosphere."
             ],
+            "score": 1,
             "correctAnswerIndex": 0
         },
         {
@@ -99,6 +109,7 @@
                 "The cycle of water moving through plants.",
                 "When waste, chemicals, or other harmful substances enter a body of water and become harmful to animals and humans that need water to survive."
             ],
+            "score": 2,
             "correctAnswerIndex": 3
         },
         {
@@ -109,6 +120,7 @@
                 "Littering, Oil spills, Pesticides, Sewage.",
                 "The natural water cycle."
             ],
+            "score": 3,
             "correctAnswerIndex": 2
         },
         {
@@ -119,6 +131,7 @@
                 "Reuse",
                 "Recycle"
             ],
+            "score": 2,
             "correctAnswerIndex": 1
         },
         {
@@ -129,6 +142,7 @@
                 "The burning of waste materials.",
                 "The storage of food in a refrigerator."
             ],
+            "score": 2,
             "correctAnswerIndex": 0
         },
         {
@@ -139,6 +153,7 @@
                 "Soil mixed with food scraps and dead plants that act as a fertilizer for (other) plants.",
                 "A type of rock used in landscaping."
             ],
+            "score": 3,
             "correctAnswerIndex": 2
         }
     ]
