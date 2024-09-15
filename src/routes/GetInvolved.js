@@ -12,12 +12,12 @@ const GetInvolved = () => {
       <HeroOther overlayText="Get Involved" />
       <div className='boxes-container'>
         <div className='rectangular-box'>
-            <h1>Students</h1>
+            <h1>Volunteers</h1>
             <p>We are recruiting hard-working high-school and college level 
                 students to teach STEM topics to elementary school students and 
-                develop our curriculum! Use the link below to apply.</p>
-            <Link to="https://forms.gle/EGUMu61zX2e74fGt9" target="_blank" rel="noopener noreferrer">
-                <button className="box-button">Apply</button>
+                develop our curriculum! Use the link below to learn more and apply.</p>
+            <Link to="./volunteers" target="_blank" rel="noopener noreferrer">
+                <button className="box-button">Learn More</button>
             </Link>
         </div>
         <div className='rectangular-box'>
@@ -26,7 +26,7 @@ const GetInvolved = () => {
                 Additionally, members are able to sign up for classes before 
                 everyone else. Membership is completely free! Fill out the form
                 to the left and become a member today!</p>
-            <Link to="https://forms.gle/CU1bpfR8kL6J9kq68" target="_blank" rel="noopener noreferrer">
+            <Link to="https://substack.com/@stemzlearning" target="_blank" rel="noopener noreferrer">
                 <button className="box-button">Become a Member</button>
             </Link>
         </div>
@@ -43,14 +43,16 @@ const GetInvolved = () => {
         <div className='rectangular-box'>
             <h1>Donate</h1>
             <p>Our program teaches students through experimentation. Unfortunately, experiments cost money. 
-                We want to keep our classes free and donations help us buy materials for our in person classes. Our 
-                Venmo is @stemzlearning.</p>
+                We want to keep our classes free and donations help us buy materials for our in person classes.</p>
             <Link to="https://www.paypal.com/donate?hosted_button_id=8DW4JTSCNYKF4" target="_blank" rel="noopener noreferrer">
-                <button className="box-button">Donate</button>
+                <button className="box-button paypal-button">Paypal</button>
+            </Link>
+            <Link to="https://venmo.com/u/stemzlearning" target="_blank" rel="noopener noreferrer">
+                <button className="box-button venmo-button">Venmo</button>
             </Link>
         </div>
       </div>
-      <div style={{ paddingBottom: '100px' }}></div>
+      <div style={{ paddingBottom: '120px' }}></div>
       <Footer />
     </div>
   )

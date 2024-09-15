@@ -28,6 +28,10 @@
     color: white;
 }
 
+.paypal-button {
+    margin-right: 13px;
+}
+
 @media screen and (max-width: 800px){
     .rectangular-box {
         width: 360px;
@@ -41,3 +45,8 @@
 
 } 
 
+@media screen and (min-width: 1200px) {
+    .boxes-container {
+        margin-top: calc(50px + 30px);
+    }
+  }
