@@ -1,0 +1,127 @@
+{
+    "title": "Circuit Quiz",
+    "score": 24,
+    "questions": [
+        {
+            "question": "What is a Circuit?",
+            "options": [
+                "A device that stores electrical energy.",
+                "An insulator that blocks electric flow.",
+                "The path of an electric current.",
+                "A material that resists electric current."
+            ],
+            "score": 1,
+            "correctAnswerIndex": 2
+        },
+        {
+            "question": "What are Electric Currents?",
+            "options": [
+                "A type of static electricity that stays in one place.",
+                "Electric charges flowing from one place to another in a circuit.",
+                "A magnetic field created by moving charges.",
+                "A form of energy stored in batteries."
+            ],
+            "score": 2,
+            "correctAnswerIndex": 1
+        },
+        {
+            "question": "Which of these is not one of the Parts of a Circuit?",
+            "options": [
+                "Voltage Source",
+                "Conducting Path",
+                "Load",
+                "Transformer"
+            ],
+            "score": 3,
+            "correctAnswerIndex": 3
+        },
+        {
+            "question": "What are circuit boards?",
+            "options": [
+                "A plastic board made for connecting electronic parts together, to create a circuit.",
+                "A board used to insulate electrical components.",
+                "A surface for mounting mechanical parts.",
+                "A device for measuring electric current."
+            ],
+            "score": 1,
+            "correctAnswerIndex": 0
+        },
+        {
+            "question": "What is a Resistor?",
+            "options": [
+                "A device that stores electrical charge.",
+                "A resistor is the part of an electric circuit that limits the power of an electric current in a circuit.",
+                "A component that generates electricity.",
+                "A device that increases voltage."
+            ],
+            "score": 3,
+            "correctAnswerIndex": 1
+        },
+        {
+            "question": "What is an Inductor?",
+            "options": [
+                "A component that increases current.",
+                "A device that converts electrical energy to light.",
+                "A type of resistor for regulating current.",
+                "An inductor is an electrical part that is in charge of storing electrical energy in the form of magnetic energy."
+            ],
+            "score": 3,
+            "correctAnswerIndex": 3
+        },
+        {
+            "question": "What are Conductors?",
+            "options": [
+                "Materials that block electric current.",
+                "Devices that store electric energy.",
+                "An object that allows the flow of electric current, in one or more directions.",
+                "Objects that block current."
+            ],
+            "score": 2,
+            "correctAnswerIndex": 2
+        },
+        {
+            "question": "What are Diodes?",
+            "options": [
+                "Components that store energy.",
+                "An electronic piece that conducts current in one direction.",
+                "Devices used to measure current.",
+                "Objects that block current."
+            ],
+            "score": 2,
+            "correctAnswerIndex": 1
+        },
+        {
+            "question": "What are Capacitors?",
+            "options": [
+                "Devices used to store electrical energy in an electric field.",
+                "Components that amplify signals.",
+                "Conductors used in circuits.",
+                "Resistors that limit current."
+            ],
+            "score": 2,
+            "correctAnswerIndex": 0
+        },
+        {
+            "question": "Why are Circuits Important?",
+            "options": [
+                "They are used in electronics.",
+                "They make it possible for electronic devices to function.",
+                "They are rarely used.",
+                "Teaches us how different pieces of technology work like TVs, computers, etc."
+            ],
+            "score": 2,
+            "correctAnswerIndex": 1
+        },
+        {
+            "question": "What does adding diodes and capacitors do to the circuit?",
+            "options": [
+                "Diodes increase the circuit's resistance, and capacitors decrease it.",
+                "Diodes allow current to flow in multiple directions, and capacitors amplify the current.",
+                "Diodes allow current to flow in one direction, and capacitors store and release electrical energy.",
+                "Diodes convert electrical energy to light, and capacitors convert electrical energy to heat."
+            ],
+            "score": 3,
+            "correctAnswerIndex": 2
+        }
+    ]
+}

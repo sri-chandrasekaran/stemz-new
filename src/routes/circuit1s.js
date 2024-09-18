@@ -13,12 +13,12 @@ const circuit1s = () => {
       <div className='vidbig'>
         <iframe className='astrovid' width="700" height="480" src="https://www.youtube.com/embed/MFr0Y52UICk" frameborder="0" allowfullscreen></iframe>
         <div className='centered-container'>
-        <Link to="https://docs.google.com/presentation/d/e/2PACX-1vR06yiOBnjwl3Ymd4rGFmrZjxRJHqLrVCRscfVMIrGmS5p-LSWYYuPMqUO2E6gp2TZVR8SW77o0agIV/pub?start=false&loop=false&delayms=3000" target="_blank" rel="noopener noreferrer">
-                    <button className="course-button">Slideshow</button>
-                  </Link>
-                  <Link to="https://docs.google.com/document/d/e/2PACX-1vS0xvCCLs7UzzjxA8LIfKAcw1x4_jjOU5kgYHTWtwXZcPAMSRuIUb9G94cBE4mvNtI0weRL2cdWlV_5/pub" target="_blank" rel="noopener noreferrer">
-                    <button className="course-button">Student Notes</button>
-                  </Link>
+          <Link to="https://docs.google.com/presentation/d/e/2PACX-1vR06yiOBnjwl3Ymd4rGFmrZjxRJHqLrVCRscfVMIrGmS5p-LSWYYuPMqUO2E6gp2TZVR8SW77o0agIV/pub?start=false&loop=false&delayms=3000" target="_blank" rel="noopener noreferrer">
+            <button className="course-button">Slideshow</button>
+          </Link>
+          <Link to="https://docs.google.com/document/d/e/2PACX-1vS0xvCCLs7UzzjxA8LIfKAcw1x4_jjOU5kgYHTWtwXZcPAMSRuIUb9G94cBE4mvNtI0weRL2cdWlV_5/pub" target="_blank" rel="noopener noreferrer">
+            <button className="course-button">Student Notes</button>
+          </Link>
         </div>
       </div>
       <div style={{ paddingBottom: '200px' }} />
