@@ -13,15 +13,15 @@ const es1s = () => {
       <div className='vidbig'>
         <iframe className='astrovid' width="700" height="480" src="https://www.youtube.com/embed/WY7m3HsZf0k" frameborder="0" allowfullscreen></iframe>
         <div className='centered-container'>
-        <Link to="https://docs.google.com/presentation/d/e/2PACX-1vQlMmDkJ7RDMK4vbKOhI5plpkziwZnh8DUP34BIN5vwV51_1Of8bgx0MvuABCENsBZJn_Gy1FlYk_zd/pub?start=false&loop=false&delayms=3000" target="_blank" rel="noopener noreferrer">
-                    <button className="course-button">Slideshow</button>
-                  </Link>
-                  <Link to="https://docs.google.com/document/d/e/2PACX-1vQDuzi1UbckmOOFKoKeB8mLgvfvzSWwV7aMMJvE1OYoWkZrZ6p0ZzRPzCeOP7jjzDIYnxYvn_EeEhHZ/pub" target="_blank" rel="noopener noreferrer">
-                    <button className="course-button">Worksheet</button>
-                  </Link>
-                  <Link to="https://docs.google.com/document/d/e/2PACX-1vSbVhd6X3VrxFXB3byG5YCiOaFizyptuSao9QmId4Yj3qQJQH3ssVU_PgSsOFD-pv7NgXQFxllI_uT5/pub" target="_blank" rel="noopener noreferrer">
-                    <button className="course-button">Parent Notes</button>
-                  </Link>
+          <Link to="https://docs.google.com/presentation/d/e/2PACX-1vQlMmDkJ7RDMK4vbKOhI5plpkziwZnh8DUP34BIN5vwV51_1Of8bgx0MvuABCENsBZJn_Gy1FlYk_zd/pub?start=false&loop=false&delayms=3000" target="_blank" rel="noopener noreferrer">
+            <button className="course-button">Slideshow</button>
+          </Link>
+          <Link to="https://docs.google.com/document/d/e/2PACX-1vQDuzi1UbckmOOFKoKeB8mLgvfvzSWwV7aMMJvE1OYoWkZrZ6p0ZzRPzCeOP7jjzDIYnxYvn_EeEhHZ/pub" target="_blank" rel="noopener noreferrer">
+            <button className="course-button">Worksheet</button>
+          </Link>
+          <Link to="https://docs.google.com/document/d/e/2PACX-1vSbVhd6X3VrxFXB3byG5YCiOaFizyptuSao9QmId4Yj3qQJQH3ssVU_PgSsOFD-pv7NgXQFxllI_uT5/pub" target="_blank" rel="noopener noreferrer">
+            <button className="course-button">Parent Notes</button>
+          </Link>
         </div>
       </div>
       <div style={{ paddingBottom: '200px' }} />
