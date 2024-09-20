@@ -25,6 +25,14 @@ const Navbar = () => {
     const scrollToTop = () => {
       window.scrollTo(0, 0);
     };
+
+    const updateDashboard = () => {
+        window.location.href = '/dashboard';
+    };
+
+    const updateOnline = () => {
+        window.location.href = '/online-classes';
+    };
   
     if (check === null) {
       axios
@@ -58,7 +66,7 @@ const Navbar = () => {
                     <Link to='/about-us' onClick={scrollToTop}>About Us</Link>
                 </li>
                 <li>
-                    <Link to='/online-classes' onClick={scrollToTop}>Online Classes</Link>
+                    <Link to='/online-classes' onClick={updateOnline}>Online Classes</Link>
                 </li>
                 <li>
                     <Link to='/self-paced-classes' onClick={scrollToTop}>Self-Paced Classes</Link>
@@ -111,7 +119,7 @@ const Navbar = () => {
                 </li>
                 <li>
                     {check ? (
-                        <Link to="/dashboard" onClick={scrollToTop} className="login-link">Dashboard</Link>
+                        <Link to="/dashboard" onClick={updateDashboard} className="login-link">Dashboard</Link>
                     ) : (
                         <Link to="/login" onClick={scrollToTop} className="login-link">Log In</Link>
                     )}

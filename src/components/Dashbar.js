@@ -51,7 +51,7 @@ const Dashbar = () => {
           Sign Out
         </button>
         <br />
-        <button className="bar-buttons">Delete Account</button>
+        {/*<button className="bar-buttons">Delete Account</button>*/}
       </div>
     </div>
   );
