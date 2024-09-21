@@ -28,7 +28,7 @@ const Dashboard = () => {
 
   
     useEffect(() => {
-      console.log("I'm on dashboard")
+      //console.log("I'm on dashboard")
       const fetchDashboardData = async () => {
         try {
           const response = await axios.get('http://localhost:3001/dashboard', {
@@ -48,7 +48,7 @@ const Dashboard = () => {
       fetchDashboardData();
     }, [navigate]);
 
-  console.log(user?.email)
+  //console.log(user?.email)
 
   const scrollToTop = () => {
     window.scrollTo(0, 0);
@@ -57,16 +57,16 @@ const Dashboard = () => {
   useEffect(() => {
     const cl_reg = user?.classes
     const cl_recomm = user?.recommend
-    console.log(cl_reg)
+    //console.log(cl_reg)
     //console.log(user?.classes.split(","))
     const getclasses = async () => {
       try {
-        console.log("here")
+        //console.log("here")
         const res = await axios.post('http://localhost:3001/get_courses', {
           cl_reg: cl_reg, cl_recomm: cl_recomm
         })
         if (res.data) {
-          console.log("success")
+          //console.log("success")
           setCourses_reg(res.data.registered);
           setCourses_recomm(res.data.recommended)
           setLoading(false);
@@ -90,15 +90,15 @@ const Dashboard = () => {
   // }, []);
 
   function InsertClass() {
-    console.log(isLoading)
+    //console.log(isLoading)
     if (isLoading) {
       return <div className="InsertClass">Loading...</div>;
     }
     else {
-    console.log(Courses_reg)
+    //console.log(Courses_reg)
     let code = []
     if (Courses_reg.length === 0) {
-      return <div classname="InsertClass">
+      return <div className="InsertClass">
         <p>You are not registered for any classes yet!</p>
         <Link to = "../online-classes" onClick={scrollToTop}> 
             <div className = "recommendation">
@@ -144,7 +144,7 @@ const Dashboard = () => {
     else {
     let code = []
     if (Courses_recomm.length === 0) {
-      return <div classname="InsertClass">There are no recommended classes for you currently</div>
+      return <div className="InsertClass">There are no recommended classes for you currently</div>
     }
     for (let i = 0; i < Courses_recomm.length; i++) {
       var recomm = Courses_recomm[i]
@@ -181,6 +181,10 @@ const Dashboard = () => {
         <div className = 'grid-recommended'>*/}
         {/*AddRecommend()*/}
         {/*</div>/*} */}
+        <h3 className = "header-recommended">Recommended Courses</h3>
+        <div className = 'grid-recommended'>
+        {AddRecommend()}
+        </div>
         </div>
         <br></br><br></br><br></br><br></br><br></br><br></br><br></br><br></br><br></br><br></br>
         <Footer />

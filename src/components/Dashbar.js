@@ -39,6 +39,20 @@ const Dashbar = () => {
     }
   };
 
+  const handleDelete = async () => {
+    try {
+      await axios.post('http://localhost:3001/delete', {
+        email: user?.email
+      }, {
+        withCredentials: true,
+      });
+      setUser(null);
+      navigate('/login');
+    } catch (error) {
+      console.error('Delete error:', error);
+    }
+  };
+
   return (
     <div className="grid-side">
       <div className="badge">Current badge</div>
@@ -51,7 +65,7 @@ const Dashbar = () => {
           Sign Out
         </button>
         <br />
-        {/*<button className="bar-buttons">Delete Account</button>*/}
+        <button className="bar-buttons" style = {{"backgroundColor": "#ad2121"}} onClick={handleDelete}>Delete Account</button>
       </div>
     </div>
   );

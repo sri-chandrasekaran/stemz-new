@@ -112,19 +112,30 @@ app.post('/get_courses', async (req, res) => {
         console.log("wrong id")
       }
     }
-    for (const course of cl_recomm) {
-      try {
-        const c = await Course.findOne({ _id: course })
-        if (c) {
+    //for (const course of cl_recomm) {
+      // try {
+      //   const c = await Course.findOne({ _id: course })
+      //   if (c) {
+      //     recommended.push(c)
+      //     }
+      //   else{
+      //     console.log(course, "not found recomm")
+      //   }
+      // }
+    //// for now: just random courses
+    try {
+      const all_courses = await Course.find({})
+      let n = 0
+      while ((recommended.length !== 4) || (n !== all_courses.length())) {
+        const c = all_courses[(Math.floor(Math.random() * all_courses.length))]
+        if ((!recommended.includes(c)) && (!registered.includes(c))) {
           recommended.push(c)
-          }
-        else{
-          console.log(course, "not found recomm")
         }
+        n += 1
       }
-      catch {
-        console.log("wrong id")
-      }
+    }
+    catch {
+      console.log("wrong id")
     }
       const data = {
         registered: registered,
@@ -223,6 +234,16 @@ app.post("/login", async (req, res) => {
 app.post("/signout", (req, res) => {
     res.clearCookie("token");
     res.json({ success: true, message: "Signed out successfully" });
+  });
+
+  app.post("/delete", async (req, res) => {
+    User.deleteOne({ email:req.body.email})
+    .then(console.log("deleted"))
+    .catch(function(error){
+      console.log("delete error:", error)
+    });
+    res.clearCookie("token");
+    res.json({ success: true, message: "Deleted successfully" });
   });
 
 const authenticateToken = (req, res, next) => {
