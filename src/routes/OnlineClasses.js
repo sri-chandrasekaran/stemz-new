@@ -156,9 +156,9 @@ function OnlineClasses() {
         <HeroOther overlayText="Online Classes"/>
         <div className='main-online'>
           <h3>Sign Up for Classes!</h3>
-          {/* <div className="photo-carousel-container">
+          <div className="photo-carousel-container">
             <PhotoCarousel />
-          </div> */}
+          </div>
         </div>
         <div className='course-listing'>
         {ListCourses()}
