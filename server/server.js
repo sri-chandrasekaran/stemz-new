@@ -237,7 +237,7 @@ app.post("/sign-up", (req, res) => {
           name: req.body.name,
           email: req.body.email,
           password: req.body.password,
-          role: req.body.role, // Store the role (teacher/student)
+          //role: req.body.role, // Store the role (teacher/student)
           classes: "placeholder",
           recommend: "placeholder"
         });

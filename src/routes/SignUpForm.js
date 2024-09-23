@@ -13,17 +13,17 @@ const SignUpForm = () => {
   const [grade, setGrade] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const [role, setRole] = useState('student');  // Default role is student
+  //const [role, setRole] = useState('student');  // Default role is student
 
   async function submit(e){
     e.preventDefault();
-    console.log("Submitting signup data:", { name, grade, email, password, role }); 
+    console.log("Submitting signup data:", { name, grade, email, password}); 
 
     try{
 
       await axios.post("http://localhost:3001/sign-up", {
         withCredentials: true,
-        name: name, grade: grade, email: email, password: password, role: role // Include the selected role in the POST request
+        name: name, grade: grade, email: email, password: password, //role: role // Include the selected role in the POST request
       })
       .then(res=>{
         console.log(res.data)
@@ -55,11 +55,12 @@ const SignUpForm = () => {
         withCredentials: true,
       });
       if (response.data.success) {
-        if (role === 'teacher') {
-          navigate("/teacher-portal");  // Redirect teachers to teacher portal
-        } else {
-          navigate("/dashboard");  // Redirect students to student dashboard
-        }
+        navigate("/dashboard");
+        // if (role === 'teacher') {
+        //   navigate("/teacher-portal");  // Redirect teachers to teacher portal
+        // } else {
+        //   navigate("/dashboard");  // Redirect students to student dashboard
+        // }
       } else {
         alert(response.data.message);
       }
@@ -108,7 +109,7 @@ const SignUpForm = () => {
               required
             />
           </div>
-            {/* Add Role Selection Here */}
+            {/* Add Role Selection Here
             <div className="form-group">
               <label>
                 <input
@@ -128,7 +129,7 @@ const SignUpForm = () => {
                 />
                 I am a teacher
               </label>
-            </div>
+            </div> */}
           <button type="submit">Submit</button>
           <p>
           Already have an account? <Link to="/login" className="login-link4">Login</Link>
