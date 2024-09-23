@@ -44,49 +44,8 @@ app.get('/', (req, res) => {
     res.sendFile(path.join(__dirname, '../build', 'index.html'));
 });
 
-//LOGIN PROCESSING
-// app.post("/login", async(req, res) => {
-//     const email = req.body.email;
-//     const password = req.body.password;
-//   // Find user by email
-//     User.findOne({ email }).then(user => {
-//       // Check if user exists
-//       if (!user) {
-//         return res.json("Email Not Found");
-//       }
-//   // Check password
-//       bcrypt.compare(password, user.password).then(isMatch => {
-//         if (isMatch) {
-//           // User matched
-//           // Create JWT Payload
-//           const payload = {
-//             id: user.id,
-//             name: user.name
-//           };
-//   // Sign token
-//           jwt.sign(
-//             payload,
-//             keys.secretOrKey,
-//             {
-//               expiresIn: 31556926 // 1 year in seconds
-//             },
-//             (err, token) => {
-//               res.json("Correct Password");
-//             }
-//           );
-//         } else {
-//           return res.json("Incorrect Password");
-//         }
-//       });
-//     });
-// });
 const Course = require("./models/Course.js");
 
-// app.get('/get_courses', (req, res) => {
-//     Course.find({}).then(cl => {
-//       res.send(cl)
-//     })
-//   })
 
 app.post('/get_courses', async (req, res) => {
   console.log("getting courses")
@@ -112,17 +71,6 @@ app.post('/get_courses', async (req, res) => {
         console.log("wrong id")
       }
     }
-    //for (const course of cl_recomm) {
-      // try {
-      //   const c = await Course.findOne({ _id: course })
-      //   if (c) {
-      //     recommended.push(c)
-      //     }
-      //   else{
-      //     console.log(course, "not found recomm")
-      //   }
-      // }
-    //// for now: just random courses
     try {
       const all_courses = await Course.find({})
       let n = 0
@@ -200,15 +148,6 @@ app.post('/check-class', async (req, res) => {
   }
 }
 })
-  // const {course_id, user_email} = req.body;
-  // const regist = async () => {
-  //   const user = await User.findOne({ email: user_email});
-  //   return user
-  // }
-  // const user = await regist()
-  // console.log(user)
-  // const list_courses = user["classes"].split(", ")
-  // res.send(list_courses.includes(course_id))
 
   
 app.post("/login", async (req, res) => {
@@ -245,6 +184,7 @@ app.post("/signout", (req, res) => {
     res.clearCookie("token");
     res.json({ success: true, message: "Deleted successfully" });
   });
+
 
 const authenticateToken = (req, res, next) => {
   const token = req.cookies.token;
@@ -297,6 +237,7 @@ app.post("/sign-up", (req, res) => {
           name: req.body.name,
           email: req.body.email,
           password: req.body.password,
+          role: req.body.role, // Store the role (teacher/student)
           classes: "placeholder",
           recommend: "placeholder"
         });
@@ -307,7 +248,11 @@ app.post("/sign-up", (req, res) => {
             newUser.password = hash;
             newUser
               .save()
-              .then(user => res.json({password: req.body.password, email: req.body.email, message: "New User Created"}))
+              .then((user) => 
+                res.json({
+                  password: req.body.password, 
+                  email: req.body.email, 
+                  message: "New User Created"}))
               .catch(err => console.log(err));
           });
         });

@@ -102,7 +102,7 @@ const Dashboard = () => {
         <p>You are not registered for any classes yet!</p>
         <Link to = "../online-classes" onClick={scrollToTop}> 
             <div className = "recommendation">
-              <button style = {{background: '#357717', padding: '7px', 'border-radius': '3px', 'margin-left': '0px'}} className = 'dashboard_buttons'>Click here to explore the classes</button>
+              <button style = {{background: '#357717', padding: '7px', 'border-radius': '3px', 'margin-left': '0px', height: 'auto'}} className = 'dashboard_buttons'>Click here to explore the classes</button>
             </div>
         </Link>
       </div>
