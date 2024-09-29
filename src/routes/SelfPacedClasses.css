@@ -39,6 +39,10 @@
     margin-top: 540px;
   }
 
+  .description {
+    height: 200px;
+  }
+
   .header-small {
     text-align: center;
     font-size: 24px;

@@ -172,7 +172,7 @@ const Dashboard = () => {
         <div className = "hello">
           <h1 className = "hello-text">Hello {user?.name}!</h1>
         </div>
-        <div className = "grid-container-wrapper">
+        <div className = "grid-container-wrapper-dash">
         <h3 className = "header-courses">Courses Enrolled</h3>
         <div>
         {InsertClass()}

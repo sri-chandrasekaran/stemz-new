@@ -28,24 +28,30 @@ const SelfPacedClasses = () => {
         <div className='grid-container'>
             <div className='grid-cell'>
                 <img src={AstronomyImage} alt="Astronomy" className="img-course"/>
-                <h1>Astronomy</h1>
-                <p>In this course we will learn about galaxies, the universe, constellations and much more!</p>
+                <div className = "description">
+                    <h1>Astronomy</h1>
+                    <p>In this course we will learn about galaxies, the universe, constellations and much more!</p>
+                </div>
                 <Link to="./astronomy" onClick={scrollToTop}>
-                <button className="cta-button courses-button" style={{marginTop:'93px'}}>Access Lessons</button>
+                <button className="cta-button courses-button">Access Lessons</button>
                 </Link>
             </div>
             <div className='grid-cell'>
                 <img src={Coding} alt="Coding" className="img-course"/>
-                <h1>Basics of Coding</h1>
-                <p>In this course we will learn about movement, variables, conditional statements and many more, using Scratch. No prior experience is needed!</p>
+                <div className = "description">
+                    <h1>Basics of Coding</h1>
+                    <p>In this course we will learn about movement, variables, conditional statements and many more, using Scratch. No prior experience is needed!</p>
+                </div>
                 <Link to="./basics-of-coding" onClick={scrollToTop}>
                 <button className="cta-button courses-button">Access Lessons</button>
                 </Link>
             </div>
             <div className='grid-cell'>
                 <img src={Biochemistry} alt="Biochemistry" className="img-course"/>
-                <h1>Biochemistry</h1>
-                <p>In this course we will learn about molecules, atoms, proteins and more; we encourage the completion of the Chemistry course prior! Parent supervision is needed.</p>
+                <div className = "description">
+                    <h1>Biochemistry</h1>
+                    <p>In this course we will learn about molecules, atoms, proteins and more; we encourage the completion of the Chemistry course prior! Parent supervision is needed.</p>
+                </div>
                 <Link to="./biochemistry" onClick={scrollToTop}>
                 <button className="cta-button courses-button">Access Lessons</button>
                 </Link>
@@ -54,25 +60,31 @@ const SelfPacedClasses = () => {
         <div className='grid-container'>
             <div className='grid-cell'>
                 <img src={Chemistry} alt="chemistry" className="img-course"/>
-                <h1>Chemistry</h1>
-                <p>In this course, your child will learn about matter, energy, and chemical reactions. The course culminates in a final project that serves as a launching pad to inspire your child to learn more! Parent supervision needed.</p>
+                <div className = "description">
+                    <h1>Chemistry</h1>
+                    <p>In this course, your child will learn about matter, energy, and chemical reactions. The course culminates in a final project that serves as a launching pad to inspire your child to learn more! Parent supervision needed.</p>
+                </div>
                 <Link to="./chemistry" onClick={scrollToTop}>
                 <button className="cta-button courses-button">Access Lessons</button>
                 </Link>
             </div>
             <div className='grid-cell'>
                 <img src={Circuits} alt="Circuits" className="img-course"/>
+                <div className = "description">
                 <h1>Circuits</h1>
                 <p>In this course, your child will learn about the basics of circuits and how they are used in everyday items. </p>
+                </div>
                 <Link to="./circuits" onClick={scrollToTop}>
-                <button className="cta-button courses-button" style={{marginTop:'93px'}}>Access Lessons</button>
+                <button className="cta-button courses-button">Access Lessons</button>
                 </Link>
             </div>
             <div className='grid-cell'>
                 <img src={ES} alt="Environmental Science" className="img-course"/>
-                <h1>Environmental</h1>
-                <h1>Science</h1>
-                <p>In this course, we will learn about biodiversity, the cycles of the earth, pollution, recycling, and more!</p>
+                <div className = "description">
+                    <h1>Environmental</h1>
+                    <h1>Science</h1>
+                    <p>In this course, we will learn about biodiversity, the cycles of the earth, pollution, recycling, and more!</p>
+                </div>
                 <Link to="./environmental-science" onClick={scrollToTop}>
                 <button className="cta-button courses-button">Access Lessons</button>
                 </Link>
@@ -81,24 +93,30 @@ const SelfPacedClasses = () => {
         <div className='grid-container'>
             <div className='grid-cell'>
                 <img src={Psych} alt="Psychology" className="img-course"/>
-                <h1>Psychology</h1>
-                <p>In this course, we will learn about biodiversity, the cycles of the earth, pollution, recycling, and more!</p>
+                <div className = "description">
+                    <h1>Psychology</h1>
+                    <p>In this course, we will learn about biodiversity, the cycles of the earth, pollution, recycling, and more!</p>
+                </div>
                 <Link to="./psychology" onClick={scrollToTop}>
-                <button className="cta-button courses-button" style={{marginBottom:'90px'}}>Access Lessons</button>
+                <button className="cta-button courses-button" >Access Lessons</button>
                 </Link>
             </div>
             <div className='grid-cell'>
                 <img src={Stats} alt="Statistics" className="img-course"/>
-                <h1>Statistics</h1>
-                <p>In this course, we will dive into different subtopics of statistics, such as fractions & percents, graphing, and real world-applications.</p>
+                <div className = "description">
+                    <h1>Statistics</h1>
+                    <p>In this course, we will dive into different subtopics of statistics, such as fractions & percents, graphing, and real world-applications.</p>
+                </div>
                 <Link to="./statistics" onClick={scrollToTop}>
                 <button className="cta-button courses-button">Access Lessons</button>
                 </Link>
             </div>
             <div className='grid-cell'>
                 <img src={Zoology} alt="Zoology" className="img-course"/>
-                <h1>Zoology</h1>
-                <p>In this course we will learn about the field of zoology, some topics include biodiversity, taxonomy, and anatomy.</p>
+                <div className = "description">
+                    <h1>Zoology</h1>
+                    <p>In this course we will learn about the field of zoology, some topics include biodiversity, taxonomy, and anatomy.</p>
+                </div>
                 <Link to="./zoology" onClick={scrollToTop}>
                 <button className="cta-button courses-button">Access Lessons</button>
                 </Link>
