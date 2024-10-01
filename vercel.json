@@ -1,15 +1,9 @@
 {
-    "builds": [
-      {
-        "source": "/api",
-        "use": "@vercel/node",
-        "config": { "includeFiles": ["dist/**"]}
-      }
-    ],
+  "version": 2,
     "rewrites": [
       {
-        "source": "../src/(.*)",
-        "dest": "/api"
+        "source": "/(.*)",
+        "destination": "/api"
       }
     ]
   }
