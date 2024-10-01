@@ -36,7 +36,7 @@ const Navbar = () => {
   
     if (check === null) {
       axios
-        .get('http://localhost:3001/dashboard', {
+        .get('https://www.stemzlearning.org/dashboard', {
           withCredentials: true,
         })
         .then((response) => {

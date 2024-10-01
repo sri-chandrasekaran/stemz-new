@@ -31,7 +31,7 @@ const Dashboard = () => {
       console.log("I'm on dashboard")
       const fetchDashboardData = async () => {
         try {
-          const response = await axios.get('http://localhost:3001/dashboard', {
+          const response = await axios.get('https://www.stemzlearning.org/dashboard', {
             withCredentials: true,
           });
           if (response.data.success) {
@@ -62,7 +62,7 @@ const Dashboard = () => {
     const getclasses = async () => {
       try {
         console.log("here")
-        const res = await axios.post('http://localhost:3001/get_courses', {
+        const res = await axios.post('https://www.stemzlearning.org/get_courses', {
           cl_reg: cl_reg, cl_recomm: cl_recomm
         })
         if (res.data) {

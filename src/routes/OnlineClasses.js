@@ -21,7 +21,7 @@ function OnlineClasses() {
   useEffect(() => {
     const fetchDashboardData = async () => {
       try {
-        const response = await axios.get('http://localhost:3001/dashboard', {
+        const response = await axios.get('https://www.stemzlearning.org/dashboard', {
           withCredentials: true,
         });
         if (response.data.success) {
@@ -42,7 +42,7 @@ function OnlineClasses() {
     const email = user?.email
     const getStudentClasses = async () => {
       try {
-        const response = await axios.post('http://localhost:3001/check-class', {
+        const response = await axios.post('https://www.stemzlearning.org/check-class', {
           user_email: email
         })
         if (response.data) {
@@ -60,7 +60,7 @@ function OnlineClasses() {
   useEffect(() => {
     const getAllClasses = async () => {
       try {
-        const response = await axios.post('http://localhost:3001/get_all_courses');
+        const response = await axios.post('https://www.stemzlearning.org/get_all_courses');
         if (response.data) {
           setCourses(response.data);
           setLoading(false);
@@ -75,7 +75,7 @@ function OnlineClasses() {
   function Add_to_student(course_id) {
     const postClass = async () => {
       try {
-        const res = await axios.post('http://localhost:3001/register-class', {
+        const res = await axios.post('https://www.stemzlearning.org/register-class', {
           course_id: course_id, user_email: user?.email
         })
         if (res.data) {

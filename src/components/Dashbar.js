@@ -12,7 +12,7 @@ const Dashbar = () => {
   useEffect(() => {
     const fetchDashboardData = async () => {
       try {
-        const response = await axios.get('http://localhost:3001/dashboard', {
+        const response = await axios.get('https://www.stemzlearning.org/dashboard', {
           withCredentials: true,
         });
         if (response.data.success) {
@@ -31,7 +31,7 @@ const Dashbar = () => {
 
   const handleSignOut = async () => {
     try {
-      await axios.post('http://localhost:3001/signout', {}, { withCredentials: true });
+      await axios.post('https://www.stemzlearning.org/signout', {}, { withCredentials: true });
       setUser(null);
       navigate('/login');
     } catch (error) {

@@ -13,7 +13,7 @@ const LoginForm = () => {
     useEffect(() => {
         const fetchDashboardData = async () => {
           try {
-            const response = await axios.get('https://stemzlearning.org/dashboard', {
+            const response = await axios.get('https://www.stemzlearning.org/dashboard', {
               withCredentials: true,
             });
             if (response.data.success) {
