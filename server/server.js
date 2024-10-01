@@ -15,7 +15,7 @@ const collection = require("./mongo")
 app.use(express.json())
 app.use(express.urlencoded({extended: true }))
 app.use(cors({
-  origin: 'http://localhost:3000', // Replace with your frontend URL
+  origin: 'http://stemzlearning.org', // Replace with your frontend URL
   credentials: true, // Enable sending cookies across domains
 }));
 app.use(cookieParser());
