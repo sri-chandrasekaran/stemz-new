@@ -1,31 +1,58 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './Navbar.css';
 import {FaBars, FaTimes} from 'react-icons/fa';
 import { Link } from 'react-router-dom';
 import logo from '../assets/logo.png'
-
+import axios from "axios";
 
 const Navbar = () => {
-
-
+    const [check, setCheck] = useState(null);
+    const [click, setClick] = useState(false);
+    const [color, setColor] = useState(false);
+  
+    const handleClick = () => setClick((prevState) => !prevState);
+  
+    const changeColor = () => {
+      if (window.scrollY >= 45) {
+        setColor(true);
+      } else {
+        setColor(false);
+      }
+    };
+  
+    window.addEventListener('scroll', changeColor);
+  
     const scrollToTop = () => {
-        window.scrollTo(0, 0);
+      window.scrollTo(0, 0);
+    };
+
+    const updateDashboard = () => {
+        window.location.href = '/dashboard';
+    };
+
+    const updateOnline = () => {
+        window.location.href = '/online-classes';
+    };
+  
+    if (check === null) {
+      axios
+        .get('http://localhost:3001/dashboard', {
+          withCredentials: true,
+        })
+        .then((response) => {
+          if (response.data.success) {
+            setCheck(true);
+          } else {
+            setCheck(false);
+          }
+        })
+        .catch(() => {
+          setCheck(false);
+        });
+  
+      return null; // Render nothing while fetching data
     }
-
-    const[click, setClick] = useState(false)
-    const handleClick = () => setClick((prevState) => (!prevState))
-
-    const [color, setColor] = useState(false)
-        const changeColor =() => {
-            if (window.scrollY >= 45) {
-                setColor(true)
-            } else {
-                setColor(false)
-            }
-        }
-
-        window.addEventListener('scroll', changeColor)
-
+  
     return (
         <div className={color ? 'header header-bg' : 'header'}>
             <Link to='/'>
@@ -39,7 +66,7 @@ const Navbar = () => {
                     <Link to='/about-us' onClick={scrollToTop}>About Us</Link>
                 </li>
                 <li>
-                    <Link to='/online-classes' onClick={scrollToTop}>Online Classes</Link>
+                    <Link to='/online-classes' onClick={updateOnline}>Online Classes</Link>
                 </li>
                 <li>
                     <Link to='/self-paced-classes' onClick={scrollToTop}>Self-Paced Classes</Link>
@@ -90,9 +117,13 @@ const Navbar = () => {
                 <li>
                     <Link to='/contact' onClick={scrollToTop}>Contact</Link>
                 </li>
-                {/* <li>
-                    <Link to='/login' onClick={scrollToTop} className="login-link">Log In</Link>
-                </li> */}
+                <li>
+                    {check ? (
+                        <Link to="/dashboard" onClick={updateDashboard} className="login-link">Dashboard</Link>
+                    ) : (
+                        <Link to="/login" onClick={scrollToTop} className="login-link">Log In</Link>
+                    )}
+                </li>
             </ul>
             <div className='hamburger' onClick={handleClick}>
                 {click ? (<FaTimes size={20} style={{color: 'black'}} />) : (<FaBars size={20} style={{color: 'black'}}/>)}

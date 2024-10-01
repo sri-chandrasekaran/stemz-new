@@ -1,13 +1,14 @@
-import React, { useState, useEffect } from 'react';
+//SignUpForm.js
+import React, { useState } from 'react';
 import Navbar from '../components/Navbar';
 import axios from "axios";
 import './SignUpForm.css';
 import { useNavigate, Link } from 'react-router-dom';
 
-function SignUpForm() {
+const SignUpForm = () => {
 
-  const history = useNavigate();
-
+  const navigate = useNavigate();
+    
   const [name, setName] = useState('');
   const [grade, setGrade] = useState('');
   const [email, setEmail] = useState('');
@@ -20,20 +21,23 @@ function SignUpForm() {
     try{
 
       await axios.post("http://localhost:3001/sign-up", {
+        withCredentials: true,
         name: name, grade: grade, email: email, password: password
       })
       .then(res=>{
-        if (res.data==="exist"){
+        console.log(res.data)
+        if (res.data==="Email Already Exists"){
             alert("User already exists.")
         }
-        else if (res.data==="not exist"){
-            history("/")
+        else if (res.data.message==="New User Created"){
+          Login(res.data.password, res.data.email)
+          //navigate("/dashboard");
         }else {
           alert("Unexpected response from the server");
         }
       })
       .catch(e=>{
-        alert("wrong details")
+        alert(e)
         console.log("there is a problem")
       })
     }
@@ -41,6 +45,24 @@ function SignUpForm() {
       console.log(e)
     }
   };
+
+  async function Login(password, email) {
+    try {
+      const response = await axios.post("http://localhost:3001/login", {
+        email: email, password: password
+      }, {
+        withCredentials: true,
+      });
+      if (response.data.success) {
+        navigate("/dashboard");
+      } else {
+        alert(response.data.message);
+      }
+    } catch (error) {
+      console.error("Axios error:", error);
+      alert("Wrong details");
+    }
+  }
 
   return (
     <div>

@@ -1,45 +1,53 @@
+//LoginForm.js
 import React, { useState, useEffect } from 'react';
 import Navbar from '../components/Navbar';
 import axios from "axios";
 import './LoginForm.css';
-import lightbulbImage from '../assets/lightbulb3.png'
+// import lightbulbImage from '../assets/lightbulb3.png'
 import { useNavigate, Link } from 'react-router-dom';
 
-function LoginForm() {
-
-  const history = useNavigate();
-
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-
-  async function submit(e){
-    e.preventDefault();
-    console.log("Submitting login data:", { email, password }); 
-
-    try{
-
-      await axios.post("http://localhost:3001/login", {
-        email: email, password: password
-      })
-
-      .then(res=>{
-        if (res.data==="exist"){
-            history("/")
+const LoginForm = () => {
+    const navigate = useNavigate();
+    const [email, setEmail] = useState("");
+    const [password, setPassword] = useState("");
+    useEffect(() => {
+        const fetchDashboardData = async () => {
+          try {
+            const response = await axios.get('http://localhost:3001/dashboard', {
+              withCredentials: true,
+            });
+            if (response.data.success) {
+                navigate("/dashboard");
+            }
+          } catch (error) {
+            console.error('Axios error:', error);
+            // Handle error, e.g., redirect to login if token is invalid
+            navigate('/login');
+          }
+        };
+    
+        fetchDashboardData();
+      }, [navigate]);
+  
+    const submit = async (e) => {
+      e.preventDefault();
+      try {
+        const response = await axios.post("http://localhost:3001/login", {
+          email,
+          password,
+        }, {
+          withCredentials: true,
+        });
+        if (response.data.success) {
+          navigate("/dashboard");
+        } else {
+          alert(response.data.message);
         }
-        else if (res.data==="not exist"){
-            alert("User is not found.")
-        }
-      })
-      .catch(e=>{
-        console.error("Axios error:");
-        alert("wrong details")
-      })
-
-    }
-    catch(e){
-      console.log(e)
-    }
-  };
+      } catch (error) {
+        console.error("Axios error:", error);
+        alert("Wrong details");
+      }
+    };
 
   return (
     // <div className="login">

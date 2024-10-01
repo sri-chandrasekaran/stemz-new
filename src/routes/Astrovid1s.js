@@ -56,7 +56,6 @@ export default Astrovid1s
 //   const [timeouts, setTimeouts] = useState([]);
 
 //   useEffect(() => {
-//     // Load YouTube IFrame API
 //     const script = document.createElement("script");
 //     script.src = "https://www.youtube.com/iframe_api";
 //     script.async = true;

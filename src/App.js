@@ -1,6 +1,6 @@
+//App.js
 import React from 'react';
-import { Routes, Route } from 'react-router-dom'; 
-import { Analytics } from "@vercel/analytics/react"
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Contact from './routes/Contact';
 import Home from './routes/Home';
 import About from './routes/About';
@@ -97,7 +97,6 @@ import Volunteers from './routes/volunteers'
 
 function App() {
   return (
-    <>
       <Routes>
         <Route path='/' element={<Home />} />
         <Route path='/about-us' element={<About />} />
@@ -194,8 +193,6 @@ function App() {
         <Route path='self-paced-classes/zoology/zoo5s' element={<Zoo5s />} />
         <Route path='self-paced-classes/zoology/zooquiz' element={<Zooquiz />} />
       </Routes>
-      <Analytics />
-    </>
   );
 }
 

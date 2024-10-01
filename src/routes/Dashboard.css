@@ -1,0 +1,113 @@
+.hello {
+    margin-top: 90px;
+    width: 82%;
+    border: solid #357717 50px;
+    background-color: #357717;
+}
+
+.hello-text {
+    font-size: 70px;
+    color: white;
+    margin-left: 100px;
+}
+
+.grid-container-wrapper {
+    margin-top: 75px;
+    margin-left: 150px;
+}
+
+.header-courses {
+    text-align: left;
+    font-size: 34px;
+    margin-bottom: 40px;
+}
+
+.img-course {
+    /*text-align: left;*/
+    margin-left: -10px;
+    height: 200px;
+    width: 200px;
+}
+
+.course-info {
+    text-align: center;
+    line-height: 10px;
+    margin-top: -160px;
+    margin-left: 300px;
+    max-width:400px;
+}
+
+.dashboard_buttons:hover {
+    cursor: pointer;
+}
+
+.dashboard_buttons {
+    font-size: 16px;
+    display: inline;
+    height: 35px;
+    color: white;
+    border: transparent;
+    margin-top: 20px;
+    margin-left: 50px;
+    margin-right: 50px;
+}
+
+.header-recommended {
+    text-align: left;
+    font-size: 34px;
+    margin-top: 30px;
+}
+
+.grid-recommended {
+    margin-top: 30px;
+    /*margin-left: -10px;*/
+    /*display: flex;
+    justify-content: space-around;*/
+    justify-content: start;
+    text-align: left;
+    /*grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: 200px 50px;*/
+}
+
+.recommendation {
+    border-style: solid; 
+    border-right-width: 30px;
+    border-color: transparent;
+    display: inline-block;
+}
+
+.recommend-button {
+    margin-left: 10px;
+    margin-top: 10px;
+    position: absolute;
+    border: none;
+    background-color: transparent;
+    width: 160px;
+    height: 160px;
+    border-radius: 100px;
+}
+
+.recommend-button:hover {
+    cursor: pointer;
+}
+
+.img-recommend {
+    height: 180px;
+    width: 180px;
+}
+
+.text-recommend {
+    margin-top: -12px;
+    text-align: center;
+}
+
+
+@media screen and (max-width: 800px) {
+
+    .course-info {
+      margin-left: -10px;
+      margin-top: 20px;
+      text-align: left;
+    }
+
+}
