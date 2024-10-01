@@ -39,6 +39,7 @@ const SignUpForm = () => {
       .catch(e=>{
         alert(e)
         console.log("there is a problem")
+        console.log(e)
       })
     }
     catch(e){
