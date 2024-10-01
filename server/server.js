@@ -296,3 +296,4 @@ app.post("/sign-up", (req, res) => {
 
 
 app.use(express.static(path.join(__dirname, '../build')));
+module.exports = app;
