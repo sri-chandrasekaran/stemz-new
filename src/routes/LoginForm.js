@@ -32,7 +32,7 @@ const LoginForm = () => {
     const submit = async (e) => {
       e.preventDefault();
       try {
-        const response = await axios.post("https://stemzlearning.org/login", {
+        const response = await axios.post("https://www.stemzlearning.org/login", {
           email,
           password,
         }, {

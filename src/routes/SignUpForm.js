@@ -20,7 +20,7 @@ const SignUpForm = () => {
 
     try{
 
-      await axios.post("https://stemzlearning.org/sign-up", {
+      await axios.post("https://www.stemzlearning.org/sign-up", {
         withCredentials: true,
         name: name, grade: grade, email: email, password: password
       })
@@ -38,7 +38,7 @@ const SignUpForm = () => {
       })
       .catch(e=>{
         alert(e)
-        console.log("there is a problem")
+        // console.log("there is a problem")
         console.log(e)
       })
     }
