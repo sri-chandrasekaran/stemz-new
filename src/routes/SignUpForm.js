@@ -22,10 +22,7 @@ const SignUpForm = () => {
 
       await axios.post("https://www.stemzlearning.org/sign-up", {
         withCredentials: true,
-        name: name, grade: grade, email: email, password: password,
-        headers: {
-          'Content-Type': 'application/json'
-        }
+        name: name, grade: grade, email: email, password: password
       })
       .then(res=>{
         console.log(res.data)
