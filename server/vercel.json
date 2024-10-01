@@ -1,7 +1,7 @@
 {
     "builds": [
       {
-        "source": "/server",
+        "source": "/api",
         "use": "@vercel/node",
         "config": { "includeFiles": ["dist/**"]}
       }
@@ -9,7 +9,7 @@
     "rewrites": [
       {
         "source": "/(.*)",
-        "dest": "/server"
+        "dest": "/api"
       }
     ]
   }
