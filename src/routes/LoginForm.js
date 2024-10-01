@@ -13,7 +13,7 @@ const LoginForm = () => {
     useEffect(() => {
         const fetchDashboardData = async () => {
           try {
-            const response = await axios.get('http://stemzlearning.org/dashboard', {
+            const response = await axios.get('https://stemzlearning.org/dashboard', {
               withCredentials: true,
             });
             if (response.data.success) {
@@ -32,7 +32,7 @@ const LoginForm = () => {
     const submit = async (e) => {
       e.preventDefault();
       try {
-        const response = await axios.post("http://stemzlearning.org/login", {
+        const response = await axios.post("https://stemzlearning.org/login", {
           email,
           password,
         }, {

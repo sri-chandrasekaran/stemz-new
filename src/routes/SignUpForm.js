@@ -20,7 +20,7 @@ const SignUpForm = () => {
 
     try{
 
-      await axios.post("http://stemzlearning.org/sign-up", {
+      await axios.post("https://stemzlearning.org/sign-up", {
         withCredentials: true,
         name: name, grade: grade, email: email, password: password
       })
@@ -48,7 +48,7 @@ const SignUpForm = () => {
 
   async function Login(password, email) {
     try {
-      const response = await axios.post("http://stemzlearning.org/login", {
+      const response = await axios.post("https://stemzlearning.org/login", {
         email: email, password: password
       }, {
         withCredentials: true,
