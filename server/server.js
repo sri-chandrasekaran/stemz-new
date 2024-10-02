@@ -6,11 +6,11 @@ const passport = require("passport");
 const app = express()
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
-const keys = require("./config/keys");
+const keys = require("./config/keys.js");
 const cors = require("cors")
 const path = require('path');
 const cookieParser = require("cookie-parser");
-const collection = require("./mongo")
+const collection = require("./mongo.js")
 
 app.use(express.json())
 app.use(express.urlencoded({extended: true }))
@@ -21,14 +21,14 @@ app.use(cors({
 app.use(cookieParser());
 
 // Load input validation
-const validateRegisterInput = require("./validation/register");
-const validateLoginInput = require("./validation/login");
+const validateRegisterInput = require("./validation/register.js");
+const validateLoginInput = require("./validation/login.js");
 
 // Load User model
 const User = require("./models/User.js");
 
 // DB Config
-const db = require("./config/keys").mongoURI;
+const db = require("./config/keys.js").mongoURI;
 mongoose.connect(db, { useNewUrlParser: true })
   .then(() => console.log("MongoDB successfully connected"))
   .catch(err => console.log(err));
