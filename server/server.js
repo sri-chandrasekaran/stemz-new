@@ -6,29 +6,30 @@ const passport = require("passport");
 const app = express()
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
-const keys = require("../server/config/keys.js");
+const keys = require("./config/keys.js");
 const cors = require("cors")
 const path = require('path');
 const cookieParser = require("cookie-parser");
-const collection = require("../server/mongo.js")
+const collection = require("./mongo.js")
 
 app.use(express.json())
 app.use(express.urlencoded({extended: true }))
 app.use(cors({
   origin: 'https://www.stemzlearning.org', // Replace with your frontend URL
+  methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
   credentials: true, // Enable sending cookies across domains
 }));
 app.use(cookieParser());
 
 // Load input validation
-const validateRegisterInput = require("../server/validation/register.js");
-const validateLoginInput = require("../server/validation/login.js");
+const validateRegisterInput = require("./validation/register.js");
+const validateLoginInput = require("./validation/login.js");
 
 // Load User model
-const User = require("../server/models/User.js");
+const User = require("./models/User.js");
 
 // DB Config
-const db = require("../server/config/keys.js").mongoURI;
+const db = require("./config/keys.js").mongoURI;
 mongoose.connect(db, { useNewUrlParser: true })
   .then(() => console.log("MongoDB successfully connected"))
   .catch(err => console.log(err));
@@ -80,7 +81,7 @@ app.get('/', (req, res) => {
 //       });
 //     });
 // });
-const Course = require("../server/models/Course.js");
+const Course = require("./models/Course.js");
 
 // app.get('/get_courses', (req, res) => {
 //     Course.find({}).then(cl => {
