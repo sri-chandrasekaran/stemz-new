@@ -1,0 +1,14 @@
+{
+    "version": 2,
+
+    "routes": [
+      {
+        "src": "/assets/(.*)",
+        "dest": "/src/assets/$1"
+      },
+      {
+        "src": "/components/(.*)",
+        "dest": "/src/components/$1"
+      }
+    ]
+  }
