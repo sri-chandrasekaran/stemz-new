@@ -13,7 +13,7 @@ const cookieParser = require("cookie-parser");
 const collection = require("../server/mongo.js")
 
 //
-const routes = require('/routes/*');
+const routes = require('../src/routes/*');
 
 app.use('/', routes);
 //
