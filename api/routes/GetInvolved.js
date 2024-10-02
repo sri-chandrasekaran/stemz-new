@@ -1,5 +1,5 @@
 import React from 'react';
-import './GetInvolved.css';
+import './css/GetInvolved.css';
 import Navbar from '../components/Navbar';
 import HeroOther from '../components/HeroOther';
 import Footer from '../components/Footer';

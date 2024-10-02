@@ -4,7 +4,7 @@ import Navbar from '../components/Navbar';
 import HeroOther from '../components/HeroOther';
 import Dashbar from '../components/Dashbar';
 import Footer from '../components/Footer';
-import './Dashboard.css'
+import './css/Dashboard.css'
 import AstronomyImage from '../assets/astronomy.PNG'
 import Coding from '../assets/coding.jpg'
 import Biochemistry from '../assets/biochem.PNG'

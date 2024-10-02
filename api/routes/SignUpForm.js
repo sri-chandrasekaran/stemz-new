@@ -2,7 +2,7 @@
 import React, { useState } from 'react';
 import Navbar from '../components/Navbar';
 import axios from "axios";
-import './SignUpForm.css';
+import './css/SignUpForm.css';
 import { useNavigate, Link } from 'react-router-dom';
 
 const SignUpForm = () => {

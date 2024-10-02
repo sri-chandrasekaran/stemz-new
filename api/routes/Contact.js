@@ -21,11 +21,11 @@
 
 
 import React from 'react';
-import Navbar from '../components/Navbar';
-import HeroOther from '../components/HeroOther';
-import Form from '../components/Form';
-import Footer from '../components/Footer';
-import './contact.css';
+import Navbar from '../../src/components/Navbar';
+import HeroOther from '../../src/components/HeroOther';
+import Form from '../../src/components/Form';
+import Footer from '../../src/components/Footer';
+import './css/contact.css';
 
 const Contact = () => {
   return (

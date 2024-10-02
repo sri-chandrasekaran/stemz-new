@@ -8,7 +8,7 @@ import stanford from '../assets/stanford.png'
 import berkeley from '../assets/berkeley.png'
 import ucsd from '../assets/ucsd.png'
 import flc from '../assets/flc.jpg'
-import './volunteer.css';
+import './css/volunteer.css';
 
 const Volunteers = () => {
   return (

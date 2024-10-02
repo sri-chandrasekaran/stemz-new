@@ -3,7 +3,7 @@ import {Link} from 'react-router-dom'
 import Navbar from '../components/Navbar'
 import Hero from '../components/Hero'
 import Footer from '../components/Footer'
-import './Home.css'
+import './css/Home.css'
 import PhotoCarousel from '../components/PhotoCarousel';
 import Cards from '../components/Cards'
 import Notification from '../components/Notification'

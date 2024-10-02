@@ -3,7 +3,7 @@ import Navbar from '../components/Navbar'
 import HeroOther from '../components/HeroOther'
 import Footer from '../components/Footer'
 import { Link } from 'react-router-dom';
-import './allvideo.css';
+import './css/allvideo.css';
 
 const Astrovid1s = () => {
   return (

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import './OnlineClasses.css';
+import './css/OnlineClasses.css';
 import Navbar from '../components/Navbar'
 import HeroOther from '../components/HeroOther'
 import Footer from '../components/Footer'
