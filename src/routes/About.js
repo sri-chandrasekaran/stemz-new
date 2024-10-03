@@ -1,5 +1,5 @@
 import React from 'react';
-import './About.css';
+import './css/About.css';
 import HeroOther from '../components/HeroOther';
 import Navbar from '../components/Navbar'
 import Footer from '../components/Footer'

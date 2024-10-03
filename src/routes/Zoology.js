@@ -4,7 +4,7 @@ import HeroOther from '../components/HeroOther';
 import Footer from '../components/Footer';
 import Zoology from '../assets/zoology.jpg'
 import { Link } from 'react-router-dom';
-import './Astronomy.css';
+import './css/Astronomy.css';
 
 const ZoologyPage = () => {
 

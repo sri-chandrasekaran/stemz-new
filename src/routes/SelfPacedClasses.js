@@ -1,5 +1,5 @@
 import React from 'react'
-import './SelfPacedClasses.css'
+import './css/SelfPacedClasses.css'
 import Navbar from '../components/Navbar'
 import HeroOther from '../components/HeroOther'
 import Footer from '../components/Footer'

@@ -2,7 +2,7 @@
 import React, { useState } from 'react';
 import Navbar from '../components/Navbar';
 import axios from "axios";
-import './SignUpForm.css';
+import './css/SignUpForm.css';
 import { useNavigate, Link } from 'react-router-dom';
 
 const SignUpForm = () => {
@@ -105,7 +105,7 @@ const SignUpForm = () => {
               required
             />
           </div>
-          <button type="submit">Submit</button>
+          <button type="submit">Submit1</button>
           <p>
           Already have an account? <Link to="/login" className="login-link4">Login</Link>
         </p>

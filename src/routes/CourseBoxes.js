@@ -4,7 +4,7 @@ import HeroOther from '../components/HeroOther';
 import Footer from '../components/Footer';
 import PaymentComponent from './PayPalButton';
 import CourseBox from '../assets/course-boxes.png';
-import './courseboxes.css';
+import './css/courseboxes.css';
 
 const CourseBoxes = () => {
   return (

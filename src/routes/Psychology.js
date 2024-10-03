@@ -4,7 +4,7 @@ import HeroOther from '../components/HeroOther';
 import Footer from '../components/Footer';
 import Psychology from '../assets/psych.jpeg'
 import { Link } from 'react-router-dom';
-import './Astronomy.css';
+import './css/Astronomy.css';
 
 const PsychologyPage = () => {
 

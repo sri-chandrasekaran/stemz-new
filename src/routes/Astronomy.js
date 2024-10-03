@@ -4,7 +4,7 @@ import HeroOther from '../components/HeroOther';
 import Footer from '../components/Footer';
 import AstronomyImage from '../assets/astronomy.PNG'
 import { Link } from 'react-router-dom';
-import './Astronomy.css';
+import './css/Astronomy.css';
 
 const Astronomy = () => {
   const scrollToTop = () => {

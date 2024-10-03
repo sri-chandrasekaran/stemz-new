@@ -25,7 +25,7 @@ import Navbar from '../components/Navbar';
 import HeroOther from '../components/HeroOther';
 import Form from '../components/Form';
 import Footer from '../components/Footer';
-import './contact.css';
+import './css/contact.css';
 
 const Contact = () => {
   return (
