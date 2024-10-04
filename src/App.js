@@ -27,6 +27,8 @@ import Astrovid3s from './routes/Astrovid3s'
 import Astrovid4p from './routes/Astrovid4p'
 import Astrovid4s from './routes/Astrovid4s'
 import Astroquiz from './routes/Astroquiz'
+import AstroWorkSheet from './routes/AstroWorkSheet'; 
+import AstroStarMap from './routes/AstroStarMap'; 
 import Bc1p from './routes/bc1p'
 import Bc1s from './routes/bc1s'
 import Bc2p from './routes/bc2p'
@@ -96,7 +98,6 @@ import CourseBoxes from './routes/CourseBoxes'
 import Volunteer from './routes/volunteer'
 
 import Volunteers from './routes/volunteers'
-import AstroWorkSheet from './routes/AstroWorkSheet'; 
 
 function App() {
   return (
@@ -134,6 +135,7 @@ function App() {
         <Route path='self-paced-classes/astronomy/astrovid4p' element={<Astrovid4p />} />
         <Route path='self-paced-classes/astronomy/astrovid4s' element={<Astrovid4s />} />
         <Route path="self-paced-classes/astronomy/astroworksheet" element={<AstroWorkSheet />} />
+        <Route path="self-paced-classes/astronomy/astrostarmap" element={<AstroStarMap />} />
         <Route path='self-paced-classes/astronomy/astroquiz' element={<Astroquiz />} />
         <Route path='self-paced-classes/basics-of-coding/bc1p' element={<Bc1p />} />
         <Route path='self-paced-classes/basics-of-coding/bc1s' element={<Bc1s />} />
