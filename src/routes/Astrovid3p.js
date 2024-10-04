@@ -4,7 +4,7 @@ import HeroOther from '../components/HeroOther'
 import Footer from '../components/Footer'
 import { Link } from 'react-router-dom';
 import './css/allvideo.css';
-
+import AstroStarMap from './AstroStarMap';
 const Astrovid3p = () => {
   return (
     <div>
@@ -17,7 +17,7 @@ const Astrovid3p = () => {
         <Link to="https://docs.google.com/presentation/d/e/2PACX-1vTSxvdIuzlZ9z_0_IQyQRKq2l46jjbbZUnsyzp-O38OvjEFaCExoDORLKrbCJcqrFCozztoypoy3YhK/pub?start=false&loop=false&delayms=3000" target="_blank" rel="noopener noreferrer">
           <button className="course-button">Slideshow</button>
         </Link>
-        <Link to="https://docs.google.com/document/d/e/2PACX-1vTEaJ7iDzAUinglguqROpP1td07qS3MJXrmV3s9pyxH3qCYkMPgAjF167X7FLqv-tFDwJf1t9DyyFU8/pub" target="_blank" rel="noopener noreferrer">
+        <Link to="/self-paced-classes/astronomy/astrostarmap"> {/* Navigate to AstroStarMap */}
           <button className="course-button">Worksheet</button>
         </Link>
         <Link to="https://docs.google.com/document/d/e/2PACX-1vS3iD-PzMmqQS504HQMMXvMEqbXKCFOw2AGHZb8w-X57NtqWiVdpLAswvuioJxlUCGbDLMouSlySKtM/pub" target="_blank" rel="noopener noreferrer">
