@@ -1,54 +1,54 @@
-// //server.js
-// const express = require("express")
-// const mongoose = require("mongoose")
-// const bodyParser = require("body-parser");
-// const passport = require("passport");
-// const app = express()
-// const bcrypt = require("bcryptjs");
-// const jwt = require("jsonwebtoken");
-// const keys = require("./config/keys.js");
-// const cors = require("cors")
-// const path = require('path');
-// const cookieParser = require("cookie-parser");
-// const collection = require("./mongo.js")
+//server.js
+const express = require("express")
+const mongoose = require("mongoose")
+const bodyParser = require("body-parser");
+const passport = require("passport");
+const app = express()
+const bcrypt = require("bcryptjs");
+const jwt = require("jsonwebtoken");
+const keys = require("./config/keys.js");
+const cors = require("cors")
+const path = require('path');
+const cookieParser = require("cookie-parser");
+const collection = require("./mongo.js")
 
-// //
-// const routes = require('../src/routes/*');
+//
+const routes = require('../src/routes/*');
 
-// app.use('/', routes);
-// //
+app.use('/', routes);
+//
 
-// app.use(express.json())
-// app.use(express.urlencoded({extended: true }))
-// app.use(cors({
-//   origin: 'https://www.stemzlearning.org', // Replace with your frontend URL
-//   credentials: true, // Enable sending cookies across domains
-// }));
-// app.use(cookieParser());
+app.use(express.json())
+app.use(express.urlencoded({extended: true }))
+app.use(cors({
+  origin: 'https://www.stemzlearning.org', // Replace with your frontend URL
+  credentials: true, // Enable sending cookies across domains
+}));
+app.use(cookieParser());
 
-// // Load input validation
-// const validateRegisterInput = require("./validation/register.js");
-// const validateLoginInput = require("./validation/login.js");
+// Load input validation
+const validateRegisterInput = require("./validation/register.js");
+const validateLoginInput = require("./validation/login.js");
 
-// // Load User model
-// const User = require("./models/User.js");
+// Load User model
+const User = require("./models/User.js");
 
-// // DB Config
-// const db = require("./config/keys.js").mongoURI;
-// mongoose.connect(db, { useNewUrlParser: true })
-//   .then(() => console.log("MongoDB successfully connected"))
-//   .catch(err => console.log(err));
+// DB Config
+const db = require("./config/keys.js").mongoURI;
+mongoose.connect(db, { useNewUrlParser: true })
+  .then(() => console.log("MongoDB successfully connected"))
+  .catch(err => console.log(err));
 
-// //Start Server
-// app.listen(3001, ()=>{
-//     console.log("port connected", 3001)
-// })
+//Start Server
+app.listen(3001, ()=>{
+    console.log("port connected", 3001)
+})
 
-// // Serve homepage for the root path
-// app.get('/', (req, res) => {
-//     console.log(`Serving homepage`);
-//     res.sendFile(path.join(__dirname, '../build', 'index.html'));
-// });
+// Serve homepage for the root path
+app.get('/', (req, res) => {
+    console.log(`Serving homepage`);
+    res.sendFile(path.join(__dirname, '../build', 'index.html'));
+});
 
 // //LOGIN PROCESSING
 // // app.post("/login", async(req, res) => {
@@ -302,4 +302,4 @@
 
 
 // app.use(express.static(path.join(__dirname, '../build')));
-// module.exports = app;
+module.exports = app;
