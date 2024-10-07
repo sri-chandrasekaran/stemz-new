@@ -26,23 +26,23 @@ app.use(cors({
 }));
 app.use(cookieParser());
 
-// Load input validation
-const validateRegisterInput = require("./validation/register.js");
-const validateLoginInput = require("./validation/login.js");
+// // Load input validation
+// const validateRegisterInput = require("./validation/register.js");
+// const validateLoginInput = require("./validation/login.js");
 
-// Load User model
-const User = require("./models/User.js");
+// // Load User model
+// const User = require("./models/User.js");
 
-// DB Config
-const db = require("./config/keys.js").mongoURI;
-mongoose.connect(db, { useNewUrlParser: true })
-  .then(() => console.log("MongoDB successfully connected"))
-  .catch(err => console.log(err));
+// // DB Config
+// const db = require("./config/keys.js").mongoURI;
+// mongoose.connect(db, { useNewUrlParser: true })
+//   .then(() => console.log("MongoDB successfully connected"))
+//   .catch(err => console.log(err));
 
-//Start Server
-app.listen(3001, ()=>{
-    console.log("port connected", 3001)
-})
+// //Start Server
+// app.listen(3001, ()=>{
+//     console.log("port connected", 3001)
+// })
 
 // // Serve homepage for the root path
 // app.get('/', (req, res) => {
