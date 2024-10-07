@@ -1,30 +1,30 @@
-//server.js
-const express = require("express")
-const mongoose = require("mongoose")
-const bodyParser = require("body-parser");
-const passport = require("passport");
-const app = express()
-const bcrypt = require("bcryptjs");
-const jwt = require("jsonwebtoken");
-const keys = require("./config/keys.js");
-const cors = require("cors")
-const path = require('path');
-const cookieParser = require("cookie-parser");
-const collection = require("./mongo.js")
+// //server.js
+// const express = require("express")
+// const mongoose = require("mongoose")
+// const bodyParser = require("body-parser");
+// const passport = require("passport");
+// const app = express()
+// const bcrypt = require("bcryptjs");
+// const jwt = require("jsonwebtoken");
+// const keys = require("./config/keys.js");
+// const cors = require("cors")
+// const path = require('path');
+// const cookieParser = require("cookie-parser");
+// const collection = require("./mongo.js")
 
-//
-const routes = require('../src/routes/*');
+// //
+// const routes = require('../src/routes/*');
 
-app.use('/', routes);
-//
+// app.use('/', routes);
+// //
 
-app.use(express.json())
-app.use(express.urlencoded({extended: true }))
-app.use(cors({
-  origin: 'https://www.stemzlearning.org', // Replace with your frontend URL
-  credentials: true, // Enable sending cookies across domains
-}));
-app.use(cookieParser());
+// app.use(express.json())
+// app.use(express.urlencoded({extended: true }))
+// app.use(cors({
+//   origin: 'https://www.stemzlearning.org', // Replace with your frontend URL
+//   credentials: true, // Enable sending cookies across domains
+// }));
+// app.use(cookieParser());
 
 // // Load input validation
 // const validateRegisterInput = require("./validation/register.js");
