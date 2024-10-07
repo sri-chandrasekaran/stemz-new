@@ -5,7 +5,14 @@
       { "src": "src/**/*", "use": "@vercel/static" }          
     ],
     "routes": [
-      { "src": "/(.*)", "dest": "/server/server.js" },
+      { "src": "/(.*)", "dest": "/server/server.js", 
+      "methods": [
+        "GET",
+        "POST",
+        "PUT",
+        "PATCH",
+        "DELETE",
+        "OPTIONS"]},
       { "src": "/src/(.*)", "dest": "/src/$1" } 
     ]                 
   }
