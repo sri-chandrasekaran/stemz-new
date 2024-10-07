@@ -44,11 +44,11 @@ app.listen(3001, ()=>{
     console.log("port connected", 3001)
 })
 
-// Serve homepage for the root path
-app.get('/', (req, res) => {
-    console.log(`Serving homepage`);
-    res.sendFile(path.join(__dirname, '../build', 'index.html'));
-});
+// // Serve homepage for the root path
+// app.get('/', (req, res) => {
+//     console.log(`Serving homepage`);
+//     res.sendFile(path.join(__dirname, '../build', 'index.html'));
+// });
 
 // //LOGIN PROCESSING
 // // app.post("/login", async(req, res) => {
