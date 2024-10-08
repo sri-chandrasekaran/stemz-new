@@ -130,7 +130,7 @@ const SignUpForm = () => {
                 I am a teacher
               </label>
             </div> */}
-          <button type="submit">Submit</button>
+          <button type="submit">Submit1</button>
           <p>
           Already have an account? <Link to="/login" className="login-link4">Login</Link>
         </p>
