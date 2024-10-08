@@ -9,6 +9,8 @@
         "PATCH",
         "DELETE",
         "OPTIONS"]},
-      { "src": "/src/(.*)", "dest": "/src/$1" } 
+      { "src": "/src/(.*)", "dest": "/src/$1" },
+      { "src": "/static/(.*)", "dest": "/build/static/$1"}
+
     ]                 
   }
