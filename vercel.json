@@ -11,6 +11,10 @@
             "src": "/static/(.*)",
             "dest": "/build/static/$1"
         },
+        {
+            "src": "/build/(.*)",
+            "dest": "/build/$1"
+        },
         { "src": "/src/(.*)", "dest": "/src/$1" },
         { "src": "/(.*)", "dest": "/server/server.js", 
         "methods": [
