@@ -1,0 +1,160 @@
+{
+    "title": "Basics of Coding Quiz",
+    "total": 29,
+    "questions": [
+        {
+            "question": "What is Scratch?",
+            "options": [
+                "A video game made by high school students",
+                "Itchy skin is an irritating sensation that makes you want to scratch",
+                "Scratch is a programming tool created by the students of MIT that is used to learn the basics of coding.",
+                "An online encyclopedia meant for middle schoolers"
+            ],
+            "score": 1,
+            "correctAnswerIndex": 2
+        },
+        {
+            "question": "Which way does the x-axis move?",
+            "options": [
+                "Up and down",
+                "Right & Left",
+                "Diagonally",
+                "It doesn’t move"
+            ],
+            "score": 3,
+            "correctAnswerIndex": 1
+        },
+        {
+            "question": "What are Conditional Statements?",
+            "options": [
+                "A statement that runs no matter what is true",
+                "A statement that’s only found in the code for games",
+                "A statement that’s only found in one coding language",
+                "A set of rules performed if a certain condition is met (tells a program to run different actions based on if a specific condition is true or false)"
+            ],
+            "score": 2,
+            "correctAnswerIndex": 3
+        },
+        {
+            "question": "What are variables?",
+            "options": [
+                "A variable is a name used to store information (used to reference and manipulate in a computer program)",
+                "A part of a math equation that has alphabets substituted for numbers",
+                "Anything that can change or be changed within an experiment",
+                "Any characteristic, number, or quantity that can be measured or counted"
+            ],
+            "score": 1,
+            "correctAnswerIndex": 0
+        },
+        {
+            "question": "What are the two main types of loops called?",
+            "options": [
+                "Here & There",
+                "While & For",
+                "In & Out",
+                "Left & Right"
+            ],
+            "score": 3,
+            "correctAnswerIndex": 1
+        },
+        {
+            "question": "What are wait-blocks?",
+            "options": [
+                "Lines outside grocery stores",
+                "They skip the next block",
+                "They repeat a behavior forever",
+                "Control block that allows the cat to wait for a given amount of time"
+            ],
+            "score": 1,
+            "correctAnswerIndex": 3
+        },
+        {
+            "question": "What are If-Else Statements?",
+            "options": [
+                "Used to check whether the given condition is true or false.",
+                "Conditionals describe the result of a certain condition",
+                "This statement runs a block of code “if” a specific condition is true. “Else” is used to run a block of code if the specific condition is false",
+                "An alternative statement that is executed if the result of a previous test condition"
+            ],
+            "score": 2,
+            "correctAnswerIndex": 2
+        },
+        {
+            "question": "What are Loops?",
+            "options": [
+                "A closed curve whose initial and final points coincide in a fixed point known as the basepoint.",
+                "A loop is a structure that repeats instructions until a condition is met",
+                "A shape produced by a curve that bends around and crosses itself",
+                "A repeating section of sound material"
+            ],
+            "score": 2,
+            "correctAnswerIndex": 1
+        },
+        {
+            "question": "What way does the y-axis move?",
+            "options": [
+                "Up & down",
+                "Left & Right",
+                "In & Out",
+                "Diagonally"
+            ],
+            "score": 3,
+            "correctAnswerIndex": 0
+        },
+        {
+            "question": "What is coding?",
+            "options": [
+                "A game to give instructions",
+                "A number to assign different computers",
+                "All the standards to teach technology in the classroom",
+                "Coding is the computer language used to develop apps, websites, and software"
+            ],
+            "score": 3,
+            "correctAnswerIndex": 3
+        },
+        {
+            "question": "What are sensors?",
+            "options": [
+                "A device which detects or measures a physical property and records, indicates, or otherwise responds to it",
+                "A device for recording an image of an object on a light-sensitive surface",
+                "A category of blocks used to detect things using the different senses",
+                "An enclosed compartment, as in a kitchen range, for cooking and heating food"
+            ],
+            "score": 1,
+            "correctAnswerIndex": 0
+        },
+        {
+            "question": "How does a code work?",
+            "options": [
+                "It organizes viruses",
+                "It tells your computer what to do",
+                "It doesn't work at all",
+                "It is a random number"
+            ],
+            "score": 2,
+            "correctAnswerIndex": 1
+        },
+        {
+            "question": "What word is strongly related to code?",
+            "options": [
+                "Commands",
+                "Summary",
+                "Bad grades",
+                "None"
+            ],
+            "score": 2,
+            "correctAnswerIndex": 0
+        },
+        {
+            "question": "Which of the following careers are related to coding?",
+            "options": [
+                "Doctor",
+                "Construction Worker",
+                "Engineering",
+                "Police Officer"
+            ],
+            "score": 3,
+            "correctAnswerIndex": 2
+        }
+    ]
+}

@@ -1,0 +1,160 @@
+{
+    "title": "Biochemistry Quiz",
+    "total": 26,
+    "questions": [
+        {
+            "question": "What is Chemistry?",
+            "options": [
+                "The study of the structure of a plant or animal",
+                "The branch of science that deals with the structure of matter and how the fundamental constituents of the universe interact",
+                "The branch of science that studies the properties of matter and how matter interacts with energy",
+                "The study of all living organisms (and dead organisms, like fossils)"
+            ],
+            "score": 1,
+            "correctAnswerIndex": 2
+        },
+        {
+            "question": "What makes up matter?",
+            "options": [
+                "Energy",
+                "Atoms",
+                "Compounds",
+                "Electrons"
+            ],
+            "score": 2,
+            "correctAnswerIndex": 1
+        },
+        {
+            "question": "What are electrons, neutrons, and protons made of?",
+            "options": [
+                "They are made up of smaller atoms",
+                "They are made up of photons, the basic units of light",
+                "They are made up of molecules",
+                "They are made up of quarks, which are fundamental particles and cannot be broken up"
+            ],
+            "score": 3,
+            "correctAnswerIndex": 3
+        },
+        {
+            "question": "What are atoms?",
+            "options": [
+                "Atoms are the extremely small building blocks of all matter",
+                "Atoms are large conglomerations of molecules",
+                "Atoms are composed solely of protons",
+                "Atoms are imaginary constructs used only in theoretical physics"
+            ],
+            "score": 1,
+            "correctAnswerIndex": 0
+        },
+        {
+            "question": "What is a molecule?",
+            "options": [
+                "A single atom",
+                "A group of two or more atoms (Molecules are the smallest unit of a substance that has the same qualities of that substance)",
+                "A large collection of cells",
+                "A subatomic particle"
+            ],
+            "score": 1,
+            "correctAnswerIndex": 1
+        },
+        {
+            "question": "What are bonds?",
+            "options": [
+                "Bonds are invisible lines connecting atoms",
+                "Bonds are physical connections between atoms",
+                "Bonds are electromagnetic fields surrounding atoms",
+                "Chemical bonds that hold together atoms in molecules"
+            ],
+            "score": 2,
+            "correctAnswerIndex": 3
+        },
+        {
+            "question": "What is a protein?",
+            "options": [
+                "Proteins are types of carbohydrates",
+                "Proteins are small molecules found in minerals",
+                "Proteins are long chains of amino acids",
+                "Proteins are single atoms"
+            ],
+            "score": 2,
+            "correctAnswerIndex": 2
+        },
+        {
+            "question": "What is an amino acid?",
+            "options": [
+                "Individual atoms found in proteins",
+                "Special molecules used by living organisms to make proteins",
+                "Types of carbohydrates",
+                "Large, complex structures"
+            ],
+            "score": 2,
+            "correctAnswerIndex": 1
+        },
+        {
+            "question": "What is a carbohydrate?",
+            "options": [
+                "Carbohydrates are molecules in your body that store energy and provide structure",
+                "Carbohydrates are types of lipids",
+                "Carbohydrates are single atoms",
+                "Carbohydrates are proteins found in the body"
+            ],
+            "score": 2,
+            "correctAnswerIndex": 0
+        },
+        {
+            "question": "Which of these is not a type of carbohydrate?",
+            "options": [
+                "Monosaccharides",
+                "Disaccharides",
+                "Polysaccharides",
+                "Carbohydrates are not classified into different types"
+            ],
+            "score": 3,
+            "correctAnswerIndex": 3
+        },
+        {
+            "question": "What are nucleic acids?",
+            "options": [
+                "Large proteins found in the cell",
+                "Small molecules that provide structural support to the cell",
+                "Nucleic acids are how information is stored and transferred in a cell",
+                "Nucleic acids are only found in plant cells"
+            ],
+            "score": 2,
+            "correctAnswerIndex": 2
+        },
+        {
+            "question": "Which of these is not a difference between DNA and RNA?",
+            "options": [
+                "They have different sugars",
+                "DNA is only found in animal cells, while RNA is found in plant cells",
+                "RNA has uracil and DNA has thymine",
+                "RNA has 1 strand and DNA has 2 strands"
+            ],
+            "score": 3,
+            "correctAnswerIndex": 1
+        },
+        {
+            "question": "Where is RNA found?",
+            "options": [
+                "RNA is found throughout the cell (made in nucleus and go to ribosomes)",
+                "RNA is found only in the mitochondria of the cell",
+                "RNA is found only in the cell membrane",
+                "RNA is found only in the cytoplasm of the cell"
+            ],
+            "score": 1,
+            "correctAnswerIndex": 0
+        },
+        {
+            "question": "Where is DNA found?",
+            "options": [
+                "DNA is found only in the mitochondria of the cell",
+                "DNA is found only in the cytoplasm of the cell",
+                "DNA is found primarily in the cell nucleus and in small amounts in mitochondria",
+                "DNA is not found in the cell at all"
+            ],
+            "score": 1,
+            "correctAnswerIndex": 2
+        }
+    ]
+}

@@ -1,0 +1,160 @@
+{
+    "title": "Zoology Quiz",
+    "total": 28,
+    "questions": [
+        {
+            "question": "What is zoology?",
+            "options": [
+                "The study of plant genetics.",
+                "The study of celestial bodies.",
+                "The scientific study of the classification, structure, distribution, behavior, and physiology of animals.",
+                "The study of rock formations."
+            ],
+            "score": 1,
+            "correctAnswerIndex": 2
+        },
+        {
+            "question": "What is Taxonomy?",
+            "options": [
+                "The study of weather patterns.",
+                "The scientific study of naming and classifying groups of living organisms based on their characteristics.",
+                "The study of ancient artifacts.",
+                "The study of economic systems."
+            ],
+            "score": 2,
+            "correctAnswerIndex": 1
+        },
+        {
+            "question": "Which of these accurately describes the theory of evolution?",
+            "options": [
+                "The process by which rocks are formed.",
+                "The change in the characteristics of a species over several generations. Relies on mutations and the process of natural selection.",
+                "The study of chemical reactions.",
+                "The change in the characteristics of a species over several generations. Relies on mutations and the process of natural selection."
+            ],
+            "score": 3,
+            "correctAnswerIndex": 1
+        },
+        {
+            "question": "What is natural selection?",
+            "options": [
+                "The selection of plants based on their height.",
+                "A process in which animals who are better adapted to their environment tend to survive by producing more offspring. It is the main process of evolution.",
+                "The process of choosing the best crops for farming.",
+                "A method for breeding livestock."
+            ],
+            "score": 2,
+            "correctAnswerIndex": 1
+        },
+        {
+            "question": "What is Distribution?",
+            "options": [
+                "The study of how plants reproduce.",
+                "The study of how living animals are spread on the surface of the globe (water and land).",
+                "The division of geological layers.",
+                "The study of economic resources."
+            ],
+            "score": 1,
+            "correctAnswerIndex": 1
+        },
+        {
+            "question": "What are Abiotic Factors?",
+            "options": [
+                "Living organisms in an ecosystem.",
+                "The study of animal behavior.",
+                "The interaction between species.",
+                "Non-living condition/thing that affects an ecosystem and the organisms in it."
+            ],
+            "score": 2,
+            "correctAnswerIndex": 3
+        },
+        {
+            "question": "What are Biotic Factors?",
+            "options": [
+                "Climate conditions in an area.",
+                "Types of soil found in an ecosystem.",
+                "Living condition/thing that affects an ecosystem and the organisms within it.",
+                "The study of water cycles."
+            ],
+            "score": 2,
+            "correctAnswerIndex": 2
+        },
+        {
+            "question": "What is ecology?",
+            "options": [
+                "The study of stars and galaxies.",
+                "A branch of biology that deals with the relations of organisms to each other and to their surroundings.",
+                "The study of ancient civilizations.",
+                "The study of human anatomy."
+            ],
+            "score": 1,
+            "correctAnswerIndex": 1
+        },
+        {
+            "question": "What is ethology?",
+            "options": [
+                "The scientific study of animal behavior, usually focused on behaviors under natural conditions.",
+                "The study of human cultures.",
+                "The study of plant diseases.",
+                "The study of rock formations."
+            ],
+            "score": 1,
+            "correctAnswerIndex": 0
+        },
+        {
+            "question": "What is a keystone species?",
+            "options": [
+                "A species that has no natural predators.",
+                "A species that is found only in one particular habitat.",
+                "A species that is at the top of the food chain.",
+                "A species that other species in the ecosystem largely depend on."
+            ],
+            "score": 2,
+            "correctAnswerIndex": 3
+        },
+        {
+            "question": "What is physiology?",
+            "options": [
+                "The study of plant growth.",
+                "The study of weather patterns.",
+                "Branch of biology that deals with the functions of organisms and their parts.",
+                "The study of mineral deposits."
+            ],
+            "score": 2,
+            "correctAnswerIndex": 2
+        },
+        {
+            "question": "What is Metamorphosis?",
+            "options": [
+                "The process of photosynthesis.",
+                "Changes in physical form & structure.",
+                "The formation of sedimentary rocks.",
+                "The process of pollination."
+            ],
+            "score": 3,
+            "correctAnswerIndex": 1
+        },
+        {
+            "question": "What are symbiotic relationships?",
+            "options": [
+                "One organism (form of life) having a close relationship with a different organism.",
+                "The relationship between soil and plants.",
+                "The interaction between predators and prey.",
+                "The relationship between the sun and the earth."
+            ],
+            "score": 3,
+            "correctAnswerIndex": 0
+        },
+        {
+            "question": "Which of these is not a type of 'species distribution'?",
+            "options": [
+                "Uniform",
+                "Clumped",
+                "Cellular",
+                "Random"
+            ],
+            "score": 3,
+            "correctAnswerIndex": 2
+        }
+    ]
+}
