@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import stemzLearningLogo from "../assets/logo.png"; // Ensure this path is correct
+import stemzLearningLogo from "../assets/logo.png"; 
 
 const BiochemistryLesson = () => {
   const [isProteinsExpanded, setIsProteinsExpanded] = useState(false);
