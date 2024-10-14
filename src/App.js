@@ -46,6 +46,7 @@ import Chem2 from './routes/chem2'
 import Chem3 from './routes/chem3'
 import Chem4 from './routes/chem4'
 import Chemquiz from './routes/Chemquiz'
+import BiochemWorkSheet from './routes/BiochemWorkSheet';
 import Circuit1s from './routes/circuit1s'
 import Circuit2s from './routes/circuit2s'
 import Circuit3s from './routes/circuit3s'
@@ -147,6 +148,7 @@ function App() {
         <Route path='self-paced-classes/biochemistry/bio1' element={<Bio1 />} />
         <Route path='self-paced-classes/biochemistry/bio2' element={<Bio2 />} />
         <Route path='self-paced-classes/biochemistry/bioquiz' element={<Bioquiz />} />
+        <Route path ='self-paced-classes/biochemistry/biochemworksheet' element={<BiochemWorkSheet />} />
         <Route path='self-paced-classes/chemistry/chem1' element={<Chem1 />} />
         <Route path='self-paced-classes/chemistry/chem2' element={<Chem2 />} />
         <Route path='self-paced-classes/chemistry/chem3' element={<Chem3 />} />

@@ -9,6 +9,7 @@ import uranus from "../assets/Uranus.png";
 import neptune from "../assets/Neptune.png";
 import stemzLearningLogo from "../assets/logo.png";
 
+
 const planets = [
   { name: "Mercury", description: "Mercury's surface is covered with craters. It is the closest planet to the Sun, but has very little atmosphere. This makes Mercury very hot on the side where it faces the Sun, and very cold on the side away from the Sun. Mercury orbits the Sun quickly, but rotates around itself very slowly. This creates very short years and very long days.", image: mercury, isWide: false },
   { name: "Venus", description: "Venus is similar to Earth in size and density. It has a large iron core and silicate mantle. It has very thick clouds, which reflect sunlight well. This makes it very bright, and easy for us to observe in space. The clouds are full of carbon dioxide and acid, which traps heat very well. This makes Venus the hottest planet.  The lack of impact craters tell us that the planet's surface keeps changing, perhaps due to volcanic eruptions. The rotation is also very slow, creating very long days.", image: venus, isWide: false },
@@ -43,6 +44,12 @@ const AstroWorkSheet = () => {
     return () => window.removeEventListener('resize', handleResize);
   }, []);
 
+  const handleGoBack = () => {
+    window.history.back();
+  };
+
+  const [isHovering, setIsHovering] = useState(false);
+
   const styles = {
     container: {
       textAlign: 'center',
@@ -57,13 +64,13 @@ const AstroWorkSheet = () => {
       alignItems: 'center',
     },
     title: {
-      color: '#2e8b57',
+      color: '#254E17',
       fontSize: '48px',
       marginBottom: '10px',
       fontFamily: 'Orbitron, sans-serif',
     },
     subtitle: {
-      color: '#3cb371',
+      color: '#357717',
       fontSize: '36px',
       marginBottom: '30px',
       fontFamily: 'Orbitron, sans-serif',
@@ -77,13 +84,13 @@ const AstroWorkSheet = () => {
       maxWidth: '1400px',
     },
     card: {
-      border: '3px solid #2e8b57',
+      border: '3px solid #357717',
       borderRadius: '20px',
-      padding: '15px',
+      padding: '10px',
       display: 'flex',
       alignItems: 'center',
       width: isMobile ? '100%' : 'calc(50% - 15px)', // Responsive width
-      height: '350px',
+      height: '375px',
       backgroundColor: 'rgba(255, 255, 255, 0.1)',
       backdropFilter: 'blur(5px)',
       transition: 'transform 0.3s ease, box-shadow 0.3s ease',
@@ -120,25 +127,53 @@ const AstroWorkSheet = () => {
       justifyContent: 'space-between',
     },
     planetName: {
-      color: '#2e8b57',
+      color: '#357717',
       fontSize: '32px',
       marginBottom: '10px',
       fontFamily: 'Orbitron, sans-serif',
     },
     description: {
-      fontSize: '18px',
+      fontSize: '16px',
       color: '#000',
       flexGrow: 1,
       overflowY: 'auto',
+      lineHeight: '1.5',
     },
     logo: {
       maxWidth: '300px',
       marginBottom: '30px',
     },
+    backButton: {
+      position: 'absolute',
+      top: '20px',
+      left: '20px',
+      color: 'white',
+      border: 'none',
+      borderRadius: '50%',
+      background: isHovering ? '#3cb371' : '#357717', 
+      width: '60px',  
+      height: '60px', 
+      display: 'flex',
+      alignItems: 'center',
+      justifyContent: 'center',
+      cursor: 'pointer',
+      transition: 'all 0.3s ease',
+      fontSize: '36px', 
+      fontWeight: 'bold',
+      transform: isHovering ? 'scale(0.9)' : 'scale(1)', 
+    },
   };
 
   return (
     <div style={styles.container}>
+     <button 
+        onClick={handleGoBack} 
+        style={styles.backButton}
+        onMouseEnter={() => setIsHovering(true)}
+        onMouseLeave={() => setIsHovering(false)}
+      >
+        &#8592;
+      </button>
       <img src={stemzLearningLogo} alt="STEMZ Learning" style={styles.logo} />
       <h1 style={styles.title}>The Solar System</h1>
       <h2 style={styles.subtitle}>Astronomy: Lesson 1</h2>
