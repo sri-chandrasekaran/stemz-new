@@ -11,6 +11,7 @@ import flc from '../assets/flc.jpg'
 import './volunteer.css';
 
 const Volunteers = () => {
+  console.log("Volunteers component rendered");
   return (
     <div>
       <Navbar />
