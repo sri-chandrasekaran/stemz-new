@@ -49,7 +49,7 @@ const Volunteers = () => {
         </div>
         <div className="college-logos">
           <img src={berkeley} alt="College Logo" className="college-logo" />
-          <img src={ucsd} alt="College Logo" className="college-logo" />
+          {/* <img src={ucsd} alt="College Logo" className="college-logo" /> */}
           <img src={flc} alt="College Logo" className="college-logo" />
         </div>
       </div>
