@@ -73,7 +73,7 @@ const PaymentComponent = () => {
           return actions.order.create({
             purchase_units: [{
               amount: {
-                value: '39.95'
+                value: '49.95'
               },
               shipping: {
                 address: {
