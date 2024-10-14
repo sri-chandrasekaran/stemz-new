@@ -2,12 +2,18 @@ import React from 'react';
 import Navbar from '../components/Navbar';
 import HeroOther from '../components/HeroOther';
 import Footer from '../components/Footer';
-import ucla from '../assets/ucla.png'
-import ucr from '../assets/ucr.png'
-import stanford from '../assets/stanford.png'
-import berkeley from '../assets/berkeley.png'
-import ucsd from '../assets/ucsd.png'
-import flc from '../assets/flc.jpg'
+// import ucla from '../assets/ucla.png'
+// import ucr from '../assets/ucr.png'
+// import stanford from '../assets/stanford.png'
+// import berkeley from '../assets/berkeley.png'
+// import ucsd from '../assets/ucsd.png'
+// import flc from '../assets/flc.jpg'
+import ucla from '../assets/ucla.png';
+import ucr from '../assets/ucr.png';
+import stanford from '../assets/stanford.png';
+import berkeley from '../assets/berkeley.png';
+import ucsd from '../assets/ucsd.png';
+import flc from '../assets/flc.jpg';
 import './volunteer.css';
 
 const Volunteers = () => {
