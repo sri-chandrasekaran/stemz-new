@@ -9,11 +9,11 @@ import Footer from '../components/Footer';
 // import ucsd from '../assets/ucsd.png'
 // import flc from '../assets/flc.jpg'
 import ucla from '../assets/ucla.png';
-import ucr from '../assets/ucr.png';
-import stanford from '../assets/stanford.png';
-import berkeley from '../assets/berkeley.png';
-import ucsd from '../assets/ucsd.png';
-import flc from '../assets/flc.jpg';
+import ucr from '../assets/ucr1.png';
+import stanford from '../assets/stanford1.png';
+import berkeley from '../assets/berkeley1.png';
+import ucsd from '../assets/ucsd1.jpeg';
+import flc from '../assets/flc1.jpg';
 import './volunteer.css';
 
 const Volunteers = () => {
