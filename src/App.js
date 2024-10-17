@@ -103,7 +103,7 @@ function App() {
         <Route path='/about-us' element={<About />} />
         <Route path='/get-involved' element={<GetInvolved />} />
         {/* <Route path='/get-involved/volunteers' element={<Volunteers />} /> */}
-        <Route path='/get-involved/volunteer' element={<Volunteer />} />
+        <Route path='/volunteer' element={<Volunteer />} />
         <Route path='/contact' element={<Contact />} />
         <Route path='/online-classes' element={<OnlineClasses />} />
         <Route path='/self-paced-classes' element={<SelfPacedClasses />} />
