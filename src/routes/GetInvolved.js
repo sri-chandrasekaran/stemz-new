@@ -16,7 +16,7 @@ const GetInvolved = () => {
             <p>We are recruiting hard-working high-school and college level 
                 students to teach STEM topics to elementary school students and 
                 develop our curriculum! Use the link below to learn more and apply.</p>
-            <Link to="https://docs.google.com/forms/d/e/1FAIpQLScBsZIUixxNEQKqWpDcev9XXRO6QBYkAjyqbF5iv1vXD6GjFA/viewform" target="_blank" rel="noopener noreferrer">
+            <Link to="./volunteer" target="_blank" rel="noopener noreferrer">
                 <button className="box-button">Learn More</button>
             </Link>
         </div>

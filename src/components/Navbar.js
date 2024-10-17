@@ -115,9 +115,6 @@ const Navbar = () => {
                     </ul>
                 </li>
                 <li>
-                    <Link to='/volunteer' onClick={scrollToTop}>Volunteer</Link>
-                </li>
-                <li>
                     <Link to='/contact' onClick={scrollToTop}>Contact</Link>
                 </li>
                 {/* <li>
