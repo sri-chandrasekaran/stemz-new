@@ -21,7 +21,7 @@ app.use('/', routes);
 app.use(express.json())
 app.use(express.urlencoded({extended: true }))
 app.use(cors({
-  origin: 'https://www.stemzlearning.org', // Replace with your frontend URL
+  origin: 'https://stemz-new-deployment-testing-pzjapud3r.vercel.app/', // Replace with your frontend URL
   credentials: true, // Enable sending cookies across domains
 }));
 app.use(cookieParser());

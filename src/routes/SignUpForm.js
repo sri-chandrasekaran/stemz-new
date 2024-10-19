@@ -20,7 +20,7 @@ const SignUpForm = () => {
 
     try{
 
-      await axios.post("https://www.stemzlearning.org/sign-up", {
+      await axios.post("https://stemz-new-deployment-testing-pzjapud3r.vercel.app/sign-up", {
         withCredentials: true,
         name: name, grade: grade, email: email, password: password
       })
@@ -49,7 +49,7 @@ const SignUpForm = () => {
 
   async function Login(password, email) {
     try {
-      const response = await axios.post("https://www.stemzlearning.org/login", {
+      const response = await axios.post("https://stemz-new-deployment-testing-pzjapud3r.vercel.app/login", {
         email: email, password: password
       }, {
         withCredentials: true,
