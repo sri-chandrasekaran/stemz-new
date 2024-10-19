@@ -11,9 +11,13 @@
     }
   ],
   "routes": [
-    { "src": "/api/(.*)", "dest": "/api/$1" },    
+    { "src": "/api/(.*)", "dest": "/api/$1" }, 
+    { "src": "/manifest.json", "dest": "/build/manifest.json" },
+    { "src": "/favicon.ico", "dest": "/build/favicon.ico" },   
+    { "src": "/logo192.png", "dest": "/build/logo192.png" },   
+    { "src": "/logo512.png", "dest": "/build/logo512.png" },   
     { "handle": "filesystem" },        
-    { "src": "/public/(.*)", "dest": "/public/$1" },                
+    { "src": "/build/(.*)", "dest": "/build/$1" },                
     { "src": "/(.*)", "dest": "/build/index.html" }  
   ]
 }
