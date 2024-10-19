@@ -11,9 +11,9 @@
     }
   ],
   "routes": [
-    { "src": "/api/(.*)", "dest": "/api/$1" },         
+    { "src": "/api/(.*)", "dest": "/api/$1" },    
+    { "src": "/manifest.json", "dest": "/build/manifest.json" },     
     { "handle": "filesystem" },                        
-    { "src": "/(.*)", "dest": "/build/index.html" },   
-    { "src": "/manifest.json", "dest": "/build/manifest.json" }
+    { "src": "/(.*)", "dest": "/build/index.html" }  
   ]
 }
