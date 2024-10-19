@@ -13,7 +13,6 @@
   "routes": [
     { "src": "/api/(.*)", "dest": "/api/$1" },    
     { "handle": "filesystem" },        
-    { "src": "/build/(.*)", "dest": "/build/$1" },                
-    { "src": "/(.*)", "dest": "/build/index.html" }  
+    { "src": "/(.*)", "dest": "/build/$1" }
   ]
 }
