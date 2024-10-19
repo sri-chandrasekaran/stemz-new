@@ -9,11 +9,6 @@
       "src": "build/**/*",
       "use": "@vercel/static"
     }
-  ],
-  "routes": [
-    { "src": "/api/(.*)", "dest": "/api/$1" },
-    { "src": "/(.*)", "dest": "/build/$1" },
-    { "src": "/(.*)", "dest": "/build/index.html" }
   ]
 }
   
