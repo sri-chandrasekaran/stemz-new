@@ -16,6 +16,7 @@
     { "src": "/favicon.ico", "dest": "/build/favicon.ico" },   
     { "src": "/logo192.png", "dest": "/build/logo192.png" },   
     { "src": "/logo512.png", "dest": "/build/logo512.png" },   
+    { "src": "/static/(.*)", "dest": "/build/static/$1" }, 
     { "handle": "filesystem" },        
     { "src": "/build/(.*)", "dest": "/build/$1" },                
     { "src": "/(.*)", "dest": "/build/index.html" }  
