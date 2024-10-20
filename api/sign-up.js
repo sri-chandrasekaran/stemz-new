@@ -1,12 +1,10 @@
-import dbConnect from './dbConnect.js';
-const express = require('express');
-const app = express();
+const dbConnect = require('./dbConnect.js');
 const User = require("./models/User.js");
 const bcrypt = require("bcryptjs");
 
 
-export default async function handler(req, res) {
-    await dbConnect(); // Connect to the database
+module.exports = async (req, res) => {
+  await dbConnect(); // Connect to the database
 
     if (req.method === 'POST') {
       User.findOne({ email: req.body.email }).then(user => {
@@ -37,6 +35,3 @@ export default async function handler(req, res) {
         return res.status(405).end(`Method ${req.method} Not Allowed`);
     }
 }
-      
-
-module.exports = app();

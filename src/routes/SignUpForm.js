@@ -21,9 +21,8 @@ const SignUpForm = () => {
     try{
 
       await axios.post("/api/sign-up", {
-        withCredentials: true,
         name: name, grade: grade, email: email, password: password
-      })
+      }, {withCredentials: true})
       .then(res=>{
         console.log(res.data)
         if (res.data==="Email Already Exists"){
