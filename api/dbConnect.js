@@ -1,4 +1,4 @@
-import mongoose from 'mongoose';
+const mongoose = require("mongoose")
 
 const dbConnect = async () => {
     const db = require("./config/keys.js").mongoURI;
@@ -7,4 +7,4 @@ const dbConnect = async () => {
       .catch(err => console.log(err));
 }
 
-export default dbConnect;
+module.exports = dbConnect;
