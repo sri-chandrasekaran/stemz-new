@@ -20,7 +20,7 @@ const SignUpForm = () => {
 
     try{
 
-      await axios.post("/api/sign-up", {
+      await axios.post("/api/signup", {
         withCredentials: true,
         name: name, grade: grade, email: email, password: password
       })
