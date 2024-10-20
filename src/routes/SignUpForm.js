@@ -20,10 +20,9 @@ const SignUpForm = () => {
 
     try{
 
-      await axios.post("https://www.stemzlearning.org/sign-up", {
-        withCredentials: true,
+      await axios.post("https://www.stemzlearning.org/api/sign-up", {
         name: name, grade: grade, email: email, password: password
-      })
+      }, {withCredentials: true})
       .then(res=>{
         console.log(res.data)
         if (res.data==="Email Already Exists"){

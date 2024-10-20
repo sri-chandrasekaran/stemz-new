@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "./static/css/main.f16d6bb4.css",
-    "main.js": "./static/js/main.a1e336b8.js",
+    "main.js": "./static/js/main.98aba2b8.js",
     "static/media/sudhit.jpg": "./static/media/sudhit.20aeb49d8f56a21c98ae.jpg",
     "static/media/miriam.jpg": "./static/media/miriam.5612c002711e5c7d353a.jpg",
     "static/media/class_7.jpg": "./static/media/class_7.9b3ce7c282fa3e213a4b.jpg",
@@ -46,22 +46,23 @@
     "static/media/ucsd.png": "./static/media/ucsd.8c198d26abc903bd9c64.png",
     "static/media/lightbulb.png": "./static/media/lightbulb.bb387bc45d9d504810c7.png",
     "static/media/lightbulb3.png": "./static/media/lightbulb3.bb387bc45d9d504810c7.png",
+    "static/media/ucla copy.jpg": "./static/media/ucla copy.6cd0b68211d43143e83c.jpg",
     "static/media/ucla.jpg": "./static/media/ucla.6cd0b68211d43143e83c.jpg",
     "static/media/environmentalscience.jpg": "./static/media/environmentalscience.7121a4410ec19ffb7284.jpg",
     "static/media/folsom.png": "./static/media/folsom.7a5e6c85430e090593a6.png",
-    "static/media/stanford.png": "./static/media/stanford.23dd0a07e01904b8e0d8.png",
     "static/media/STEMz Logo white.png": "./static/media/STEMz Logo white.86581d7106b0554a0c5c.png",
     "static/media/ucr.png": "./static/media/ucr.7789c8cc402fc35c16b8.png",
+    "static/media/ucsd1.png": "./static/media/ucsd1.17333e664658a7540c29.png",
     "static/media/slick.svg": "./static/media/slick.2630a3e3eab21c607e21.svg",
     "static/media/slick.eot": "./static/media/slick.a4e97f5a2a64f0ab1323.eot",
     "static/media/slick.ttf": "./static/media/slick.c94f7671dcc99dce43e2.ttf",
     "static/media/slick.woff": "./static/media/slick.295183786cd8a1389865.woff",
     "index.html": "./index.html",
     "main.f16d6bb4.css.map": "./static/css/main.f16d6bb4.css.map",
-    "main.a1e336b8.js.map": "./static/js/main.a1e336b8.js.map"
+    "main.98aba2b8.js.map": "./static/js/main.98aba2b8.js.map"
   },
   "entrypoints": [
     "static/css/main.f16d6bb4.css",
-    "static/js/main.a1e336b8.js"
+    "static/js/main.98aba2b8.js"
   ]
 }
