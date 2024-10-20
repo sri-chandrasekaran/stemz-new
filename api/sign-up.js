@@ -4,6 +4,7 @@ const bcrypt = require("bcryptjs");
 
 
 module.exports = async (req, res) => {
+  console.log("here")
   await dbConnect(); // Connect to the database
 
     if (req.method === 'POST') {
