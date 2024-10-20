@@ -5,7 +5,6 @@ const bcrypt = require("bcryptjs");
 
 module.exports = async (req, res) => {
   await dbConnect(); // Connect to the database
-  console.log("I'm here")
 
     if (req.method === 'POST') {
       User.findOne({ email: req.body.email }).then(user => {
@@ -33,6 +32,6 @@ module.exports = async (req, res) => {
     } else {
         // Handle any method that is not POST
         res.setHeader('Allow', ['POST']);
-        return res.status(405).end(`Method ${req.method} Not Allowed`);
+        return res.status(405).end(`Method ${req.method} REALLY Not Allowed`);
     }
 }
