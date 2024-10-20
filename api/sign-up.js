@@ -1,40 +1,38 @@
-const dbConnect = require('./dbConnect.js'); // No change
-const User = require("./models/User.js"); // No change
-const bcrypt = require("bcryptjs"); // No change
+const dbConnect = require('./dbConnect.js');
+const User = require("./models/User.js");
+const bcrypt = require("bcryptjs");
+
 
 module.exports = async (req, res) => {
   await dbConnect(); // Connect to the database
+  console.log("I'm here")
 
-  if (req.method === 'POST') {
-    try { // Added try/catch block for error handling
-      // Changed from User.findOne(...).then(...) to await for better readability and error handling
-      const existingUser = await User.findOne({ email: req.body.email });
-      
-      if (existingUser) {
-        return res.status(400).json({ message: "Email Already Exists" }); // Changed response to use status code
-      }
-
-      const newUser = new User({
-        name: req.body.name,
-        email: req.body.email,
-        password: req.body.password,
-        classes: "placeholder",
-        recommend: "placeholder"
-      });
-
-      // Hash password before saving in database
-      const salt = await bcrypt.genSalt(10); // Changed to use await for better readability
-      newUser.password = await bcrypt.hash(newUser.password, salt); // Changed to use await for better readability
-      await newUser.save(); // Changed to use await for better readability
-
-      return res.status(201).json({ message: "New User Created", email: newUser.email }); // Changed response to use status code
-    } catch (err) {
-      console.error(err); // Added error logging
-      return res.status(500).json({ error: "Internal Server Error" }); // Changed response for server error
+    if (req.method === 'POST') {
+      User.findOne({ email: req.body.email }).then(user => {
+        if (user) {
+          return res.json("Email Already Exists");
+        } else {
+          const newUser = new User({
+            name: req.body.name,
+            email: req.body.email,
+            password: req.body.password,
+            classes: "placeholder",
+            recommend: "placeholder"
+          });
+    // Hash password before saving in database
+          bcrypt.genSalt(10, (err, salt) => {
+            bcrypt.hash(newUser.password, salt, (err, hash) => {
+              if (err) throw err;
+              newUser.password = hash;
+              newUser
+                .save()
+                .then(user => res.json({password: req.body.password, email: req.body.email, message: "New User Created"}))
+                .catch(err => console.log(err));
+            });
+          });}})
+    } else {
+        // Handle any method that is not POST
+        res.setHeader('Allow', ['POST']);
+        return res.status(405).end(`Method ${req.method} Not Allowed`);
     }
-  } else {
-    // Handle any method that is not POST
-    res.setHeader('Allow', ['POST']);
-    return res.status(405).end(`Method ${req.method} Not Allowed`);
-  }
 }
