@@ -20,7 +20,7 @@ const SignUpForm = () => {
 
     try{
 
-      await axios.post("https://www.stemzlearning.org/api/sign-up", {
+      await axios.post("/api/sign-up", {
         withCredentials: true,
         name: name, grade: grade, email: email, password: password
       })
