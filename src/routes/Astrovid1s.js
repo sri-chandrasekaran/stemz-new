@@ -44,7 +44,8 @@ export default Astrovid1s
 //   { time: 224, text: "What is your favorite planet and why? Tell me one fact about it." },
 //   { time: 440, text: "What can the study of stars teach us about the universe?" },
 //   { time: 688, text: "In what ways is Earth the same as the other planets? In what ways is it unique?" },
-//   { time: 765, text: "What can the study of stars teach us about the universe?" },
+// { time: 765, text: "What does studying other planets teach us about our own place in the Solar System?" },
+// { time: 766, text: "What are some of the biggest unanswered questions in astronomy today?" },
 //   { time: 876, text: "Can you summarize the key points of today's lesson?" }
 // ];
 

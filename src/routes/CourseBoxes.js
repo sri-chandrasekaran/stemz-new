@@ -17,7 +17,7 @@ const CourseBoxes = () => {
           <img src={CourseBox} alt="Course Box" className="course-image" />
         </div>
         <div className="description-column">
-          <h2>Chemis Box</h2>
+          <h2>Chemistry Box</h2>
           <p>The STEMz Learning Course Boxes offer a wonderful opportunity for young, aspiring scientists to get hands-on experiences with complex chemistry concepts and independently accomplish fun and enriching science experiments.</p>
           <p>Each box contains:</p>
           <ul>
