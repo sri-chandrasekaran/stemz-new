@@ -10,7 +10,7 @@ const CourseBoxes = () => {
   return (
     <div>
       <Navbar />
-      <HeroOther overlayText="Order Now!" />
+      <HeroOther overlayText="Order Now!1" />
 
       <div className="course-container">
         <div className="image-column">
