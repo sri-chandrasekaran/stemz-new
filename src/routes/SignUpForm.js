@@ -14,16 +14,20 @@ const SignUpForm = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
-  async function submit(e){
+  async function submit(e) {
     e.preventDefault();
-    console.log("Submitting signup data:", { name, grade, email, password }); 
-    let payload = {
-      "name": name,
-      "password": password,
-      "email": email,
+    const payload = { name, password, email };
+  
+    try {
+      const response = await call_api(payload, "users/create", "POST");
+  
+      if (response) { // Check for a successful response
+        navigate('/login'); // Redirect on success
+      }
+    } catch (error) {
+      console.error("Signup failed:", error);
     }
-    call_api(payload, "users/create", "POST");
-  };
+  }
 
   return (
     <div>
