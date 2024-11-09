@@ -54,11 +54,13 @@ import Circuit1p from './routes/circuit1p'
 import Circuit2p from './routes/circuit2p'
 import Circuit3p from './routes/circuit3p'
 import Circuitquiz from './routes/Circuitquiz'
+import Circuitworksheet from './routes/CircuitWorkSheet'
 import Es1s from './routes/es1s'
 import Es2s from './routes/es2s'
 import Es3s from './routes/es3s'
 import Es4s from './routes/es4s'
 import ESquiz from './routes/ESquiz'
+import Esworksheet1 from './routes/esWorkSheet1'
 import Psych1p from './routes/psych1p'
 import Psych1s from './routes/psych1s'
 import Psych2p from './routes/psych2p'
@@ -68,6 +70,8 @@ import Psych3s from './routes/psych3s'
 import Psych4p from './routes/psych4p'
 import Psych4s from './routes/psych4s'
 import Psycquiz from './routes/Psycquiz'
+import Psychworksheet1 from './routes/PsychWorkSheet1';
+import Psychworksheet2 from './routes/PsychWorkSheet2';
 import Stat1p from './routes/stat1p'
 import Stat1s from './routes/stat1s'
 import Stat2p from './routes/stat2p'
@@ -79,6 +83,9 @@ import Stat4s from './routes/stat4s'
 import Stat5p from './routes/stat5p'
 import Stat5s from './routes/stat5s'
 import Statquiz from './routes/Statquiz'
+import StatWorkSheet1 from './routes/statWorkSheet1';
+import StatWorkSheet2 from './routes/statWorkSheet2';
+import StatWorkSheet3 from './routes/statWorkSheet3';
 import Zoo1p from './routes/zoo1p'
 import Zoo1s from './routes/zoo1s'
 import Zoo2p from './routes/zoo2p'
@@ -90,6 +97,9 @@ import Zoo4s from './routes/zoo4s'
 import Zoo5p from './routes/zoo5p'
 import Zoo5s from './routes/zoo5s'
 import Zooquiz from './routes/Zooquiz'
+import Zooworksheet1 from './routes/zooWorkSheet1';
+import Zooworksheet2 from './routes/zooWorkSheet2';
+import Zooworksheet3 from './routes/zooWorkSheet3';
 import September from './routes/sept'
 import LoginForm from './routes/LoginForm'
 import SignUpForm from './routes/SignUpForm'
@@ -165,11 +175,13 @@ function App() {
         <Route path='self-paced-classes/circuits/circuit2p' element={<Circuit2p />} />
         <Route path='self-paced-classes/circuits/circuit3p' element={<Circuit3p />} />
         <Route path='self-paced-classes/circuits/circuitquiz' element={<Circuitquiz />} />
+        <Route path='self-paced-classes/circuits/circuitworksheet' element={<Circuitworksheet />} />
         <Route path='self-paced-classes/environmental-science/es1s' element={<Es1s />} />
         <Route path='self-paced-classes/environmental-science/es2s' element={<Es2s />} />
         <Route path='self-paced-classes/environmental-science/es3s' element={<Es3s />} />
         <Route path='self-paced-classes/environmental-science/es4s' element={<Es4s />} />
         <Route path='self-paced-classes/environmental-science/esquiz' element={<ESquiz />} />
+        <Route path='self-paced-classes/environmental-science/esworksheet1' element={<Esworksheet1 />} />
         <Route path='self-paced-classes/psychology/psych1p' element={<Psych1p />} />
         <Route path='self-paced-classes/psychology/psych1s' element={<Psych1s />} />
         <Route path='self-paced-classes/psychology/psych2p' element={<Psych2p />} />
@@ -179,6 +191,8 @@ function App() {
         <Route path='self-paced-classes/psychology/psych4p' element={<Psych4p />} />
         <Route path='self-paced-classes/psychology/psych4s' element={<Psych4s />} />
         <Route path='self-paced-classes/psychology/psychquiz' element={<Psycquiz />} />
+        <Route path='self-paced-classes/psychology/psychworksheet1' element={<Psychworksheet1 />} />
+        <Route path='self-paced-classes/psychology/psychworksheet2' element={<Psychworksheet2 />} />
         <Route path='self-paced-classes/statistics/stat1p' element={<Stat1p />} />
         <Route path='self-paced-classes/statistics/stat1s' element={<Stat1s />} />
         <Route path='self-paced-classes/statistics/stat2p' element={<Stat2p />} />
@@ -190,6 +204,9 @@ function App() {
         <Route path='self-paced-classes/statistics/stat5p' element={<Stat5p />} />
         <Route path='self-paced-classes/statistics/stat5s' element={<Stat5s />} />
         <Route path='self-paced-classes/statistics/statquiz' element={<Statquiz />} />
+        <Route path='self-paced-classes/statistics/statworksheet1' element={<StatWorkSheet1 />} />
+        <Route path='self-paced-classes/statistics/statworksheet2' element={<StatWorkSheet2 />} />
+        <Route path='self-paced-classes/statistics/statworksheet3' element={<StatWorkSheet3 />} />
         <Route path='self-paced-classes/zoology/zoo1p' element={<Zoo1p />} />
         <Route path='self-paced-classes/zoology/zoo1s' element={<Zoo1s />} />
         <Route path='self-paced-classes/zoology/zoo2p' element={<Zoo2p />} />
@@ -201,6 +218,9 @@ function App() {
         <Route path='self-paced-classes/zoology/zoo5p' element={<Zoo5p />} />
         <Route path='self-paced-classes/zoology/zoo5s' element={<Zoo5s />} />
         <Route path='self-paced-classes/zoology/zooquiz' element={<Zooquiz />} />
+        <Route path='self-paced-classes/zoology/zooworksheet1' element={<Zooworksheet1 />} />
+        <Route path='self-paced-classes/zoology/zooworksheet2' element={<Zooworksheet2 />} />
+        <Route path='self-paced-classes/zoology/zooworksheet3' element={<Zooworksheet3 />} />
       </Routes>
   );
 }
