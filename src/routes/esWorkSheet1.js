@@ -48,6 +48,10 @@ export default function EsWorkSheet1() {
     window.history.back();
   };
 
+  const handleDownload = () => {
+    window.open('https://docs.google.com/document/d/e/2PACX-1vRUirVOL8YLkxol0nTrImCblQ0sB-Xu2LbLwvxLluYWSEPicxO7NpKWZ8avM_bjvTNsYJUGGffU_w8m/pub', '_blank');
+  };
+
   const styles = {
     container: {
       minHeight: '100vh',
@@ -76,7 +80,7 @@ export default function EsWorkSheet1() {
     },
     subtitle: {
       color: '#357717',
-      fontSize: '24px',
+      fontSize: '36px',
       marginBottom: '30px',
       fontFamily: 'Orbitron, sans-serif',
       textAlign: 'center',
@@ -142,6 +146,19 @@ export default function EsWorkSheet1() {
       fontWeight: 'bold',
       transform: isHovering ? 'scale(0.9)' : 'scale(1)',
     },
+    printButton: {
+      backgroundColor: '#357717',
+      color: 'white',
+      padding: '10px 20px',
+      borderRadius: '5px',
+      border: 'none',
+      cursor: 'pointer',
+      display: 'block',
+      margin: '20px auto',
+      fontSize: '12px',
+      transition: 'all 0.3s ease',
+      boxShadow: '0 2px 4px rgba(0,0,0,0.1)',
+    },
   };
 
   return (
@@ -157,17 +174,28 @@ export default function EsWorkSheet1() {
       
       <div style={styles.content}>
         <img src={stemzLearningLogo} alt="STEMZ Learning" style={styles.logo} />
-        <h1 style={styles.title}>Lesson 1 - Nature Scavenger Hunt</h1>
-        <h2 style={styles.subtitle}>Course: Environmental Science</h2>
+        <h1 style={styles.title}>Nature Scavenger Hunt</h1>
+        <h2 style={styles.subtitle}>Environmental Science：Lesson 1 </h2>
 
         <div style={styles.materialsSection}>
-          <h3> Instructions: </h3>
-          <ul>
-            <li>Take out your print-out or homemade copy of the scavenger hunt.</li>
-            <li>Find each item on the list provided.</li>
-            <li>Check off each item on the worksheet once you find them.</li>
-          </ul>
-        </div>
+        <h3>Instructions:</h3>
+        <p><strong>Option 1: Fill out the online worksheet</strong></p>
+        <ul>
+          <li>Find each item on the list provided.</li>
+          <li>Check off each item on the worksheet once you find them.</li>
+          <li>Answer the reflection questions after completing your hunt.</li>
+        </ul>
+
+
+        <p><strong>Option 2: Prefer a paper copy? Download the printable version below</strong></p>
+
+        <button
+          onClick={handleDownload}
+          style={styles.printButton}
+        >
+          Download PDF Version
+        </button>
+      </div>
 
         <div style={styles.gridContainer}>
           {scavengerItems.map((item) => (

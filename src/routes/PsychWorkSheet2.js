@@ -1,10 +1,8 @@
 import React, { useState, useEffect, useRef } from "react";
 import { Timer } from "lucide-react";
-import { Alert, AlertDescription } from "@/components/ui/alert";
 import stemzLearningLogo from "../assets/logo.png";
 
 const mathProblems = [
-  // Row 1
   [
     { top: 1, bottom: 5 },
     { top: 3, bottom: 8 },
@@ -17,7 +15,6 @@ const mathProblems = [
     { top: 9, bottom: 4 },
     { top: 5, bottom: 9 },
   ],
-  // Row 2
   [
     { top: 2, bottom: 1 },
     { top: 8, bottom: 9 },
@@ -30,7 +27,6 @@ const mathProblems = [
     { top: 7, bottom: 7 },
     { top: 6, bottom: 9 },
   ],
-  // Row 3
   [
     { top: 1, bottom: 8 },
     { top: 8, bottom: 4 },
@@ -43,7 +39,6 @@ const mathProblems = [
     { top: 3, bottom: 9 },
     { top: 3, bottom: 9 },
   ],
-  // Row 4
   [
     { top: 8, bottom: 9 },
     { top: 1, bottom: 2 },
@@ -56,7 +51,6 @@ const mathProblems = [
     { top: 2, bottom: 2 },
     { top: 8, bottom: 2 },
   ],
-  // Row 5
   [
     { top: 8, bottom: 1 },
     { top: 9, bottom: 1 },
@@ -69,7 +63,6 @@ const mathProblems = [
     { top: 6, bottom: 1 },
     { top: 4, bottom: 3 },
   ],
-  // Row 6
   [
     { top: 8, bottom: 5 },
     { top: 6, bottom: 7 },
@@ -82,7 +75,6 @@ const mathProblems = [
     { top: 9, bottom: 6 },
     { top: 4, bottom: 6 },
   ],
-  // Row 7
   [
     { top: 1, bottom: 1 },
     { top: 9, bottom: 8 },
@@ -95,7 +87,6 @@ const mathProblems = [
     { top: 5, bottom: 1 },
     { top: 2, bottom: 4 },
   ],
-  // Row 8
   [
     { top: 1, bottom: 3 },
     { top: 2, bottom: 8 },
@@ -108,7 +99,6 @@ const mathProblems = [
     { top: 7, bottom: 1 },
     { top: 3, bottom: 6 },
   ],
-  // Row 9
   [
     { top: 4, bottom: 4 },
     { top: 7, bottom: 9 },
@@ -121,7 +111,6 @@ const mathProblems = [
     { top: 2, bottom: 6 },
     { top: 8, bottom: 7 },
   ],
-  // Row 10
   [
     { top: 5, bottom: 5 },
     { top: 1, bottom: 7 },
@@ -136,6 +125,7 @@ const mathProblems = [
   ],
 ];
 
+
 export default function PsychWorkSheet2() {
   const [answers, setAnswers] = useState({});
   const [showResults, setShowResults] = useState(false);
@@ -143,33 +133,71 @@ export default function PsychWorkSheet2() {
   const [currentPosition, setCurrentPosition] = useState({ row: 0, col: 0 });
   const [isTimerRunning, setIsTimerRunning] = useState(false);
   const [timeLeft, setTimeLeft] = useState(60);
-  const inputRefs = useRef([]);
+  const [hasAlerted, setHasAlerted] = useState(false);
+  const [cellStyles, setCellStyles] = useState({});
+  const [borders, setBorders] = useState({});
+  const [wasStopped, setWasStopped] = useState(false);
 
-  // Initialize input refs
+  const inputRefs = useRef(
+    Array(10).fill().map(() => Array(10).fill(React.createRef()))
+  );
+
   useEffect(() => {
     inputRefs.current = Array(10)
-      .fill(0)
-      .map(() => Array(10).fill(null));
+      .fill()
+      .map(() =>
+        Array(10)
+          .fill()
+          .map(() => React.createRef())
+      );
   }, []);
 
-  // Timer logic
-  useEffect(() => {
+ useEffect(() => {
     let intervalId;
     if (isTimerRunning && timeLeft > 0) {
       intervalId = setInterval(() => {
         setTimeLeft((prev) => prev - 1);
       }, 1000);
-    } else if (timeLeft === 0) {
+    } else if (timeLeft === 0 && !hasAlerted) {
       setIsTimerRunning(false);
       setShowResults(true);
+      setHasAlerted(true);
+      alert("Time's up! Let's check your answers.");
     }
     return () => clearInterval(intervalId);
-  }, [isTimerRunning, timeLeft]);
+  }, [isTimerRunning, timeLeft, hasAlerted]);
 
-  // Keyboard navigation
   useEffect(() => {
     const handleKeyDown = (e) => {
       if (!isTimerRunning) return;
+
+      if ((e.key >= "0" && e.key <= "9") || e.key === "Backspace" || e.key === "Delete") {
+        e.preventDefault();
+        const key = `${currentPosition.row}-${currentPosition.col}`;
+        let currentValue = answers[key] || "";
+
+        if (e.key === "Backspace" || e.key === "Delete") {
+          currentValue = currentValue.slice(0, -1);
+        } else {
+          if (currentValue.length < 3) {
+            currentValue += e.key;
+          }
+        }
+
+        setAnswers((prev) => ({
+          ...prev,
+          [key]: currentValue,
+        }));
+
+        if (currentValue.length === 3) {
+          setCurrentPosition((prev) => {
+            const nextCol = (prev.col + 1) % 10;
+            const nextRow = nextCol === 0 ? (prev.row + 1) % 10 : prev.row;
+            return { row: nextRow, col: nextCol };
+          });
+        }
+        return;
+      }
 
       switch (e.key) {
         case "ArrowUp":
@@ -200,26 +228,27 @@ export default function PsychWorkSheet2() {
             col: prev.col < 9 ? prev.col + 1 : 0,
           }));
           break;
+        case "Tab":
+          e.preventDefault();
+          setCurrentPosition((prev) => {
+            const nextCol = (prev.col + 1) % 10;
+            const nextRow = nextCol === 0 ? (prev.row + 1) % 10 : prev.row;
+            return { row: nextRow, col: nextCol };
+          });
+          break;
         case "Enter":
           e.preventDefault();
-          if (inputRefs.current[currentPosition.row][currentPosition.col]) {
-            inputRefs.current[currentPosition.row][currentPosition.col].focus();
-          }
+          setCurrentPosition((prev) => ({
+            ...prev,
+            row: (prev.row + 1) % 10,
+          }));
           break;
       }
     };
 
     window.addEventListener("keydown", handleKeyDown);
     return () => window.removeEventListener("keydown", handleKeyDown);
-  }, [isTimerRunning, currentPosition]);
-
-  const handleInputChange = (rowIndex, colIndex, value) => {
-    const key = `${rowIndex}-${colIndex}`;
-    setAnswers((prev) => ({
-      ...prev,
-      [key]: value,
-    }));
-  };
+  }, [isTimerRunning, currentPosition, answers]);
 
   const checkAnswer = (rowIndex, colIndex) => {
     const problem = mathProblems[rowIndex][colIndex];
@@ -228,27 +257,63 @@ export default function PsychWorkSheet2() {
     return userAnswer === problem.top * problem.bottom;
   };
 
+  const handleInputChange = (rowIndex, colIndex, value) => {
+    const key = `${rowIndex}-${colIndex}`;
+    const numericValue = value.replace(/[^0-9]/g, "").slice(0, 3);
+    setAnswers(prev => ({
+      ...prev,
+      [key]: numericValue,
+    }));
+  };
+
+  const handleInputFocus = (rowIndex, colIndex) => {
+    setCurrentPosition({ row: rowIndex, col: colIndex });
+  };
+
   const handleStartTimer = () => {
-    setTimeLeft(60);
+    if (!wasStopped) {
+      setTimeLeft(60);
+      setAnswers({});
+      setBorders({});
+      setHasAlerted(false);
+    }
     setIsTimerRunning(true);
     setShowResults(false);
-    setAnswers({});
+    setWasStopped(false);
   };
+  
 
   const handleStopTimer = () => {
     setIsTimerRunning(false);
+    setWasStopped(true);
   };
 
-  const handleResetTimer = () => {
-    setTimeLeft(60);
-    setIsTimerRunning(false);
-    setShowResults(false);
-    setAnswers({});
-  };
 
   const handleSubmit = () => {
     setShowResults(true);
     setIsTimerRunning(false);
+    
+
+    const newBorders = {};
+    mathProblems.forEach((row, rowIndex) => {
+      row.forEach((_, colIndex) => {
+        const key = `${rowIndex}-${colIndex}`;
+        if (answers[key] !== undefined) {
+          if (checkAnswer(rowIndex, colIndex)) {
+            newBorders[key] = {
+              backgroundColor: "#e8f5e9",
+              border: "1px solid #3cb371"
+            };
+          } else {
+            newBorders[key] = {
+              backgroundColor: "#ffebee",
+              border: "1px solid #CF3434"
+            };
+          }
+        }
+      });
+    });
+    setBorders(newBorders);
   };
 
   const handleReset = () => {
@@ -256,6 +321,30 @@ export default function PsychWorkSheet2() {
     setShowResults(false);
     setTimeLeft(60);
     setIsTimerRunning(false);
+    <div style={styles.timerButtons}>
+    <button
+      onClick={handleStartTimer}
+      style={{ ...styles.timerButton, backgroundColor: "#3cb371" }}
+      disabled={isTimerRunning}
+    >
+      Start/Resume
+    </button>
+    <button
+      onClick={handleStopTimer}
+      style={{ ...styles.timerButton, backgroundColor: "#CF3434" }}
+      disabled={!isTimerRunning}
+    >
+      Stop
+    </button>
+  </div>
+    setCurrentPosition({ row: 0, col: 0 });
+    setHasAlerted(false);
+    setBorders({});
+    setWasStopped(false); 
+  };
+
+  const handlePrintVersion = () => {
+    window.open('https://docs.google.com/document/d/e/2PACX-1vT30fBA4j8N4aLyMyy3e0yIij_fYl9GdOqtOqvzaq3GH2E--OhIRK8M7kR0X3XqEuJGkWhTcKvSU8Cu/pub', '_blank');
   };
 
   const handleGoBack = () => {
@@ -384,7 +473,7 @@ export default function PsychWorkSheet2() {
     timerDisplay: {
       fontSize: "24px",
       fontWeight: "bold",
-      color: timeLeft <= 10 ? "#CF3434" : "#254E17",
+color: timeLeft <= 10 ? "#CF3434" : "#254E17",
     },
     timerButtons: {
       display: "flex",
@@ -410,6 +499,26 @@ export default function PsychWorkSheet2() {
     currentBox: {
       boxShadow: "0 0 0 2px #3cb371",
     },
+    instructions: {
+      marginBottom: '30px',
+      lineHeight: '1.6',
+      backgroundColor: '#f9f9f9',
+      padding: '20px',
+      borderRadius: '10px',
+    },
+    printButton: {
+      backgroundColor: '#357717',
+      color: 'white',
+      padding: '10px 20px',
+      borderRadius: '5px',
+      border: 'none',
+      cursor: 'pointer',
+      display: 'block',
+      margin: '20px auto',
+      fontSize: '12px',
+      transition: 'all 0.3s ease',
+      boxShadow: '0 2px 4px rgba(0,0,0,0.1)',
+    },
   };
 
   return (
@@ -426,7 +535,59 @@ export default function PsychWorkSheet2() {
       <div style={styles.content}>
         <img src={stemzLearningLogo} alt="STEMZ Learning" style={styles.logo} />
         <h1 style={styles.title}>The Math Experiment</h1>
-        <h2 style={styles.subtitle}>Psychology: Week 2</h2>
+        <h2 style={styles.subtitle}>Psychology: Lesson 2</h2>
+
+        <div style={styles.instructions}>
+  
+
+
+
+      
+      <h3>Instructions:</h3>
+      
+      <p><strong>Option 1: On the worksheet below, complete as many multiplication problems as you can within the 60-second time limit while following the video's instructions!</strong></p>
+      <p>You can use:</p>
+      <ul>
+        <li style={styles.instructionItem}>
+          <span style={styles.keyboardKey}> ↑ </span>
+          <span style={styles.keyboardKey}> ↓ </span>
+          <span style={styles.keyboardKey}> ← </span>
+          <span style={styles.keyboardKey}> → </span>
+          Arrow keys to navigate between boxes
+        </li>
+        <li style={styles.instructionItem}>
+          <span style={styles.keyboardKey}>Tab</span>
+          Move to next box
+        </li>
+        <li style={styles.instructionItem}>
+          <span style={styles.keyboardKey}>Enter</span>
+          Move to the box below
+        </li>
+        <li style={styles.instructionItem}>
+          <span style={styles.keyboardKey}>0</span>-
+          <span style={styles.keyboardKey}>9 </span>
+          to type numbers directly into the selected box
+        </li>
+        <li style={styles.instructionItem}>
+          <span style={styles.keyboardKey}>Backspace </span>
+          to delete the last number
+        </li>
+      </ul>
+
+      <p><strong>Option 2: Prefer a paper copy? Download the printable version below, set the timer and go!</strong></p>
+
+      <button
+        onClick={handlePrintVersion}
+        style={styles.printButton}
+      >
+        Print Paper Version 
+      </button>
+
+
+
+    </div>
+
+    
 
         <div style={styles.timerContainer}>
           <Timer size={24} color="#254E17" />
@@ -449,67 +610,48 @@ export default function PsychWorkSheet2() {
             >
               Stop
             </button>
-            <button
-              onClick={handleResetTimer}
-              style={{ ...styles.timerButton, backgroundColor: "#357717" }}
-            >
-              Reset
-            </button>
           </div>
         </div>
 
-        {timeLeft === 0 && (
-          <Alert className="mb-4">
-            <AlertDescription>
-              Time's up! Your answers have been automatically submitted.
-            </AlertDescription>
-          </Alert>
-        )}
-
         {mathProblems.map((row, rowIndex) => (
-          <div key={rowIndex} style={styles.problemGrid}>
-            {row.map((problem, colIndex) => {
-              const key = `${rowIndex}-${colIndex}`;
-              const answered = answers[key] !== undefined;
-              const correct = showResults && checkAnswer(rowIndex, colIndex);
-              const isCurrent =
-                currentPosition.row === rowIndex &&
-                currentPosition.col === colIndex;
+  <div key={rowIndex} style={styles.problemGrid}>
+    {row.map((problem, colIndex) => {
+      const key = `${rowIndex}-${colIndex}`;
+      const isCurrent =
+        currentPosition.row === rowIndex &&
+        currentPosition.col === colIndex;
 
-              return (
-                <div
-                  key={colIndex}
-                  style={{
-                    ...styles.problem,
-                    ...(showResults && answered
-                      ? correct
-                        ? styles.correct
-                        : styles.incorrect
-                      : {}),
-                    ...(isCurrent && isTimerRunning ? styles.currentBox : {}),
-                  }}
-                >
-                  <div style={styles.multiplication}>
-                    <span style={styles.number}>{problem.top}</span>
-                    <span style={styles.number}>×</span>
-                    <span style={styles.number}>{problem.bottom}</span>
-                    <span style={styles.number}>=</span>
-                  </div>
-                  <input
-                    ref={(el) => (inputRefs.current[rowIndex][colIndex] = el)}
-                    type="number"
-                    value={answers[key] || ""}
-                    onChange={(e) =>
-                      handleInputChange(rowIndex, colIndex, e.target.value)
-                    }
-                    style={styles.input}
-                    disabled={!isTimerRunning}
-                  />
-                </div>
-              );
-            })}
+      return (
+        <div
+          key={colIndex}
+          style={{
+            ...styles.problem,
+            ...(borders[key] || {}), 
+            ...(isCurrent && isTimerRunning ? styles.currentBox : {})
+          }}
+        >
+          <div style={styles.multiplication}>
+            <span style={styles.number}>{problem.top}</span>
+            <span style={styles.number}>×</span>
+            <span style={styles.number}>{problem.bottom}</span>
+            <span style={styles.number}>=</span>
           </div>
-        ))}
+          <input
+            ref={inputRefs.current[rowIndex][colIndex]}
+            type="text"
+            value={answers[key] || ""}
+            onChange={(e) =>
+              handleInputChange(rowIndex, colIndex, e.target.value)
+            }
+            onFocus={() => handleInputFocus(rowIndex, colIndex)}
+            style={styles.input}
+            disabled={!isTimerRunning}
+          />
+        </div>
+      );
+    })}
+  </div>
+))}
 
         <div style={styles.buttons}>
           <button
@@ -526,14 +668,7 @@ export default function PsychWorkSheet2() {
           </button>
         </div>
 
-        <a
-          href="/path-to-pdf.pdf"
-          target="_blank"
-          rel="noopener noreferrer"
-          style={styles.pdfLink}
-        >
-          Prefer to do this by hand? Download the PDF version here
-        </a>
+
       </div>
     </div>
   );

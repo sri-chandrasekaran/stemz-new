@@ -159,9 +159,6 @@ export default function ZooWorkSheet2() {
       fontFamily: 'Orbitron, sans-serif',
       textAlign: 'center',
     },
-    instructions: {
-      marginBottom: '30px',
-    },
     question: {
       marginBottom: '30px',
       padding: '20px',
@@ -241,7 +238,7 @@ export default function ZooWorkSheet2() {
         <h1 style={styles.title}>Darwin's Theory of Evolution</h1>
         <h2 style={styles.subtitle}>Zoology: Lesson 2</h2>
 
-        <div style={styles.instructions}>
+        <div style={styles.question}>
           <h3>Instructions:</h3>
           <p>Click on the correct answer for each question.</p>
         </div>
@@ -282,24 +279,41 @@ export default function ZooWorkSheet2() {
         </div>
 
         {showResults && (
-          <div style={{
-            ...styles.resultMessage,
-            backgroundColor: Object.entries(selectedOptions).every(
+        <div style={{ 
+          marginTop: '30px', 
+          textAlign: 'center', 
+          padding: '15px', 
+          backgroundColor: (
+            Object.keys(selectedOptions).length === questions.length && 
+            Object.entries(selectedOptions).every(
               ([id, answer]) => answer === questions.find(q => q.id === parseInt(id)).correctAnswer
-            ) ? '#e8f5e9' : '#ffebee',
-            color: Object.entries(selectedOptions).every(
-              ([id, answer]) => answer === questions.find(q => q.id === parseInt(id)).correctAnswer
-            ) ? '#3cb371' : '#CF3434',
-          }}>
-            <p style={{ fontWeight: 'bold' }}>
-              {Object.entries(selectedOptions).every(
+            )
+          ) ? '#e8f5e9' : '#ffebee',
+          borderRadius: '5px', 
+          boxShadow: '0 2px 4px rgba(0,0,0,0.05)'
+        }}>
+          <p style={{ 
+            color: (
+              Object.keys(selectedOptions).length === questions.length && 
+              Object.entries(selectedOptions).every(
                 ([id, answer]) => answer === questions.find(q => q.id === parseInt(id)).correctAnswer
               )
-                ? 'Congratulations! All answers are correct!'
-                : 'Some answers are incorrect. Please review and try again.'}
-            </p>
-          </div>
-        )}
+            ) ? '#3cb371' : '#CF3434',
+            fontSize: '18px', 
+            fontWeight: 'bold' 
+          }}>
+            {Object.keys(selectedOptions).length === 0 
+              ? "Please answer some questions before checking."
+              : Object.keys(selectedOptions).length < questions.length
+                ? "Please answer all questions before checking."
+                : Object.entries(selectedOptions).every(
+                    ([id, answer]) => answer === questions.find(q => q.id === parseInt(id)).correctAnswer
+                  )
+                  ? 'Congratulations! All answers are correct!'
+                  : 'Some answers are incorrect. Please review and try again.'}
+          </p>
+        </div>
+      )}
       </div>
     </div>
   );

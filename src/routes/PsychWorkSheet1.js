@@ -146,6 +146,15 @@ export default function PsychWorkSheet1() {
   }, [matches, showResults]);
 
   const styles = {
+    instructions: {
+      lineHeight: '1.6',
+      backgroundColor: '#f9f9f9',
+      padding: '20px',
+      borderRadius: '10px',
+      maxWidth: '991px',
+      margin: '0 auto 30px',
+      textAlign: 'left',
+    },
     container: {
       minHeight: '100vh',
       background: 'white',
@@ -212,9 +221,13 @@ export default function PsychWorkSheet1() {
       <div style={styles.content}>
         <img src={stemzLearningLogo} alt="STEMZ Learning" style={styles.logo} />
         <h1 style={styles.title}>Turning the Game into an Experiment</h1>
-        <h2 style={styles.subtitle}>Psychology: Week 1</h2>
+        <h2 style={styles.subtitle}>Psychology: Lesson 1</h2>
+
 
         <div ref={containerRef} style={{ position: 'relative', backgroundColor: '#f9f9f9', borderRadius: '10px', boxShadow: '0 4px 6px rgba(0,0,0,0.1)', padding: '20px' }}>
+        <div style={styles.instructions}>
+          <h3>Instructions:</h3>
+        </div>
           <p style={{ textAlign: 'center', color: '#666666', marginBottom: '30px' }}>
             The game we played was fun, but how can psychologists use it to conduct an experiment? Match each scientific method step with its correct example.
           </p>
@@ -313,15 +326,34 @@ export default function PsychWorkSheet1() {
           </div>
           
           {showResults && (
-            <div style={{ marginTop: '30px', textAlign: 'center', padding: '15px', backgroundColor: '#e8f5e9', borderRadius: '5px', boxShadow: '0 2px 4px rgba(0,0,0,0.05)' }}>
-              <p style={{ color: '#3cb371', fontSize: '18px', fontWeight: 'bold' }}>
-                {Object.keys(matches).length === terms.length && 
+          <div style={{ 
+            marginTop: '30px', 
+            textAlign: 'center', 
+            padding: '15px', 
+            backgroundColor: Object.keys(matches).length === terms.length && 
+              Object.keys(matches).every((termId) => correctMatches[termId] === matches[termId])
+              ? '#e8f5e9'  
+              : '#ffebee', 
+            borderRadius: '5px', 
+            boxShadow: '0 2px 4px rgba(0,0,0,0.05)' 
+          }}>
+            <p style={{ 
+              color: Object.keys(matches).length === terms.length && 
                 Object.keys(matches).every((termId) => correctMatches[termId] === matches[termId])
-                  ? 'Congratulations! All answers are correct.'
-                  : 'Some answers are incorrect or missing. Please review and try again.'}
-              </p>
-            </div>
-          )}
+                ? '#3cb371'  
+                : '#CF3434',
+              fontSize: '18px', 
+              fontWeight: 'bold' 
+            }}>
+              {Object.keys(matches).length === terms.length && 
+              Object.keys(matches).every((termId) => correctMatches[termId] === matches[termId])
+                ? 'Congratulations! All answers are correct.'
+                : Object.keys(matches).length === 0 
+                  ? 'Please match all items before checking answers.'
+                  : 'Some answers are incorrect. Please review and try again.'}
+            </p>
+          </div>
+        )}
         </div>
       </div>
     </div>

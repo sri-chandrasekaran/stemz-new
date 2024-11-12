@@ -13,7 +13,7 @@ const relationshipTypes = [
   { value: 'neutralism', label: 'Neutralism (unaffected by each other)', color: '#D3D3D3' }
 ];
 
-// TODO: Subjected to revision
+// TODO: Subjected to revision, correct answers may vary depending on the context
 const correctAnswers = {
   'Elephants-Mosquito': 'parasitism',
   'Elephants-Cheetah': 'neutralism',
@@ -118,9 +118,6 @@ export default function AnimalBehaviors() {
       marginBottom: '30px',
       fontFamily: 'Orbitron, sans-serif',
       textAlign: 'center',
-    },
-    instructions: {
-      marginBottom: '30px',
     },
     definitions: {
       marginBottom: '30px',
@@ -245,15 +242,15 @@ export default function AnimalBehaviors() {
         <h1 style={styles.title}>Animal Behaviors</h1>
         <h2 style={styles.subtitle}>Zoology: Lesson 4</h2>
 
-        <div style={styles.instructions}>
+        <div style={styles.definitions}>
           <h3>Instructions:</h3>
           <ul>
             <li>Identify the symbiotic relationship between the animals.
               <ul>
-                <li>In each box, write the symbiotic relationship between the animals in each row/column</li>
+                <li>In each box, write the symbiotic relationship between the animals in each row/column.</li>
               </ul>
             </li>
-            <li>Highlight the animal that is most likely to be a keystone species.</li>
+            <li>Click on the animal that is most likely to be a keystone species.</li>
           </ul>
         </div>
 
@@ -357,22 +354,37 @@ export default function AnimalBehaviors() {
 
 
         {showResults && (
-            <div style={{
-                ...styles.resultMessage,
-                backgroundColor: Object.values(results).every(Boolean) && keystoneSpecies === correctKeystoneSpecies
-                ? '#e8f5e9'  
-                : '#ffebee', 
-                color: Object.values(results).every(Boolean) && keystoneSpecies === correctKeystoneSpecies
-                ? '#e8f5e9'  
-                : '#ffebee'  
-            }}>
-                <p style={{ fontWeight: 'bold' }}>
-                {Object.values(results).every(Boolean) && keystoneSpecies === correctKeystoneSpecies
+        <div style={{ 
+          marginTop: '30px', 
+          textAlign: 'center', 
+          padding: '15px', 
+          backgroundColor: (
+            Object.values(results).every(Boolean) && 
+            keystoneSpecies === correctKeystoneSpecies
+          ) ? '#e8f5e9' : '#ffebee',
+          borderRadius: '5px', 
+          boxShadow: '0 2px 4px rgba(0,0,0,0.05)'
+        }}>
+          <p style={{ 
+            color: (
+              Object.values(results).every(Boolean) && 
+              keystoneSpecies === correctKeystoneSpecies
+            ) ? '#3cb371' : '#CF3434',
+            fontSize: '18px', 
+            fontWeight: 'bold' 
+          }}>
+            {!Object.keys(relationships).length 
+              ? "Please fill in all relationships and keystone species."
+              : Object.keys(relationships).length < (animals.length * columnAnimals.length)
+                ? "Please fill in all relationships and keystone species."
+                : !keystoneSpecies
+                  ? "Please select a keystone species before checking."
+                  : Object.values(results).every(Boolean) && keystoneSpecies === correctKeystoneSpecies
                     ? 'Congratulations! All answers are correct!'
                     : 'Some answers are incorrect. Please review and try again.'}
-                </p>
-            </div>
-            )}
+          </p>
+        </div>
+      )}
       </div>
     </div>
   );

@@ -378,15 +378,29 @@ export default function StatWorkSheet2() {
             </div>
             
             {isChecked && (
-              <div style={{
-                ...styles.result,
-                ...(Math.abs(parseFloat(userCalculation) - parseFloat(total)) < 0.01 
-                  ? styles.correct 
-                  : styles.incorrect)
+              <div style={{ 
+                marginTop: '30px', 
+                textAlign: 'center', 
+                padding: '15px', 
+                backgroundColor: Math.abs(parseFloat(userCalculation) - parseFloat(total)) < 0.01
+                  ? '#e8f5e9'  
+                  : '#ffebee',
+                borderRadius: '5px', 
+                boxShadow: '0 2px 4px rgba(0,0,0,0.05)' 
               }}>
-                {Math.abs(parseFloat(userCalculation) - parseFloat(total)) < 0.01
-                  ? "Correct! Your calculation matches the actual total."
-                  : `Incorrect. The actual total is $${total}`}
+                <p style={{ 
+                  color: Math.abs(parseFloat(userCalculation) - parseFloat(total)) < 0.01
+                    ? '#3cb371' 
+                    : '#CF3434', 
+                  fontSize: '18px', 
+                  fontWeight: 'bold' 
+                }}>
+                  {Math.abs(parseFloat(userCalculation) - parseFloat(total)) < 0.01
+                    ? "Congratulations! Your calculation is correct."
+                    : !userCalculation 
+                      ? "Please enter your calculated total."
+                      : `Incorrect. The actual total is $${total}. Try again!`}
+                </p>
               </div>
             )}
           </div>

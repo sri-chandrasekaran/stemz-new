@@ -32,7 +32,7 @@ const planetColors = {
   Neptune: '#4169e1',
 };
 
-const AstroWorkSheet = () => {
+const AstroWorksheet1 = () => {
   const [isMobile, setIsMobile] = useState(window.innerWidth <= 1024);
 
   useEffect(() => {
@@ -89,7 +89,7 @@ const AstroWorkSheet = () => {
       padding: '10px',
       display: 'flex',
       alignItems: 'center',
-      width: isMobile ? '100%' : 'calc(50% - 15px)', // Responsive width
+      width: isMobile ? '100%' : 'calc(50% - 15px)',
       height: '375px',
       backgroundColor: 'rgba(255, 255, 255, 0.1)',
       backdropFilter: 'blur(5px)',
@@ -218,4 +218,4 @@ const AstroWorkSheet = () => {
   );
 };
 
-export default AstroWorkSheet;
+export default AstroWorksheet1;

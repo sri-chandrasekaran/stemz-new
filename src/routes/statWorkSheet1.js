@@ -9,6 +9,10 @@ const colorCodes = [
   { color: 'Black', pieces: 8, tips: 'Cut into 4 pieces then cut each piece in half' },
 ];
 
+const handleDownload = () => {
+  window.open('https://docs.google.com/document/d/e/2PACX-1vQqKPBJD-85m_sQdbX__cWr0pS2SNtdPQubY2gr6r3_00jc9zWbn5cfOEUx8Ffs_xM9Fs8H29KCC_vc/pub', '_blank');
+};
+
 const CircleDiagram = ({ slices }) => {
   const midX = 50;
   const midY = 50;
@@ -130,8 +134,35 @@ export default function StatWorkSheet1() {
       fontWeight: 'bold',
       transform: isHovering ? 'scale(0.9)' : 'scale(1)',
     },
-  };
+    instructions: {
+      marginBottom: '30px',
+      lineHeight: '1.6',
+      backgroundColor: '#f9f9f9',
+      padding: '20px',
+      borderRadius: '10px',
+    },
+    
+    printButton: {
+      backgroundColor: '#357717',
+      color: 'white',
+      padding: '10px 20px',
+      borderRadius: '5px',
+      border: 'none',
+      cursor: 'pointer',
+      display: 'block',
+      margin: '20px auto',
+      fontSize: '12px',
+      transition: 'all 0.3s ease',
+      boxShadow: '0 2px 4px rgba(0,0,0,0.1)',
+    },
 
+    mainContent: {
+      backgroundColor: '#f9f9f9',
+      padding: '20px',
+      borderRadius: '10px',
+      marginBottom: '20px',
+    }
+  };
   return (
     <div style={styles.container}>
       <button 
@@ -149,51 +180,64 @@ export default function StatWorkSheet1() {
         <h2 style={styles.subtitle}>Statistics: Lesson 1</h2>
 
         <div style={styles.instructions}>
+          <h3>Instructions:</h3>
           <p>If you are able, print the page with circles on it. If not, you can draw it yourself.</p>
           
-          <p><strong>If you are drawing this yourself:</strong></p>
-          <ol>
+          <p><strong>Option 1: Draw your own circles</strong></p>
+          <ul>
             <li>Draw and trace 5 circles on paper. Color the circles in the colors listed below.</li>
             <li>Cut the circles out, you should have 5 circles colored red, blue, purple, black, and green.</li>
             <li>Cut the circles according to the color code below (ex. Cut the red circle into 2, the blue circle into 3, ext.)</li>
-          </ol>
+          </ul>
 
-          <p><strong>If you are printing this:</strong></p>
-          <ol>
+          <p><strong>Option 2: Use the printed version</strong></p>
+          <ul>
             <li>Color the circles based on the color code below (ex. Color the circle split in 2, red; color the circle split in 3, blue; ext.)</li>
             <li>Cut along the black lines. You should have 5 circles. One should be cut into 2 pieces, one into 3 pieces, one into 4 pieces, one into 6 pieces, and one into 8 pieces.</li>
-          </ol>
+          </ul>
+
+          <button
+            onClick={handleDownload}
+            style={styles.printButton}
+          >
+            Download PDF Version
+          </button>
+
         </div>
 
-        <h3>Color Code</h3>
-        <table style={styles.table}>
-          <thead>
-            <tr>
-              <th style={styles.th}>Color</th>
-              <th style={styles.th}>Cut into this many equal pieces</th>
-              <th style={styles.th}>Tips</th>
-            </tr>
-          </thead>
-          <tbody>
-            {colorCodes.map((item, index) => (
-              <tr key={index}>
-                <td style={{...styles.td, color: item.color === 'Black' ? 'black' : item.color.toLowerCase()}}>
-                  <strong>{item.color}</strong>
-                </td>
-                <td style={styles.td}>Cut into {item.pieces} pieces</td>
-                <td style={styles.td}>{item.tips}</td>
+        <div style={styles.mainContent}>
+          <h3>Color Code</h3>
+          <table style={styles.table}>
+            <thead>
+              <tr>
+                <th style={styles.th}>Color</th>
+                <th style={styles.th}>Cut into this many equal pieces</th>
+                <th style={styles.th}>Tips</th>
               </tr>
-            ))}
-          </tbody>
-        </table>
+            </thead>
+            <tbody>
+              {colorCodes.map((item, index) => (
+                <tr key={index}>
+                  <td style={{...styles.td, color: item.color === 'Black' ? 'black' : item.color.toLowerCase()}}>
+                    <strong>{item.color}</strong>
+                  </td>
+                  <td style={styles.td}>Cut into {item.pieces} pieces</td>
+                  <td style={styles.td}>{item.tips}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
 
-        <div style={styles.circlesContainer}>
-          <CircleDiagram slices={2} />
-          <CircleDiagram slices={3} />
-          <CircleDiagram slices={4} />
-          <CircleDiagram slices={6} />
-          <CircleDiagram slices={8} />
+          <div style={styles.circlesContainer}>
+            <CircleDiagram slices={2} />
+            <CircleDiagram slices={3} />
+            <CircleDiagram slices={4} />
+            <CircleDiagram slices={6} />
+            <CircleDiagram slices={8} />
+          </div>
         </div>
+
+
       </div>
     </div>
   );

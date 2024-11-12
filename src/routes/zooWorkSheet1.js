@@ -323,15 +323,36 @@ export default function ZooWorkSheet1() {
           </div>
           
           {showResults && (
-            <div style={{ marginTop: '30px', textAlign: 'center', padding: '15px', backgroundColor: '#e8f5e9', borderRadius: '5px', boxShadow: '0 2px 4px rgba(0,0,0,0.05)' }}>
-              <p style={{ color: '#3cb371', fontSize: '18px', fontWeight: 'bold' }}>
-                {Object.keys(matches).length === terms.length && 
+          <div style={{ 
+            marginTop: '30px', 
+            textAlign: 'center', 
+            padding: '15px', 
+            backgroundColor: Object.keys(matches).length === terms.length && 
+              Object.keys(matches).every((termId) => correctMatches[termId] === matches[termId])
+              ? '#e8f5e9' 
+              : '#ffebee', 
+            borderRadius: '5px', 
+            boxShadow: '0 2px 4px rgba(0,0,0,0.05)'
+          }}>
+            <p style={{ 
+              color: Object.keys(matches).length === terms.length && 
                 Object.keys(matches).every((termId) => correctMatches[termId] === matches[termId])
+                ? '#3cb371'  
+                : '#CF3434',
+              fontSize: '18px', 
+              fontWeight: 'bold' 
+            }}>
+              {Object.keys(matches).length === 0 
+                ? "Please match some terms before checking answers."
+                : Object.keys(matches).length === terms.length && 
+                  Object.keys(matches).every((termId) => correctMatches[termId] === matches[termId])
                   ? 'Congratulations! All answers are correct.'
-                  : 'Some answers are incorrect or missing. Please review and try again.'}
-              </p>
-            </div>
-          )}
+                  : Object.keys(matches).length < terms.length
+                    ? 'Please match all terms before checking answers.'
+                    : 'Some matches are incorrect. Please review and try again.'}
+            </p>
+          </div>
+        )}
         </div>
       </div>
     </div>
