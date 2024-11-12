@@ -17,7 +17,7 @@ const Astrovid3s = () => {
         <Link to="https://docs.google.com/presentation/d/e/2PACX-1vS_xvppSffjBQYinMkvctQfRa5v4oC0AtkGn54254erImV0xHnQi1fWvVEL-VSxDFK_M-KPCsOa4IDy/pub?start=false&loop=false&delayms=3000" target="_blank" rel="noopener noreferrer">
           <button className="course-button">Slideshow</button>
         </Link>
-        <Link to="https://docs.google.com/document/d/e/2PACX-1vRzjSp4DciyO8OjCR_k_nf_4_cbGIzLCWkt7mRAHScRbpH_lqS5D_Q3hvxnseVt6P0KvVcKnSnSNEMe/pub" target="_blank" rel="noopener noreferrer">
+        <Link to="/self-paced-classes/astronomy/astroworksheet2">
           <button className="course-button">Worksheet</button>
         </Link>
         <Link to="https://docs.google.com/document/d/e/2PACX-1vRJxZ8cM1W83Zu7f_WpP_jzGS5Cb_uPZMH-pUVKVn5rfyUyjOBTu9HFf3HWvdcRlha0tdgHwR9p7e1q/pub" target="_blank" rel="noopener noreferrer">

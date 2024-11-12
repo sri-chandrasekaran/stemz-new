@@ -16,7 +16,7 @@ const es1s = () => {
           <Link to="https://docs.google.com/presentation/d/e/2PACX-1vQSZAvS9tPwlxXZnRI3fSwa8i-BRYY5pugaIcj8eZjGDLd4zSLSVuwMsolK_WQLZxs-poIHfuwby_Km/pub?start=false&loop=false&delayms=3000" target="_blank" rel="noopener noreferrer">
             <button className="course-button">Slideshow</button>
           </Link>
-          <Link to="https://docs.google.com/document/d/e/2PACX-1vQE7fuojpn-bDfk_6dHqNvrmIICRwcF2V3wvTrM0teRA6xjP6MNnzecbWXm7NuoPf-Xl6irrsyO6QpI/pub" target="_blank" rel="noopener noreferrer">
+          <Link to="/self-paced-classes/zoology/zooworksheet2"> {}
             <button className="course-button">Worksheet</button>
           </Link>
           <Link to="https://docs.google.com/document/d/e/2PACX-1vSVKeeZ_2086uJNoqcx7djBZpQSy22nSzTOF4UinEfqzjgCfN964IOQEH5XxqQuuHUG4_0x1GC59OdO/pub" target="_blank" rel="noopener noreferrer">
