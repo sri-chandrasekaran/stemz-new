@@ -186,47 +186,47 @@ function App() {
         element={<Astroquiz />}
       />
       <Route
-        path="/basics-of-coding/bc1p"
+        path="/bc1p"
         element={<Bc1p />}
       />
       <Route
-        path="/basics-of-coding/bc1s"
+        path="/bc1s"
         element={<Bc1s />}
       />
       <Route
-        path="/basics-of-coding/bc2p"
+        path="/bc2p"
         element={<Bc2p />}
       />
       <Route
-        path="/basics-of-coding/bc2s"
+        path="/bc2s"
         element={<Bc2s />}
       />
       <Route
-        path="/basics-of-coding/bc3p"
+        path="/bc3p"
         element={<Bc3p />}
       />
       <Route
-        path="/basics-of-coding/bc3s"
+        path="/bc3s"
         element={<Bc3s />}
       />
       <Route
-        path="self-paced-classes/basics-of-coding/bc4p"
+        path="/bc4p"
         element={<Bc4p />}
       />
       <Route
-        path="self-paced-classes/basics-of-coding/bc4s"
+        path="/bc4s"
         element={<Bc4s />}
       />
       <Route
-        path="self-paced-classes/basics-of-coding/bc4p"
+        path="/bc4p"
         element={<Bc4p />}
       />
       <Route
-        path="self-paced-classes/basics-of-coding/bc4s"
+        path="/bc4s"
         element={<Bc4s />}
       />
       <Route
-        path="self-paced-classes/basics-of-coding/bcquiz"
+        path="/bcquiz"
         element={<BCquiz />}
       />
       <Route path="self-paced-classes/biochemistry/bio1" element={<Bio1 />} />
