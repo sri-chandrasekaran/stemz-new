@@ -125,32 +125,32 @@ function App() {
       <Route path="dashboard" element={<Dashboard />} />
       {/* <Route path="self-paced-classes/astronomy" element={<Astronomy />} /> */}
       <Route path="/astronomy" element={<Astronomy />} />
-      <Route path="self-paced-classes/basics-of-coding" element={<BasicsOfCoding />}/>
+      <Route path="/basics-of-coding" element={<BasicsOfCoding />}/>
       <Route
-        path="self-paced-classes/biochemistry"
+        path="/biochemistry"
         element={<Biochemistry />}
       />
-      <Route path="self-paced-classes/chemistry" element={<Chemistry />} />
-      <Route path="self-paced-classes/circuits" element={<Circuits />} />
+      <Route path="/chemistry" element={<Chemistry />} />
+      <Route path="/circuits" element={<Circuits />} />
       <Route
-        path="self-paced-classes/environmental-science"
+        path="/environmental-science"
         element={<EnvironmentalScience />}
       />
-      <Route path="self-paced-classes/psychology" element={<Psychology />} />
-      <Route path="self-paced-classes/statistics" element={<Statistics />} />
-      <Route path="self-paced-classes/zoology" element={<Zoology />} />
+      <Route path="/psychology" element={<Psychology />} />
+      <Route path="/statistics" element={<Statistics />} />
+      <Route path="/zoology" element={<Zoology />} />
       <Route path="news/march" element={<March />} />
       <Route path="news/september" element={<September />} />
       <Route
-        path="self-paced-classes/astronomy/astrovid1s"
+        path="/astronomy/astrovid1s"
         element={<Astrovid1s />}
       />
       <Route
-        path="self-paced-classes/astronomy/astrovid1p"
+        path="/astronomy/astrovid1p"
         element={<Astrovid1p />}
       />
       <Route
-        path="self-paced-classes/astronomy/astrovid2p"
+        path="/astronomy/astrovid2p"
         element={<Astrovid2p />}
       />
       <Route

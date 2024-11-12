@@ -72,31 +72,31 @@ const Navbar = () => {
                     <Link to='/self-paced-classes' onClick={scrollToTop}>Self-Paced Classes</Link>
                     <ul className="dropdown-menu">
                         <li>
-                            <Link to="/self-paced-classes/astronomy" onClick={scrollToTop}>Astronomy</Link>
+                            <Link to="/astronomy" onClick={scrollToTop}>Astronomy</Link>
                         </li>
                         <li>
-                            <Link to="/self-paced-classes/basics-of-coding" onClick={scrollToTop}>Basics of Coding</Link>
+                            <Link to="/basics-of-coding" onClick={scrollToTop}>Basics of Coding</Link>
                         </li>
                         <li>
-                            <Link to="/self-paced-classes/biochemistry" onClick={scrollToTop}>Biochemistry</Link>
+                            <Link to="/biochemistry" onClick={scrollToTop}>Biochemistry</Link>
                         </li>
                         <li>
-                            <Link to="/self-paced-classes/chemistry" onClick={scrollToTop}>Chemistry</Link>
+                            <Link to="/chemistry" onClick={scrollToTop}>Chemistry</Link>
                         </li>
                         <li>
-                            <Link to="/self-paced-classes/circuits" onClick={scrollToTop}>Circuits</Link>
+                            <Link to="/circuits" onClick={scrollToTop}>Circuits</Link>
                         </li>
                         <li>
-                            <Link to="/self-paced-classes/environmental-science" onClick={scrollToTop}>Environmental Science</Link>
+                            <Link to="/environmental-science" onClick={scrollToTop}>Environmental Science</Link>
                         </li>
                         <li>
-                            <Link to="/self-paced-classes/psychology" onClick={scrollToTop}>Psychology</Link>
+                            <Link to="/psychology" onClick={scrollToTop}>Psychology</Link>
                         </li>
                         <li>
-                            <Link to="/self-paced-classes/statistics" onClick={scrollToTop}>Statistics</Link>
+                            <Link to="/statistics" onClick={scrollToTop}>Statistics</Link>
                         </li>
                         <li>
-                            <Link to="/self-paced-classes/zoology" onClick={scrollToTop}>Zoology</Link>
+                            <Link to="/zoology" onClick={scrollToTop}>Zoology</Link>
                         </li>
                     </ul>
                 </li>

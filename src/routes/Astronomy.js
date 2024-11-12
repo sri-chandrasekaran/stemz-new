@@ -14,7 +14,7 @@ const Astronomy = () => {
   return (
     <div>
       <Navbar />
-      <HeroOther overlayText="Astronomy1"/>
+      <HeroOther overlayText="Astronomy"/>
       <img src={AstronomyImage} alt="Astronomy" className="course-img"/>
       <div className='course-description'>
         <h2>Recommended Grade Level: 1st - 5th Grade</h2>
