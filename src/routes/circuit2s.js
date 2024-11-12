@@ -16,7 +16,7 @@ const circuit1s = () => {
           <Link to="https://docs.google.com/presentation/d/e/2PACX-1vTswf_-q8sb9x-TCJ7FXOx6-6XzmwGh_ZZgQRG_0PZ-jRT4mP4bqqHxj9uw6TNLZjFsegpcjJSbxU0C/pub?start=false&loop=false&delayms=3000" target="_blank" rel="noopener noreferrer">
             <button className="course-button">Slideshow</button>
           </Link>
-          <Link to="/self-paced-classes/circuits/circuitworksheet"> {}
+          <Link to="/circuitworksheet"> {}
             <button className="course-button">Worksheet</button>
           </Link>
           <Link to="https://docs.google.com/document/d/e/2PACX-1vQUW5I_4w3lys_aRBmbtFRDuM76orRlvLAob-rVoQHGyNBqu11iu6DQZGh109dIEQEQ1nlYvHsjuhlI/pub" target="_blank" rel="noopener noreferrer">

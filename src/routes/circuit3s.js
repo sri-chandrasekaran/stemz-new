@@ -19,7 +19,7 @@ const circuit1s = () => {
           <Link to="https://docs.google.com/document/d/e/2PACX-1vQDJpfPnMdS6WrNAzzVMR-1e_pVHjRRuddxJ73rE-7oOe4zLpuGoMHzeGqjIkhlfUa6BJtNDZL5pPVw/pub" target="_blank" rel="noopener noreferrer">
             <button className="course-button">Student Notes</button>
           </Link>
-          <Link to="/self-paced-classes/circuits/circuitquiz" target="_blank" rel="noopener noreferrer">
+          <Link to="/circuitquiz" target="_blank" rel="noopener noreferrer">
             <button className="course-button">Quiz</button>
           </Link>
         </div>

@@ -248,35 +248,35 @@ function App() {
         element={<Chemquiz />}
       />
       <Route
-        path="self-paced-classes/circuits/circuit1s"
+        path="/circuit1s"
         element={<Circuit1s />}
       />
       <Route
-        path="self-paced-classes/circuits/circuit2s"
+        path="/circuit2s"
         element={<Circuit2s />}
       />
       <Route
-        path="self-paced-classes/circuits/circuit3s"
+        path="/circuit3s"
         element={<Circuit3s />}
       />
       <Route
-        path="self-paced-classes/circuits/circuit1p"
+        path="/circuit1p"
         element={<Circuit1p />}
       />
       <Route
-        path="self-paced-classes/circuits/circuit2p"
+        path="/circuit2p"
         element={<Circuit2p />}
       />
       <Route
-        path="self-paced-classes/circuits/circuit3p"
+        path="/circuit3p"
         element={<Circuit3p />}
       />
       <Route
-        path="self-paced-classes/circuits/circuitquiz"
+        path="/circuitquiz"
         element={<Circuitquiz />}
       />
       <Route
-        path="self-paced-classes/circuits/circuitworksheet"
+        path="/circuitworksheet"
         element={<Circuitworksheet />}
       />
       <Route
