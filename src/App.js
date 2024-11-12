@@ -142,7 +142,7 @@ function App() {
       <Route path="news/march" element={<March />} />
       <Route path="news/september" element={<September />} />
       <Route
-        path="/astronomy/astrovid1s"
+        path="/astrovid1s"
         element={<Astrovid1s />}
       />
       <Route
