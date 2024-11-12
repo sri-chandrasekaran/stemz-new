@@ -280,27 +280,27 @@ function App() {
         element={<Circuitworksheet />}
       />
       <Route
-        path="self-paced-classes/environmental-science/es1s"
+        path="/es1s"
         element={<Es1s />}
       />
       <Route
-        path="self-paced-classes/environmental-science/es2s"
+        path="/es2s"
         element={<Es2s />}
       />
       <Route
-        path="self-paced-classes/environmental-science/es3s"
+        path="/es3s"
         element={<Es3s />}
       />
       <Route
-        path="self-paced-classes/environmental-science/es4s"
+        path="/es4s"
         element={<Es4s />}
       />
       <Route
-        path="self-paced-classes/environmental-science/esquiz"
+        path="/esquiz"
         element={<ESquiz />}
       />
       <Route
-        path="self-paced-classes/environmental-science/esworksheet1"
+        path="/esworksheet1"
         element={<Esworksheet1 />}
       />
       <Route
