@@ -28,7 +28,7 @@ const Astrovid3p = () => {
         >
           <button className="course-button">Slideshow</button>
         </Link>
-        <Link to="/self-paced-classes/astronomy/astroworksheet2">
+        <Link to="/astroworksheet2">
           <button className="course-button">Worksheet</button>
         </Link>
         <Link

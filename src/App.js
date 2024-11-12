@@ -146,43 +146,43 @@ function App() {
         element={<Astrovid1s />}
       />
       <Route
-        path="/astronomy/astrovid1p"
+        path="/astrovid1p"
         element={<Astrovid1p />}
       />
       <Route
-        path="/astronomy/astrovid2p"
+        path="/astrovid2p"
         element={<Astrovid2p />}
       />
       <Route
-        path="/astronomy/astrovid2s"
+        path="/astrovid2s"
         element={<Astrovid2s />}
       />
       <Route
-        path="/astronomy/astrovid3p"
+        path="/astrovid3p"
         element={<Astrovid3p />}
       />
       <Route
-        path="/astronomy/astrovid3s"
+        path="/astrovid3s"
         element={<Astrovid3s />}
       />
       <Route
-        path="/astronomy/astrovid4p"
+        path="/astrovid4p"
         element={<Astrovid4p />}
       />
       <Route
-        path="/astronomy/astrovid4s"
+        path="/astrovid4s"
         element={<Astrovid4s />}
       />
       <Route
-        path="/astronomy/astroWorksheet1"
+        path="/astroWorksheet1"
         element={<AstroWorksheet1 />}
       />
       <Route
-        path="/astronomy/astroWorksheet2"
+        path="/astroWorksheet2"
         element={<AstroWorksheet2 />}
       />
       <Route
-        path="/astronomy/astroquiz"
+        path="/astroquiz"
         element={<Astroquiz />}
       />
       <Route
