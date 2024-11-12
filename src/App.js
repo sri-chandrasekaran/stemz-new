@@ -154,59 +154,59 @@ function App() {
         element={<Astrovid2p />}
       />
       <Route
-        path="self-paced-classes/astronomy/astrovid2s"
+        path="/astronomy/astrovid2s"
         element={<Astrovid2s />}
       />
       <Route
-        path="self-paced-classes/astronomy/astrovid3p"
+        path="/astronomy/astrovid3p"
         element={<Astrovid3p />}
       />
       <Route
-        path="self-paced-classes/astronomy/astrovid3s"
+        path="/astronomy/astrovid3s"
         element={<Astrovid3s />}
       />
       <Route
-        path="self-paced-classes/astronomy/astrovid4p"
+        path="/astronomy/astrovid4p"
         element={<Astrovid4p />}
       />
       <Route
-        path="self-paced-classes/astronomy/astrovid4s"
+        path="/astronomy/astrovid4s"
         element={<Astrovid4s />}
       />
       <Route
-        path="self-paced-classes/astronomy/astroWorksheet1"
+        path="/astronomy/astroWorksheet1"
         element={<AstroWorksheet1 />}
       />
       <Route
-        path="self-paced-classes/astronomy/astroWorksheet2"
+        path="/astronomy/astroWorksheet2"
         element={<AstroWorksheet2 />}
       />
       <Route
-        path="self-paced-classes/astronomy/astroquiz"
+        path="/astronomy/astroquiz"
         element={<Astroquiz />}
       />
       <Route
-        path="self-paced-classes/basics-of-coding/bc1p"
+        path="/basics-of-coding/bc1p"
         element={<Bc1p />}
       />
       <Route
-        path="self-paced-classes/basics-of-coding/bc1s"
+        path="/basics-of-coding/bc1s"
         element={<Bc1s />}
       />
       <Route
-        path="self-paced-classes/basics-of-coding/bc2p"
+        path="/basics-of-coding/bc2p"
         element={<Bc2p />}
       />
       <Route
-        path="self-paced-classes/basics-of-coding/bc2s"
+        path="/basics-of-coding/bc2s"
         element={<Bc2s />}
       />
       <Route
-        path="self-paced-classes/basics-of-coding/bc3p"
+        path="/basics-of-coding/bc3p"
         element={<Bc3p />}
       />
       <Route
-        path="self-paced-classes/basics-of-coding/bc3s"
+        path="/basics-of-coding/bc3s"
         element={<Bc3s />}
       />
       <Route
