@@ -16,7 +16,7 @@ const bio2 = () => {
           <Link to="https://docs.google.com/presentation/d/e/2PACX-1vSbaxlHQxP4MboLd2JWNeOP55uL1eEdqCMhzy8_-8GRUtnznUn10LytPOOqwQZA2tRrt9hXrlOdM86V/pub?start=false&loop=false&delayms=3000" target="_blank" rel="noopener noreferrer">
             <button className="course-button">Slideshow</button>
           </Link>
-          <Link to="https://docs.google.com/document/d/e/2PACX-1vTIoXaJsoNeSUNIQOETgYeWlXCjVX1iXEQ_ZYoccxx85re8bYApKRZYOxWgPHor8X22CA70YKeWhJO-/pub" target="_blank" rel="noopener noreferrer">
+          <Link to="/self-paced-classes/biochemistry/biochemworksheet"> {/* Navigate to AstroWorkSheet */}
             <button className="course-button">Worksheet</button>
           </Link>
           <Link to="https://docs.google.com/document/d/e/2PACX-1vRgN28ND5SLhY9wg_V3hwq3KllgU_SgHbO2TlDtdS7BUFhH03VDgwOdf4WGdX4UJf7z68YicgeQN22g/pub" target="_blank" rel="noopener noreferrer">

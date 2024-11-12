@@ -16,7 +16,7 @@ const es1s = () => {
           <Link to="https://docs.google.com/presentation/d/e/2PACX-1vTETrqYtujM4TATeiPQ8u3WnX-dIbUwUFclqik-GDn7w7HMQ2ZEulSuWZescS0FPJ9zX8F-Pdyt4J7g/pub?start=false&loop=false&delayms=3000" target="_blank" rel="noopener noreferrer">
             <button className="course-button">Slideshow</button>
           </Link>
-          <Link to="https://docs.google.com/document/d/e/2PACX-1vRUirVOL8YLkxol0nTrImCblQ0sB-Xu2LbLwvxLluYWSEPicxO7NpKWZ8avM_bjvTNsYJUGGffU_w8m/pub" target="_blank" rel="noopener noreferrer">
+          <Link to="/self-paced-classes/environmental-science/esworksheet1"> {}
             <button className="course-button">Worksheet</button>
           </Link>
           <Link to="https://docs.google.com/document/d/e/2PACX-1vTT4pw3kWlJ4Za6GSGBcnc7tAnI2GupEZwwWg7G8GLHqja_4lf6250YYj58ktt_430OVdCshhh46mWD/pub" target="_blank" rel="noopener noreferrer">

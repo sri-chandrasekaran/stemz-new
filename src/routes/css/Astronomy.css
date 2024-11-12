@@ -12,11 +12,11 @@
 }
 
 .course-description h2 {
-    margin-bottom: 10px; /* Add spacing between each h2 element */
+    margin-bottom: 10px;
   }
   
   .course-description h3 {
-    margin-top: 20px; /* Add margin to separate h3 element from h2 elements */
+    margin-top: 20px;
   }
 
   .student-l1 h1 {
@@ -87,10 +87,10 @@
   }
 
   .astrovid-thumbnail {
-    display: block; /* Make the image a block-level element */
-    margin: 0 auto; /* Center horizontally */
-    text-align: center; /* Center horizontally within the block */
-    max-width: 100%; /* Ensure the image doesn't exceed its container's width*/
+    display: block; 
+    margin: 0 auto; 
+    text-align: center; 
+    max-width: 100%; 
     cursor: pointer;
     border: 1px solid #ccc;
     transition: transform 0.2s ease-in-out;
