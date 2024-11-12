@@ -19,7 +19,7 @@ const es1s = () => {
           <Link to="https://docs.google.com/document/d/e/2PACX-1vSuDbQnsS-_fsq1WqEXcdEehivpafWZjBxDeZxMoRf9aKimiWjogQ1AJI_Gcc5Q3v0S08aB_KZlxP0W/pub" target="_blank" rel="noopener noreferrer">
             <button className="course-button">Student Notes</button>
           </Link>
-          <Link to="/self-paced-classes/zoology/zooquiz" target="_blank" rel="noopener noreferrer">
+          <Link to="/zooquiz" target="_blank" rel="noopener noreferrer">
             <button className="course-button">Quiz</button>
           </Link>
         </div>

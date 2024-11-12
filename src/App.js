@@ -373,27 +373,27 @@ function App() {
         path="/statworksheet3"
         element={<StatWorkSheet3 />}
       />
-      <Route path="self-paced-classes/zoology/zoo1p" element={<Zoo1p />} />
-      <Route path="self-paced-classes/zoology/zoo1s" element={<Zoo1s />} />
-      <Route path="self-paced-classes/zoology/zoo2p" element={<Zoo2p />} />
-      <Route path="self-paced-classes/zoology/zoo2s" element={<Zoo2s />} />
-      <Route path="self-paced-classes/zoology/zoo3p" element={<Zoo3p />} />
-      <Route path="self-paced-classes/zoology/zoo3s" element={<Zoo3s />} />
-      <Route path="self-paced-classes/zoology/zoo4p" element={<Zoo4p />} />
-      <Route path="self-paced-classes/zoology/zoo4s" element={<Zoo4s />} />
-      <Route path="self-paced-classes/zoology/zoo5p" element={<Zoo5p />} />
-      <Route path="self-paced-classes/zoology/zoo5s" element={<Zoo5s />} />
-      <Route path="self-paced-classes/zoology/zooquiz" element={<Zooquiz />} />
+      <Route path="/zoo1p" element={<Zoo1p />} />
+      <Route path="/zoo1s" element={<Zoo1s />} />
+      <Route path="/zoo2p" element={<Zoo2p />} />
+      <Route path="/zoo2s" element={<Zoo2s />} />
+      <Route path="/zoo3p" element={<Zoo3p />} />
+      <Route path="/zoo3s" element={<Zoo3s />} />
+      <Route path="/zoo4p" element={<Zoo4p />} />
+      <Route path="/zoo4s" element={<Zoo4s />} />
+      <Route path="/zoo5p" element={<Zoo5p />} />
+      <Route path="/zoo5s" element={<Zoo5s />} />
+      <Route path="/zooquiz" element={<Zooquiz />} />
       <Route
-        path="self-paced-classes/zoology/zooworksheet1"
+        path="/zooworksheet1"
         element={<Zooworksheet1 />}
       />
       <Route
-        path="self-paced-classes/zoology/zooworksheet2"
+        path="/zooworksheet2"
         element={<Zooworksheet2 />}
       />
       <Route
-        path="self-paced-classes/zoology/zooworksheet3"
+        path="/zooworksheet3"
         element={<Zooworksheet3 />}
       />
     </Routes>

@@ -27,7 +27,7 @@ const ZoologyPage = () => {
         <h1>Student-Led Lessons</h1>
         <div className='lesson1'>
         {(<div className='lesson-content'>
-        <Link to ="/self-paced-classes/zoology/zoo1s" onClick={scrollToTop}>
+        <Link to ="/zoo1s" onClick={scrollToTop}>
               <img
               src="https://i.ytimg.com/vi/pEDK7r21GBM/mqdefault.jpg"
               alt="Lesson 1 Thumbnail"
@@ -36,7 +36,7 @@ const ZoologyPage = () => {
             <h3 className='vidtitle-small'>Lesson 1: Classification & Taxonomy</h3>
             </Link>
             
-            <Link to ="/self-paced-classes/zoology/zoo2s" onClick={scrollToTop}>
+            <Link to ="/zoo2s" onClick={scrollToTop}>
             <img
               src="https://i.ytimg.com/vi/8IekIaOqmwA/mqdefault.jpg"
               alt="Lesson 2 Thumbnail"
@@ -45,7 +45,7 @@ const ZoologyPage = () => {
             <h3 className='vidtitle-small'> Lesson 2: Darwin's Theory</h3>
             </Link>
 
-            <Link to ="/self-paced-classes/zoology/zoo3s" onClick={scrollToTop}>
+            <Link to ="/zoo3s" onClick={scrollToTop}>
               <img
               src="https://i.ytimg.com/vi/PpDLfndy7zs/mqdefault.jpg"
               alt="Lesson 3 Thumbnail"
@@ -54,7 +54,7 @@ const ZoologyPage = () => {
             <h3 className='vidtitle-small'>Lesson 3: Distribution</h3>
             </Link>
 
-            <Link to ="/self-paced-classes/zoology/zoo4s" onClick={scrollToTop}>
+            <Link to ="/zoo4s" onClick={scrollToTop}>
               <img
               src="https://i.ytimg.com/vi/x8jMSVan1Rc/mqdefault.jpg"
               alt="Lesson 4 Thumbnail"
@@ -62,7 +62,7 @@ const ZoologyPage = () => {
             />
             <h3 className='vidtitle-small'>Lesson 4: Behavior</h3>
             </Link>
-            <Link to ="/self-paced-classes/zoology/zoo5s" onClick={scrollToTop}>
+            <Link to ="/zoo5s" onClick={scrollToTop}>
               <img
               src="https://i.ytimg.com/vi/ga7BP8zSDMg/mqdefault.jpg"
               alt="Lesson 4 Thumbnail"
@@ -79,7 +79,7 @@ const ZoologyPage = () => {
         <div className='lesson1'>
           
         {(<div className='lesson-content'>
-        <Link to ="/self-paced-classes/zoology/zoo1s" onClick={scrollToTop}>
+        <Link to ="/zoo1p" onClick={scrollToTop}>
               <img
               src="https://i.ytimg.com/vi/pEDK7r21GBM/mqdefault.jpg"
               alt="Lesson 1 Thumbnail"
@@ -88,7 +88,7 @@ const ZoologyPage = () => {
             <h3 className='vidtitle-small'>Lesson 1: Classification & Taxonomy</h3>
             </Link>
             
-            <Link to ="/self-paced-classes/zoology/zoo2s" onClick={scrollToTop}>
+            <Link to ="/zoo2p" onClick={scrollToTop}>
             <img
               src="https://i.ytimg.com/vi/8IekIaOqmwA/mqdefault.jpg"
               alt="Lesson 2 Thumbnail"
@@ -97,7 +97,7 @@ const ZoologyPage = () => {
             <h3 className='vidtitle-small'> Lesson 2: Darwin's Theory</h3>
             </Link>
 
-            <Link to ="/self-paced-classes/zoology/zoo3s" onClick={scrollToTop}>
+            <Link to ="/zoo3p" onClick={scrollToTop}>
               <img
               src="https://i.ytimg.com/vi/PpDLfndy7zs/mqdefault.jpg"
               alt="Lesson 3 Thumbnail"
@@ -106,7 +106,7 @@ const ZoologyPage = () => {
             <h3 className='vidtitle-small'>Lesson 3: Distribution</h3>
             </Link>
 
-            <Link to ="/self-paced-classes/zoology/zoo4s" onClick={scrollToTop}>
+            <Link to ="/zoo4p" onClick={scrollToTop}>
               <img
               src="https://i.ytimg.com/vi/x8jMSVan1Rc/mqdefault.jpg"
               alt="Lesson 4 Thumbnail"
@@ -114,7 +114,7 @@ const ZoologyPage = () => {
             />
             <h3 className='vidtitle-small'>Lesson 4: Behavior</h3>
             </Link>
-            <Link to ="/self-paced-classes/zoology/zoo5s" onClick={scrollToTop}>
+            <Link to ="/zoo5p" onClick={scrollToTop}>
               <img
               src="https://i.ytimg.com/vi/ga7BP8zSDMg/mqdefault.jpg"
               alt="Lesson 4 Thumbnail"
