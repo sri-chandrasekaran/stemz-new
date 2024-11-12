@@ -304,47 +304,47 @@ function App() {
         element={<Esworksheet1 />}
       />
       <Route
-        path="self-paced-classes/psychology/psych1p"
+        path="/psych1p"
         element={<Psych1p />}
       />
       <Route
-        path="self-paced-classes/psychology/psych1s"
+        path="/psych1s"
         element={<Psych1s />}
       />
       <Route
-        path="self-paced-classes/psychology/psych2p"
+        path="/psych2p"
         element={<Psych2p />}
       />
       <Route
-        path="self-paced-classes/psychology/psych2s"
+        path="/psych2s"
         element={<Psych2s />}
       />
       <Route
-        path="self-paced-classes/psychology/psych3p"
+        path="/psych3p"
         element={<Psych3p />}
       />
       <Route
-        path="self-paced-classes/psychology/psych3s"
+        path="/psych3s"
         element={<Psych3s />}
       />
       <Route
-        path="self-paced-classes/psychology/psych4p"
+        path="/psych4p"
         element={<Psych4p />}
       />
       <Route
-        path="self-paced-classes/psychology/psych4s"
+        path="/psych4s"
         element={<Psych4s />}
       />
       <Route
-        path="self-paced-classes/psychology/psychquiz"
+        path="/psychquiz"
         element={<Psycquiz />}
       />
       <Route
-        path="self-paced-classes/psychology/psychworksheet1"
+        path="/psychworksheet1"
         element={<Psychworksheet1 />}
       />
       <Route
-        path="self-paced-classes/psychology/psychworksheet2"
+        path="/psychworksheet2"
         element={<Psychworksheet2 />}
       />
       <Route path="self-paced-classes/statistics/stat1p" element={<Stat1p />} />
