@@ -347,30 +347,30 @@ function App() {
         path="/psychworksheet2"
         element={<Psychworksheet2 />}
       />
-      <Route path="self-paced-classes/statistics/stat1p" element={<Stat1p />} />
-      <Route path="self-paced-classes/statistics/stat1s" element={<Stat1s />} />
-      <Route path="self-paced-classes/statistics/stat2p" element={<Stat2p />} />
-      <Route path="self-paced-classes/statistics/stat2s" element={<Stat2s />} />
-      <Route path="self-paced-classes/statistics/stat3p" element={<Stat3p />} />
-      <Route path="self-paced-classes/statistics/stat3s" element={<Stat3s />} />
-      <Route path="self-paced-classes/statistics/stat4p" element={<Stat4p />} />
-      <Route path="self-paced-classes/statistics/stat4s" element={<Stat4s />} />
-      <Route path="self-paced-classes/statistics/stat5p" element={<Stat5p />} />
-      <Route path="self-paced-classes/statistics/stat5s" element={<Stat5s />} />
+      <Route path="/stat1p" element={<Stat1p />} />
+      <Route path="/stat1s" element={<Stat1s />} />
+      <Route path="/stat2p" element={<Stat2p />} />
+      <Route path="/stat2s" element={<Stat2s />} />
+      <Route path="/stat3p" element={<Stat3p />} />
+      <Route path="/stat3s" element={<Stat3s />} />
+      <Route path="/stat4p" element={<Stat4p />} />
+      <Route path="/stat4s" element={<Stat4s />} />
+      <Route path="/stat5p" element={<Stat5p />} />
+      <Route path="/stat5s" element={<Stat5s />} />
       <Route
-        path="self-paced-classes/statistics/statquiz"
+        path="/statquiz"
         element={<Statquiz />}
       />
       <Route
-        path="self-paced-classes/statistics/statworksheet1"
+        path="/statworksheet1"
         element={<StatWorkSheet1 />}
       />
       <Route
-        path="self-paced-classes/statistics/statworksheet2"
+        path="/statworksheet2"
         element={<StatWorkSheet2 />}
       />
       <Route
-        path="self-paced-classes/statistics/statworksheet3"
+        path="/statworksheet3"
         element={<StatWorkSheet3 />}
       />
       <Route path="self-paced-classes/zoology/zoo1p" element={<Zoo1p />} />

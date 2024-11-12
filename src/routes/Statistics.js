@@ -30,7 +30,7 @@ const StatisticsPage = () => {
         <h1>Student-Led Lessons</h1>
         <div className='lesson1'>
         {(<div className='lesson-content'>
-        <Link to ="/self-paced-classes/statistics/stat1s" onClick={scrollToTop}>
+        <Link to ="/stat1s" onClick={scrollToTop}>
               <img
               src="https://i.ytimg.com/vi/imGo9o7Epo8/mqdefault.jpg"
               alt="Lesson 1 Thumbnail"
@@ -39,7 +39,7 @@ const StatisticsPage = () => {
             <h3 className='vidtitle-small'>Lesson 1: Fractions</h3>
             </Link>
             
-            <Link to ="/self-paced-classes/statistics/stat2s" onClick={scrollToTop}>
+            <Link to ="/stat2s" onClick={scrollToTop}>
             <img
               src="https://i.ytimg.com/vi/zL7QABzjyxA/mqdefault.jpg"
               alt="Lesson 2 Thumbnail"
@@ -48,7 +48,7 @@ const StatisticsPage = () => {
             <h3 className='vidtitle-small'> Lesson 2: Percentages</h3>
             </Link>
 
-            <Link to ="/self-paced-classes/statistics/stat3s" onClick={scrollToTop}>
+            <Link to ="/stat3s" onClick={scrollToTop}>
               <img
               src="https://i.ytimg.com/vi/WY7m3HsZf0k/mqdefault.jpg"
               alt="Lesson 3 Thumbnail"
@@ -57,7 +57,7 @@ const StatisticsPage = () => {
             <h3 className='vidtitle-small'>Lesson 3: Advanced Percents</h3>
             </Link>
 
-            <Link to ="/self-paced-classes/statistics/stat4s" onClick={scrollToTop}>
+            <Link to ="/stat4s" onClick={scrollToTop}>
               <img
               src="https://i.ytimg.com/vi/folkaRAmLWw/mqdefault.jpg"
               alt="Lesson 4 Thumbnail"
@@ -65,7 +65,7 @@ const StatisticsPage = () => {
             />
             <h3 className='vidtitle-small'>Lesson 4: Types of Graphs</h3>
             </Link>
-            <Link to ="/self-paced-classes/statistics/stat5s" onClick={scrollToTop}>
+            <Link to ="/stat5s" onClick={scrollToTop}>
               <img
               src="https://i.ytimg.com/vi/6sI8z3E7S80/mqdefault.jpg"
               alt="Lesson 4 Thumbnail"
@@ -80,7 +80,7 @@ const StatisticsPage = () => {
         <h1>Parent-Led Lessons</h1>
         <div className='lesson1'>
         {(<div className='lesson-content'>
-        <Link to ="/self-paced-classes/statistics/stat1p" onClick={scrollToTop}>
+        <Link to ="/stat1p" onClick={scrollToTop}>
               <img
               src="https://i.ytimg.com/vi/imGo9o7Epo8/mqdefault.jpg"
               alt="Lesson 1 Thumbnail"
@@ -89,7 +89,7 @@ const StatisticsPage = () => {
             <h3 className='vidtitle-small'>Lesson 1: Fractions</h3>
             </Link>
             
-            <Link to ="/self-paced-classes/statistics/stat2p" onClick={scrollToTop}>
+            <Link to ="/stat2p" onClick={scrollToTop}>
             <img
               src="https://i.ytimg.com/vi/zL7QABzjyxA/mqdefault.jpg"
               alt="Lesson 2 Thumbnail"
@@ -98,7 +98,7 @@ const StatisticsPage = () => {
             <h3 className='vidtitle-small'> Lesson 2: Percentages</h3>
             </Link>
 
-            <Link to ="/self-paced-classes/statistics/stat3p" onClick={scrollToTop}>
+            <Link to ="/stat3p" onClick={scrollToTop}>
               <img
               src="https://i.ytimg.com/vi/WY7m3HsZf0k/mqdefault.jpg"
               alt="Lesson 3 Thumbnail"
@@ -107,7 +107,7 @@ const StatisticsPage = () => {
             <h3 className='vidtitle-small'>Lesson 3: Advanced Percents</h3>
             </Link>
 
-            <Link to ="/self-paced-classes/statistics/stat4p" onClick={scrollToTop}>
+            <Link to ="/stat4p" onClick={scrollToTop}>
               <img
               src="https://i.ytimg.com/vi/folkaRAmLWw/mqdefault.jpg"
               alt="Lesson 4 Thumbnail"
@@ -115,7 +115,7 @@ const StatisticsPage = () => {
             />
             <h3 className='vidtitle-small'>Lesson 4: Types of Graphs</h3>
             </Link>
-            <Link to ="/self-paced-classes/statistics/stat5p" onClick={scrollToTop}>
+            <Link to ="/stat5p" onClick={scrollToTop}>
               <img
               src="https://i.ytimg.com/vi/6sI8z3E7S80/mqdefault.jpg"
               alt="Lesson 4 Thumbnail"
