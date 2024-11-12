@@ -123,11 +123,9 @@ function App() {
       <Route path="login" element={<LoginForm />} />
       <Route path="sign-up" element={<SignUpForm />} />
       <Route path="dashboard" element={<Dashboard />} />
-      <Route path="self-paced-classes/astronomy" element={<Astronomy />} />
-      <Route
-        path="self-paced-classes/basics-of-coding"
-        element={<BasicsOfCoding />}
-      />
+      {/* <Route path="self-paced-classes/astronomy" element={<Astronomy />} /> */}
+      <Route path="/astronomy" element={<Astronomy />} />
+      <Route path="self-paced-classes/basics-of-coding" element={<BasicsOfCoding />}/>
       <Route
         path="self-paced-classes/biochemistry"
         element={<Biochemistry />}
