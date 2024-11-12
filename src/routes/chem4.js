@@ -19,7 +19,7 @@ const bc4p = () => {
           <Link to="https://docs.google.com/document/d/e/2PACX-1vTAIWqN5RXNd7BmP8OK-Nh1A-0z5rRmaqAti_EwE4qTV4JYJqc5kNaTasJ3PyRhNW-MjwC5F9Vq1mKS/pub" target="_blank" rel="noopener noreferrer">
             <button className="course-button">Parent Notes</button>
           </Link>
-          <Link to="/self-paced-classes/chemistry/chemquiz" target="_blank" rel="noopener noreferrer">
+          <Link to="/chemquiz" target="_blank" rel="noopener noreferrer">
             <button className="course-button">Quiz</button>
           </Link>
         </div>

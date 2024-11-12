@@ -239,12 +239,12 @@ function App() {
         path="/biochemworksheet"
         element={<BiochemWorkSheet />}
       />
-      <Route path="self-paced-classes/chemistry/chem1" element={<Chem1 />} />
-      <Route path="self-paced-classes/chemistry/chem2" element={<Chem2 />} />
-      <Route path="self-paced-classes/chemistry/chem3" element={<Chem3 />} />
-      <Route path="self-paced-classes/chemistry/chem4" element={<Chem4 />} />
+      <Route path="/chem1" element={<Chem1 />} />
+      <Route path="/chem2" element={<Chem2 />} />
+      <Route path="/chem3" element={<Chem3 />} />
+      <Route path="/chem4" element={<Chem4 />} />
       <Route
-        path="self-paced-classes/chemistry/chemquiz"
+        path="/chemquiz"
         element={<Chemquiz />}
       />
       <Route
