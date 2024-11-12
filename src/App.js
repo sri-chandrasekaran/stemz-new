@@ -229,14 +229,14 @@ function App() {
         path="/bcquiz"
         element={<BCquiz />}
       />
-      <Route path="self-paced-classes/biochemistry/bio1" element={<Bio1 />} />
-      <Route path="self-paced-classes/biochemistry/bio2" element={<Bio2 />} />
+      <Route path="/bio1" element={<Bio1 />} />
+      <Route path="/bio2" element={<Bio2 />} />
       <Route
-        path="self-paced-classes/biochemistry/bioquiz"
+        path="/bioquiz"
         element={<Bioquiz />}
       />
       <Route
-        path="self-paced-classes/biochemistry/biochemworksheet"
+        path="/biochemworksheet"
         element={<BiochemWorkSheet />}
       />
       <Route path="self-paced-classes/chemistry/chem1" element={<Chem1 />} />
