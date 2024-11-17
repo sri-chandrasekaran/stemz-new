@@ -16,10 +16,10 @@ const SignUpForm = () => {
 
   async function submit(e) {
     e.preventDefault();
-    const payload = { name, password, email };
+    const payload = { password, email };
   
     try {
-      const response = await call_api(payload, "users/create", "POST");
+      const response = await call_api(payload, "auth/signup", "POST");
   
       if (response) { // Check for a successful response
         navigate('/login'); // Redirect on success

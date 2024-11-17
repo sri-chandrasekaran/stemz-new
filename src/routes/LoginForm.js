@@ -10,6 +10,19 @@ const LoginForm = () => {
     const navigate = useNavigate();
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
+    /**
+     * 
+    try {
+      const response = await call_api(payload, "auth/login", "POST");
+      const token = JSON.stringify(reponse).Token;
+      localStorage.add("token", token);
+      if (response) { // Check for a successful response
+        navigate('/login'); // Redirect on success
+      }
+    } catch (error) {
+      console.error("Signup failed:", error);
+    }
+     */
     useEffect(() => {
         const fetchDashboardData = async () => {
           try {
