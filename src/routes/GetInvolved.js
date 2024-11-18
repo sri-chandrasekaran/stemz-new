@@ -36,7 +36,7 @@ const GetInvolved = () => {
                 The after school program would consist of our in person courses, and we will provide the materials.
                 High school students, please contact us about starting a STEMz Learning chapter at your school 
                 to increase outreach in your area.</p>
-            <Link to="mailto:info@stemzlearning.org" target="_blank" rel="noopener noreferrer">
+            <Link to="mailto:stemzlearning@stemzlearning.org" target="_blank" rel="noopener noreferrer">
                 <button className="box-button" style={{marginTop: '14px'}}>Email Us</button>
             </Link>
         </div>
