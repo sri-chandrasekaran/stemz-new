@@ -25,7 +25,7 @@ const Volunteers = () => {
       <HeroOther overlayText="Volunteers" />
       <div className="volunteer-info">
         <p className="volunteer-text">
-          We are recruiting hard-working high-school and college level students to teach STEM topics to elementary school students and develop our curriculum!
+          We are recruiting hard-working high-school and college level students to grow our organization and make an impact in our community!
         </p>
         <ul className="volunteer-benefits">
           <li>Service and Commitment: Help contribute to your community</li>
