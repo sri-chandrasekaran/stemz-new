@@ -15,13 +15,17 @@
 }
 
 .hero-title {
-    padding-top: 250px;
+    position: relative;  
+    z-index: 2;       
+    padding-top: 50px;
     padding-left: 50px;
     font-size: 70px;
     color: white;
 }
 
 .hero-description {
+    position: relative; 
+    z-index: 2;       
     padding-left: 50px;
     font-size: 42px;
     color: white;
@@ -34,10 +38,11 @@
 
 .mission {
     text-align: center;
-    margin-top: 815px; /* Adjust this margin as needed */
+    margin-top: 50px;  
     max-width: 1100px;
     margin-left: auto;
     margin-right: auto;
+    padding: 20px;
 }
 
 .mission h1 {
@@ -118,24 +123,27 @@
 
 
 /* phone */
-@media screen and (max-width:800px) {
-
-    .hero {
+@media screen and (max-width: 800px) {
+    .hero-homepage {
+        height: auto;
+        min-height: 400px; 
         position: relative;
+        padding-bottom: 20px; 
+        overflow: visible; 
     }
+
     .hero-title {
-        padding-top: 150px; /* Reduce padding for better fit */
-        font-size: 36px; /* Decrease font size for better fit */
-        margin-left: -30px;
+        padding-top: 100px;
+        font-size: 36px;
     }
 
     .hero-description {
-        padding-left: 20px; /* Adjust padding for better fit */
-        font-size: 24px; /* Decrease font size for better fit */
+        padding-bottom: 20px; /* Add padding to prevent text cut-off */
     }
 
+
     .mission {
-        padding-top: 15px; /* Adjust padding for better fit */
+        padding-top: 15px; 
     }
 
     .mission h1 {
@@ -181,7 +189,9 @@
 /* larger computers */
 
 @media screen and (min-width: 1200px) {
-    .mission {
-        margin-top: calc(815px + 27px);
+    @media screen and (min-width: 1200px) {
+        .mission {
+            margin-top: 70px;
+        }
     }
 }
