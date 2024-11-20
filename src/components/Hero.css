@@ -1,122 +1,153 @@
 .hero-homepage {
-    background-color: #357717;
-    margin-top: 100px;
-    z-index: 1;
-    height: 75vh;
-    position: relative;
-}
-
-.hero-homepage {
-    background-color: #357717;
-    position: absolute;
-    top: -15px;
-    left: 0;
-    right: 0;
-    bottom: 0;
+  background-color: #357717;
+  position: relative;
+  width: 100%;
+  height: 75vh;
+  margin-top: clamp(40px, 5vh, 60px);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-top: 100px;
 }
 
 .hero-title {
-    padding-top: 250px;
-    padding-left: 50px;
-    font-size: 70px;
-    color: white;
+  position: relative;
+  padding-left: clamp(20px, 5vw, 50px);
+  font-size: clamp(28px, 5vw, 70px);
+  color: white;
+  margin-top: -10vh;
 }
 
 .hero-description {
-    padding-left: 50px;
-    font-size: 42px;
-    color: white;
+  padding-left: clamp(20px, 5vw, 50px);
+  font-size: clamp(20px, 3vw, 42px);
+  color: white;
+  margin-top: 1vh;
 }
 
 .btns {
-    text-align: center;
-    position: absolute;
-    margin: auto;
-    width: 100%;
-    height: 100%;
-    top: 40vh;
+  text-align: center;
+  position: relative;
+  width: 100%;
+  margin-top: clamp(10px, 2vh, 20px);
 }
 
 .hero-images {
-    width: 120px;
-    height: 160px;
-    position: absolute; 
-    bottom: 25px; 
-    right: 25px; 
+  width: clamp(80px, 10vw, 120px);
+  height: clamp(120px, 15vw, 160px);
+  position: absolute;
+  bottom: 25px;
+  right: 25px;
 }
 
 .hero2-images {
-    width: 150px;
-    height: 140px;
-    margin-left: 25px;
-    margin-top: 0; 
-    position: absolute; 
-    top: 25px;
-    left: 25px; 
+  width: clamp(100px, 12vw, 150px);
+  height: clamp(100px, 12vw, 140px);
+  position: absolute;
+  top: 25px;
+  left: 25px;
 }
 
-@media screen and (max-width: 800px) {
-    .hero-title {
-        padding-top: 50px; /* Adjust padding for smaller screens */
-        padding-left: 20px; /* Adjust padding for smaller screens */
-        font-size: 28px; /* Decrease font size for smaller screens */
-    }
+/* For very tall screens */
+@media screen and (min-height: 1000px) {
+  .hero-homepage {
+    height: 65vh;
+  }
 
-    .hero-description {
-        padding-left: 20px; /* Adjust padding for smaller screens */
-        font-size: 20px; /* Decrease font size for smaller screens */
-    }
-
-    .hero-homepage {
-        width: 103%;
-        overflow-x: hidden;
-    }
-
-    .line-break::before {
-        content: '\A';
-        white-space: pre;
-    }
-
-    .hero-images {
-        display: none;
-    }
-
-    .hero2-images {
-        display: none;
-    }
+  .hero-title {
+    margin-top: -5vh;
+  }
 }
 
+/* For shorter screens */
+@media screen and (max-height: 600px) {
+  .hero-homepage {
+    height: 85vh;
+  }
 
+  .hero-title {
+    margin-top: 0;
+    font-size: clamp(24px, 4vw, 50px);
+  }
+
+  .hero-description {
+    font-size: clamp(18px, 2.5vw, 32px);
+  }
+}
+
+/* Tablet */
 @media screen and (max-width: 1200px) {
+  .hero-homepage {
+    height: 70vh;
+  }
+
+  .hero-images {
+    width: clamp(70px, 8vw, 100px);
+    height: clamp(100px, 12vw, 140px);
+  }
+
+  .hero2-images {
+    width: clamp(90px, 10vw, 130px);
+    height: clamp(90px, 10vw, 120px);
+  }
+
+  .line-break::before {
+    content: "\A";
+    white-space: pre;
+  }
+}
+
+/* Mobile */
+@media screen and (max-width: 800px) {
+  .hero-homepage {
+    height: 60vh;
+    overflow-x: hidden;
+  }
+
+  .hero-title {
+    margin-top: -5vh;
+  }
+
+  .hero-description {
+    margin-top: 2vh;
+  }
+
+  .hero-images {
+    display: none;
+  }
+
+  .hero2-images {
+    display: none;
+  }
+
+  /* For mobile landscape */
+  @media screen and (max-height: 500px) {
+    .hero-homepage {
+      height: 90vh;
+    }
+
     .hero-title {
-        font-size: 32px; /* Decrease font size for smaller screens */
+      margin-top: 0;
+      font-size: clamp(20px, 4vw, 28px);
     }
 
     .hero-description {
-        font-size: 24px; /* Decrease font size for smaller screens */
+      font-size: clamp(16px, 2.5vw, 20px);
     }
+  }
+}
 
+/* Extra small devices */
+@media screen and (max-width: 400px) {
+  .hero-homepage {
+    height: 55vh;
+  }
 
-    .line-break::before {
-        content: '\A';
-        white-space: pre;
-    }
+  .hero-title {
+    font-size: clamp(24px, 6vw, 28px);
+  }
 
-    .hero-images {
-        width: 120px;
-        height: 160px;
-        position: absolute;
-        bottom: 25px;
-        right: 25px;
-    }
-
-    
-    .hero2-images {
-        width: 150px;
-        height: 140px;
-        margin-left: 25px;
-        margin-top: 0px;
-        top: 25px;
-        left: 25px;
-    }
+  .hero-description {
+    font-size: clamp(18px, 4vw, 20px);
+  }
 }
