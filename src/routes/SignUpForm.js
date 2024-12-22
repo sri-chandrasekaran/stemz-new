@@ -16,14 +16,35 @@ const SignUpForm = () => {
 
   async function submit(e) {
     e.preventDefault();
-    const payload = { password, email };
+    const payload = { name, password, email };
   
     try {
       const response = await call_api(payload, "auth/signup", "POST");
-  
+      console.log("Signuping :", response);
       if (response) { // Check for a successful response
-        navigate('/login'); // Redirect on success
-      }
+        console.log("Signup successful:", response);
+        try {
+          const response = await call_api({
+            email,
+            password,
+          }, "auth/login", "POST");
+      
+          if (response) {
+            console.log("login successful:", response);
+             if (response && response.token) {
+                // Store token in localStorage and navigate to dashboard
+                localStorage.setItem('token', response.token);
+                navigate("/dashboard");
+              } else {
+                console.log("Login after signup failed - no token received");
+              }
+          }
+        } catch (error) {
+          console.error("Signup failed:", error);
+        }
+      }else {
+        console.log("Signup failed - no token received");
+      }    
     } catch (error) {
       console.error("Signup failed:", error);
     }

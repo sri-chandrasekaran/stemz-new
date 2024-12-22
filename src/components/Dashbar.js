@@ -22,7 +22,7 @@ const Dashbar = () => {
       } catch (error) {
         console.error('Axios error:', error);
         // Handle error, e.g., redirect to login if token is invalid
-        navigate('/login');
+        // navigate('/login');
       }
     };
 
@@ -30,13 +30,9 @@ const Dashbar = () => {
   }, [navigate]);
 
   const handleSignOut = async () => {
-    try {
-      await axios.post('https://www.stemzlearning.org/signout', {}, { withCredentials: true });
-      setUser(null);
+    // Token auth logic, simply remove the token from local storage and navigate to login.
+      localStorage.removeItem('token');
       navigate('/login');
-    } catch (error) {
-      console.error('Sign out error:', error);
-    }
   };
 
   return (
