@@ -1,7 +1,7 @@
 //LoginForm.js
 import React, { useState, useEffect } from 'react';
 import Navbar from '../components/Navbar';
-import axios from "axios";
+import { call_api } from '../api' 
 import './css/LoginForm.css';
 // import lightbulbImage from '../assets/lightbulb3.png'
 import { useNavigate, Link } from 'react-router-dom';
@@ -10,61 +10,59 @@ const LoginForm = () => {
     const navigate = useNavigate();
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
-    useEffect(() => {
-        const fetchDashboardData = async () => {
-          try {
-            const response = await axios.get('https://www.stemzlearning.org/dashboard', {
-              withCredentials: true,
-            });
-            if (response.data.success) {
-                navigate("/dashboard");
-            }
-          } catch (error) {
-            console.error('Axios error:', error);
-            // Handle error, e.g., redirect to login if token is invalid
-            navigate('/login');
-          }
-        };
+    const [error, setError] = useState("");
     
-        fetchDashboardData();
-      }, [navigate]);
+    
+    useEffect(() => {
+      const verifyToken = async () => {
+          const token = localStorage.getItem('token');
+          
+          if (!token) {
+              // No token found, stay on login page and don't redirect
+              console.error("no token:", error);
+              return;
+          }
+  
+          try {
+              const response = await call_api(null, "auth/verify", "POST");
+              if (response.success) {
+                  navigate("/dashboard");
+              } else {
+                  localStorage.removeItem('token');
+              }
+          } catch (error) {
+              console.error("Token verification failed:", error);
+              localStorage.removeItem('token');
+          }
+      };
+  
+      verifyToken();
+  }, [navigate]);
   
     const submit = async (e) => {
       e.preventDefault();
+      setError("");
+
       try {
-        const response = await axios.post("https://www.stemzlearning.org/login", {
-          email,
-          password,
-        }, {
-          withCredentials: true,
-        });
-        if (response.data.success) {
-          navigate("/dashboard");
-        } else {
-          alert(response.data.message);
-        }
+          const response = await call_api({
+              email,
+              password,
+          }, "auth/login", "POST");
+          
+          if (response && response.token) {
+              localStorage.setItem('token', response.token);
+              // console.log("Token stored:", localStorage.getItem('token')); // Verify token storage
+              navigate("/dashboard");
+          } else {
+              setError("Login failed - no token received");
+          }
       } catch (error) {
-        console.error("Axios error:", error);
-        alert("Wrong details");
+          console.error("Login failed:", error);
+          setError("Invalid email or password");
       }
-    };
+  };
 
   return (
-    // <div className="login">
-    //   <h1>Login</h1>
-    //   <form onSubmit={submit}>
-    //       <input type='email' onChange={(e) => {setEmail(e.target.value)}} placeholder='Email' name='' id=''></input>
-    //       <input type='password' onChange={(e) => {setPassword(e.target.value)}} placeholder='Password' name='' id=''></input>
-    //       <button type='submit'>Submit</button>
-    //   </form>
-
-    //   <br />
-    //   <p>OR</p>
-    //   <br />
-
-    //   <Link to='/sign-up'>Signup</Link>
-
-    // </div>
     <div>
     <Navbar />
     <div className="login-container">
@@ -74,6 +72,7 @@ const LoginForm = () => {
         <div className="form-group">
           <input
             type="email"
+            value={email}
             onChange={(e) => setEmail(e.target.value)}
             placeholder="Email"
             required
@@ -82,6 +81,7 @@ const LoginForm = () => {
         <div className="form-group">
           <input
             type="password"
+            value={password}
             onChange={(e) => setPassword(e.target.value)}
             placeholder="Password"
             required
@@ -89,8 +89,13 @@ const LoginForm = () => {
         </div>
         <button type="submit">Login</button>
         <p>
-        Don't have an account? <Link to="/sign-up" className="sign-up-link">Sign Up</Link>
-      </p>
+            Don't have an account? <Link to="/sign-up" className="sign-up-link">Sign Up</Link>
+        </p>
+        {/* Display current token for debugging 
+        <div style={{fontSize: '12px', wordBreak: 'break-all', margin: '1rem'}}>
+            Current Token: {localStorage.getItem('token')}
+        </div> */}
+        {error && <div style={{color: 'red', marginBottom: '1rem'}}>{error}</div>}
       </form>
     </div>
   </div>

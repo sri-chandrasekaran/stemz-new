@@ -16,7 +16,7 @@ import Stats from '../assets/statistics.jpeg'
 import Zoology from '../assets/zoology.jpg'
 import { useLocation, useNavigate, Link } from 'react-router-dom';
 import axios from "axios";
-
+import { call_api } from '../api';  // Add this import
 
 const Dashboard = () => {
     const navigate = useNavigate();
@@ -25,9 +25,45 @@ const Dashboard = () => {
     const [isLoading, setLoading] = useState(true);
     const [Courses_reg, setCourses_reg] = useState();
     const [Courses_recomm, setCourses_recomm] = useState();
+    const [isAuthenticated, setIsAuthenticated] = useState(false);
 
-  
+
+    // Add token verification at the start
     useEffect(() => {
+      const verifyToken = async () => {
+          const token = localStorage.getItem('token');
+          if (!token) {
+              console.log("No token found, redirecting to login page");
+              navigate('/about-us');
+              return;
+          }
+  
+          try {
+              console.log("token is found");
+              const response = await call_api(null, "auth/verify", "POST");
+              if (response && response.success) {
+                  // Token is valid, don't redirect
+                  // console.log("Token verified successfully");
+                  setLoading(false);  // Stop loading state
+              } else {
+                  // console.log("Token verification failed, redirecting to signup page");
+                  localStorage.removeItem('token');
+                  navigate('/sign-up');
+              }
+          } catch (error) {
+              // console.error("Token verification failed:", error);
+              localStorage.removeItem('token');
+              navigate('/sign-up');
+          }
+      };
+  
+      verifyToken();
+  }, []);
+
+
+    // Your original dashboard data fetch
+    useEffect(() => {
+      if (!isAuthenticated) return; // Only fetch if authenticated
       console.log("I'm on dashboard")
       const fetchDashboardData = async () => {
         try {
@@ -40,13 +76,11 @@ const Dashboard = () => {
           }
         } catch (error) {
           console.error('Axios error:', error);
-          // Handle error, e.g., redirect to login if token is invalid
-          //navigate('/login');
         }
       };
   
       fetchDashboardData();
-    }, [navigate]);
+    }, [isAuthenticated]);
 
   console.log(user?.email)
 
@@ -97,7 +131,7 @@ const Dashboard = () => {
     else {
     console.log(Courses_reg)
     let code = []
-    if (Courses_reg.length === 0) {
+    if (Courses_reg == null || Courses_reg.length === 0) {
       return <div classname="InsertClass">
         <p>You are not registered for any classes yet!</p>
         <Link to = "../online-classes" onClick={scrollToTop}> 

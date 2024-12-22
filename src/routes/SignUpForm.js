@@ -1,7 +1,7 @@
 //SignUpForm.js
 import React, { useState } from 'react';
 import Navbar from '../components/Navbar';
-import axios from "axios";
+import { call_api } from '../api'
 import './css/SignUpForm.css';
 import { useNavigate, Link } from 'react-router-dom';
 
@@ -14,53 +14,39 @@ const SignUpForm = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
-  async function submit(e){
+  async function submit(e) {
     e.preventDefault();
-    console.log("Submitting signup data:", { name, grade, email, password }); 
-
-    try{
-
-      await axios.post("https://www.stemzlearning.org/api/sign-up", {
-        name: name, grade: grade, email: email, password: password
-      }, {withCredentials: true})
-      .then(res=>{
-        console.log(res.data)
-        if (res.data==="Email Already Exists"){
-            alert("User already exists.")
-        }
-        else if (res.data.message==="New User Created"){
-          Login(res.data.password, res.data.email)
-          //navigate("/dashboard");
-        }else {
-          alert("Unexpected response from the server");
-        }
-      })
-      .catch(e=>{
-        alert(e)
-        // console.log("there is a problem")
-        console.log(e)
-      })
-    }
-    catch(e){
-      console.log(e)
-    }
-  };
-
-  async function Login(password, email) {
+    const payload = { name, password, email };
+  
     try {
-      const response = await axios.post("https://www.stemzlearning.org/login", {
-        email: email, password: password
-      }, {
-        withCredentials: true,
-      });
-      if (response.data.success) {
-        navigate("/dashboard");
-      } else {
-        alert(response.data.message);
-      }
+      const response = await call_api(payload, "auth/signup", "POST");
+      console.log("Signuping :", response);
+      if (response) { // Check for a successful response
+        console.log("Signup successful:", response);
+        try {
+          const response = await call_api({
+            email,
+            password,
+          }, "auth/login", "POST");
+      
+          if (response) {
+            console.log("login successful:", response);
+             if (response && response.token) {
+                // Store token in localStorage and navigate to dashboard
+                localStorage.setItem('token', response.token);
+                navigate("/dashboard");
+              } else {
+                console.log("Login after signup failed - no token received");
+              }
+          }
+        } catch (error) {
+          console.error("Signup failed:", error);
+        }
+      }else {
+        console.log("Signup failed - no token received");
+      }    
     } catch (error) {
-      console.error("Axios error:", error);
-      alert("Wrong details");
+      console.error("Signup failed:", error);
     }
   }
 
