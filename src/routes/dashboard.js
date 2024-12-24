@@ -1,4 +1,3 @@
-//dashboard.js
 import React, {useState, useEffect } from 'react';
 import Navbar from '../components/Navbar';
 import HeroOther from '../components/HeroOther';
@@ -16,7 +15,8 @@ import Stats from '../assets/statistics.jpeg'
 import Zoology from '../assets/zoology.jpg'
 import { useLocation, useNavigate, Link } from 'react-router-dom';
 import axios from "axios";
-import { call_api } from '../api';  // Add this import
+import { call_api } from '../api';
+import { jwtDecode } from 'jwt-decode'; 
 
 const Dashboard = () => {
     const navigate = useNavigate();
@@ -26,7 +26,6 @@ const Dashboard = () => {
     const [Courses_reg, setCourses_reg] = useState();
     const [Courses_recomm, setCourses_recomm] = useState();
     const [isAuthenticated, setIsAuthenticated] = useState(false);
-
 
     // Add token verification at the start
     useEffect(() => {
@@ -42,47 +41,50 @@ const Dashboard = () => {
               console.log("token is found");
               const response = await call_api(null, "auth/verify", "POST");
               if (response && response.success) {
-                  // Token is valid, don't redirect
-                  // console.log("Token verified successfully");
+                  setIsAuthenticated(true);  // Set authenticated to true
                   setLoading(false);  // Stop loading state
               } else {
-                  // console.log("Token verification failed, redirecting to signup page");
                   localStorage.removeItem('token');
                   navigate('/sign-up');
               }
           } catch (error) {
-              // console.error("Token verification failed:", error);
               localStorage.removeItem('token');
               navigate('/sign-up');
           }
       };
   
       verifyToken();
-  }, []);
+    }, [navigate]);
 
-
-    // Your original dashboard data fetch
+    // Dashboard data fetch
     useEffect(() => {
       if (!isAuthenticated) return; // Only fetch if authenticated
       console.log("I'm on dashboard")
+      const token = localStorage.getItem('token');
+      const decoded = jwtDecode(token);
+      const userId = decoded.id;
+      console.log(userId); 
       const fetchDashboardData = async () => {
         try {
-          const response = await axios.get('https://www.stemzlearning.org/dashboard', {
-            withCredentials: true,
-          });
-          if (response.data.success) {
-            setUser(response.data.dashboardData.user);
-            setDashboardData(response.data.dashboardData);
+          const userResponse = await call_api(
+            null, 
+            `users/id/${userId}`,
+            "GET"
+          );
+          if (userResponse) {
+              setUser(userResponse);
+              console.log(userResponse);
           }
         } catch (error) {
-          console.error('Axios error:', error);
+            console.error('Error fetching user data:', error);
+        } finally {
+            setLoading(false);
         }
       };
   
       fetchDashboardData();
     }, [isAuthenticated]);
 
-  console.log(user?.email)
 
   const scrollToTop = () => {
     window.scrollTo(0, 0);
@@ -164,14 +166,6 @@ const Dashboard = () => {
   }
 
   function AddRecommend () {
-    // useEffect(()=> {  
-    //   axios.get('http://localhost:3001/get_courses')
-    //   .then(res => {
-    //     setCourses(res.data);
-    //     setLoading(false);
-    //   });
-    // }, []);
-
     if (isLoading) {
       return <div className="InsertClass">Loading...</div>;
     }
@@ -211,10 +205,10 @@ const Dashboard = () => {
         <div>
         {InsertClass()}
         </div>
-        {/* {/*<h3 className = "header-recommended">Recommended Courses</h3>
-        <div className = 'grid-recommended'>*/}
-        {/*AddRecommend()*/}
-        {/*</div>/*} */}
+        {/* <h3 className = "header-recommended">Recommended Courses</h3>
+        <div className = 'grid-recommended'>
+        {AddRecommend()}
+        </div> */}
         </div>
         <br></br><br></br><br></br><br></br><br></br><br></br><br></br><br></br><br></br><br></br>
         <Footer />
