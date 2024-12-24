@@ -1,43 +1,98 @@
-// Dashbar.js
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import axios from 'axios';
+import { call_api } from '../api';
+import { jwtDecode } from 'jwt-decode';
 import './Dashbar.css';
+import defaultProfile from '../assets/defaultprofile.jpg';
 
 const Dashbar = () => {
   const navigate = useNavigate();
   const [user, setUser] = useState(null);
-  const [dashboardData, setDashboardData] = useState(null);
+  const [isLoading, setLoading] = useState(true);
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
   
+  // Token verification
   useEffect(() => {
-    const fetchDashboardData = async () => {
+    const verifyToken = async () => {
+      const token = localStorage.getItem('token');
+      if (!token) {
+        console.log("No token found, redirecting to login page");
+        navigate('/login');
+        return;
+      }
+
       try {
-        const response = await axios.get('https://www.stemzlearning.org/dashboard', {
-          withCredentials: true,
-        });
-        if (response.data.success) {
-          setUser(response.data.dashboardData.user);
-          setDashboardData(response.data.dashboardData);
+        console.log("token is found");
+        const response = await call_api(null, "auth/verify", "POST");
+        if (response && response.success) {
+          setIsAuthenticated(true);
+          setLoading(false);
+        } else {
+          localStorage.removeItem('token');
+          navigate('/login');
         }
       } catch (error) {
-        console.error('Axios error:', error);
-        // Handle error, e.g., redirect to login if token is invalid
-        // navigate('/login');
+        localStorage.removeItem('token');
+        navigate('/login');
       }
     };
 
-    fetchDashboardData();
+    verifyToken();
   }, [navigate]);
 
-  const handleSignOut = async () => {
-    // Token auth logic, simply remove the token from local storage and navigate to login.
-      localStorage.removeItem('token');
-      navigate('/login');
+  // Fetch user data
+  useEffect(() => {
+    if (!isAuthenticated) return;
+
+    const fetchUserData = async () => {
+      try {
+        const token = localStorage.getItem('token');
+        const decoded = jwtDecode(token);
+        const userId = decoded.id;
+        
+        const userResponse = await call_api(
+          null, 
+          `users/id/${userId}`,
+          "GET"
+        );
+        if (userResponse) {
+          setUser(userResponse);
+        }
+      } catch (error) {
+        console.error('Error fetching user data:', error);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchUserData();
+  }, [isAuthenticated]);
+
+  const handleSignOut = () => {
+    localStorage.removeItem('token');
+    navigate('/login');
   };
+
+  if (isLoading) {
+    return <div>Loading...</div>;
+  }
 
   return (
     <div className="grid-side">
-      <div className="badge">Current badge</div>
+      <img 
+        src={defaultProfile} 
+        alt="Profile"
+        style={{
+          width: '120px',
+          height: '120px',
+          borderRadius: '50%',
+          marginTop: '100px',
+          marginBottom: '10px',
+          display: 'block',
+          marginLeft: 'auto',
+          marginRight: 'auto'
+        }}
+      />
       <div className="info">
         <p>Name: {user?.name}</p>
         <p>Email: {user?.email}</p>
