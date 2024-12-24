@@ -117,13 +117,13 @@ const Navbar = () => {
                 <li>
                     <Link to='/contact' onClick={scrollToTop}>Contact</Link>
                 </li>
-                {/* <li>
+                <li>
                     {check ? (
                         <Link to="/dashboard" onClick={updateDashboard} className="login-link">Dashboard</Link>
                     ) : (
                         <Link to="/login" onClick={scrollToTop} className="login-link">Log In</Link>
                     )}
-                </li> */}
+                </li>
             </ul>
             <div className='hamburger' onClick={handleClick}>
                 {click ? (<FaTimes size={20} style={{color: 'black'}} />) : (<FaBars size={20} style={{color: 'black'}}/>)}
