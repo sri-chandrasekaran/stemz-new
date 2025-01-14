@@ -110,7 +110,6 @@ import Volunteer from "./routes/volunteer";
 
 function App() {
   return (
-    <>
     <Routes>
       <Route path="/" element={<Home />} />
       <Route path="/about-us" element={<About />} />
@@ -400,7 +399,6 @@ function App() {
       />
     <Analytics />
     </Routes>
-    </>
   );
 }
 
