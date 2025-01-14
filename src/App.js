@@ -109,6 +109,12 @@ import CourseBoxes from "./routes/CourseBoxes";
 import Volunteer from "./routes/volunteer";
 
 function App() {
+
+  useEffect(() => {
+    ReactGA.initialize("G-KD3SXEXMTR");
+    ReactGA.pageview(window.location.pathname + window.location.search);
+  }, []);
+
   return (
     <Routes>
       <Route path="/" element={<Home />} />
