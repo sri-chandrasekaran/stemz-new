@@ -397,7 +397,6 @@ function App() {
         path="/zooworksheet3"
         element={<Zooworksheet3 />}
       />
-    <Analytics />
     </Routes>
   );
 }
