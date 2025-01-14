@@ -14,6 +14,7 @@
 .grid-container-wrapper {
     margin-top: 75px;
     margin-left: 150px;
+    width: calc(100% - 400px);
 }
 
 .header-courses {
@@ -23,10 +24,9 @@
 }
 
 .img-course {
-    /*text-align: left;*/
-    margin-left: -10px;
     height: 200px;
-    width: 200px;
+    width: 300px;
+    margin-left: -10px;
 }
 
 .course-info {
@@ -34,11 +34,67 @@
     line-height: 10px;
     margin-top: -160px;
     margin-left: 300px;
-    max-width:400px;
+    max-width: 400px;
 }
 
-.dashboard_buttons:hover {
-    cursor: pointer;
+.header-recommended {
+    text-align: left;
+    font-size: 34px;
+    margin-top: 30px;
+    margin-bottom: 20px;
+}
+
+.recommended-container {
+    width: 95%;
+}
+
+.recommended-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin-bottom: 2rem;
+}
+
+.course-card {
+    width: 250px;
+    flex: 1 1 auto;
+    min-width: 250px;
+    max-width: calc(20% - 1.6rem);
+    background: white;
+    border-radius: 8px;
+    transition: transform 0.3s ease;
+    margin-bottom: 1rem;
+}
+
+.course-card:hover {
+    transform: translateY(-5px);
+}
+
+.course-card-image {
+    width: 12rem;
+    height: 12rem;
+    object-fit: cover;
+    display: block;
+    margin: 1rem auto;
+    border-radius: 50%;
+}
+
+.course-card-content {
+    padding: 1.5rem;
+    text-align: center;
+}
+
+.course-card-title {
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+    color: #333;
+}
+
+.course-card-description {
+    font-size: 0.9rem;
+    color: #666;
+    line-height: 1.5;
 }
 
 .dashboard_buttons {
@@ -47,67 +103,59 @@
     height: 35px;
     color: white;
     border: transparent;
-    margin-top: 20px;
-    margin-left: 50px;
-    margin-right: 50px;
+    margin: 20px 50px;
 }
 
-.header-recommended {
-    text-align: left;
-    font-size: 34px;
-    margin-top: 30px;
-}
-
-.grid-recommended {
-    margin-top: 30px;
-    /*margin-left: -10px;*/
-    /*display: flex;
-    justify-content: space-around;*/
-    justify-content: start;
-    text-align: left;
-    /*grid-template-columns: repeat(4, 1fr);
-    grid-template-rows: 200px 50px;*/
-}
-
-.recommendation {
-    border-style: solid; 
-    border-right-width: 30px;
-    border-color: transparent;
-    display: inline-block;
-}
-
-.recommend-button {
-    margin-left: 10px;
-    margin-top: 10px;
-    position: absolute;
-    border: none;
-    background-color: transparent;
-    width: 160px;
-    height: 160px;
-    border-radius: 100px;
-}
-
-.recommend-button:hover {
+.dashboard_buttons:hover {
     cursor: pointer;
 }
 
-.img-recommend {
-    height: 180px;
-    width: 180px;
+/* original register button */
+
+/* .recommend-register-button {
+    width: 100%;
+    padding: 0.75rem;
+    background-color: #357717;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
 }
 
-.text-recommend {
-    margin-top: -12px;
-    text-align: center;
-}
+.recommend-register-button:hover {
+    background-color: #2a5f12;
+} */
 
 
-@media screen and (max-width: 800px) {
 
-    .course-info {
-      margin-left: -10px;
-      margin-top: 20px;
-      text-align: left;
+@media screen and (max-width: 1400px) {
+    .course-card {
+        max-width: calc(25% - 1.5rem);
     }
+    
+    .grid-container-wrapper {
+        width: calc(100% - 350px);
+    }
+}
 
+@media screen and (max-width: 1200px) {
+    .course-card {
+        max-width: calc(33.333% - 1.33rem);
+    }
+    
+    .grid-container-wrapper {
+        width: calc(100% - 300px);
+    }
+}
+
+@media screen and (max-width: 900px) {
+    .course-card {
+        max-width: calc(50% - 1rem);
+    }
+    
+    .recommended-row {
+        gap: 1rem;
+    }
 }
