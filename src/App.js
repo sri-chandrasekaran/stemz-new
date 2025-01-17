@@ -2,7 +2,6 @@
 import React from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Contact from "./routes/Contact";
-import { Analytics } from "@vercel/analytics/react";
 import Home from "./routes/Home";
 import About from "./routes/About";
 import GetInvolved from "./routes/GetInvolved";

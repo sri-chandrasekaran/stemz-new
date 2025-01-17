@@ -4,7 +4,7 @@ import Navbar from '../components/Navbar'
 import HeroOther from '../components/HeroOther'
 import Footer from '../components/Footer'
 import PhotoCarousel from '../components/PhotoCarousel';
-import ES from '../assets/environmentalscience.jpg'
+import WomenSTEM from '../assets/women_in_stem.jpeg'
 import axios from "axios";
 import { useNavigate, Link } from 'react-router-dom';
 
@@ -156,22 +156,22 @@ function OnlineClasses() {
         <HeroOther overlayText="Online Classes"/>
         <div className='main-online'>
           <h3>Sign Up for Classes!</h3>
-          <div className="photo-carousel-container">
+          {/* <div className="photo-carousel-container">
             <PhotoCarousel />
-          </div>
+          </div> */}
         </div>
         <div className='course-listing'>
         {ListCourses()}
-        {/* <img src={ES} alt="Genetics" className="class-img"/> */}
+        <img src={WomenSTEM} alt="Genetics" className="class-img"/>
         <div className='class-description'>
-          {/* <h1>Environmental Science</h1>
-          <h2>When: 11/2 - 11/23, every Saturday from 10 - 11 AM</h2>
-          <h2>Recommended Grade Level: 3rd - 5th Grade</h2>
-          <h2>In this course, we’ll be diving into biomes, environmental characteristics, and more!</h2> */}
+          <h1>Women in STEM</h1>
+          <h2>When: 3/1 - 3/29, every Saturday from 10 - 11 AM</h2>
+          <h2>Recommended Grade Level: 1st - 5th Grade</h2>
+          <h2>In this course, we’ll be diving into women in different fields of STEM such as chemistry, math, and more!</h2>
           {/* <button className="class-button" onClick = {show}>Register</button> */}
-          {/* <Link to="https://forms.gle/GtsbDbSbytPASxyq8" target="_blank" rel="noopener noreferrer">
+          <Link to="https://forms.gle/3Fptnk3aKgAvZ3MM9" target="_blank" rel="noopener noreferrer">
                   <button className="class-button">Register</button>
-          </Link> */}
+          </Link>
           
         </div>
         </div>

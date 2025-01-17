@@ -12,8 +12,10 @@ module.exports = {
       "http": require.resolve("stream-http"),
       "https": require.resolve("https-browserify"),
       "zlib": require.resolve("browserify-zlib"),
-      "net": BrowserifyLegacyNodeSupport.set('net', require.resolve('net-browserify')),
-      "dns": BrowserifyLegacyNodeSupport.set('dns', require.resolve('dns-browserify'))
+      // "net": BrowserifyLegacyNodeSupport.set('net', require.resolve('net-browserify')),
+      // "dns": BrowserifyLegacyNodeSupport.set('dns', require.resolve('dns-browserify'))
+      "net": require.resolve('net-browserify'),
+      "dns": require.resolve('dns-browserify'),
     }
   },
   entry: './src/index.js',
@@ -39,9 +41,21 @@ module.exports = {
   plugins: [
     // Add any plugins you need here
   ],
+  // devServer: {
+  //   contentBase: path.join(__dirname, 'dist'),
+  //   compress: true,
+  //   port: 9000
+  // }
   devServer: {
-    contentBase: path.join(__dirname, 'dist'),
+    static: {
+      directory: path.join(__dirname, 'dist'), // Replaces contentBase
+    },
     compress: true,
-    port: 9000
+    port: 9000,
+    setupMiddlewares: (middlewares, devServer) => {
+      // Add custom middleware here if needed
+      console.log('Setting up middlewares');
+      return middlewares;
+    },
   }
 };
