@@ -4,6 +4,7 @@ import HeroOther from '../components/HeroOther';
 import Navbar from '../components/Navbar'
 import Footer from '../components/Footer'
 import Sri from '../assets/sri.jpeg'
+import Sri2 from '../assets/sri_new.jpg'
 import Taleen from '../assets/taleen.jpeg'
 import Erica from '../assets/erica.jpeg'
 import Beaker from '../assets/beaker.png'
@@ -39,7 +40,7 @@ const About = () => {
         <h1 className='heading'>Our Board</h1>
         <div className='profiles'>
           <div className='profile'>
-            <img src={Sri} className='profile-img' alt='Sri Chandrasekaran' />
+            <img src={Sri2} className='profile-img' alt='Sri Chandrasekaran' />
             <h3>Sri Chandrasekaran</h3>
             <h5>Chief Executive Officer</h5>
           </div>
