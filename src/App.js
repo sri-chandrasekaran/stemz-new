@@ -1,6 +1,7 @@
 //App.js
 import React from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { Analytics } from "@vercel/analytics/react"
 import Contact from "./routes/Contact";
 import Home from "./routes/Home";
 import About from "./routes/About";
@@ -109,294 +110,297 @@ import Volunteer from "./routes/volunteer";
 
 function App() {
   return (
-    <Routes>
-      <Route path="/" element={<Home />} />
-      <Route path="/about-us" element={<About />} />
-      <Route path="/get-involved" element={<GetInvolved />} />
-      {/* <Route path='/get-involved/volunteers' element={<Volunteers />} /> */}
-      <Route path="/volunteer" element={<Volunteer />} />
-      <Route path="/contact" element={<Contact />} />
-      <Route path="/online-classes" element={<OnlineClasses />} />
-      <Route path="/self-paced-classes" element={<SelfPacedClasses />} />
-      <Route path="/course-boxes" element={<CourseBoxes />} />
-      <Route path="/news" element={<News />} />
-      <Route path="login" element={<LoginForm />} />
-      <Route path="sign-up" element={<SignUpForm />} />
-      <Route path="dashboard" element={<Dashboard />} />
-      {/* <Route path="self-paced-classes/astronomy" element={<Astronomy />} /> */}
-      <Route path="/astronomy" element={<Astronomy />} />
-      <Route path="/basics-of-coding" element={<BasicsOfCoding />}/>
-      <Route
-        path="/biochemistry"
-        element={<Biochemistry />}
-      />
-      <Route path="/chemistry" element={<Chemistry />} />
-      <Route path="/circuits" element={<Circuits />} />
-      <Route
-        path="/environmental-science"
-        element={<EnvironmentalScience />}
-      />
-      <Route path="/psychology" element={<Psychology />} />
-      <Route path="/statistics" element={<Statistics />} />
-      <Route path="/zoology" element={<Zoology />} />
-      <Route path="news/march" element={<March />} />
-      <Route path="news/september" element={<September />} />
-      <Route
-        path="/astrovid1s"
-        element={<Astrovid1s />}
-      />
-      <Route
-        path="/astrovid1p"
-        element={<Astrovid1p />}
-      />
-      <Route
-        path="/astrovid2p"
-        element={<Astrovid2p />}
-      />
-      <Route
-        path="/astrovid2s"
-        element={<Astrovid2s />}
-      />
-      <Route
-        path="/astrovid3p"
-        element={<Astrovid3p />}
-      />
-      <Route
-        path="/astrovid3s"
-        element={<Astrovid3s />}
-      />
-      <Route
-        path="/astrovid4p"
-        element={<Astrovid4p />}
-      />
-      <Route
-        path="/astrovid4s"
-        element={<Astrovid4s />}
-      />
-      <Route
-        path="/astroWorksheet1"
-        element={<AstroWorksheet1 />}
-      />
-      <Route
-        path="/astroWorksheet2"
-        element={<AstroWorksheet2 />}
-      />
-      <Route
-        path="/astroquiz"
-        element={<Astroquiz />}
-      />
-      <Route
-        path="/bc1p"
-        element={<Bc1p />}
-      />
-      <Route
-        path="/bc1s"
-        element={<Bc1s />}
-      />
-      <Route
-        path="/bc2p"
-        element={<Bc2p />}
-      />
-      <Route
-        path="/bc2s"
-        element={<Bc2s />}
-      />
-      <Route
-        path="/bc3p"
-        element={<Bc3p />}
-      />
-      <Route
-        path="/bc3s"
-        element={<Bc3s />}
-      />
-      <Route
-        path="/bc4p"
-        element={<Bc4p />}
-      />
-      <Route
-        path="/bc4s"
-        element={<Bc4s />}
-      />
-      <Route
-        path="/bc4p"
-        element={<Bc4p />}
-      />
-      <Route
-        path="/bc4s"
-        element={<Bc4s />}
-      />
-      <Route
-        path="/bcquiz"
-        element={<BCquiz />}
-      />
-      <Route path="/bio1" element={<Bio1 />} />
-      <Route path="/bio2" element={<Bio2 />} />
-      <Route
-        path="/bioquiz"
-        element={<Bioquiz />}
-      />
-      <Route
-        path="/biochemworksheet"
-        element={<BiochemWorkSheet />}
-      />
-      <Route path="/chem1" element={<Chem1 />} />
-      <Route path="/chem2" element={<Chem2 />} />
-      <Route path="/chem3" element={<Chem3 />} />
-      <Route path="/chem4" element={<Chem4 />} />
-      <Route
-        path="/chemquiz"
-        element={<Chemquiz />}
-      />
-      <Route
-        path="/circuit1s"
-        element={<Circuit1s />}
-      />
-      <Route
-        path="/circuit2s"
-        element={<Circuit2s />}
-      />
-      <Route
-        path="/circuit3s"
-        element={<Circuit3s />}
-      />
-      <Route
-        path="/circuit1p"
-        element={<Circuit1p />}
-      />
-      <Route
-        path="/circuit2p"
-        element={<Circuit2p />}
-      />
-      <Route
-        path="/circuit3p"
-        element={<Circuit3p />}
-      />
-      <Route
-        path="/circuitquiz"
-        element={<Circuitquiz />}
-      />
-      <Route
-        path="/circuitworksheet"
-        element={<Circuitworksheet />}
-      />
-      <Route
-        path="/es1s"
-        element={<Es1s />}
-      />
-      <Route
-        path="/es2s"
-        element={<Es2s />}
-      />
-      <Route
-        path="/es3s"
-        element={<Es3s />}
-      />
-      <Route
-        path="/es4s"
-        element={<Es4s />}
-      />
-      <Route
-        path="/esquiz"
-        element={<ESquiz />}
-      />
-      <Route
-        path="/esworksheet1"
-        element={<Esworksheet1 />}
-      />
-      <Route
-        path="/psych1p"
-        element={<Psych1p />}
-      />
-      <Route
-        path="/psych1s"
-        element={<Psych1s />}
-      />
-      <Route
-        path="/psych2p"
-        element={<Psych2p />}
-      />
-      <Route
-        path="/psych2s"
-        element={<Psych2s />}
-      />
-      <Route
-        path="/psych3p"
-        element={<Psych3p />}
-      />
-      <Route
-        path="/psych3s"
-        element={<Psych3s />}
-      />
-      <Route
-        path="/psych4p"
-        element={<Psych4p />}
-      />
-      <Route
-        path="/psych4s"
-        element={<Psych4s />}
-      />
-      <Route
-        path="/psychquiz"
-        element={<Psycquiz />}
-      />
-      <Route
-        path="/psychworksheet1"
-        element={<Psychworksheet1 />}
-      />
-      <Route
-        path="/psychworksheet2"
-        element={<Psychworksheet2 />}
-      />
-      <Route path="/stat1p" element={<Stat1p />} />
-      <Route path="/stat1s" element={<Stat1s />} />
-      <Route path="/stat2p" element={<Stat2p />} />
-      <Route path="/stat2s" element={<Stat2s />} />
-      <Route path="/stat3p" element={<Stat3p />} />
-      <Route path="/stat3s" element={<Stat3s />} />
-      <Route path="/stat4p" element={<Stat4p />} />
-      <Route path="/stat4s" element={<Stat4s />} />
-      <Route path="/stat5p" element={<Stat5p />} />
-      <Route path="/stat5s" element={<Stat5s />} />
-      <Route
-        path="/statquiz"
-        element={<Statquiz />}
-      />
-      <Route
-        path="/statworksheet1"
-        element={<StatWorkSheet1 />}
-      />
-      <Route
-        path="/statworksheet2"
-        element={<StatWorkSheet2 />}
-      />
-      <Route
-        path="/statworksheet3"
-        element={<StatWorkSheet3 />}
-      />
-      <Route path="/zoo1p" element={<Zoo1p />} />
-      <Route path="/zoo1s" element={<Zoo1s />} />
-      <Route path="/zoo2p" element={<Zoo2p />} />
-      <Route path="/zoo2s" element={<Zoo2s />} />
-      <Route path="/zoo3p" element={<Zoo3p />} />
-      <Route path="/zoo3s" element={<Zoo3s />} />
-      <Route path="/zoo4p" element={<Zoo4p />} />
-      <Route path="/zoo4s" element={<Zoo4s />} />
-      <Route path="/zoo5p" element={<Zoo5p />} />
-      <Route path="/zoo5s" element={<Zoo5s />} />
-      <Route path="/zooquiz" element={<Zooquiz />} />
-      <Route
-        path="/zooworksheet1"
-        element={<Zooworksheet1 />}
-      />
-      <Route
-        path="/zooworksheet2"
-        element={<Zooworksheet2 />}
-      />
-      <Route
-        path="/zooworksheet3"
-        element={<Zooworksheet3 />}
-      />
-    </Routes>
+    <>
+      <Analytics />
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/about-us" element={<About />} />
+        <Route path="/get-involved" element={<GetInvolved />} />
+        {/* <Route path='/get-involved/volunteers' element={<Volunteers />} /> */}
+        <Route path="/volunteer" element={<Volunteer />} />
+        <Route path="/contact" element={<Contact />} />
+        <Route path="/online-classes" element={<OnlineClasses />} />
+        <Route path="/self-paced-classes" element={<SelfPacedClasses />} />
+        <Route path="/course-boxes" element={<CourseBoxes />} />
+        <Route path="/news" element={<News />} />
+        <Route path="login" element={<LoginForm />} />
+        <Route path="sign-up" element={<SignUpForm />} />
+        <Route path="dashboard" element={<Dashboard />} />
+        {/* <Route path="self-paced-classes/astronomy" element={<Astronomy />} /> */}
+        <Route path="/astronomy" element={<Astronomy />} />
+        <Route path="/basics-of-coding" element={<BasicsOfCoding />}/>
+        <Route
+          path="/biochemistry"
+          element={<Biochemistry />}
+        />
+        <Route path="/chemistry" element={<Chemistry />} />
+        <Route path="/circuits" element={<Circuits />} />
+        <Route
+          path="/environmental-science"
+          element={<EnvironmentalScience />}
+        />
+        <Route path="/psychology" element={<Psychology />} />
+        <Route path="/statistics" element={<Statistics />} />
+        <Route path="/zoology" element={<Zoology />} />
+        <Route path="news/march" element={<March />} />
+        <Route path="news/september" element={<September />} />
+        <Route
+          path="/astrovid1s"
+          element={<Astrovid1s />}
+        />
+        <Route
+          path="/astrovid1p"
+          element={<Astrovid1p />}
+        />
+        <Route
+          path="/astrovid2p"
+          element={<Astrovid2p />}
+        />
+        <Route
+          path="/astrovid2s"
+          element={<Astrovid2s />}
+        />
+        <Route
+          path="/astrovid3p"
+          element={<Astrovid3p />}
+        />
+        <Route
+          path="/astrovid3s"
+          element={<Astrovid3s />}
+        />
+        <Route
+          path="/astrovid4p"
+          element={<Astrovid4p />}
+        />
+        <Route
+          path="/astrovid4s"
+          element={<Astrovid4s />}
+        />
+        <Route
+          path="/astroWorksheet1"
+          element={<AstroWorksheet1 />}
+        />
+        <Route
+          path="/astroWorksheet2"
+          element={<AstroWorksheet2 />}
+        />
+        <Route
+          path="/astroquiz"
+          element={<Astroquiz />}
+        />
+        <Route
+          path="/bc1p"
+          element={<Bc1p />}
+        />
+        <Route
+          path="/bc1s"
+          element={<Bc1s />}
+        />
+        <Route
+          path="/bc2p"
+          element={<Bc2p />}
+        />
+        <Route
+          path="/bc2s"
+          element={<Bc2s />}
+        />
+        <Route
+          path="/bc3p"
+          element={<Bc3p />}
+        />
+        <Route
+          path="/bc3s"
+          element={<Bc3s />}
+        />
+        <Route
+          path="/bc4p"
+          element={<Bc4p />}
+        />
+        <Route
+          path="/bc4s"
+          element={<Bc4s />}
+        />
+        <Route
+          path="/bc4p"
+          element={<Bc4p />}
+        />
+        <Route
+          path="/bc4s"
+          element={<Bc4s />}
+        />
+        <Route
+          path="/bcquiz"
+          element={<BCquiz />}
+        />
+        <Route path="/bio1" element={<Bio1 />} />
+        <Route path="/bio2" element={<Bio2 />} />
+        <Route
+          path="/bioquiz"
+          element={<Bioquiz />}
+        />
+        <Route
+          path="/biochemworksheet"
+          element={<BiochemWorkSheet />}
+        />
+        <Route path="/chem1" element={<Chem1 />} />
+        <Route path="/chem2" element={<Chem2 />} />
+        <Route path="/chem3" element={<Chem3 />} />
+        <Route path="/chem4" element={<Chem4 />} />
+        <Route
+          path="/chemquiz"
+          element={<Chemquiz />}
+        />
+        <Route
+          path="/circuit1s"
+          element={<Circuit1s />}
+        />
+        <Route
+          path="/circuit2s"
+          element={<Circuit2s />}
+        />
+        <Route
+          path="/circuit3s"
+          element={<Circuit3s />}
+        />
+        <Route
+          path="/circuit1p"
+          element={<Circuit1p />}
+        />
+        <Route
+          path="/circuit2p"
+          element={<Circuit2p />}
+        />
+        <Route
+          path="/circuit3p"
+          element={<Circuit3p />}
+        />
+        <Route
+          path="/circuitquiz"
+          element={<Circuitquiz />}
+        />
+        <Route
+          path="/circuitworksheet"
+          element={<Circuitworksheet />}
+        />
+        <Route
+          path="/es1s"
+          element={<Es1s />}
+        />
+        <Route
+          path="/es2s"
+          element={<Es2s />}
+        />
+        <Route
+          path="/es3s"
+          element={<Es3s />}
+        />
+        <Route
+          path="/es4s"
+          element={<Es4s />}
+        />
+        <Route
+          path="/esquiz"
+          element={<ESquiz />}
+        />
+        <Route
+          path="/esworksheet1"
+          element={<Esworksheet1 />}
+        />
+        <Route
+          path="/psych1p"
+          element={<Psych1p />}
+        />
+        <Route
+          path="/psych1s"
+          element={<Psych1s />}
+        />
+        <Route
+          path="/psych2p"
+          element={<Psych2p />}
+        />
+        <Route
+          path="/psych2s"
+          element={<Psych2s />}
+        />
+        <Route
+          path="/psych3p"
+          element={<Psych3p />}
+        />
+        <Route
+          path="/psych3s"
+          element={<Psych3s />}
+        />
+        <Route
+          path="/psych4p"
+          element={<Psych4p />}
+        />
+        <Route
+          path="/psych4s"
+          element={<Psych4s />}
+        />
+        <Route
+          path="/psychquiz"
+          element={<Psycquiz />}
+        />
+        <Route
+          path="/psychworksheet1"
+          element={<Psychworksheet1 />}
+        />
+        <Route
+          path="/psychworksheet2"
+          element={<Psychworksheet2 />}
+        />
+        <Route path="/stat1p" element={<Stat1p />} />
+        <Route path="/stat1s" element={<Stat1s />} />
+        <Route path="/stat2p" element={<Stat2p />} />
+        <Route path="/stat2s" element={<Stat2s />} />
+        <Route path="/stat3p" element={<Stat3p />} />
+        <Route path="/stat3s" element={<Stat3s />} />
+        <Route path="/stat4p" element={<Stat4p />} />
+        <Route path="/stat4s" element={<Stat4s />} />
+        <Route path="/stat5p" element={<Stat5p />} />
+        <Route path="/stat5s" element={<Stat5s />} />
+        <Route
+          path="/statquiz"
+          element={<Statquiz />}
+        />
+        <Route
+          path="/statworksheet1"
+          element={<StatWorkSheet1 />}
+        />
+        <Route
+          path="/statworksheet2"
+          element={<StatWorkSheet2 />}
+        />
+        <Route
+          path="/statworksheet3"
+          element={<StatWorkSheet3 />}
+        />
+        <Route path="/zoo1p" element={<Zoo1p />} />
+        <Route path="/zoo1s" element={<Zoo1s />} />
+        <Route path="/zoo2p" element={<Zoo2p />} />
+        <Route path="/zoo2s" element={<Zoo2s />} />
+        <Route path="/zoo3p" element={<Zoo3p />} />
+        <Route path="/zoo3s" element={<Zoo3s />} />
+        <Route path="/zoo4p" element={<Zoo4p />} />
+        <Route path="/zoo4s" element={<Zoo4s />} />
+        <Route path="/zoo5p" element={<Zoo5p />} />
+        <Route path="/zoo5s" element={<Zoo5s />} />
+        <Route path="/zooquiz" element={<Zooquiz />} />
+        <Route
+          path="/zooworksheet1"
+          element={<Zooworksheet1 />}
+        />
+        <Route
+          path="/zooworksheet2"
+          element={<Zooworksheet2 />}
+        />
+        <Route
+          path="/zooworksheet3"
+          element={<Zooworksheet3 />}
+        />
+      </Routes>
+    </>
   );
 }
 
