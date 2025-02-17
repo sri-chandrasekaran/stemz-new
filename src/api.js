@@ -17,9 +17,14 @@ function call_api(payload, target, method) {
     case "GET":
         return fetch(url, {
             method: 'GET',
-            headers: headers
+            headers: headers,
         })
-        .then(response => response.json());
+        .then(response => {
+            if (!response.ok) { // Check if response status is not OK
+                throw new Error(`Error: ${response.status} ${response.statusText}`); // Throw error with status
+            }
+            return response.json();
+        });
         
     case "POST":
         return fetch(url, {
@@ -28,6 +33,23 @@ function call_api(payload, target, method) {
             body: payload ? JSON.stringify(payload) : undefined // Only add body if payload exists
         })
         .then(async response => {
+            if (!response.ok) { // Check if response status is not OK
+                throw new Error(`Error: ${url} ${response.status} ${response.statusText}`); // Throw error with status
+            }
+            const data = await response.json();
+            console.log("API Response:", data); // Debug log
+            return data;
+        });
+    case "PUT":
+        return fetch(url, {
+            method: 'PUT',
+            headers: headers,
+            body: payload ? JSON.stringify(payload) : undefined // Only add body if payload exists
+        })
+        .then(async response => {
+            if (!response.ok) { // Check if response status is not OK
+                throw new Error(`Error: ${url} ${response.status} ${response.statusText}`); // Throw error with status
+            }
             const data = await response.json();
             console.log("API Response:", data); // Debug log
             return data;
