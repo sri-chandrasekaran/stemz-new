@@ -1,5 +1,7 @@
 const CORE_API_URL = "https://core-server-nine.vercel.app";
 
+// const CORE_API_URL = "http://localhost:3000";
+
 function call_api(payload, target, method) {
     const url = CORE_API_URL + "/api/" + target;
     const token = localStorage.getItem('token');

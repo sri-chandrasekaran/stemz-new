@@ -1,0 +1,267 @@
+/* Hero Section */
+.hero-other {
+  background-color: #357717;
+  height: 300px;
+  width: 100%;
+  position: relative;
+  z-index: 1;
+}
+
+.hero-overlay {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.overlay-text {
+  color: white;
+  font-size: 48px;
+  font-weight: bold;
+}
+
+/* Layout and Container */
+.content-wrapper {
+  flex: 1;
+  margin-top: 50px;
+  position: relative;
+}
+
+.grid-container-wrapper {
+  margin-top: 75px;
+  margin-left: 150px;
+  width: calc(100% - 450px);
+  padding-bottom: 300px; /* Space for footer */
+}
+
+/* Header Styling */
+.header-container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin-bottom: 40px;
+}
+
+.header-courses {
+  font-size: 34px;
+  font-weight: bold;
+}
+
+/* Course Grid Layout */
+.course-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 30px;
+  padding: 0 20px;
+}
+
+/* Course Box Styling */
+.registered-course-box {
+  position: relative;
+  background: white;
+  border-radius: 20px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 900px;
+  padding: 20px;
+  margin: 0 auto 20px;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  align-items: flex-start;
+  min-height: 400px;
+  transition: transform 0.3s ease;
+}
+
+.registered-course-box:hover {
+  transform: scale(1.02);
+}
+
+/* Course Image */
+.course-image-box {
+  flex: 0 0 300px;
+  display: flex;
+  justify-content: center;
+  align-items: center; /* Added this */
+  position: relative; /* Add this */
+  top: calc(40% - 150px);
+}
+
+.reg-course-image {
+  height: 300px;
+  width: 300px;
+  object-fit: cover;
+  border-radius: 50%;
+  transition: transform 0.3s ease;
+  position: relative;
+  top: 10%; /* Add this */
+  transform: translateY(5%); /* Add this */
+  left: 20px;
+}
+
+.reg-course-image:hover {
+  transform: scale(1.05);
+}
+
+/* Course Info */
+.courselist-info {
+  flex: 1;
+  text-align: left;
+  margin-left: 400px;
+  max-width: 400px;
+  margin-top: -250px;
+  line-height: 1.5;
+  display: flex; /* Add this */
+  flex-direction: column; /* Add this */
+}
+
+.courselist-info h1 {
+  font-size: 3.5rem;
+  font-weight: 800;
+  margin: 0 0 2rem 20%;
+  color: #333;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  max-width: 100%;
+}
+
+.courselist-info h2,
+.courselist-info h3 {
+  margin-left: 20%;
+  margin-bottom: 20px;
+  line-height: 1.5;
+}
+
+/* Button Styles */
+.reg-button-container {
+  display: flex;
+  justify-content: flex-start;
+  gap: 10%;
+  margin-top: 10px;
+}
+
+.dashboard_buttons {
+  font-size: 16px;
+  display: inline;
+  height: 35px;
+  color: white;
+  border: transparent;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.dashboard_buttons:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  opacity: 0.9;
+}
+
+.worksheet-button {
+  background-color: #1d5f1b !important;
+  width: 200px;
+  border-radius: 5px;
+  padding: 10px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: auto;
+}
+
+/* Loading State */
+.loading-message {
+  text-align: center;
+  font-size: 18px;
+  margin: 20px 0;
+}
+
+/* Responsive Design */
+@media screen and (max-width: 1200px) {
+  .grid-container-wrapper {
+    width: calc(100% - 100px);
+    margin-left: 50px;
+  }
+
+  .course-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .registered-course-box {
+    max-width: 80%;
+    padding: 15px;
+    margin-left: 0;
+  }
+
+  .reg-course-image {
+    height: 200px;
+    width: 200px;
+    margin: 0 auto;
+    display: block;
+  }
+
+  .courselist-info {
+    margin: 20px 0;
+    margin-left: 0;
+    max-width: 100%;
+    text-align: center;
+  }
+
+  .courselist-info h1 {
+    font-size: 2.5rem;
+    margin: 20px 0;
+    text-align: center;
+  }
+
+  .courselist-info h2,
+  .courselist-info h3 {
+    margin-left: 0;
+    text-align: center;
+  }
+
+  .container-button-container {
+    display: flex;
+    justify-content: center; /* Already centered */
+    gap: 10%;
+    margin-top: auto; /* Add this */
+    width: 100%; /* Keep this */
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .grid-container-wrapper {
+    width: 95%;
+    margin-left: 10px;
+  }
+
+  .registered-course-box {
+    width: 80%;
+    min-width: unset;
+  }
+
+  .reg-course-image {
+    height: 150px;
+    width: 150px;
+  }
+
+  .courselist-info h1 {
+    font-size: 2rem;
+  }
+
+  .courselist-info h2 {
+    font-size: 1.2rem;
+  }
+
+  .courselist-info h3 {
+    font-size: 1rem;
+  }
+
+  .reg-button-container {
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .dashboard_buttons {
+    width: 100%;
+    max-width: 250px;
+  }
+}
