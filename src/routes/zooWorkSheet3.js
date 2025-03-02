@@ -1,5 +1,10 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import stemzLearningLogo from "../assets/logo.png";
+import { createWorksheetProgress, fetchWorksheetProgress, updateWorksheetProgress } from '../worksheet';
+
+const worksheetId = "zoo-worksheet-3";
+let existing_progress = await fetchWorksheetProgress(worksheetId);
+console.log("zoo-worksheet-3", existing_progress);
 
 const animals = ['Elephants', 'Lion', 'Crocodile', 'Horses'];
 const columnAnimals = ['Mosquito', 'Cheetah', 'Giraffe', 'Birds'];
@@ -42,6 +47,22 @@ export default function AnimalBehaviors() {
   const [results, setResults] = useState({});
   const [isHovering, setIsHovering] = useState(false);
 
+  // Fetch existing progress when the component mounts
+  useEffect(() => {
+    const fetchProgress = async () => {
+      const progressData = await fetchWorksheetProgress(worksheetId); // Adjust userEmail and worksheetId as needed
+      if (progressData && Object.keys(progressData).length > 0) {
+        setRelationships(progressData.progress.relationships || {});
+        setKeystoneSpecies(progressData.progress.keystoneSpecies || null);
+      } else {
+        setRelationships({});
+        setKeystoneSpecies(null);
+      }
+    };
+
+    fetchProgress();
+  }, []); // Empty dependency array to run only once on mount
+
   const handleRelationshipChange = (rowAnimal, colAnimal, value) => {
     if (!showResults) {
       setRelationships(prev => ({
@@ -63,7 +84,7 @@ export default function AnimalBehaviors() {
     return userAnswer === correctAnswers[key];
   };
 
-  const handleCheckAnswers = () => {
+  const handleCheckAnswers = async() => {
     const newResults = {};
     animals.forEach(rowAnimal => {
       columnAnimals.forEach(colAnimal => {
@@ -71,6 +92,14 @@ export default function AnimalBehaviors() {
         newResults[key] = checkAnswer(rowAnimal, colAnimal);
       });
     });
+
+    if (existing_progress) {
+      await updateWorksheetProgress(worksheetId, {"relationships": relationships, "keystoneSpecies": keystoneSpecies});
+    } else {
+      await createWorksheetProgress(worksheetId, {"relationships": relationships, "keystoneSpecies": keystoneSpecies});
+      existing_progress = await fetchWorksheetProgress(worksheetId);
+    }
+
     setResults(newResults);
     setShowResults(true);
   };

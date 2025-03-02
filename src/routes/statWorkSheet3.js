@@ -1,6 +1,10 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import stemzLearningLogo from "../assets/logo.png";
 import statsWorksheet4 from "../assets/statsworksheet4.png";
+import { createWorksheetProgress, fetchWorksheetProgress, updateWorksheetProgress } from '../worksheet';
+
+const worksheetId = "stat-worksheet-3";
+let existing_progress = await fetchWorksheetProgress(worksheetId);
 
 export default function StatWorkSheet4() {
   const [isHovering, setIsHovering] = useState(false);
@@ -10,18 +14,29 @@ export default function StatWorkSheet4() {
     studentCounts: {
       A: "",
       B: "",
-      C: "",
-      D: "",
-      F: "",
+      C: ""
     },
   });
   const [showResults, setShowResults] = useState(false);
 
+
+   // Fetch existing progress when the component mounts
+   useEffect(() => {
+    const fetchProgress = async () => {
+      const progressData = await fetchWorksheetProgress(worksheetId); // Adjust userEmail and worksheetId as needed
+      if (progressData && Object.keys(progressData).length > 0) {
+        setAnswers(progressData.progress || {}); // Default to an empty object if progress is null
+      }
+    };
+
+    fetchProgress();
+  }, []); // Empty dependency array to run only once on mount
+
   // Correct answers for student counts
   const correctCounts = {
-    A: "3",
+    A: "10",
     B: "7",
-    C: "10",
+    C: "3",
   };
 
   const handleInputChange = (field, value) => {
@@ -42,8 +57,14 @@ export default function StatWorkSheet4() {
     }
   };
 
-  const checkAnswers = () => {
+  const checkAnswers = async () => {
     setShowResults(true);
+    if (existing_progress) {
+      await updateWorksheetProgress(worksheetId, answers);
+    } else {
+      await createWorksheetProgress(worksheetId, answers);
+      existing_progress = await fetchWorksheetProgress(worksheetId);
+    }
   };
 
   const resetAnswers = () => {

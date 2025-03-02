@@ -4,7 +4,7 @@ import { createWorksheetProgress, fetchWorksheetProgress, updateWorksheetProgres
 
 const worksheetId = "circuit-worksheet-1";
 let existing_progress = await fetchWorksheetProgress(worksheetId);
-console.log("existing progress", existing_progress);
+
 const terms = [
   { id: 'capacitor', term: 'Capacitor' },
   { id: 'resistors', term: 'Resistors' },

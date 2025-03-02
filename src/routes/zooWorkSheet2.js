@@ -1,5 +1,9 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import stemzLearningLogo from "../assets/logo.png";
+import { createWorksheetProgress, fetchWorksheetProgress, updateWorksheetProgress } from '../worksheet';
+
+const worksheetId = "zoo-worksheet-2";
+let existing_progress = await fetchWorksheetProgress(worksheetId);
 
 const questions = [
   {
@@ -64,6 +68,18 @@ export default function ZooWorkSheet2() {
   const [showResults, setShowResults] = useState(false);
   const [isHovering, setIsHovering] = useState(false);
 
+  // Fetch existing progress when the component mounts
+  useEffect(() => {
+    const fetchProgress = async () => {
+      const progressData = await fetchWorksheetProgress(worksheetId); // Adjust userEmail and worksheetId as needed
+      if (progressData && Object.keys(progressData).length > 0) { 
+        setSelectedOptions(progressData.progress || {}); // Default to an empty object if progress is null
+      }
+    };
+
+    fetchProgress();
+  }, []); // Empty dependency array to run only once on mount
+
   const handleOptionSelect = (questionId, letter) => {
     if (!showResults) {
       setSelectedOptions(prev => ({
@@ -73,8 +89,14 @@ export default function ZooWorkSheet2() {
     }
   };
 
-  const handleSubmit = () => {
+  const handleSubmit = async () => {
     setShowResults(true);
+    if (existing_progress) {
+      await updateWorksheetProgress(worksheetId, selectedOptions);
+    } else {
+      await createWorksheetProgress(worksheetId, selectedOptions);
+      existing_progress = await fetchWorksheetProgress(worksheetId);
+    }
   };
 
   const handleReset = () => {
