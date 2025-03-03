@@ -1,12 +1,15 @@
 .grid-side {
     position: fixed;
-    background-color: rgba(128, 128, 128, 0.3);
-    /*background-color: blue;*/
+    background-color: #d3d3d3; 
     margin-left: 82%;
     margin-top: 90px;
     width: 18%;
     height: 100%;
     text-align: center;
+    z-index: 100; 
+    right: 0; 
+    top: 0;
+    overflow-y: auto; 
 }
 
 .badge {
@@ -37,6 +40,14 @@
     border: transparent;
     border-radius: 3px;
 }
+
 .bar-buttons:hover {
     cursor: pointer;
+    background-color: #2a5f12; 
+}
+
+
+.grid-side button {
+    position: relative;
+    z-index: 101; 
 }

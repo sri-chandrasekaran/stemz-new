@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import './Navbar.css';
 import {FaBars, FaTimes} from 'react-icons/fa';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import logo from '../assets/logo.png'
 import axios from "axios";
 
@@ -9,6 +9,7 @@ const Navbar = () => {
     const [check, setCheck] = useState(null);
     const [click, setClick] = useState(false);
     const [color, setColor] = useState(false);
+    const navigate = useNavigate();
   
     const handleClick = () => setClick((prevState) => !prevState);
   
@@ -33,22 +34,46 @@ const Navbar = () => {
     const updateOnline = () => {
         window.location.href = '/online-classes';
     };
+
+    const navigateToDashboard = (e) => {
+        e.preventDefault();
+        navigate('/dashboard');
+    };
+    
+    const handleLogout = (e) => {
+      e.preventDefault();
+      // Clear the token from localStorage
+      localStorage.removeItem('token');
+      // Update authentication state
+      setCheck(false);
+      // Navigate to login page
+      navigate('/login');
+    };
   
     if (check === null) {
-      axios
-        .get('https://www.stemzlearning.org/dashboard', {
-          withCredentials: true,
-        })
-        .then((response) => {
-          if (response.data.success) {
-            setCheck(true);
-          } else {
+      // Check for token in localStorage first
+      const token = localStorage.getItem('token');
+      
+      if (token) {
+        // If token exists in localStorage, we consider user as logged in
+        setCheck(true);
+      } else {
+        // If no token in localStorage, check with the server
+        axios
+          .get('https://www.stemzlearning.org/dashboard', {
+            withCredentials: true,
+          })
+          .then((response) => {
+            if (response.data.success) {
+              setCheck(true);
+            } else {
+              setCheck(false);
+            }
+          })
+          .catch(() => {
             setCheck(false);
-          }
-        })
-        .catch(() => {
-          setCheck(false);
-        });
+          });
+      }
   
       return null; // Render nothing while fetching data
     }
@@ -65,6 +90,11 @@ const Navbar = () => {
                 <li>
                     <Link to='/about-us' onClick={scrollToTop}>About Us</Link>
                 </li>
+                {check && (
+                  <li>
+                      <Link to='/dashboard' onClick={navigateToDashboard}>My Courses</Link>
+                  </li>
+                )}
                 <li>
                     <Link to='/online-classes' onClick={updateOnline}>Online Classes</Link>
                 </li>
@@ -117,9 +147,9 @@ const Navbar = () => {
                 <li>
                     <Link to='/contact' onClick={scrollToTop}>Contact</Link>
                 </li>
-                <li>
+                <li className="login-item">
                     {check ? (
-                        <Link to="/dashboard" onClick={updateDashboard} className="login-link">Dashboard</Link>
+                        <Link to="#" onClick={handleLogout} className="login-link">Log Out</Link>
                     ) : (
                         <Link to="/login" onClick={scrollToTop} className="login-link">Log In</Link>
                     )}
@@ -130,6 +160,6 @@ const Navbar = () => {
             </div>
         </div>
     )
-    }
+}
 
-export default Navbar
+export default Navbar;

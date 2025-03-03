@@ -40,18 +40,31 @@ export default function CircuitWorkSheet1() {
   const termsRef = useRef({});
   const defsRef = useRef({});
 
+  const getTermForDefinition = (defId) => {
+    return Object.entries(matches).find(([_, value]) => value === defId)?.[0];
+  };
+
+  const isDefinitionMatched = (defId) => {
+      return Object.values(matches).some(matchedDefId => matchedDefId === defId);
+  };
+
   const handleTermClick = (termId) => {
     setSelectedTerm(termId);
     setClickedTerms(prev => ({ ...prev, [termId]: true }));
   };
 
   const handleDefinitionClick = (defId) => {
-    if (selectedTerm) {
-      setMatches(prev => ({
+    if (!selectedTerm) return;
+
+    // No multi to one matches
+    if (matches[selectedTerm] === defId) return;
+
+    if (isDefinitionMatched(defId) && getTermForDefinition(defId) !== selectedTerm) return;
+
+    setMatches(prev => ({
         ...prev,
         [selectedTerm]: defId
-      }));
-    }
+    }));
   };
 
   const checkAnswers = () => {
@@ -86,14 +99,24 @@ export default function CircuitWorkSheet1() {
       }
     }
     if (isDefinition) {
-      const matchedTerm = Object.keys(matches).find(term => matches[term] === id);
-      return matchedTerm 
-        ? { 
-            backgroundColor: colors[terms.findIndex(t => t.id === matchedTerm)],
-            color: '#ffffff',
-            boxShadow: '0 2px 4px rgba(0,0,0,0.1)'
-          } 
-        : { backgroundColor: '#f0f0f0', color: '#333333', border: '1px solid #cccccc', boxShadow: '0 2px 4px rgba(0,0,0,0.05)' };
+      const matchedTerm = getTermForDefinition(id);
+      if (matchedTerm) {
+        const isCurrentSelectedTerm = matchedTerm === selectedTerm;
+        return {
+          backgroundColor: colors[terms.findIndex(t => t.id === matchedTerm)],
+          color: '#ffffff',
+          boxShadow: '0 2px 4px rgba(0,0,0,0.1)',
+          cursor: isCurrentSelectedTerm ? 'pointer' : 'not-allowed',
+          opacity: isCurrentSelectedTerm ? '1' : '0.9'
+        };
+      }
+      return {
+        backgroundColor: '#f0f0f0',
+        color: '#333333',
+        border: '1px solid #cccccc',
+        boxShadow: '0 2px 4px rgba(0,0,0,0.05)',
+        cursor: 'pointer'
+      };
     } else {
       return clickedTerms[id]
         ? { 
