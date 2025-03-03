@@ -378,7 +378,7 @@ const Dashboard = () => {
                 description:
                   "In this course we will learn about galaxies, the universe, constellations and much more!",
                 image: AstronomyImage,
-                link: "/self-paced-classes/astronomy",
+                link: "/astronomy",
               },
               {
                 id: 2,
@@ -386,7 +386,7 @@ const Dashboard = () => {
                 description:
                   "In this course we will learn about movement, variables, conditional statements and many more, using Scratch. No prior experience is needed!",
                 image: Coding,
-                link: "/self-paced-classes/basics-of-coding",
+                link: "/basics-of-coding",
               },
               {
                 id: 3,
@@ -394,7 +394,7 @@ const Dashboard = () => {
                 description:
                   "In this course, your child will learn about matter, energy, and chemical reactions. The course culminates in a final project that serves as a launching pad to inspire your child to learn more! Parent supervision needed.",
                 image: Chemistry,
-                link: "/self-paced-classes/chemistry",
+                link: "/chemistry",
               },
               {
                 id: 4,
@@ -402,7 +402,7 @@ const Dashboard = () => {
                 description:
                   "In this course, we will learn about biodiversity, the cycles of the earth, pollution, recycling, and more!",
                 image: Zoology,
-                link: "/self-paced-classes/zoology",
+                link: "/zoology",
               },
               {
                 id: 5,
@@ -410,7 +410,7 @@ const Dashboard = () => {
                 description:
                   "In this course we will learn about the field of zoology, some topics include biodiversity, taxonomy, and anatomy.",
                 image: ES,
-                link: "/self-paced-classes/environmental-science",
+                link: "/environmental-science",
               },
             ].map((course) => (
               <div key={course.id} className="course-card">
