@@ -107,7 +107,7 @@ import SignUpForm from "./routes/SignUpForm";
 import Dashboard from "./routes/dashboard";
 import CourseBoxes from "./routes/CourseBoxes";
 import Volunteer from "./routes/volunteer";
-import CourseList from "./routes/CourseList";
+
 
 function App() {
   return (
@@ -226,7 +226,6 @@ function App() {
         <Route path="/zooworksheet1" element={<Zooworksheet1 />} />
         <Route path="/zooworksheet2" element={<Zooworksheet2 />} />
         <Route path="/zooworksheet3" element={<Zooworksheet3 />} />
-        <Route path="/courselist" element={<CourseList />} />
       </Routes>
     </>
   );

@@ -1,101 +1,271 @@
-.main-online {
-    margin-top: 500px;
-    font-size: 32px;
+/* OnlineClasses.css - With proportional images across screen sizes */
+
+/* Main container styles */
+.course-online-main {
+    margin-top: 600px;
+    font-size: 36px;
     text-align: center;
-}
-.photo-carousel-container {
-    margin-top: -30px;
-}
-
-.course-listing {
+    color: #000;
+    margin-bottom: 30px;
+  }
+  
+  .course-online-listing {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 60px; /* Increased gap between cards */
+    width: 100%;
+    max-width: 1800px;
+    margin: 50px auto;
+    padding: 0 40px;
+  }
+  
+  /* Card styling */
+  .course-online-card {
+    background: white;
+    border-radius: 20px;
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+    padding: 40px;
     display: flex;
-    align-items: center;
-    justify-content: center;
     flex-direction: column;
-    margin-top: 50px; /* Adjust this value as needed */
-}
-
-.class-button {
-    padding: 10px 70px;
-    width: 300px;
-    font-size: 1rem;
-    background-color: #f0f0f0;
-    color: #333;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    margin-top: 30px;
-
-}
-
-.class-button {
+    align-items: center;
+    text-align: center;
+    transition: transform 0.3s ease;
+    overflow: hidden;
+    position: relative;
+    min-height: 650px; /* Ensure consistent card height */
+  }
+  
+  .course-online-card:hover {
+    transform: scale(1.05);
+  }
+  
+  .course-online-img, 
+  .coding1-course-img,
+  .coding2-course-img,
+  .biochem-course-img,
+  .genetic-course-img,
+  .microbio-course-img {
+      border-radius: 50%;
+      transition: transform 0.3s ease;
+      margin-bottom: 30px;
+      object-fit: cover;
+      width: 250px;
+      height: 250px;
+  }
+  
+  
+  .course-online-img:hover, 
+  .coding1-course-img:hover,
+  .coding2-course-img:hover,
+  .biochem-course-img:hover,
+  .genetic-course-img:hover,
+  .microbio-course-img:hover {
+    transform: scale(1.05);
+  }
+  
+  /* Default image size - large screens */
+  .course-online-img {
+    width: 350px;
+    height: 350px;
+  }
+  
+  
+  /* Text styling - larger and black */
+  .course-online-card h1 {
+    font-size: 38px;
+    margin: 15px 0;
+    color: #000;
+    font-weight: bold;
+  }
+  
+  .course-online-card h2 {
+    font-size: 18px;
+    margin: 10px 0;
+    color: #000;
+    font-weight: normal;
+    line-height: 1.5;
+  }
+  
+  .course-online-text {
+    width: 100%;
+    margin-bottom: 30px;
+  }
+  
+  /* Button container - full width to allow proper alignment */
+  .course-button-container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin-top: auto;
+  }
+  
+  /* Button styling */
+  .course-register-button {
     background-color: #357717;
     color: white;
     width: 100%;
     max-width: 300px;
-    margin-top: 20px;
+    padding: 15px 0;
+    font-size: 18px;
+    font-weight: bold;
     border: none;
-    border-radius: 5px;
+    border-radius: 8px;
     cursor: pointer;
-}
-
-.class-description h1 {
-    font-size: 42px;
-}
-
-.class-description {
-    /* margin-top: -700px;
-    max-width: 740px;
-    margin-left: 670px; */
-    /* margin-left: auto;
-    margin-right: auto; */
-    max-width: 900px;
+    transition: background-color 0.3s;
+  }
+  
+  .course-register-button:hover:not(:disabled) {
+    background-color: #2a5f12;
+  }
+  
+  .course-register-button:disabled {
+    background-color: #5D86C5;
+    cursor: not-allowed;
+  }
+  
+  /* Error message */
+  .course-error-message {
+    color: #d32f2f;
+    font-size: 16px;
+    margin: 15px 0;
+  }
+  
+  /* Loading message */
+  .course-loading-message {
     text-align: center;
-    font-size: 18px; /* You can adjust the font size as needed */
-    margin: 30px 0; /* Adjust the left margin as needed */
-}
-
-.class-img {
-    width: 350px;
-    height: 350px;
-
-}
-
-.reg_form {
-    text-align:left;
-    margin-top: -500px;
-    display: none;
-}
-
-@media screen and (max-width: 800px) {
-
-    .class-img {
-        margin-left: 40px;
+    font-size: 28px;
+    margin: 70px 0;
+    grid-column: 1 / -1;
+    color: #000;
+  }
+  
+  /* Medium screens (tablet) - FIXED LAYOUT */
+  @media screen and (max-width: 1400px) {
+    .course-online-listing {
+      grid-template-columns: 1fr;
+      max-width: 1000px;
+      gap: 60px; /* Space between stacked cards */
     }
-
-    .course-listing {
-        margin-top: 50px;
+  
+    .course-online-card {
+      flex-direction: row;
+      text-align: left;
+      padding: 30px;
+      min-height: 300px; /* Adjusted for horizontal layout */
+      align-items: flex-start; /* Align items to top */
     }
-
-    .course-description {
-        margin-left: -40px;
+  
+  
+    .course-online-img, 
+    .coding1-course-img,
+    .coding2-course-img,
+    .biochem-course-img,
+    .genetic-course-img,
+    .microbio-course-img {
+        width: 250px;
+        height: 250px;
+        margin-right: 40px;
+        margin-bottom: 0;
+        flex-shrink: 0;
     }
-    
-    .class-description {
-        margin: 40px auto 0; /* Center the description and add top margin */
-        max-width: 100%; /* Allow the description to take full width */
-        text-align: left; /* Center the text within the description */
-        margin-left: 50px;
-        font-size: 14px;
-      }
-
-    .class-button {
-        margin-left: 0px;
+  
+    .course-online-text {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      min-height: 200px;
     }
-}
-
-@media screen and (min-width: 1200px) {
-    .main-online {
-        margin-top: calc(580px + 27px);
+  
+    .course-online-card h1 {
+      font-size: 34px;
+      margin-bottom: 15px;
+      margin-top: 0;
+    }
+  
+    .course-online-card h2 {
+      font-size: 18px;
+      margin-bottom: 10px;
+    }
+  
+    /* Container for button - positioned to top right */
+    .course-button-container {
+      justify-content: flex-end;
+      align-self: flex-start;
+      width: auto;
+      margin-top: 0;
+      margin-left: auto;
+      position: absolute;
+      top: 30px;
+      right: 30px;
+    }
+  
+    .course-register-button {
+      width: 180px;
+    }
+  }
+  
+  /* Small screens (mobile) */
+  @media screen and (max-width: 900px) {
+    .course-online-main {
+      font-size: 32px;
+    }
+  
+    .course-online-listing {
+      gap: 40px; /* More space between mobile cards */
+      margin-top: 30px;
+      padding: 0 15px; /* Reduced horizontal padding */
+    }
+  
+    .course-online-card {
+      flex-direction: column;
+      text-align: left;
+      padding: 20px; /* Reduced padding */
+      min-height: auto;
+      align-items: center;
+      width: 80%;
+      max-width: 85%; 
+      margin-left: auto;
+      margin-right: auto;
+      
+    }
+  
+    .course-online-img, 
+    .coding1-course-img,
+    .coding2-course-img,
+    .biochem-course-img,
+    .genetic-course-img,
+    .microbio-course-img {
+        width: 210px;
+        height: 210px;
+        margin-right: 0;
+        margin-bottom: 25px;
+        align-self: center;
+    }
+  
+    .course-online-text {
+      min-height: auto;
+    }
+  
+    .course-online-card h1 {
+      font-size: 28px;
+      text-align: center;
+    }
+  
+    .course-online-card h2 {
+      font-size: 16px;
+      text-align: center;
+    }
+  
+    .course-button-container {
+      position: static;
+      justify-content: center;
+      width: 100%;
+      margin-top: 20px;
+    }
+  
+    .course-register-button {
+      width: 100%;
+      max-width: 70%;
     }
   }
