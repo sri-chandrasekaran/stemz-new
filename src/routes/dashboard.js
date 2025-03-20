@@ -32,29 +32,6 @@ const Dashboard = () => {
   // State for tooltip messages
   const [tooltipMessages, setTooltipMessages] = useState({});
 
-  // Hardcoded course info for matching
-  const courseInfoMap = {
-    coding1: {
-      dates: "July 14 - July 17, 10 - 11 AM PST",
-      grade: "3rd - 6th Grade",
-    },
-    coding2: {
-      dates: "July 28 - Aug 1, 10 - 11 AM PST",
-      grade: "3rd - 6th Grade",
-    },
-    biochemistry: {
-      dates: "June 30 - July 3, 10 - 11 AM PST",
-      grade: "4th - 8th Grade",
-    },
-    genetics: {
-      dates: "June 16 - June 19, 10 - 11 AM PST",
-      grade: "4th - 8th Grade",
-    },
-    microbiology: {
-      dates: "June 2 - June 5, 10 - 11 AM PST",
-      grade: "4th - 8th Grade",
-    }
-  };
 
   // CSS for spinner animation
   useEffect(() => {
@@ -190,41 +167,6 @@ const Dashboard = () => {
     return "enrolled-course-image";
   };
 
-  // Function to get course type key
-  const getCourseTypeKey = (courseName) => {
-    const name = courseName.toLowerCase();
-    
-    const courseKeyMap = {
-      'coding 1': "coding1",
-      'basics of coding i': "coding1",
-      'coding 2': "coding2",
-      'basics of coding ii': "coding2",
-      'biochem': "biochemistry",
-      'genetic': "genetics",
-      'micro bio': "microbiology",
-      'microbiology': "microbiology"
-    };
-
-    for (const [key, courseKey] of Object.entries(courseKeyMap)) {
-      if (name.includes(key)) return courseKey;
-    }
-
-    return null;
-  };
-
-  // Get additional course information
-  const getCourseInfo = (courseName) => {
-    const courseKey = getCourseTypeKey(courseName);
-    if (courseKey && courseInfoMap[courseKey]) {
-      return courseInfoMap[courseKey];
-    }
-    
-    // Default values if no match is found
-    return {
-      dates: "Dates to be announced",
-      grade: "All grades"
-    };
-  };
 
   // Remove course from dashboard
   const removeCourse = async (courseId) => {
@@ -297,7 +239,7 @@ const Dashboard = () => {
       </div>
       <div className="grid-container-wrapper">
         <h3 className="header-courses">Courses Enrolled</h3>
-
+  
         {!coursesLoaded ? (
           // Still loading courses after authentication
           <div className="enrolled-loading-message">
@@ -318,8 +260,6 @@ const Dashboard = () => {
         ) : (
           <div className="enrolled-courses-grid">
             {registeredCourses.map((course) => {
-              const courseInfo = getCourseInfo(course.name);
-              
               return (
                 <div 
                   key={course._id} 
@@ -342,8 +282,8 @@ const Dashboard = () => {
                   />
                   <div className="enrolled-course-content">
                     <h1>{course.name}</h1>
-                    <h2>When: {courseInfo.dates}</h2>
-                    <h2>Recommended Grade Level: {courseInfo.grade}</h2>
+                    <h2>When: {course.schedule || "Dates to be announced"}</h2>
+                    <h2>Recommended Grade Level: {course.recommendedGradeLevel || "All grades"}</h2>
                     <h2>{course.description}</h2>
                   </div>
                   <div className="enrolled-button-container">
@@ -367,7 +307,7 @@ const Dashboard = () => {
             })}
           </div>
         )}
-
+  
         <h3 className="header-recommended">Recommended Courses</h3>
         <div className="recommended-container">
           <div className="recommended-row">

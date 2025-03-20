@@ -32,34 +32,7 @@ function OnlineClasses() {
   const geneticsRef = useRef(null);
   const microbiologyRef = useRef(null);
 
-  // Hardcoded course info for matching
-  const courseInfoMap = {
-    coding1: {
-      dates: "July 14 - July 17, 10 - 11 AM PST",
-      grade: "3rd - 6th Grade",
-      description: "In this course, we will learn about movement, variables, conditional statements and many more, using Scratch. No prior experience is needed!"
-    },
-    coding2: {
-      dates: "July 28 - Aug 1, 10 - 11 AM PST",
-      grade: "3rd - 6th Grade",
-      description: "In this course, we will be going over lists, traversals, loops, and more! By the end, everyone will have created their own project from what they've learned in Basics of Coding I and II."
-    },
-    biochemistry: {
-      dates: "June 30 - July 3, 10 - 11 AM PST",
-      grade: "4th - 8th Grade",
-      description: "In this course we will learn about molecules, atoms, proteins and more; we encourage the completion of the Chemistry course prior! Parent supervision is needed."
-    },
-    genetics: {
-      dates: "June 16 - June 19, 10 - 11 AM PST",
-      grade: "4th - 8th Grade",
-      description: "In this course, we will learn all about cells, DNA, and different types of applications!"
-    },
-    microbiology: {
-      dates: "June 2 - June 5, 10 - 11 AM PST",
-      grade: "4th - 8th Grade",
-      description: "In this course, we will learn about the five main groups of microorganisms and their characteristics, prokaryotic and eukaryotic cells, the endomembrane system, and more!"
-    }
-  };
+  // Removed the hardcoded courseInfoMap
 
   useEffect(() => {
     // Check for token in localStorage
@@ -247,7 +220,7 @@ function OnlineClasses() {
     }
   };
 
-  // Function to get course type key
+  // Function to get course type key (kept for scrolling functionality)
   const getCourseTypeKey = (courseName) => {
     const name = courseName.toLowerCase();
     
@@ -264,21 +237,6 @@ function OnlineClasses() {
     } else {
       return null;
     }
-  };
-
-  // Get course information based on name
-  const getCourseInfo = (courseName) => {
-    const courseKey = getCourseTypeKey(courseName);
-    if (courseKey && courseInfoMap[courseKey]) {
-      return courseInfoMap[courseKey];
-    }
-    
-    // Default values if no match is found
-    return {
-      dates: "Dates to be announced",
-      grade: "All grades",
-      description: courseName ? courseName + " course" : "Course description not available"
-    };
   };
 
   // Get button text based on registration status
@@ -325,7 +283,6 @@ function OnlineClasses() {
           <div className="course-loading-message">Loading courses...</div>
         ) : (
           Courses.map(course => {
-            const courseInfo = getCourseInfo(course.name);
             const courseTypeKey = getCourseTypeKey(course.name);
             
             return (
@@ -349,9 +306,9 @@ function OnlineClasses() {
                 />
                 <div className="course-online-text">
                   <h1>{course.name}</h1>
-                  <h2>When: {courseInfo.dates}</h2>
-                  <h2>Recommended Grade Level: {courseInfo.grade}</h2>
-                  <h2>{courseInfo.description}</h2>
+                  <h2>When: {course.schedule || "Dates to be announced"}</h2>
+                  <h2>Recommended Grade Level: {course.recommendedGradeLevel || "All grades"}</h2>
+                  <h2>{course.description}</h2>
                   
                   {registrationStatus[course._id] && registrationStatus[course._id].status === "error" && (
                     <p className="course-error-message">{registrationStatus[course._id].message}</p>

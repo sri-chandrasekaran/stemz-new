@@ -9,6 +9,7 @@ const Navbar = () => {
     const [check, setCheck] = useState(null);
     const [click, setClick] = useState(false);
     const [color, setColor] = useState(false);
+    const [activeDropdown, setActiveDropdown] = useState(null);
     const navigate = useNavigate();
   
     const handleClick = () => setClick((prevState) => !prevState);
@@ -25,6 +26,13 @@ const Navbar = () => {
   
     const scrollToTop = () => {
       window.scrollTo(0, 0);
+      setClick(false); // Close mobile menu when clicking a link
+    };
+
+    const toggleDropdown = (index) => {
+      if (window.innerWidth <= 1100) {
+        setActiveDropdown(activeDropdown === index ? null : index);
+      }
     };
 
     const updateDashboard = () => {
@@ -33,11 +41,13 @@ const Navbar = () => {
 
     const updateOnline = () => {
         window.location.href = '/online-classes';
+        setClick(false); // Close mobile menu
     };
 
     const navigateToDashboard = (e) => {
         e.preventDefault();
         navigate('/dashboard');
+        setClick(false); // Close mobile menu
     };
     
     const handleLogout = (e) => {
@@ -50,7 +60,7 @@ const Navbar = () => {
       navigate('/login');
     };
   
-    if (check === null) {
+    useEffect(() => {
       // Check for token in localStorage first
       const token = localStorage.getItem('token');
       
@@ -74,7 +84,9 @@ const Navbar = () => {
             setCheck(false);
           });
       }
+    }, []);
   
+    if (check === null) {
       return null; // Render nothing while fetching data
     }
   
@@ -90,16 +102,13 @@ const Navbar = () => {
                 <li>
                     <Link to='/about-us' onClick={scrollToTop}>About Us</Link>
                 </li>
-                {check && (
-                  <li>
-                      <Link to='/dashboard' onClick={navigateToDashboard}>My Courses</Link>
-                  </li>
-                )}
                 <li>
                     <Link to='/online-classes' onClick={updateOnline}>Online Classes</Link>
                 </li>
-                <li>
-                    <Link to='/self-paced-classes' onClick={scrollToTop}>Self-Paced Classes</Link>
+                <li className={activeDropdown === 0 ? 'active' : ''} onClick={() => toggleDropdown(0)}>
+                    <Link to='/self-paced-classes' onClick={(e) => window.innerWidth <= 1100 && e.preventDefault()}>
+                        Self-Paced Classes
+                    </Link>
                     <ul className="dropdown-menu">
                         <li>
                             <Link to="/astronomy" onClick={scrollToTop}>Astronomy</Link>
@@ -136,8 +145,10 @@ const Navbar = () => {
                 <li>
                     <Link to='https://substack.com/@STEMZLEARNING' onClick={scrollToTop}>News</Link>
                 </li>
-                <li>
-                    <Link to='/get-involved' onClick={scrollToTop}>Get Involved</Link>
+                <li className={activeDropdown === 1 ? 'active' : ''} onClick={() => toggleDropdown(1)}>
+                    <Link to='/get-involved' onClick={(e) => window.innerWidth <= 1100 && e.preventDefault()}>
+                        Get Involved
+                    </Link>
                     <ul className="dropdown-menu">
                         <li>
                             <Link to="/volunteer" onClick={scrollToTop}>Volunteers</Link>
@@ -149,7 +160,7 @@ const Navbar = () => {
                 </li>
                 <li className="login-item">
                     {check ? (
-                        <Link to="#" onClick={handleLogout} className="login-link">Log Out</Link>
+                        <Link to="/dashboard" onClick={navigateToDashboard} className="login-link">Dashboard</Link>
                     ) : (
                         <Link to="/login" onClick={scrollToTop} className="login-link">Log In</Link>
                     )}
