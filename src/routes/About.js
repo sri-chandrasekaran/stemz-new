@@ -60,7 +60,7 @@ const About = () => {
           <div className='profile'>
             <img src={Emily} className='profile-img' alt='Emily Puthur Simon' />
             <h3>Emily Puthur Simon</h3>
-            <h5>Head of Teaching</h5>
+            <h5>Volunteer Program Director</h5>
           </div>
           <div className='profile'>
             <img src={Avery} className='profile-img' alt='Braden Van Buskirk' style={{ objectPosition: 'center -70px' }}/>
@@ -74,7 +74,7 @@ const About = () => {
             <img src={Steven} className='profile-img' alt='Steven Biji' style={{ objectPosition: '-250px center' }}/>
             </div>
             <h3>Steven Biji</h3>
-            <h5>Head of Marketing</h5>
+            <h5>Head of Teaching</h5>
           </div>
           <div className='profile'>
             <img src={Maanya} className='profile-img' alt='Maanya Shukla' />
