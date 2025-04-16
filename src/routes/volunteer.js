@@ -53,7 +53,7 @@ const Volunteers = () => {
           </div>
           <div className='rectangular-box'>
               <h1>Analysts</h1>
-              <p>We are recruiting college-level students and professionals to join our team as Business and Marketing Analysts. If you're interested in market research and data analysis, send us an email with youre resume and why you're a good fit. </p>
+              <p>We are recruiting college-level students and professionals to join our team as Business and Marketing Analysts. If your interested in market research and data analysis, send us an email with your resume and why you're a good fit. </p>
               <Link to="mailto:stemzlearning@stemzlearning.org" target="_blank" rel="noopener noreferrer">
                   <button className="box-button">Apply Now</button>
               </Link>

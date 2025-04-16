@@ -54,20 +54,14 @@ export default function ZooWorkSheet1() {
   const termsRef = useRef({});
   const defsRef = useRef({});
 
-  // Fetch existing progress when the component mounts
-  useEffect(() => {
-    const fetchProgress = async () => {
-      const progressData = await fetchWorksheetProgress(worksheetId); // Adjust userEmail and worksheetId as needed
-      if (progressData && Object.keys(progressData).length > 0) { 
-        setMatches(progressData.progress || {}); // Default to an empty object if progress is null
-        Object.keys(progressData.progress || {}).forEach(termId => {
-          handleTermClick(termId); // Mark each term as clicked
-        });
-      }
-    };
 
-    fetchProgress();
-  }, []); // Empty dependency array to run only once on mount
+  const getTermForDefinition = (defId) => {
+    return Object.entries(matches).find(([_, value]) => value === defId)?.[0];
+  };
+
+  const isDefinitionMatched = (defId) => {
+      return Object.values(matches).some(matchedDefId => matchedDefId === defId);
+  };
 
   const handleTermClick = (termId) => {
     setSelectedTerm(termId);
@@ -75,13 +69,18 @@ export default function ZooWorkSheet1() {
   };
 
   const handleDefinitionClick = (defId) => {
-    if (selectedTerm) {
-      setMatches(prev => ({
+    if (!selectedTerm) return;
+
+    // No multi to one matches
+    if (matches[selectedTerm] === defId) return;
+
+    if (isDefinitionMatched(defId) && getTermForDefinition(defId) !== selectedTerm) return;
+
+    setMatches(prev => ({
         ...prev,
         [selectedTerm]: defId
-      }));
-    }
-  };
+    }));
+};
 
   const checkAnswers = async () => {
     setShowResults(true);
@@ -121,15 +120,25 @@ export default function ZooWorkSheet1() {
       }
     }
     if (isDefinition) {
-      const matchedTerm = Object.keys(matches || {}).find(term => matches[term] === id);
-      return matchedTerm 
-        ? { 
-            backgroundColor: colors[terms.findIndex(t => t.id === matchedTerm)],
-            color: '#ffffff',
-            boxShadow: '0 2px 4px rgba(0,0,0,0.1)'
-          } 
-        : { backgroundColor: '#f0f0f0', color: '#333333', border: '1px solid #cccccc', boxShadow: '0 2px 4px rgba(0,0,0,0.05)' };
-    } else {
+      const matchedTerm = getTermForDefinition(id);
+      if (matchedTerm) {
+        const isCurrentSelectedTerm = matchedTerm === selectedTerm;
+        return {
+          backgroundColor: colors[terms.findIndex(t => t.id === matchedTerm)],
+          color: '#ffffff',
+          boxShadow: '0 2px 4px rgba(0,0,0,0.1)',
+          cursor: isCurrentSelectedTerm ? 'pointer' : 'not-allowed',
+          opacity: isCurrentSelectedTerm ? '1' : '0.9'
+        };
+      }
+      return {
+        backgroundColor: '#f0f0f0',
+        color: '#333333',
+        border: '1px solid #cccccc',
+        boxShadow: '0 2px 4px rgba(0,0,0,0.05)',
+        cursor: 'pointer'
+      };
+    }else {
       return clickedTerms[id]
         ? { 
             backgroundColor: colors[terms.findIndex(t => t.id === id)],

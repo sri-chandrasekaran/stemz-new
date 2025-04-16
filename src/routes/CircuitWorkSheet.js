@@ -65,12 +65,17 @@ export default function CircuitWorkSheet1() {
   };
 
   const handleDefinitionClick = (defId) => {
-    if (selectedTerm) {
-      setMatches(prev => ({
+    if (!selectedTerm) return;
+
+    // No multi to one matches
+    if (matches[selectedTerm] === defId) return;
+
+    if (isDefinitionMatched(defId) && getTermForDefinition(defId) !== selectedTerm) return;
+
+    setMatches(prev => ({
         ...prev,
         [selectedTerm]: defId
-      }));
-    }
+    }));
   };
 
   const checkAnswers = async () => {
