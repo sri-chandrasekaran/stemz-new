@@ -1,5 +1,9 @@
 import React, { useState, useRef, useEffect } from 'react';
 import stemzLearningLogo from "../assets/logo.png";
+import { createWorksheetProgress, fetchWorksheetProgress, updateWorksheetProgress } from '../worksheet';
+
+const worksheetId = "zoo-worksheet-1";
+let existing_progress = await fetchWorksheetProgress(worksheetId);
 
 const terms = [
   { id: 'zoology', term: 'Zoology' },
@@ -78,8 +82,14 @@ export default function ZooWorkSheet1() {
     }));
 };
 
-  const checkAnswers = () => {
+  const checkAnswers = async () => {
     setShowResults(true);
+    if (existing_progress) {
+      await updateWorksheetProgress(worksheetId, matches);
+    } else {
+      await createWorksheetProgress(worksheetId, matches);
+      existing_progress = await fetchWorksheetProgress(worksheetId);
+    }
   };
 
   const resetQuiz = () => {
@@ -99,12 +109,12 @@ export default function ZooWorkSheet1() {
   const getItemStyle = (id, isDefinition = false) => {
     if (showResults) {
       if (isDefinition) {
-        const matchedTerm = Object.keys(matches).find(term => matches[term] === id);
+        const matchedTerm = Object.keys(matches || {}).find(term => matches[term] === id);
         return matchedTerm && correctMatches[matchedTerm] === id
           ? { backgroundColor: '#3cb371', color: '#ffffff', boxShadow: '0 2px 4px rgba(0,0,0,0.1)' }
           : { backgroundColor: '#CF3434', color: '#ffffff', boxShadow: '0 2px 4px rgba(0,0,0,0.1)' };
       } else {
-        return matches[id] === correctMatches[id] 
+        return (matches || {})[id] === correctMatches[id] 
           ? { backgroundColor: '#3cb371', color: '#ffffff', boxShadow: '0 2px 4px rgba(0,0,0,0.1)' } 
           : { backgroundColor: '#CF3434', color: '#ffffff', boxShadow: '0 2px 4px rgba(0,0,0,0.1)' };
       }

@@ -1,5 +1,9 @@
 import React, { useState, useRef, useEffect } from 'react';
 import stemzLearningLogo from "../assets/logo.png"; 
+import { createWorksheetProgress, fetchWorksheetProgress, updateWorksheetProgress } from "../worksheet";
+
+const worksheetId = "circuit-worksheet-1";
+let existing_progress = await fetchWorksheetProgress(worksheetId);
 
 const terms = [
   { id: 'capacitor', term: 'Capacitor' },
@@ -40,13 +44,20 @@ export default function CircuitWorkSheet1() {
   const termsRef = useRef({});
   const defsRef = useRef({});
 
-  const getTermForDefinition = (defId) => {
-    return Object.entries(matches).find(([_, value]) => value === defId)?.[0];
-  };
+  // Fetch existing progress when the component mounts
+  useEffect(() => {
+    const fetchProgress = async () => {
+      const progressData = await fetchWorksheetProgress(worksheetId); // Adjust userEmail and worksheetId as needed
+      if (progressData && Object.keys(progressData).length > 0) {
+        setMatches(progressData.progress || {}); // Default to an empty object if progress is null
+        Object.keys(progressData.progress || {}).forEach(termId => {
+          handleTermClick(termId); // Mark each term as clicked
+        });
+      }
+    };
 
-  const isDefinitionMatched = (defId) => {
-      return Object.values(matches).some(matchedDefId => matchedDefId === defId);
-  };
+    fetchProgress();
+  }, []); // Empty dependency array to run only once on mount
 
   const handleTermClick = (termId) => {
     setSelectedTerm(termId);
@@ -67,8 +78,14 @@ export default function CircuitWorkSheet1() {
     }));
   };
 
-  const checkAnswers = () => {
+  const checkAnswers = async () => {
     setShowResults(true);
+    if (existing_progress) {
+      await updateWorksheetProgress(worksheetId, matches);
+    } else {
+      await createWorksheetProgress(worksheetId, matches);
+      existing_progress = await fetchWorksheetProgress(worksheetId);
+    }
   };
 
   const resetQuiz = () => {
@@ -88,35 +105,25 @@ export default function CircuitWorkSheet1() {
   const getItemStyle = (id, isDefinition = false) => {
     if (showResults) {
       if (isDefinition) {
-        const matchedTerm = Object.keys(matches).find(term => matches[term] === id);
+        const matchedTerm = Object.keys(matches || {}).find(term => matches[term] === id);
         return matchedTerm && correctMatches[matchedTerm] === id
           ? { backgroundColor: '#3cb371', color: '#ffffff', boxShadow: '0 2px 4px rgba(0,0,0,0.1)' }
           : { backgroundColor: '#CF3434', color: '#ffffff', boxShadow: '0 2px 4px rgba(0,0,0,0.1)' };
       } else {
-        return matches[id] === correctMatches[id] 
+        return (matches || {})[id] === correctMatches[id] 
           ? { backgroundColor: '#3cb371', color: '#ffffff', boxShadow: '0 2px 4px rgba(0,0,0,0.1)' } 
           : { backgroundColor: '#CF3434', color: '#ffffff', boxShadow: '0 2px 4px rgba(0,0,0,0.1)' };
       }
     }
     if (isDefinition) {
-      const matchedTerm = getTermForDefinition(id);
-      if (matchedTerm) {
-        const isCurrentSelectedTerm = matchedTerm === selectedTerm;
-        return {
-          backgroundColor: colors[terms.findIndex(t => t.id === matchedTerm)],
-          color: '#ffffff',
-          boxShadow: '0 2px 4px rgba(0,0,0,0.1)',
-          cursor: isCurrentSelectedTerm ? 'pointer' : 'not-allowed',
-          opacity: isCurrentSelectedTerm ? '1' : '0.9'
-        };
-      }
-      return {
-        backgroundColor: '#f0f0f0',
-        color: '#333333',
-        border: '1px solid #cccccc',
-        boxShadow: '0 2px 4px rgba(0,0,0,0.05)',
-        cursor: 'pointer'
-      };
+      const matchedTerm = Object.keys(matches || {}).find(term => matches[term] === id);
+      return matchedTerm 
+        ? { 
+            backgroundColor: colors[terms.findIndex(t => t.id === matchedTerm)],
+            color: '#ffffff',
+            boxShadow: '0 2px 4px rgba(0,0,0,0.1)'
+          } 
+        : { backgroundColor: '#f0f0f0', color: '#333333', border: '1px solid #cccccc', boxShadow: '0 2px 4px rgba(0,0,0,0.05)' };
     } else {
       return clickedTerms[id]
         ? { 
