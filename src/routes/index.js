@@ -4,7 +4,6 @@ import { Routes, Route } from "react-router-dom";
 // Import route groups
 import { mainRoutes } from "./main_routes";
 import { authRoutes } from "./auth_routes";
-import { newsRoutes } from "./news_routes";
 import { astronomyRoutes } from "./astronomy_routes";
 import { zoologyRoutes } from "./zoo_routes";
 import { psychologyRoutes } from "./psychology_routes";
@@ -16,15 +15,15 @@ import { biochemistryRoutes } from "./biochemistry_routes";
 import { codingRoutes } from "./coding_routes";
 
 // Lazy load subject pages
-const Astronomy = lazy(() => import("./Astronomy"));
-const BasicsOfCoding = lazy(() => import("./BasicsOfCoding"));
-const Biochemistry = lazy(() => import("./Biochemistry"));
-const Chemistry = lazy(() => import("./Chemistry"));
-const Circuits = lazy(() => import("./Circuits"));
-const EnvironmentalScience = lazy(() => import("./EnvironmentalScience"));
-const Psychology = lazy(() => import("./Psychology"));
-const Statistics = lazy(() => import("./Statistics"));
-const Zoology = lazy(() => import("./Zoology"));
+const Astronomy = lazy(() => import("../pages/astronomy/Astronomy"));
+const BasicsOfCoding = lazy(() => import("../pages/basics_of_coding/BasicsOfCoding"));
+const Biochemistry = lazy(() => import("../pages/biochemistry/Biochemistry"));
+const Chemistry = lazy(() => import("../pages/chemistry/Chemistry"));
+const Circuits = lazy(() => import("../pages/circuit/Circuits"));
+const EnvironmentalScience = lazy(() => import("../pages/environmental_science/EnvironmentalScience"));
+const Psychology = lazy(() => import("../pages/psychology/Psychology"));
+const Statistics = lazy(() => import("../pages/statistics/Statistics"));
+const Zoology = lazy(() => import("../pages/zoology/Zoology"));
 
 // Subject page routes
 const subjectRoutes = [
@@ -44,7 +43,6 @@ const allRoutes = [
   // Include all route groups
   ...mainRoutes,
   ...authRoutes,
-  ...newsRoutes,
   ...subjectRoutes,
   ...astronomyRoutes,
   ...codingRoutes,

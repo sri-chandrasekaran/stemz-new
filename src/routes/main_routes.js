@@ -2,15 +2,14 @@ import React, { lazy, Suspense } from 'react';
 import { Routes, Route } from 'react-router-dom';
 
 // Lazy load components
-const Home = lazy(() => import('./Home'));
-const About = lazy(() => import('./About'));
-const GetInvolved = lazy(() => import('./GetInvolved'));
-const Contact = lazy(() => import('./Contact'));
-const OnlineClasses = lazy(() => import('./OnlineClasses'));
-const SelfPacedClasses = lazy(() => import('./SelfPacedClasses'));
+const Home = lazy(() => import('../pages/main/Home'));
+const About = lazy(() => import('../pages/main/About'));
+const GetInvolved = lazy(() => import('../pages/main/GetInvolved'));
+const Contact = lazy(() => import('../pages/main/Contact'));
+const OnlineClasses = lazy(() => import('../pages/main/OnlineClasses'));
+const SelfPacedClasses = lazy(() => import('../pages/main/SelfPacedClasses'));
 const CourseBoxes = lazy(() => import('./CourseBoxes'));
-const News = lazy(() => import('./News'));
-const Volunteer = lazy(() => import('./volunteer'));
+const Volunteer = lazy(() => import('../pages/main/volunteer'));
 
 // Define route configuration
 const mainRoutes = [
@@ -22,7 +21,6 @@ const mainRoutes = [
   { path: "/online-classes", component: OnlineClasses },
   { path: "/self-paced-classes", component: SelfPacedClasses },
   { path: "/course-boxes", component: CourseBoxes },
-  { path: "/news", component: News },
 ];
 
 // Route component for direct usage

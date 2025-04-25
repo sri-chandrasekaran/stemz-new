@@ -1,0 +1,43 @@
+
+.news-container {
+    max-width: 1500px;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    margin: 0 auto;
+    padding: 5px;
+    margin-top: 600px;
+}
+
+.news-item {
+    text-align: center;
+    margin: 20px 0;
+}
+
+
+.class-img {
+    height: 250px;
+    width: auto;
+    display: block;
+    margin: 0 auto;
+    margin-bottom: 10px;
+  }
+  
+  .content-header {
+    margin-top: 15px;
+    text-align: center;
+  }
+
+@media screen and (max-width: 800px){
+  .news-container {
+    display: block;
+    text-align: center;
+    margin-top: 500px;
+    
+  }
+
+  .news-item {
+    margin: 20px auto;
+  }
+
+  
+}

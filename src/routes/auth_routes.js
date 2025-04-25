@@ -2,9 +2,9 @@ import React, { lazy, Suspense } from 'react';
 import { Routes, Route } from 'react-router-dom';
 
 // Lazy load components
-const LoginForm = lazy(() => import('./LoginForm'));
-const SignUpForm = lazy(() => import('./SignUpForm'));
-const Dashboard = lazy(() => import('./dashboard'));
+const LoginForm = lazy(() => import('../pages/main/LoginForm'));
+const SignUpForm = lazy(() => import('../pages/main/SignUpForm'));
+const Dashboard = lazy(() => import('../pages/main/dashboard'));
 
 // Define route configuration
 const authRoutes = [

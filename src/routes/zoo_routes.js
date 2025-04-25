@@ -2,20 +2,20 @@ import React, { lazy, Suspense } from 'react';
 import { Routes, Route } from 'react-router-dom';
 
 // Lazy load components
-const ZooWorkSheet1 = lazy(() => import('./zooWorkSheet1'));
-const ZooWorkSheet2 = lazy(() => import('./zooWorkSheet2'));
-const ZooWorkSheet3 = lazy(() => import('./zooWorkSheet3'));
-const Zoo1p = lazy(() => import('./zoo1p'));
-const Zoo1s = lazy(() => import('./zoo1s'));
-const Zoo2p = lazy(() => import('./zoo2p'));
-const Zoo2s = lazy(() => import('./zoo2s'));
-const Zoo3p = lazy(() => import('./zoo3p'));
-const Zoo3s = lazy(() => import('./zoo3s'));
-const Zoo4p = lazy(() => import('./zoo4p'));
-const Zoo4s = lazy(() => import('./zoo4s'));
-const Zoo5p = lazy(() => import('./zoo5p'));
-const Zoo5s = lazy(() => import('./zoo5s'));
-const ZooQuiz = lazy(() => import('./Zooquiz'));
+const ZooWorkSheet1 = lazy(() => import('../pages/zoology/zooWorkSheet1'));
+const ZooWorkSheet2 = lazy(() => import('../pages/zoology/zooWorkSheet2'));
+const ZooWorkSheet3 = lazy(() => import('../pages/zoology/zooWorkSheet3'));
+const Zoo1p = lazy(() => import('../pages/zoology/zoo1p'));
+const Zoo1s = lazy(() => import('../pages/zoology/zoo1s'));
+const Zoo2p = lazy(() => import('../pages/zoology/zoo2p'));
+const Zoo2s = lazy(() => import('../pages/zoology/zoo2s'));
+const Zoo3p = lazy(() => import('../pages/zoology/zoo3p'));
+const Zoo3s = lazy(() => import('../pages/zoology/zoo3s'));
+const Zoo4p = lazy(() => import('../pages/zoology/zoo4p'));
+const Zoo4s = lazy(() => import('../pages/zoology/zoo4s'));
+const Zoo5p = lazy(() => import('../pages/zoology/zoo5p'));
+const Zoo5s = lazy(() => import('../pages/zoology/zoo5s'));
+const ZooQuiz = lazy(() => import('../pages/zoology/Zooquiz'));
 
 // Define route configuration
 const zoologyRoutes = [

@@ -2,15 +2,15 @@ import React, { lazy, Suspense } from 'react';
 import { Routes, Route } from 'react-router-dom';
 
 // Lazy load components
-const Bc1p = lazy(() => import('./bc1p'));
-const Bc1s = lazy(() => import('./bc1s'));
-const Bc2p = lazy(() => import('./bc2p'));
-const Bc2s = lazy(() => import('./bc2s'));
-const Bc3p = lazy(() => import('./bc3p'));
-const Bc3s = lazy(() => import('./bc3s'));
-const Bc4p = lazy(() => import('./bc4p'));
-const Bc4s = lazy(() => import('./bc4s'));
-const BCQuiz = lazy(() => import('./BCquiz'));
+const Bc1p = lazy(() => import('../pages/basics_of_coding/bc1p'));
+const Bc1s = lazy(() => import('../pages/basics_of_coding/bc1s'));
+const Bc2p = lazy(() => import('../pages/basics_of_coding/bc2p'));
+const Bc2s = lazy(() => import('../pages/basics_of_coding/bc2s'));
+const Bc3p = lazy(() => import('../pages/basics_of_coding/bc3p'));
+const Bc3s = lazy(() => import('../pages/basics_of_coding/bc3s'));
+const Bc4p = lazy(() => import('../pages/basics_of_coding/bc4p'));
+const Bc4s = lazy(() => import('../pages/basics_of_coding/bc4s'));
+const BCQuiz = lazy(() => import('../pages/basics_of_coding/BCquiz'));
 
 // Define route configuration
 const codingRoutes = [

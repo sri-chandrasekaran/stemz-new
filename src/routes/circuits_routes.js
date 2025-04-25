@@ -2,14 +2,14 @@ import React, { lazy, Suspense } from 'react';
 import { Routes, Route } from 'react-router-dom';
 
 // Lazy load components
-const Circuit1s = lazy(() => import('./circuit1s'));
-const Circuit2s = lazy(() => import('./circuit2s'));
-const Circuit3s = lazy(() => import('./circuit3s'));
-const Circuit1p = lazy(() => import('./circuit1p'));
-const Circuit2p = lazy(() => import('./circuit2p'));
-const Circuit3p = lazy(() => import('./circuit3p'));
-const CircuitQuiz = lazy(() => import('./Circuitquiz'));
-const CircuitWorkSheet = lazy(() => import('./CircuitWorkSheet'));
+const Circuit1s = lazy(() => import('../pages/circuit/circuit1s'));
+const Circuit2s = lazy(() => import('../pages/circuit/circuit2s'));
+const Circuit3s = lazy(() => import('../pages/circuit/circuit3s'));
+const Circuit1p = lazy(() => import('../pages/circuit/circuit1p'));
+const Circuit2p = lazy(() => import('../pages/circuit/circuit2p'));
+const Circuit3p = lazy(() => import('../pages/circuit/circuit3p'));
+const CircuitQuiz = lazy(() => import('../pages/circuit/Circuitquiz'));
+const CircuitWorkSheet = lazy(() => import('../pages/circuit/CircuitWorkSheet'));
 
 // Define route configuration
 const circuitsRoutes = [
