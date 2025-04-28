@@ -2,7 +2,7 @@ import React, {useState} from 'react';
 import Navbar from '../../components/Navbar';
 import HeroOther from '../../components/HeroOther';
 import Footer from '../../components/Footer';
-import Biochemistry from '../../assets/biochem.png'
+import Biochemistry from '../../assets/biochem.PNG'
 import { Link } from 'react-router-dom';
 import '../css/Astronomy.css';
 

@@ -2,7 +2,7 @@ import React from 'react';
 import Navbar from '../../components/Navbar';
 import HeroOther from '../../components/HeroOther';
 import Footer from '../../components/Footer';
-import AstronomyImage from '../../assets/astronomy.png'
+import AstronomyImage from '../../assets/astronomy.PNG'
 import { Link } from 'react-router-dom';
 import '../css/Astronomy.css';
 
