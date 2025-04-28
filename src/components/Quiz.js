@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import './Quiz.css';
+import './Form.css'
 import PropTypes from 'prop-types';
 
 const Quiz = ({ src }) => {
