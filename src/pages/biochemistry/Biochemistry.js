@@ -2,6 +2,7 @@ import React, {useState} from 'react';
 import Navbar from '../../components/Navbar';
 import HeroOther from '../../components/HeroOther';
 import Footer from '../../components/Footer';
+import Biochemistry from '../../assets/biochem.png'
 import { Link } from 'react-router-dom';
 import '../css/Astronomy.css';
 
@@ -15,7 +16,7 @@ const BiochemistryPage = () => {
     <div>
       <Navbar />
       <HeroOther overlayText="Biochemistry"/>
-      {/* <img src={AstronomyImage} alt="Biochemistry" className="course-img"/> */}
+      <img src={Biochemistry} alt="Biochemistry" className="course-img"/>
       <div className='course-description'>
         <h2>Recommended Grade Level: 3rd - 6th Grade</h2>
         <h2>Length: 2 Lessons, 1 hour each</h2>
