@@ -1,119 +1,362 @@
-import React, {useState} from 'react';
-import Navbar from '../../components/Navbar';
-import HeroOther from '../../components/HeroOther';
-import Footer from '../../components/Footer';
-import Psychology from '../../assets/psych.jpeg'
-import { Link } from 'react-router-dom';
-import '../css/Astronomy.css';
+import React, { useState, useEffect } from "react";
+import Navbar from "../../components/Navbar";
+import HeroOther from "../../components/HeroOther";
+import Footer from "../../components/Footer";
+import Psychology from "../../assets/psych.jpeg";
+import { Link, useNavigate } from "react-router-dom";
+import "../css/AllClassHomePage.css";
+import { call_api } from "../api";
 
 const PsychologyPage = () => {
+  const [courseProgress, setCourseProgress] = useState(null);
+  const [loading, setLoading] = useState(true);
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
+  const navigate = useNavigate();
+
+  // Token verification
+  useEffect(() => {
+    const verifyToken = async () => {
+      const token = localStorage.getItem("token");
+      if (!token) {
+        console.log("No token found, redirecting to login page");
+        navigate("/login");
+        return;
+      }
+
+      try {
+        console.log("token is found");
+        const response = await call_api(null, "auth/verify", "POST");
+        if (response && response.success) {
+          setIsAuthenticated(true);
+          setLoading(false);
+        } else {
+          localStorage.removeItem("token");
+          navigate("/login");
+        }
+      } catch (error) {
+        console.error("Token verification error:", error);
+        localStorage.removeItem("token");
+        navigate("/login");
+      }
+    };
+
+    verifyToken();
+  }, [navigate]);
+
+  // Fetch course progress data
+  useEffect(() => {
+    if (!isAuthenticated) return;
+
+    const fetchCourseProgress = async () => {
+      try {
+        const response = await call_api(null, "points", "GET");
+
+        if (response && response.courses && response.courses.psychology) {
+          console.log(
+            "Psychology course progress:",
+            response.courses.psychology
+          );
+          setCourseProgress(response.courses.psychology);
+          setLoading(false);
+        }
+      } catch (err) {
+        console.error("Error fetching course progress:", err);
+        setLoading(false);
+      }
+    };
+
+    fetchCourseProgress();
+  }, [isAuthenticated]);
+
+  // Calculate total possible points for the course
+  const calculateTotalPossiblePoints = () => {
+    if (!courseProgress) return 100; // Default value
+
+    let total = 0;
+
+    Object.keys(courseProgress.lessons).forEach((lessonKey) => {
+      const lesson = courseProgress.lessons[lessonKey];
+      Object.keys(lesson.activities).forEach((activityKey) => {
+        const activity = lesson.activities[activityKey];
+        total += activity.points;
+        if (activity.type === "quiz" && activity.extraPoints) {
+          total += activity.extraPoints;
+        }
+      });
+    });
+
+    return total || 100; // Fallback to 100 if calculation results in 0
+  };
+
+  // Check if a lesson is completed
+  const isLessonCompleted = (lessonKey) => {
+    if (!courseProgress || !courseProgress.lessons[lessonKey]) return false;
+    return courseProgress.lessons[lessonKey].completed;
+  };
+
+  // Get points for a specific lesson
+  const getLessonPoints = (lessonKey) => {
+    if (!courseProgress || !courseProgress.lessons[lessonKey]) return 0;
+    return courseProgress.lessons[lessonKey].lessonPoints;
+  };
 
   const scrollToTop = () => {
     window.scrollTo(0, 0);
-}
+  };
+
+  if (loading) {
+    return (
+      <div>
+        <Navbar />
+        <HeroOther overlayText="Psychology" />
+        <div className="loading-container">
+          <div className="loading-spinner"></div>
+          <p>Loading course content...</p>
+        </div>
+        <Footer />
+      </div>
+    );
+  }
 
   return (
     <div>
       <Navbar />
-      <HeroOther overlayText="Psychology"/>
-      <img src={Psychology} alt="Psychology" className="course-img"/>
-      <div className='course-description'>
+      <HeroOther overlayText="Psychology" />
+      <img src={Psychology} alt="Psychology" className="course-img" />
+      <div className="course-description">
         <h2>Recommended Grade Level: 2nd - 5th Grade</h2>
         <h2>Length: 4 Lessons, 1 hour each</h2>
-        <h2>In this course we will explore various subjects of psychology including how the brain works, memory, and mind tricks.</h2>
+        <h2>
+          In this course we will explore various subjects of psychology
+          including how the brain works, memory, and mind tricks.
+        </h2>
         <h3>Creator: Taleen Shomar</h3>
+
+        <div className="points-display">
+          <p
+            className={
+              courseProgress && courseProgress.completed
+                ? "points-text completed"
+                : "points-text"
+            }
+          >
+            Your points: {courseProgress ? courseProgress.coursePoints : 0}/
+            {calculateTotalPossiblePoints()}
+          </p>
+          {courseProgress && courseProgress.completed && (
+            <p className="completed-text">Completed!</p>
+          )}
+        </div>
       </div>
-      <div className='student-l1'>
+
+      <div className="student-l1">
         <h1>Student-Led Lessons</h1>
-        <div className='lesson1'>
-        {(<div className='lesson-content'>
-        <Link to ="/psych1s" onClick={scrollToTop}>
+        <div className="lesson-grid">
+          <div className="lesson-item">
+            <Link to="/psych1s" onClick={scrollToTop} className="lesson-link">
               <img
-              src="https://i.ytimg.com/vi/TjGatGI4CJM/mqdefault.jpg"
-              alt="Lesson 1 Thumbnail"
-              className="astrovid-thumbnail"
-            />
-            <h3 className='vidtitle-small'>Lesson 1: Psychology & Scientific Method</h3>
+                src="https://i.ytimg.com/vi/TjGatGI4CJM/mqdefault.jpg"
+                alt="Lesson 1 Thumbnail"
+                className="lesson-thumbnail"
+              />
+              <h3 className="lesson-title">
+                Lesson 1: Psychology & Scientific Method
+              </h3>
             </Link>
-            
-            <Link to ="/psych2s" onClick={scrollToTop}>
-            <img
-              src="https://i.ytimg.com/vi/ieBDGtmN2fI/mqdefault.jpg"
-              alt="Lesson 2 Thumbnail"
-              className="astrovid-thumbnail"
-            />
-            <h3 className='vidtitle-small'> Lesson 2: How the Brain Works</h3>
-            </Link>
+            <div
+              className={
+                isLessonCompleted("lesson1") || getLessonPoints("lesson1") >= 10
+                  ? "lesson-points completed"
+                  : "lesson-points"
+              }
+            >
+              <p>
+                Points: {getLessonPoints("lesson1")}{" "}
+                {isLessonCompleted("lesson1") ||
+                getLessonPoints("lesson1") >= 10
+                  ? "(completed!)"
+                  : ""}
+              </p>
+            </div>
+          </div>
 
-            <Link to ="/psych3s" onClick={scrollToTop}>
+          <div className="lesson-item">
+            <Link to="/psych2s" onClick={scrollToTop} className="lesson-link">
               <img
-              src="https://i.ytimg.com/vi/Y3OVQ2mD9mo/mqdefault.jpg"
-              alt="Lesson 3 Thumbnail"
-              className="astrovid-thumbnail"
-            />
-            <h3 className='vidtitle-small'>Lesson 3: Memory</h3>
+                src="https://i.ytimg.com/vi/ieBDGtmN2fI/mqdefault.jpg"
+                alt="Lesson 2 Thumbnail"
+                className="lesson-thumbnail"
+              />
+              <h3 className="lesson-title">Lesson 2: How the Brain Works</h3>
             </Link>
+            <div
+              className={
+                isLessonCompleted("lesson2") || getLessonPoints("lesson2") >= 7
+                  ? "lesson-points completed"
+                  : "lesson-points"
+              }
+            >
+              <p>
+                Points: {getLessonPoints("lesson2")}{" "}
+                {isLessonCompleted("lesson2") ? "(completed!)" : ""}
+              </p>
+            </div>
+          </div>
 
-            <Link to ="/psych4s" onClick={scrollToTop}>
+          <div className="lesson-item">
+            <Link to="/psych3s" onClick={scrollToTop} className="lesson-link">
               <img
-              src="https://i.ytimg.com/vi/0KVSJrtktCY/mqdefault.jpg"
-              alt="Lesson 4 Thumbnail"
-              className="astrovid-thumbnail"
-            />
-            <h3 className='vidtitle-small'>Lesson 4: Mind Tricks</h3>
+                src="https://i.ytimg.com/vi/Y3OVQ2mD9mo/mqdefault.jpg"
+                alt="Lesson 3 Thumbnail"
+                className="lesson-thumbnail"
+              />
+              <h3 className="lesson-title">Lesson 3: Memory</h3>
             </Link>
-</div>)}
-      
+            <div
+              className={
+                isLessonCompleted("lesson3") || getLessonPoints("lesson3") >= 7
+                  ? "lesson-points completed"
+                  : "lesson-points"
+              }
+            >
+              <p>
+                Points: {getLessonPoints("lesson3")}{" "}
+                {isLessonCompleted("lesson3") ? "(completed!)" : ""}
+              </p>
+            </div>
+          </div>
+
+          <div className="lesson-item">
+            <Link to="/psych4s" onClick={scrollToTop} className="lesson-link">
+              <img
+                src="https://i.ytimg.com/vi/0KVSJrtktCY/mqdefault.jpg"
+                alt="Lesson 4 Thumbnail"
+                className="lesson-thumbnail"
+              />
+              <h3 className="lesson-title">Lesson 4: Mind Tricks</h3>
+            </Link>
+            <div
+              className={
+                isLessonCompleted("lesson4") || getLessonPoints("lesson4") >= 7
+                  ? "lesson-points completed"
+                  : "lesson-points"
+              }
+            >
+              <p>
+                Points: {getLessonPoints("lesson4")}{" "}
+                {isLessonCompleted("lesson4") ? "(completed!)" : ""}
+              </p>
+            </div>
+          </div>
         </div>
-        
       </div>
-      <div className='student-l1'>
+
+      <div className="student-l1">
         <h1>Parent-Led Lessons</h1>
-        <div className='lesson1'>
-        {(<div className='lesson-content'>
-        <Link to ="/psych1p" onClick={scrollToTop}>
+        <div className="lesson-grid">
+          <div className="lesson-item">
+            <Link to="/psych1p" onClick={scrollToTop} className="lesson-link">
               <img
-              src="https://i.ytimg.com/vi/TjGatGI4CJM/mqdefault.jpg"
-              alt="Lesson 1 Thumbnail"
-              className="astrovid-thumbnail"
-            />
-            <h3 className='vidtitle-small'>Lesson 1: Psychology & Scientific Method</h3>
+                src="https://i.ytimg.com/vi/TjGatGI4CJM/mqdefault.jpg"
+                alt="Lesson 1 Thumbnail"
+                className="lesson-thumbnail"
+              />
+              <h3 className="lesson-title">
+                Lesson 1: Psychology & Scientific Method
+              </h3>
             </Link>
-            
-            <Link to ="/psych2p" onClick={scrollToTop}>
-            <img
-              src="https://i.ytimg.com/vi/ieBDGtmN2fI/mqdefault.jpg"
-              alt="Lesson 2 Thumbnail"
-              className="astrovid-thumbnail"
-            />
-            <h3 className='vidtitle-small'> Lesson 2: How the Brain Works</h3>
-            </Link>
+            <div
+              className={
+                isLessonCompleted("lesson1") || getLessonPoints("lesson1") >= 10
+                  ? "lesson-points completed"
+                  : "lesson-points"
+              }
+            >
+              <p>
+                Points: {getLessonPoints("lesson1")}{" "}
+                {isLessonCompleted("lesson1") ||
+                getLessonPoints("lesson1") >= 10
+                  ? "(completed!)"
+                  : ""}
+              </p>
+            </div>
+          </div>
 
-            <Link to ="/psych3p" onClick={scrollToTop}>
+          <div className="lesson-item">
+            <Link to="/psych2p" onClick={scrollToTop} className="lesson-link">
               <img
-              src="https://i.ytimg.com/vi/Y3OVQ2mD9mo/mqdefault.jpg"
-              alt="Lesson 3 Thumbnail"
-              className="astrovid-thumbnail"
-            />
-            <h3 className='vidtitle-small'>Lesson 3: Memory</h3>
+                src="https://i.ytimg.com/vi/ieBDGtmN2fI/mqdefault.jpg"
+                alt="Lesson 2 Thumbnail"
+                className="lesson-thumbnail"
+              />
+              <h3 className="lesson-title">Lesson 2: How the Brain Works</h3>
             </Link>
+            <div
+              className={
+                isLessonCompleted("lesson2") || getLessonPoints("lesson2") >= 7
+                  ? "lesson-points completed"
+                  : "lesson-points"
+              }
+            >
+              <p>
+                Points: {getLessonPoints("lesson2")}{" "}
+                {isLessonCompleted("lesson2") ? "(completed!)" : ""}
+              </p>
+            </div>
+          </div>
 
-            <Link to ="/psych4p" onClick={scrollToTop}>
+          <div className="lesson-item">
+            <Link to="/psych3p" onClick={scrollToTop} className="lesson-link">
               <img
-              src="https://i.ytimg.com/vi/0KVSJrtktCY/mqdefault.jpg"
-              alt="Lesson 4 Thumbnail"
-              className="astrovid-thumbnail"
-            />
-            <h3 className='vidtitle-small'>Lesson 4: Mind Tricks</h3>
+                src="https://i.ytimg.com/vi/Y3OVQ2mD9mo/mqdefault.jpg"
+                alt="Lesson 3 Thumbnail"
+                className="lesson-thumbnail"
+              />
+              <h3 className="lesson-title">Lesson 3: Memory</h3>
             </Link>
-</div>)}
+            <div
+              className={
+                isLessonCompleted("lesson3") || getLessonPoints("lesson3") >= 7
+                  ? "lesson-points completed"
+                  : "lesson-points"
+              }
+            >
+              <p>
+                Points: {getLessonPoints("lesson3")}{" "}
+                {isLessonCompleted("lesson3") ? "(completed!)" : ""}
+              </p>
+            </div>
+          </div>
 
+          <div className="lesson-item">
+            <Link to="/psych4p" onClick={scrollToTop} className="lesson-link">
+              <img
+                src="https://i.ytimg.com/vi/0KVSJrtktCY/mqdefault.jpg"
+                alt="Lesson 4 Thumbnail"
+                className="lesson-thumbnail"
+              />
+              <h3 className="lesson-title">Lesson 4: Mind Tricks</h3>
+            </Link>
+            <div
+              className={
+                isLessonCompleted("lesson4") || getLessonPoints("lesson4") >= 7
+                  ? "lesson-points completed"
+                  : "lesson-points"
+              }
+            >
+              <p>
+                Points: {getLessonPoints("lesson4")}{" "}
+                {isLessonCompleted("lesson4") ? "(completed!)" : ""}
+              </p>
+            </div>
+          </div>
         </div>
       </div>
-      <div style={{ paddingBottom: '200px' }} />
+
+      <div style={{ paddingBottom: "200px" }} />
       <Footer />
     </div>
-  )
-}
+  );
+};
 
-export default PsychologyPage
+export default PsychologyPage;

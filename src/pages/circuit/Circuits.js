@@ -1,101 +1,322 @@
-import React, {useState} from 'react';
-import Navbar from '../../components/Navbar';
-import HeroOther from '../../components/HeroOther';
-import Footer from '../../components/Footer';
-import Circuits from '../../assets/circuits.jpg'
-import { Link } from 'react-router-dom';
+import React, { useState, useEffect } from "react";
+import Navbar from "../../components/Navbar";
+import HeroOther from "../../components/HeroOther";
+import Footer from "../../components/Footer";
+import Circuits from "../../assets/circuits.jpg";
+import { Link, useNavigate } from "react-router-dom";
 
-import '../css/Astronomy.css';
+import "../css/AllClassHomePage.css";
+import { call_api } from "../api";
 
 const CircuitsPage = () => {
+  const [courseProgress, setCourseProgress] = useState(null);
+  const [loading, setLoading] = useState(true);
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
+  const navigate = useNavigate();
+
+  // Token verification
+  useEffect(() => {
+    const verifyToken = async () => {
+      const token = localStorage.getItem("token");
+      if (!token) {
+        console.log("No token found, redirecting to login page");
+        navigate("/login");
+        return;
+      }
+
+      try {
+        console.log("token is found");
+        const response = await call_api(null, "auth/verify", "POST");
+        if (response && response.success) {
+          setIsAuthenticated(true);
+          setLoading(false);
+        } else {
+          localStorage.removeItem("token");
+          navigate("/login");
+        }
+      } catch (error) {
+        console.error("Token verification error:", error);
+        localStorage.removeItem("token");
+        navigate("/login");
+      }
+    };
+
+    verifyToken();
+  }, [navigate]);
+
+  // Fetch course progress data
+  useEffect(() => {
+    if (!isAuthenticated) return;
+
+    const fetchCourseProgress = async () => {
+      try {
+        const response = await call_api(null, "points", "GET");
+
+        if (response && response.courses && response.courses.circuits) {
+          console.log("Circuits course progress:", response.courses.circuits);
+          setCourseProgress(response.courses.circuits);
+          setLoading(false);
+        }
+      } catch (err) {
+        console.error("Error fetching course progress:", err);
+        setLoading(false);
+      }
+    };
+
+    fetchCourseProgress();
+  }, [isAuthenticated]);
+
+  // Calculate total possible points for the course
+  const calculateTotalPossiblePoints = () => {
+    if (!courseProgress) return 100; // Default value
+
+    let total = 0;
+
+    Object.keys(courseProgress.lessons).forEach((lessonKey) => {
+      const lesson = courseProgress.lessons[lessonKey];
+      Object.keys(lesson.activities).forEach((activityKey) => {
+        const activity = lesson.activities[activityKey];
+        total += activity.points;
+        if (activity.type === "quiz" && activity.extraPoints) {
+          total += activity.extraPoints;
+        }
+      });
+    });
+
+    return total || 100; // Fallback to 100 if calculation results in 0
+  };
+
+  // Check if a lesson is completed
+  const isLessonCompleted = (lessonKey) => {
+    if (!courseProgress || !courseProgress.lessons[lessonKey]) return false;
+    return courseProgress.lessons[lessonKey].completed;
+  };
+
+  // Get points for a specific lesson
+  const getLessonPoints = (lessonKey) => {
+    if (!courseProgress || !courseProgress.lessons[lessonKey]) return 0;
+    return courseProgress.lessons[lessonKey].lessonPoints;
+  };
 
   const scrollToTop = () => {
     window.scrollTo(0, 0);
-}
+  };
+
+  if (loading) {
+    return (
+      <div>
+        <Navbar />
+        <HeroOther overlayText="Circuits" />
+        <div className="loading-container">
+          <div className="loading-spinner"></div>
+          <p>Loading course content...</p>
+        </div>
+        <Footer />
+      </div>
+    );
+  }
 
   return (
     <div>
       <Navbar />
-      <HeroOther overlayText="Circuits"/>
-      <img src={Circuits} alt="Circuits" className="course-img"/>
-      <div className='course-description'>
+      <HeroOther overlayText="Circuits" />
+      <img src={Circuits} alt="Circuits" className="course-img" />
+      <div className="course-description">
         <h2>Recommended Grade Level: 4th - 6th Grade</h2>
         <h2>Length: 3 Lessons, 1 hour each</h2>
-        <h2>In this course, your child will learn about the basics of circuits and how they are used in everyday items. </h2>
+        <h2>
+          In this course, your child will learn about the basics of circuits and
+          how they are used in everyday items.
+        </h2>
         <h3>Creator: Sri Chandrasekaran</h3>
+
+        <div className="points-display">
+          <p
+            className={
+              courseProgress && courseProgress.completed
+                ? "points-text completed"
+                : "points-text"
+            }
+          >
+            Your points: {courseProgress ? courseProgress.coursePoints : 0}/
+            {calculateTotalPossiblePoints()}
+          </p>
+          {courseProgress && courseProgress.completed && (
+            <p className="completed-text">Completed!</p>
+          )}
+        </div>
       </div>
-      <div className='student-l1'>
+
+      <div className="student-l1">
         <h1>Student-Led Lessons</h1>
-        <div className='lesson1'>
-        {(<div className='lesson-content'>
-        <Link to ="/circuit1s" onClick={scrollToTop}>
+        <div className="lesson-grid">
+          <div className="lesson-item">
+            <Link to="/circuit1s" onClick={scrollToTop} className="lesson-link">
               <img
-              src="https://i.ytimg.com/vi/MFr0Y52UICk/mqdefault.jpg"
-              alt="Lesson 1 Thumbnail"
-              className="astrovid-thumbnail"
-            />
-            <h3 className='vidtitle-small'>Lesson 1: Circuits & Circuit Boards</h3>
+                src="https://i.ytimg.com/vi/MFr0Y52UICk/mqdefault.jpg"
+                alt="Lesson 1 Thumbnail"
+                className="lesson-thumbnail"
+              />
+              <h3 className="lesson-title">
+                Lesson 1: Circuits & Circuit Boards
+              </h3>
             </Link>
-            
-            <Link to ="/circuit2s" onClick={scrollToTop}>
-            <img
-              src="https://i.ytimg.com/vi/pK9h_Ts3gWw/mqdefault.jpg"
-              alt="Lesson 2 Thumbnail"
-              className="astrovid-thumbnail"
-            />
-            <h3 className='vidtitle-small'> Lesson 2: More Circuit Board Tools</h3>
-            </Link>
+            <div
+              className={
+                isLessonCompleted("lesson1") || getLessonPoints("lesson1") >= 10
+                  ? "lesson-points completed"
+                  : "lesson-points"
+              }
+            >
+              <p>
+                Points: {getLessonPoints("lesson1")}{" "}
+                {isLessonCompleted("lesson1") ||
+                getLessonPoints("lesson1") >= 10
+                  ? "(completed!)"
+                  : ""}
+              </p>
+            </div>
+          </div>
 
-            <Link to ="/circuit3s" onClick={scrollToTop}>
+          <div className="lesson-item">
+            <Link to="/circuit2s" onClick={scrollToTop} className="lesson-link">
               <img
-              src="https://i.ytimg.com/vi/4ZBUoBPdojA/mqdefault.jpg"
-              alt="Lesson 1 Thumbnail"
-              className="astrovid-thumbnail"
-            />
-            <h3 className='vidtitle-small'>Lesson 3: Creating a Functioning Circuit</h3>
+                src="https://i.ytimg.com/vi/pK9h_Ts3gWw/mqdefault.jpg"
+                alt="Lesson 2 Thumbnail"
+                className="lesson-thumbnail"
+              />
+              <h3 className="lesson-title">
+                Lesson 2: More Circuit Board Tools
+              </h3>
             </Link>
-</div>)}
-        
+            <div
+              className={
+                isLessonCompleted("lesson2") || getLessonPoints("lesson2") >= 7
+                  ? "lesson-points completed"
+                  : "lesson-points"
+              }
+            >
+              <p>
+                Points: {getLessonPoints("lesson2")}{" "}
+                {isLessonCompleted("lesson2") ? "(completed!)" : ""}
+              </p>
+            </div>
+          </div>
+
+          <div className="lesson-item">
+            <Link to="/circuit3s" onClick={scrollToTop} className="lesson-link">
+              <img
+                src="https://i.ytimg.com/vi/4ZBUoBPdojA/mqdefault.jpg"
+                alt="Lesson 3 Thumbnail"
+                className="lesson-thumbnail"
+              />
+              <h3 className="lesson-title">
+                Lesson 3: Creating a Functioning Circuit
+              </h3>
+            </Link>
+            <div
+              className={
+                isLessonCompleted("lesson3") || getLessonPoints("lesson3") >= 7
+                  ? "lesson-points completed"
+                  : "lesson-points"
+              }
+            >
+              <p>
+                Points: {getLessonPoints("lesson3")}{" "}
+                {isLessonCompleted("lesson3") ? "(completed!)" : ""}
+              </p>
+            </div>
+          </div>
         </div>
-
       </div>
-      <div className='student-l1'>
+
+      <div className="student-l1">
         <h1>Parent-Led Lessons</h1>
-        <div className='lesson1'>
-        {(<div className='lesson-content'>
-        <Link to ="/circuit1p" onClick={scrollToTop}>
+        <div className="lesson-grid">
+          <div className="lesson-item">
+            <Link to="/circuit1p" onClick={scrollToTop} className="lesson-link">
               <img
-              src="https://i.ytimg.com/vi/MFr0Y52UICk/mqdefault.jpg"
-              alt="Lesson 1 Thumbnail"
-              className="astrovid-thumbnail"
-            />
-            <h3 className='vidtitle-small'>Lesson 1: Circuits & Circuit Boards</h3>
+                src="https://i.ytimg.com/vi/MFr0Y52UICk/mqdefault.jpg"
+                alt="Lesson 1 Thumbnail"
+                className="lesson-thumbnail"
+              />
+              <h3 className="lesson-title">
+                Lesson 1: Circuits & Circuit Boards
+              </h3>
             </Link>
-            
-            <Link to ="/circuit2p" onClick={scrollToTop}>
-            <img
-              src="https://i.ytimg.com/vi/pK9h_Ts3gWw/mqdefault.jpg"
-              alt="Lesson 2 Thumbnail"
-              className="astrovid-thumbnail"
-            />
-            <h3 className='vidtitle-small'> Lesson 2: More Circuit Board Tools</h3>
-            </Link>
+            <div
+              className={
+                isLessonCompleted("lesson1") || getLessonPoints("lesson1") >= 10
+                  ? "lesson-points completed"
+                  : "lesson-points"
+              }
+            >
+              <p>
+                Points: {getLessonPoints("lesson1")}{" "}
+                {isLessonCompleted("lesson1") ||
+                getLessonPoints("lesson1") >= 10
+                  ? "(completed!)"
+                  : ""}
+              </p>
+            </div>
+          </div>
 
-            <Link to ="/circuit3p" onClick={scrollToTop}>
+          <div className="lesson-item">
+            <Link to="/circuit2p" onClick={scrollToTop} className="lesson-link">
               <img
-              src="https://i.ytimg.com/vi/4ZBUoBPdojA/mqdefault.jpg"
-              alt="Lesson 1 Thumbnail"
-              className="astrovid-thumbnail"
-            />
-            <h3 className='vidtitle-small'>Lesson 3: Creating a Functioning Circuit</h3>
+                src="https://i.ytimg.com/vi/pK9h_Ts3gWw/mqdefault.jpg"
+                alt="Lesson 2 Thumbnail"
+                className="lesson-thumbnail"
+              />
+              <h3 className="lesson-title">
+                Lesson 2: More Circuit Board Tools
+              </h3>
             </Link>
-</div>)}
+            <div
+              className={
+                isLessonCompleted("lesson2") || getLessonPoints("lesson2") >= 7
+                  ? "lesson-points completed"
+                  : "lesson-points"
+              }
+            >
+              <p>
+                Points: {getLessonPoints("lesson2")}{" "}
+                {isLessonCompleted("lesson2") ? "(completed!)" : ""}
+              </p>
+            </div>
+          </div>
+
+          <div className="lesson-item">
+            <Link to="/circuit3p" onClick={scrollToTop} className="lesson-link">
+              <img
+                src="https://i.ytimg.com/vi/4ZBUoBPdojA/mqdefault.jpg"
+                alt="Lesson 3 Thumbnail"
+                className="lesson-thumbnail"
+              />
+              <h3 className="lesson-title">
+                Lesson 3: Creating a Functioning Circuit
+              </h3>
+            </Link>
+            <div
+              className={
+                isLessonCompleted("lesson3") || getLessonPoints("lesson3") >= 7
+                  ? "lesson-points completed"
+                  : "lesson-points"
+              }
+            >
+              <p>
+                Points: {getLessonPoints("lesson3")}{" "}
+                {isLessonCompleted("lesson3") ? "(completed!)" : ""}
+              </p>
+            </div>
+          </div>
         </div>
       </div>
-      <div style={{ paddingBottom: '200px' }} />
+
+      <div style={{ paddingBottom: "200px" }} />
       <Footer />
     </div>
-  )
-}
+  );
+};
 
-export default CircuitsPage
+export default CircuitsPage;
