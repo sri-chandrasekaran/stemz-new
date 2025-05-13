@@ -152,7 +152,7 @@ const BiochemistryPage = () => {
 
       <div className="student-l1">
         <h1>Parent-Led Lessons</h1>
-        <div className="lesson-grid-3col">
+        <div className="lesson-grid">
           <div className="lesson-item">
             <Link to="/bio1" onClick={scrollToTop} className="lesson-link">
               <img

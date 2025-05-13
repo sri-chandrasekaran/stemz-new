@@ -1,33 +1,28 @@
-import React from 'react'
-import Navbar from '../../components/Navbar'
-import HeroOther from '../../components/HeroOther'
-import Footer from '../../components/Footer'
-import { Link } from 'react-router-dom';
-import '../css/allvideo.css';
+import React from "react";
+import VideoLessonPage from "../components/VideoLessonPage";
 
-const circuit1s = () => {
+const circuit2s = () => {
   return (
-    <div>
-      <Navbar/>
-      <HeroOther overlayText="Lesson 2: More Circuit Board Tools"/>
-      <div className='vidbig'>
-        <iframe className='astrovid' width="700" height="480" src="https://www.youtube.com/embed/pK9h_Ts3gWw" frameborder="0" allowfullscreen></iframe>
-        <div className='centered-container'>
-          <Link to="https://docs.google.com/presentation/d/e/2PACX-1vTswf_-q8sb9x-TCJ7FXOx6-6XzmwGh_ZZgQRG_0PZ-jRT4mP4bqqHxj9uw6TNLZjFsegpcjJSbxU0C/pub?start=false&loop=false&delayms=3000" target="_blank" rel="noopener noreferrer">
-            <button className="course-button">Slideshow</button>
-          </Link>
-          <Link to="/circuitworksheet"> {}
-            <button className="course-button">Worksheet</button>
-          </Link>
-          <Link to="https://docs.google.com/document/d/e/2PACX-1vQUW5I_4w3lys_aRBmbtFRDuM76orRlvLAob-rVoQHGyNBqu11iu6DQZGh109dIEQEQ1nlYvHsjuhlI/pub" target="_blank" rel="noopener noreferrer">
-            <button className="course-button">Student Notes</button>
-          </Link>
-        </div>
-      </div>
-      <div style={{ paddingBottom: '200px' }} />
-      <Footer/>
-    </div>
-  )
-}
+    <VideoLessonPage
+      lessonTitle="Lesson 2: More Circuit Board Tools"
+      lessonNumber="lesson2"
+      courseKey="circuits"
+      videoUrl="pK9h_Ts3gWw"
+      // Resource URLs and paths
+      slideshowUrl="https://docs.google.com/presentation/d/e/2PACX-1vTswf_-q8sb9x-TCJ7FXOx6-6XzmwGh_ZZgQRG_0PZ-jRT4mP4bqqHxj9uw6TNLZjFsegpcjJSbxU0C/pub?start=false&loop=false&delayms=3000"
+      worksheetPath="/circuitworksheet"
+      quizPath={null}
+      // Notes configuration
+      notesUrl="https://docs.google.com/document/d/e/2PACX-1vQUW5I_4w3lys_aRBmbtFRDuM76orRlvLAob-rVoQHGyNBqu11iu6DQZGh109dIEQEQ1nlYvHsjuhlI/pub"
+      notesLabel="Student Notes"
+      // Points configuration
+      maxVideoPoints={7}
+      worksheetPoints={5}
+      completionThreshold={95}
+      // Version type
+      isParentVersion={false}
+    />
+  );
+};
 
-export default circuit1s
+export default circuit2s;
