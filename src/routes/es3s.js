@@ -1,30 +1,32 @@
-import React from 'react'
-import Navbar from '../components/Navbar'
-import HeroOther from '../components/HeroOther'
-import Footer from '../components/Footer'
-import { Link } from 'react-router-dom';
-import './css/allvideo.css';
+import React from 'react';
+import VideoLessonPage from '../components/VideoLessonPage';
 
-const es1s = () => {
+const es3s = () => {
   return (
-    <div>
-      <Navbar/>
-      <HeroOther overlayText="Lesson 3: Population in the Water & Air"/>
-      <div className='vidbig'>
-        <iframe className='astrovid' width="700" height="480" src="https://www.youtube.com/embed/3Q8WkWc_Y5M" frameborder="0" allowfullscreen></iframe>
-        <div className='centered-container'>
-          <Link to="https://docs.google.com/presentation/d/e/2PACX-1vQJYH5jwfAFP20o3kz-CQ2k_PgFlSiSI3e6gAn1igdZT5w9PXs89rvuLPgDCAbhmxxDzf5bd3-p50SJ/pub?start=false&loop=false&delayms=3000" target="_blank" rel="noopener noreferrer">
-            <button className="course-button">Slideshow</button>
-          </Link>
-          <Link to="https://docs.google.com/document/d/e/2PACX-1vSdJdP_cu7N9df9qJnFB1oo7JsXGpgmhSs1yXgktCDjkGQ9Z1qBQc9nKyhgl9uFQUyhjwJ8FGXYshGL/pub" target="_blank" rel="noopener noreferrer">
-            <button className="course-button">Student Notes</button>
-          </Link>
-        </div>
-      </div>
-      <div style={{ paddingBottom: '200px' }} />
-      <Footer/>
-    </div>
-  )
-}
+    <VideoLessonPage 
+      lessonTitle="Lesson 3: Population in the Water & Air"
+      lessonNumber="lesson3"
+      courseKey="earthscience"
+      videoUrl="3Q8WkWc_Y5M"
+      
+      // Resource URLs and paths
+      slideshowUrl="https://docs.google.com/presentation/d/e/2PACX-1vQJYH5jwfAFP20o3kz-CQ2k_PgFlSiSI3e6gAn1igdZT5w9PXs89rvuLPgDCAbhmxxDzf5bd3-p50SJ/pub?start=false&loop=false&delayms=3000"
+      worksheetPath={null}
+      quizPath={null}
+      
+      // Notes configuration
+      notesUrl="https://docs.google.com/document/d/e/2PACX-1vSdJdP_cu7N9df9qJnFB1oo7JsXGpgmhSs1yXgktCDjkGQ9Z1qBQc9nKyhgl9uFQUyhjwJ8FGXYshGL/pub"
+      notesLabel="Student Notes"
+      
+      // Points configuration
+      maxVideoPoints={7}
+      worksheetPoints={0}
+      completionThreshold={95}
+      
+      // Version type
+      isParentVersion={false}
+    />
+  );
+};
 
-export default es1s
+export default es3s;

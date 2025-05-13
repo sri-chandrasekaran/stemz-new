@@ -1,30 +1,32 @@
-import React from 'react'
-import Navbar from '../components/Navbar'
-import HeroOther from '../components/HeroOther'
-import Footer from '../components/Footer'
-import { Link } from 'react-router-dom';
-import './css/allvideo.css';
+import React from 'react';
+import VideoLessonPage from '../components/VideoLessonPage';
 
-const es1s = () => {
+const es2s = () => {
   return (
-    <div>
-      <Navbar/>
-      <HeroOther overlayText="Lesson 2: Cycles of the Earth"/>
-      <div className='vidbig'>
-        <iframe className='astrovid' width="700" height="480" src="https://www.youtube.com/embed/mpu_qNfo-dM" frameborder="0" allowfullscreen></iframe>
-        <div className='centered-container'>
-          <Link to="https://docs.google.com/presentation/d/e/2PACX-1vQdwDDAg4Ol8VRSph1a-njCcM0PSQoeBsAenz63MwxFCsi5nQlOVZmiQwMqkCrhMNy-3TypvNM86SnG/pub?start=false&loop=false&delayms=3000" target="_blank" rel="noopener noreferrer">
-            <button className="course-button">Slideshow</button>
-          </Link>
-          <Link to="https://docs.google.com/document/d/e/2PACX-1vTmXqYzRTjn1XVSnepm7X-8YVyZ-Om6O0rxm3edmpi22Lj7IcRaiMqtArYsz7CHvspkcnZI-Up7w6Gl/pub" target="_blank" rel="noopener noreferrer">
-            <button className="course-button">Student Notes</button>
-          </Link>
-        </div>
-      </div>
-      <div style={{ paddingBottom: '200px' }} />
-      <Footer/>
-    </div>
-  )
-}
+    <VideoLessonPage 
+      lessonTitle="Lesson 2: Cycles of the Earth"
+      lessonNumber="lesson2"
+      courseKey="earthscience"
+      videoUrl="mpu_qNfo-dM"
+      
+      // Resource URLs and paths
+      slideshowUrl="https://docs.google.com/presentation/d/e/2PACX-1vQdwDDAg4Ol8VRSph1a-njCcM0PSQoeBsAenz63MwxFCsi5nQlOVZmiQwMqkCrhMNy-3TypvNM86SnG/pub?start=false&loop=false&delayms=3000"
+      worksheetPath={null}
+      quizPath={null}
+      
+      // Notes configuration
+      notesUrl="https://docs.google.com/document/d/e/2PACX-1vTmXqYzRTjn1XVSnepm7X-8YVyZ-Om6O0rxm3edmpi22Lj7IcRaiMqtArYsz7CHvspkcnZI-Up7w6Gl/pub"
+      notesLabel="Student Notes"
+      
+      // Points configuration
+      maxVideoPoints={7}
+      worksheetPoints={0}
+      completionThreshold={95}
+      
+      // Version type
+      isParentVersion={false}
+    />
+  );
+};
 
-export default es1s
+export default es2s;

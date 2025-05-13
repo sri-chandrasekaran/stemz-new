@@ -1,30 +1,32 @@
-import React from 'react'
-import Navbar from '../components/Navbar'
-import HeroOther from '../components/HeroOther'
-import Footer from '../components/Footer'
-import { Link } from 'react-router-dom';
-import './css/allvideo.css';
+import React from 'react';
+import VideoLessonPage from '../components/VideoLessonPage';
 
-const bc4p = () => {
+const chem3 = () => {
   return (
-    <div>
-      <Navbar/>
-      <HeroOther overlayText="Lesson 3: Chemical Reactions"/>
-      <div className='vidbig'>
-        <iframe className='astrovid' width="700" height="480" src="https://www.youtube.com/embed/448XzSXabc4" frameborder="0" allowfullscreen></iframe>
-        <div className='centered-container'>
-          <Link to="https://docs.google.com/presentation/d/e/2PACX-1vShEXZnajB9Zk1rN6jWDOmOVoZxfO5-DdRck_tdIDdP7nUl0XP66VOKfpxMZsn2uicoo2tsYu6YFMj4/pub?start=false&loop=false&delayms=3000" target="_blank" rel="noopener noreferrer">
-            <button className="course-button">Slideshow</button>
-          </Link>
-          <Link to="https://docs.google.com/document/d/e/2PACX-1vRHLSvHpwUKgeHsOfZO1dUIrTZyp4iPF-u5phmzF7rHVB9sZhBhRRXJkkdGVev_faj6gbuFTf4NZGaG/pub" target="_blank" rel="noopener noreferrer">
-            <button className="course-button">Parent Notes</button>
-          </Link>
-        </div>
-      </div>
-      <div style={{ paddingBottom: '200px' }} />
-      <Footer/>
-    </div>
-  )
-}
+    <VideoLessonPage 
+      lessonTitle="Lesson 3: Chemical Reactions"
+      lessonNumber="lesson3"
+      courseKey="chemistry"
+      videoUrl="448XzSXabc4"
+      
+      // Resource URLs and paths
+      slideshowUrl="https://docs.google.com/presentation/d/e/2PACX-1vShEXZnajB9Zk1rN6jWDOmOVoZxfO5-DdRck_tdIDdP7nUl0XP66VOKfpxMZsn2uicoo2tsYu6YFMj4/pub?start=false&loop=false&delayms=3000"
+      worksheetPath={null}
+      quizPath={null}
+      
+      // Notes configuration
+      notesUrl="https://docs.google.com/document/d/e/2PACX-1vRHLSvHpwUKgeHsOfZO1dUIrTZyp4iPF-u5phmzF7rHVB9sZhBhRRXJkkdGVev_faj6gbuFTf4NZGaG/pub"
+      notesLabel="Parent Notes"
+      
+      // Points configuration
+      maxVideoPoints={7}
+      worksheetPoints={0}
+      completionThreshold={95}
+      
+      // Version type
+      isParentVersion={false}
+    />
+  );
+};
 
-export default bc4p
+export default chem3;

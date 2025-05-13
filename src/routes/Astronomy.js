@@ -5,7 +5,6 @@ import Footer from "../components/Footer";
 import AstronomyImage from "../assets/astronomy.PNG";
 import { Link, useNavigate } from "react-router-dom";
 import "./css/AllClassHomePage.css";
-import { jwtDecode } from "jwt-decode";
 import { call_api } from "../api";
 
 const Astronomy = () => {
@@ -95,7 +94,28 @@ const Astronomy = () => {
   // Get points for a specific lesson
   const getLessonPoints = (lessonKey) => {
     if (!courseProgress || !courseProgress.lessons[lessonKey]) return 0;
-    return courseProgress.lessons[lessonKey].lessonPoints;
+    return courseProgress.lessons[lessonKey].lessonPoints || 0;
+  };
+
+  // Function to consistently display lesson points with completion status
+  const renderLessonPoints = (lessonKey) => {
+    const points = getLessonPoints(lessonKey);
+    const completed = isLessonCompleted(lessonKey);
+    
+    // Use consistent completion logic for all lessons
+    const isComplete = completed || 
+      (lessonKey === "lesson1" && points >= 10) || 
+      (lessonKey === "lesson2" && points >= 7) || 
+      (lessonKey === "lesson3" && points >= 7) || 
+      (lessonKey === "lesson4" && points >= 7);
+    
+    return (
+      <div className={isComplete ? "lesson-points completed" : "lesson-points"}>
+        <p>
+          Points: {points} {isComplete ? "(completed!)" : ""}
+        </p>
+      </div>
+    );
   };
 
   const scrollToTop = () => {
@@ -163,21 +183,7 @@ const Astronomy = () => {
               />
               <h3 className="lesson-title">Lesson 1: The Solar System</h3>
             </Link>
-            <div
-              className={
-                isLessonCompleted("lesson1") || getLessonPoints("lesson1") >= 10
-                  ? "lesson-points completed"
-                  : "lesson-points"
-              }
-            >
-              <p>
-                Points: {getLessonPoints("lesson1")}{" "}
-                {isLessonCompleted("lesson1") ||
-                getLessonPoints("lesson1") >= 10
-                  ? "(completed!)"
-                  : ""}
-              </p>
-            </div>
+            {renderLessonPoints("lesson1")}
           </div>
 
           <div className="lesson-item">
@@ -193,9 +199,7 @@ const Astronomy = () => {
               />
               <h3 className="lesson-title">Lesson 2: Galaxies</h3>
             </Link>
-            <div className="lesson-points">
-              <p>Points: {getLessonPoints("lesson2")}</p>
-            </div>
+            {renderLessonPoints("lesson2")}
           </div>
 
           <div className="lesson-item">
@@ -211,9 +215,7 @@ const Astronomy = () => {
               />
               <h3 className="lesson-title">Lesson 3: Space and Humans</h3>
             </Link>
-            <div className="lesson-points">
-              <p>Points: {getLessonPoints("lesson3")}</p>
-            </div>
+            {renderLessonPoints("lesson3")}
           </div>
 
           <div className="lesson-item">
@@ -229,9 +231,7 @@ const Astronomy = () => {
               />
               <h3 className="lesson-title">Lesson 4: The Universe</h3>
             </Link>
-            <div className="lesson-points">
-              <p>Points: {getLessonPoints("lesson4")}</p>
-            </div>
+            {renderLessonPoints("lesson4")}
           </div>
         </div>
       </div>
@@ -252,18 +252,7 @@ const Astronomy = () => {
               />
               <h3 className="lesson-title">Lesson 1: The Solar System</h3>
             </Link>
-            <div
-              className={
-                isLessonCompleted("lesson1") || getLessonPoints("lesson1") >= 10
-                  ? "lesson-points completed"
-                  : "lesson-points"
-              }
-            >
-              <p>
-                Points: {getLessonPoints("lesson1")}{" "}
-                {isLessonCompleted("lesson1") ? "(completed!)" : ""}
-              </p>
-            </div>
+            {renderLessonPoints("lesson1")}
           </div>
 
           <div className="lesson-item">
@@ -279,18 +268,7 @@ const Astronomy = () => {
               />
               <h3 className="lesson-title">Lesson 2: Galaxies</h3>
             </Link>
-            <div
-              className={
-                isLessonCompleted("lesson2") || getLessonPoints("lesson2") >= 7
-                  ? "lesson-points completed"
-                  : "lesson-points"
-              }
-            >
-              <p>
-                Points: {getLessonPoints("lesson2")}{" "}
-                {isLessonCompleted("lesson2") ? "(completed!)" : ""}
-              </p>
-            </div>
+            {renderLessonPoints("lesson2")}
           </div>
 
           <div className="lesson-item">
@@ -306,18 +284,7 @@ const Astronomy = () => {
               />
               <h3 className="lesson-title">Lesson 3: Space and Humans</h3>
             </Link>
-            <div
-              className={
-                isLessonCompleted("lesson3") || getLessonPoints("lesson3") >= 7
-                  ? "lesson-points completed"
-                  : "lesson-points"
-              }
-            >
-              <p>
-                Points: {getLessonPoints("lesson3")}{" "}
-                {isLessonCompleted("lesson3") ? "(completed!)" : ""}
-              </p>
-            </div>
+            {renderLessonPoints("lesson3")}
           </div>
 
           <div className="lesson-item">
@@ -333,18 +300,7 @@ const Astronomy = () => {
               />
               <h3 className="lesson-title">Lesson 4: The Universe</h3>
             </Link>
-            <div
-              className={
-                isLessonCompleted("lesson4") || getLessonPoints("lesson4") >= 7
-                  ? "lesson-points completed"
-                  : "lesson-points"
-              }
-            >
-              <p>
-                Points: {getLessonPoints("lesson4")}{" "}
-                {isLessonCompleted("lesson4") ? "(completed!)" : ""}
-              </p>
-            </div>
+            {renderLessonPoints("lesson4")}
           </div>
         </div>
       </div>

@@ -1,25 +1,219 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import blankStarMap from "../assets/StarMap.svg";
 import filledStarMap from "../assets/StarMapFilled.png";
 import stemzLearningLogo from "../assets/logo.png";
-
-const handleDownload = () => {
-  window.open(
-    "https://docs.google.com/document/d/e/2PACX-1vRzjSp4DciyO8OjCR_k_nf_4_cbGIzLCWkt7mRAHScRbpH_lqS5D_Q3hvxnseVt6P0KvVcKnSnSNEMe/pub",
-    "_blank"
-  );
-};
+import { useNavigate } from "react-router-dom";
+import { call_api } from "../api";
 
 const AstroWorksheet2 = () => {
   const [isRevealed, setIsRevealed] = useState(false);
   const [isHovering, setIsHovering] = useState(false);
+  const [completionTimer, setCompletionTimer] = useState(null);
+  const [completed, setCompleted] = useState(false);
+  const [completionStatus, setCompletionStatus] = useState(
+    "Please stay on this page & continue reading to earn worksheet points..."
+  );
+  const [countdown, setCountdown] = useState(300);
+  const [showStatusMessage, setShowStatusMessage] = useState(true);
+  const [statusFading, setStatusFading] = useState(false);
+  const navigate = useNavigate();
+
+  // Constants
+  const courseKey = "astronomy";
+  const lessonNumber = "lesson3";
+  const WORKSHEET_POINTS = 5;
+
+  // Log function for debugging
+  const log = (message) => {
+    const timestamp = new Date().toLocaleTimeString();
+    console.log(`[WS ${timestamp}] ${message}`);
+  };
+
+  const handleDownload = () => {
+    window.open(
+      "https://docs.google.com/document/d/e/2PACX-1vRzjSp4DciyO8OjCR_k_nf_4_cbGIzLCWkt7mRAHScRbpH_lqS5D_Q3hvxnseVt6P0KvVcKnSnSNEMe/pub",
+      "_blank"
+    );
+  };
 
   const toggleMap = () => {
     setIsRevealed(!isRevealed);
   };
 
+  // Countdown timer effect
+  useEffect(() => {
+    if (countdown > 0) {
+      const timer = setTimeout(() => {
+        setCountdown(countdown - 1);
+        setCompletionStatus(
+          `Please stay on this page & continue reading to earn worksheet points... (${countdown}s)`
+        );
+      }, 1000);
+
+      return () => clearTimeout(timer);
+    } else if (countdown === 0) {
+      // When countdown reaches 0, mark as completed
+      markWorksheetAsCompleted();
+    }
+  }, [countdown]);
+
+  // Auto-complete the worksheet after countdown reaches 0
+  useEffect(() => {
+    log("Worksheet loaded, countdown started");
+
+    // Cleanup function
+    return () => {
+      log("Cleaning up timers");
+      if (completionTimer) {
+        clearTimeout(completionTimer);
+      }
+    };
+  }, []);
+
+  // Function to fade out status message
+  const fadeOutStatusMessage = () => {
+    setStatusFading(true);
+    setTimeout(() => {
+      setShowStatusMessage(false);
+      setStatusFading(false);
+    }, 500); // Match this to the CSS transition time
+  };
+
+  // Function to mark worksheet as completed and update backend
+  const markWorksheetAsCompleted = async () => {
+    if (completed) return;
+
+    log("Marking worksheet as completed");
+    setCompleted(true);
+    setCompletionStatus("✓ Marking worksheet as completed...");
+
+    try {
+      // Get current progress data
+      log("Fetching current progress data");
+      const userProgress = await call_api(null, "points", "GET");
+
+      if (!userProgress) {
+        log("No user progress data returned");
+        setCompletionStatus("❌ Error: Could not fetch user progress");
+
+        // Fade out after showing error for a bit longer
+        setTimeout(() => fadeOutStatusMessage(), 30000);
+        return;
+      }
+
+      log("Progress data received, updating worksheet completion");
+
+      // Create a deep clone of the userProgress
+      const updatedProgress = JSON.parse(JSON.stringify(userProgress));
+
+      // Ensure all needed objects exist
+      if (!updatedProgress.courses[courseKey]) {
+        updatedProgress.courses[courseKey] = { lessons: {} };
+      }
+
+      if (!updatedProgress.courses[courseKey].lessons[lessonNumber]) {
+        updatedProgress.courses[courseKey].lessons[lessonNumber] = {
+          activities: {},
+        };
+      }
+
+      if (
+        !updatedProgress.courses[courseKey].lessons[lessonNumber].activities
+      ) {
+        updatedProgress.courses[courseKey].lessons[lessonNumber].activities =
+          {};
+      }
+
+      // Ensure worksheet activity exists
+      if (
+        !updatedProgress.courses[courseKey].lessons[lessonNumber].activities
+          .worksheet
+      ) {
+        updatedProgress.courses[courseKey].lessons[
+          lessonNumber
+        ].activities.worksheet = {};
+      }
+
+      // Update worksheet progress
+      updatedProgress.courses[courseKey].lessons[
+        lessonNumber
+      ].activities.worksheet.completed = true;
+      updatedProgress.courses[courseKey].lessons[
+        lessonNumber
+      ].activities.worksheet.earned = WORKSHEET_POINTS;
+
+      // Update lesson points
+      const videoPoints =
+        updatedProgress.courses[courseKey].lessons[lessonNumber].activities
+          .video?.earned || 0;
+      updatedProgress.courses[courseKey].lessons[lessonNumber].lessonPoints =
+        videoPoints + WORKSHEET_POINTS;
+
+      // Check if lesson is completed
+      const isVideoCompleted =
+        updatedProgress.courses[courseKey].lessons[lessonNumber].activities
+          .video?.completed || false;
+
+      // Only mark lesson as complete if both video and worksheet are complete
+      updatedProgress.courses[courseKey].lessons[lessonNumber].completed =
+        isVideoCompleted && true; // worksheet is now completed
+
+      // Recalculate course points
+      let coursePoints = 0;
+      Object.values(updatedProgress.courses[courseKey].lessons).forEach(
+        (lesson) => {
+          coursePoints += lesson.lessonPoints || 0;
+        }
+      );
+      updatedProgress.courses[courseKey].coursePoints = coursePoints;
+
+      // Check if course is completed
+      const allLessonsCompleted = Object.values(
+        updatedProgress.courses[courseKey].lessons
+      ).every((lesson) => lesson.completed);
+      updatedProgress.courses[courseKey].completed = allLessonsCompleted;
+
+      // Recalculate total points
+      let totalPoints = 0;
+      Object.values(updatedProgress.courses).forEach((course) => {
+        totalPoints += course.coursePoints || 0;
+      });
+      updatedProgress.totalPoints = totalPoints;
+
+      log("Sending updated progress to backend");
+      setCompletionStatus("✓ Saving progress...");
+
+      // Send to backend
+      const response = await call_api(updatedProgress, "points", "POST");
+
+      if (response) {
+        log("Points updated successfully");
+        setCompletionStatus("✓ Worksheet completed! (5 points earned)");
+
+        // Fade out the status message after 300 seconds
+        setTimeout(() => fadeOutStatusMessage(), 30000);
+      }
+    } catch (error) {
+      console.error("Error updating worksheet completion:", error);
+      setCompletionStatus("❌ Error updating progress");
+
+      // Fade out after showing error for a bit longer
+      setTimeout(() => fadeOutStatusMessage(), 30000);
+    }
+  };
+
   const handleGoBack = () => {
-    window.history.back();
+    log("Back button clicked");
+
+    // Ensure worksheet is marked as completed before navigating back
+    if (!completed) {
+      // markWorksheetAsCompleted();
+    }
+
+    // Wait briefly to ensure the update has been sent
+    setTimeout(() => {
+      window.history.back();
+    }, 500);
   };
 
   const styles = {
@@ -131,7 +325,6 @@ const AstroWorksheet2 = () => {
       margin: "0 auto 30px",
       textAlign: "left",
     },
-
     printButton: {
       backgroundColor: "#357717",
       color: "white",
@@ -145,6 +338,25 @@ const AstroWorksheet2 = () => {
       transition: "all 0.3s ease",
       boxShadow: "0 2px 4px rgba(0,0,0,0.1)",
     },
+    completionStatus: {
+      position: "fixed",
+      top: "20px",
+      right: "20px",
+      padding: "10px 15px",
+      backgroundColor: completed
+        ? "rgba(53, 119, 23, 0.8)"
+        : "rgba(41, 128, 185, 0.8)",
+      color: "white",
+      borderRadius: "5px",
+      fontWeight: "bold",
+      zIndex: 1000,
+      boxShadow: "0 2px 10px rgba(0,0,0,0.2)",
+      fontSize: "16px",
+      opacity: statusFading ? 0 : 1,
+      transform: statusFading ? "translateY(-10px)" : "translateY(0)",
+      transition: "opacity 0.5s ease, transform 0.5s ease",
+      display: showStatusMessage ? "block" : "none",
+    },
   };
 
   return (
@@ -157,6 +369,10 @@ const AstroWorksheet2 = () => {
       >
         &#8592;
       </button>
+
+      {/* Completion status notification */}
+      <div style={styles.completionStatus}>{completionStatus}</div>
+
       <img src={stemzLearningLogo} alt="STEMZ Learning" style={styles.logo} />
       <h1 style={styles.title}>Star Map</h1>
       <h2 style={styles.subtitle}>Astronomy: Lesson 3</h2>
