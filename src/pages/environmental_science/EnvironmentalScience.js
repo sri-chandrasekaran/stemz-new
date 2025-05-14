@@ -4,9 +4,9 @@ import HeroOther from "../../components/HeroOther";
 import Footer from "../../components/Footer";
 import EnvironmentalScience from "../../assets/environmentalscience.jpg";
 import { Link, useNavigate } from "react-router-dom";
-import "../css/AllClassHomePage.css";
+import "../../routes/css/AllClassHomePage.css";
 
-import { call_api } from "../api";
+import { call_api } from "../../api";
 
 const EnvironmentalSciencePage = () => {
   const [courseProgress, setCourseProgress] = useState(null);

@@ -3,7 +3,7 @@ import blankStarMap from "../../assets/StarMap.svg";
 import filledStarMap from "../../assets/StarMapFilled.png";
 import stemzLearningLogo from "../../assets/logo.png";
 import { useNavigate } from "react-router-dom";
-import { call_api } from "../api";
+import { call_api } from "../../api";
 
 const AstroWorksheet2 = () => {
   const [isRevealed, setIsRevealed] = useState(false);

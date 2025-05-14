@@ -1,5 +1,130 @@
 /* Dashboard.css - With unique class names for enrolled courses + middle screen layout */
+/* Points Dashboard */
+.points-dashboard {
+  background: #f5f9f2;
+  border-radius: 10px;
+  padding: 15px 25px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 20px 100px 0;
+  box-shadow: 0 4px 12px rgba(53, 119, 23, 0.1);
+  transition: transform 0.3s ease;
+}
 
+.points-dashboard:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 20px rgba(53, 119, 23, 0.15);
+}
+
+.points-icon {
+  font-size: 2rem;
+  margin-right: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgba(53, 119, 23, 0.1);
+  color: #357717;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+}
+
+.points-info {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  flex: 1;
+}
+
+.points-count {
+  font-size: 2.2rem;
+  font-weight: bold;
+  color: #357717;
+  line-height: 1;
+}
+
+.points-label {
+  font-size: 1rem;
+  color: #555;
+  margin-top: 5px;
+}
+
+.points-button {
+  background-color: #357717;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  padding: 12px 20px;
+  font-size: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-decoration: none;
+  display: inline-block;
+}
+
+.points-button:hover {
+  background-color: #2a5c12;
+  transform: translateY(-2px);
+}
+
+/* Media query adjustments */
+@media screen and (max-width: 1400px) and (min-width: 1000px) {
+  .points-dashboard {
+    margin: 15px 50px 0;
+    padding: 12px 20px;
+  }
+  
+  .points-icon {
+    width: 50px;
+    height: 50px;
+    font-size: 1.7rem;
+  }
+  
+  .points-count {
+    font-size: 1.8rem;
+  }
+  
+  .points-label {
+    font-size: 0.9rem;
+  }
+  
+  .points-button {
+    padding: 10px 16px;
+    font-size: 0.9rem;
+  }
+}
+
+@media screen and (max-width: 1000px) {
+  .points-dashboard {
+    margin: 15px 30px 0;
+    padding: 10px 15px;
+    flex-wrap: wrap;
+  }
+  
+  .points-icon {
+    width: 45px;
+    height: 45px;
+    font-size: 1.5rem;
+  }
+  
+  .points-count {
+    font-size: 1.6rem;
+  }
+  
+  .points-label {
+    font-size: 0.85rem;
+  }
+  
+  .points-button {
+    margin-top: 10px;
+    width: 100%;
+    text-align: center;
+    padding: 8px 12px;
+    font-size: 0.85rem;
+  }
+}
 /* Welcome Section */
 .hello {
   margin-top: 90px;

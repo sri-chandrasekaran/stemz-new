@@ -1,14 +1,14 @@
 import React, { useState, useEffect } from "react";
-import mercury from "../assets/Mercury.png";
-import jupiter from "../assets/Jupiter.png";
-import venus from "../assets/Venus.png";
-import saturn from "../assets/Saturn.png";
-import earth from "../assets/Earth.png";
-import mars from "../assets/Mars.png";
-import uranus from "../assets/Uranus.png";
-import neptune from "../assets/Neptune.png";
-import stemzLearningLogo from "../assets/logo.png";
-import { call_api } from "../api";
+import mercury from "../../assets/Mercury.png";
+import jupiter from "../../assets/Jupiter.png";
+import venus from "../../assets/Venus.png";
+import saturn from "../../assets/Saturn.png";
+import earth from "../../assets/Earth.png";
+import mars from "../../assets/Mars.png";
+import uranus from "../../assets/Uranus.png";
+import neptune from "../../assets/Neptune.png";
+import stemzLearningLogo from "../../assets/logo.png";
+import { call_api } from "../../api";
 import { useNavigate } from "react-router-dom";
 
 const planets = [

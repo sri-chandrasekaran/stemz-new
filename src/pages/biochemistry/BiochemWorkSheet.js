@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useCallback } from "react";
 import stemzLearningLogo from "../../assets/logo.png";
-import { call_api } from "../api";
+import { call_api } from "../../api";
 import { useNavigate } from "react-router-dom";
 
 const BiochemistryLesson = () => {

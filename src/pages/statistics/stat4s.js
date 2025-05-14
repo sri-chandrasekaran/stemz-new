@@ -1,5 +1,5 @@
 import React from "react";
-import VideoLessonPage from "../components/VideoLessonPage";
+import VideoLessonPage from "../../components/VideoLessonPage";
 
 const stat4s = () => {
   return (

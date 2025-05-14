@@ -4,8 +4,8 @@ import HeroOther from "../../components/HeroOther";
 import Footer from "../../components/Footer";
 import Coding from "../../assets/coding.jpg";
 import { Link, useNavigate } from "react-router-dom";
-import "../css/AllClassHomePage.css";
-import { call_api } from "../api";
+import "../../routes/css/AllClassHomePage.css";
+import { call_api } from "../../api";
 
 const BasicsOfCoding = () => {
   const [courseProgress, setCourseProgress] = useState(null);

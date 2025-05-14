@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import stemzLearningLogo from "../../assets/logo.png";
 import { useNavigate } from "react-router-dom";
-import { call_api } from "../api";
+import { call_api } from "../../api";
 
 const colorCodes = [
   { color: "Red", pieces: 2, tips: "" },

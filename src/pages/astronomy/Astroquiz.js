@@ -4,8 +4,8 @@ import Navbar from '../../components/Navbar';
 import HeroOther from '../../components/HeroOther';
 import Footer from '../../components/Footer';
 import Quiz from '../../components/Quiz';
-import { call_api } from '../api';
-import '../css/allvideo.css';
+import { call_api } from '../../api';
+
 
 
 const Astroquiz = () => {

@@ -5,8 +5,8 @@ import Footer from "../../components/Footer";
 import Circuits from "../../assets/circuits.jpg";
 import { Link, useNavigate } from "react-router-dom";
 
-import "../css/AllClassHomePage.css";
-import { call_api } from "../api";
+import "../../routes/css/AllClassHomePage.css";
+import { call_api } from "../../api";
 
 const CircuitsPage = () => {
   const [courseProgress, setCourseProgress] = useState(null);

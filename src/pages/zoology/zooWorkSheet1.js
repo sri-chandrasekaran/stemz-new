@@ -1,45 +1,66 @@
 import React, { useState, useRef, useEffect } from "react";
 import stemzLearningLogo from "../../assets/logo.png";
 import { useNavigate } from "react-router-dom";
-import { call_api } from "../api";
+import { call_api } from "../../api";
 
 // Configuration data
 const terms = [
-  { id: 'zoology', term: 'Zoology' },
-  { id: 'taxonomy', term: 'Taxonomy' },
-  { id: 'binomial', term: 'Binomial Naming System' },
-  { id: 'herbivore', term: 'Herbivore' },
-  { id: 'vertebrate', term: 'Vertebrate' },
-  { id: 'tetrapod', term: 'Tetrapod' },
-  { id: 'reptiles', term: 'Reptiles' },
-  { id: 'fungi', term: 'Fungi' },
+  { id: "zoology", term: "Zoology" },
+  { id: "taxonomy", term: "Taxonomy" },
+  { id: "binomial", term: "Binomial Naming System" },
+  { id: "herbivore", term: "Herbivore" },
+  { id: "vertebrate", term: "Vertebrate" },
+  { id: "tetrapod", term: "Tetrapod" },
+  { id: "reptiles", term: "Reptiles" },
+  { id: "fungi", term: "Fungi" },
 ];
 
 const definitions = [
-  { id: 'def1', text: 'Animal that has 4 legs or descended from a 4-legged ancestor.' },
-  { id: 'def2', text: 'The scientific study of naming and classifying groups of living organisms based on their characteristics.' },
-  { id: 'def3', text: 'Animals that eat plants and vegetation.' },
-  { id: 'def4', text: 'Vertebrate animals that have scales and lay their eggs on land.' },
-  { id: 'def5', text: 'Animals with a spinal cord.' },
-  { id: 'def6', text: 'Feeding on organic matter; not animals, plants, or bacteria.' },
-  { id: 'def7', text: 'A system zoologists use to name species.' },
-  { id: 'def8', text: 'The scientific study of the classification, structure, distribution, behavior, and physiology of animals.' },
+  {
+    id: "def1",
+    text: "Animal that has 4 legs or descended from a 4-legged ancestor.",
+  },
+  {
+    id: "def2",
+    text: "The scientific study of naming and classifying groups of living organisms based on their characteristics.",
+  },
+  { id: "def3", text: "Animals that eat plants and vegetation." },
+  {
+    id: "def4",
+    text: "Vertebrate animals that have scales and lay their eggs on land.",
+  },
+  { id: "def5", text: "Animals with a spinal cord." },
+  {
+    id: "def6",
+    text: "Feeding on organic matter; not animals, plants, or bacteria.",
+  },
+  { id: "def7", text: "A system zoologists use to name species." },
+  {
+    id: "def8",
+    text: "The scientific study of the classification, structure, distribution, behavior, and physiology of animals.",
+  },
 ];
 
 const correctMatches = {
-  'zoology': 'def8', 
-  'taxonomy': 'def2', 
-  'binomial': 'def7', 
-  'herbivore': 'def3',
-  'vertebrate': 'def5',
-  'tetrapod': 'def1', 
-  'reptiles': 'def4', 
-  'fungi': 'def6',
+  zoology: "def8",
+  taxonomy: "def2",
+  binomial: "def7",
+  herbivore: "def3",
+  vertebrate: "def5",
+  tetrapod: "def1",
+  reptiles: "def4",
+  fungi: "def6",
 };
 
 const colors = [
-  '#FFCB6B', '#CCBADA', '#45B7D1', '#FFA07A', '#98D8C8', 
-  '#AFAFFF', '#AFBF29', '#CD2233'
+  "#FFCB6B",
+  "#CCBADA",
+  "#45B7D1",
+  "#FFA07A",
+  "#98D8C8",
+  "#AFAFFF",
+  "#AFBF29",
+  "#CD2233",
 ];
 
 export default function ZooWorkSheet1() {
@@ -88,7 +109,7 @@ export default function ZooWorkSheet1() {
         navigate("/login");
         return;
       }
-      
+
       try {
         const response = await call_api(null, "auth/verify", "POST");
         if (response && response.success) {
@@ -116,15 +137,16 @@ export default function ZooWorkSheet1() {
         const response = await call_api(null, "points", "GET");
         if (response) {
           setUserProgress(response);
-          
+
           // Check if there's course data available
           if (response.courses && response.courses[courseKey]) {
             const lesson = response.courses[courseKey].lessons[lessonNumber];
-            
+
             if (lesson && lesson.activities && lesson.activities.worksheet) {
-              const savedCompleted = lesson.activities.worksheet.completed || false;
+              const savedCompleted =
+                lesson.activities.worksheet.completed || false;
               const savedPoints = lesson.activities.worksheet.earned || 0;
-              
+
               setWorksheetCompleted(savedCompleted);
               setPointsEarned(savedPoints);
             }
@@ -132,7 +154,7 @@ export default function ZooWorkSheet1() {
           setLoading(false);
         }
       } catch (err) {
-        console.error('Error fetching course progress:', err);
+        console.error("Error fetching course progress:", err);
         setLoading(false);
       }
     };
@@ -145,25 +167,33 @@ export default function ZooWorkSheet1() {
   };
 
   const isDefinitionMatched = (defId) => {
-    return Object.values(matches).some(matchedDefId => matchedDefId === defId);
+    return Object.values(matches).some(
+      (matchedDefId) => matchedDefId === defId
+    );
   };
 
   const isAllCorrect = () => {
     if (Object.keys(matches).length !== terms.length) return false;
-    return Object.keys(matches).every(termId => correctMatches[termId] === matches[termId]);
+    return Object.keys(matches).every(
+      (termId) => correctMatches[termId] === matches[termId]
+    );
   };
 
   const handleTermClick = (termId) => {
     setSelectedTerm(termId);
-    setClickedTerms(prev => ({ ...prev, [termId]: true }));
+    setClickedTerms((prev) => ({ ...prev, [termId]: true }));
   };
 
   const handleDefinitionClick = (defId) => {
     if (!selectedTerm) return;
     if (matches[selectedTerm] === defId) return;
-    if (isDefinitionMatched(defId) && getTermForDefinition(defId) !== selectedTerm) return;
+    if (
+      isDefinitionMatched(defId) &&
+      getTermForDefinition(defId) !== selectedTerm
+    )
+      return;
 
-    setMatches(prev => ({
+    setMatches((prev) => ({
       ...prev,
       [selectedTerm]: defId,
     }));
@@ -172,30 +202,32 @@ export default function ZooWorkSheet1() {
   // Check answers and award partial credit
   const checkAnswers = () => {
     setShowResults(true);
-    
+
     // First check if all terms are matched
     if (Object.keys(matches).length !== terms.length) return;
-    
+
     // Count correct matches
     let correctCount = 0;
-    Object.keys(matches).forEach(termId => {
+    Object.keys(matches).forEach((termId) => {
       if (correctMatches[termId] === matches[termId]) {
         correctCount++;
       }
     });
-    
+
     // Award points based on correct answers (scaled to 5 total points)
     const totalPossiblePoints = 5;
-    const earnedPoints = Math.round((correctCount / terms.length) * totalPossiblePoints);
-    
+    const earnedPoints = Math.round(
+      (correctCount / terms.length) * totalPossiblePoints
+    );
+
     // Always mark as completed with partial credit
     setWorksheetCompleted(true);
     setPointsEarned(earnedPoints);
-    
+
     // Update the backend
     setTimeout(() => {
       const updatedProgress = { ...userProgress };
-      
+
       // Ensure the path exists
       if (!updatedProgress.courses) updatedProgress.courses = {};
       if (!updatedProgress.courses[courseKey]) {
@@ -205,55 +237,68 @@ export default function ZooWorkSheet1() {
         updatedProgress.courses[courseKey].lessons = {};
       }
       if (!updatedProgress.courses[courseKey].lessons[lessonNumber]) {
-        updatedProgress.courses[courseKey].lessons[lessonNumber] = { 
+        updatedProgress.courses[courseKey].lessons[lessonNumber] = {
           activities: {},
-          title: "Categories"
+          title: "Categories",
         };
       }
-      if (!updatedProgress.courses[courseKey].lessons[lessonNumber].activities) {
-        updatedProgress.courses[courseKey].lessons[lessonNumber].activities = {};
+      if (
+        !updatedProgress.courses[courseKey].lessons[lessonNumber].activities
+      ) {
+        updatedProgress.courses[courseKey].lessons[lessonNumber].activities =
+          {};
       }
-      
+
       // Set worksheet data
-      updatedProgress.courses[courseKey].lessons[lessonNumber].activities.worksheet = {
+      updatedProgress.courses[courseKey].lessons[
+        lessonNumber
+      ].activities.worksheet = {
         completed: true,
         earned: earnedPoints,
         points: 5, // Total possible points is 5
         type: "worksheet",
-        title: "Zoology Terminology"
+        title: "Zoology Terminology",
       };
-      
+
       // Update lesson points
-      updatedProgress.courses[courseKey].lessons[lessonNumber].lessonPoints = earnedPoints;
-      
+      updatedProgress.courses[courseKey].lessons[lessonNumber].lessonPoints =
+        earnedPoints;
+
       // Mark lesson as completed if video is also completed
-      if (updatedProgress.courses[courseKey].lessons[lessonNumber].activities.video?.completed) {
-        updatedProgress.courses[courseKey].lessons[lessonNumber].completed = true;
+      if (
+        updatedProgress.courses[courseKey].lessons[lessonNumber].activities
+          .video?.completed
+      ) {
+        updatedProgress.courses[courseKey].lessons[
+          lessonNumber
+        ].completed = true;
       }
-      
+
       // Update course points
       let coursePoints = 0;
-      Object.values(updatedProgress.courses[courseKey].lessons).forEach(lesson => {
-        coursePoints += lesson.lessonPoints || 0;
-      });
+      Object.values(updatedProgress.courses[courseKey].lessons).forEach(
+        (lesson) => {
+          coursePoints += lesson.lessonPoints || 0;
+        }
+      );
       updatedProgress.courses[courseKey].coursePoints = coursePoints;
-      
+
       // Update total points
       let totalPoints = 0;
-      Object.values(updatedProgress.courses).forEach(course => {
+      Object.values(updatedProgress.courses).forEach((course) => {
         totalPoints += course.coursePoints || 0;
       });
       updatedProgress.totalPoints = totalPoints;
-      
+
       // Send to API
       call_api(updatedProgress, "points", "POST")
-        .then(response => {
+        .then((response) => {
           if (response) {
             setUserProgress(updatedProgress);
             showStatus("✓ Progress saved!", 3000);
           }
         })
-        .catch(error => {
+        .catch((error) => {
           console.error("Update error:", error);
           showStatus("❌ Error saving progress", 3000);
         });
@@ -267,7 +312,8 @@ export default function ZooWorkSheet1() {
     setClickedTerms({});
     if (canvasRef.current) {
       const ctx = canvasRef.current.getContext("2d");
-      if (ctx) ctx.clearRect(0, 0, canvasRef.current.width, canvasRef.current.height);
+      if (ctx)
+        ctx.clearRect(0, 0, canvasRef.current.width, canvasRef.current.height);
     }
   };
 
@@ -278,12 +324,12 @@ export default function ZooWorkSheet1() {
   // Draw the connection lines
   const drawLines = () => {
     if (!canvasRef.current || !containerRef.current) return;
-    
+
     const canvas = canvasRef.current;
     const container = containerRef.current;
     const ctx = canvas.getContext("2d");
     if (!ctx) return;
-    
+
     canvas.width = container.offsetWidth;
     canvas.height = container.offsetHeight;
     ctx.clearRect(0, 0, canvas.width, canvas.height);
@@ -329,14 +375,32 @@ export default function ZooWorkSheet1() {
   const getItemStyle = (id, isDefinition = false) => {
     if (showResults) {
       if (isDefinition) {
-        const matchedTerm = Object.keys(matches).find(term => matches[term] === id);
+        const matchedTerm = Object.keys(matches).find(
+          (term) => matches[term] === id
+        );
         return matchedTerm && correctMatches[matchedTerm] === id
-          ? { backgroundColor: "#3cb371", color: "#ffffff", boxShadow: "0 2px 4px rgba(0,0,0,0.1)" }
-          : { backgroundColor: "#CF3434", color: "#ffffff", boxShadow: "0 2px 4px rgba(0,0,0,0.1)" };
+          ? {
+              backgroundColor: "#3cb371",
+              color: "#ffffff",
+              boxShadow: "0 2px 4px rgba(0,0,0,0.1)",
+            }
+          : {
+              backgroundColor: "#CF3434",
+              color: "#ffffff",
+              boxShadow: "0 2px 4px rgba(0,0,0,0.1)",
+            };
       } else {
-        return matches[id] === correctMatches[id] 
-          ? { backgroundColor: "#3cb371", color: "#ffffff", boxShadow: "0 2px 4px rgba(0,0,0,0.1)" } 
-          : { backgroundColor: "#CF3434", color: "#ffffff", boxShadow: "0 2px 4px rgba(0,0,0,0.1)" };
+        return matches[id] === correctMatches[id]
+          ? {
+              backgroundColor: "#3cb371",
+              color: "#ffffff",
+              boxShadow: "0 2px 4px rgba(0,0,0,0.1)",
+            }
+          : {
+              backgroundColor: "#CF3434",
+              color: "#ffffff",
+              boxShadow: "0 2px 4px rgba(0,0,0,0.1)",
+            };
       }
     }
     if (isDefinition) {
@@ -344,11 +408,11 @@ export default function ZooWorkSheet1() {
       if (matchedTerm) {
         const isCurrentSelectedTerm = matchedTerm === selectedTerm;
         return {
-          backgroundColor: colors[terms.findIndex(t => t.id === matchedTerm)],
+          backgroundColor: colors[terms.findIndex((t) => t.id === matchedTerm)],
           color: "#ffffff",
           boxShadow: "0 2px 4px rgba(0,0,0,0.1)",
           cursor: isCurrentSelectedTerm ? "pointer" : "not-allowed",
-          opacity: isCurrentSelectedTerm ? "1" : "0.9"
+          opacity: isCurrentSelectedTerm ? "1" : "0.9",
         };
       }
       return {
@@ -356,43 +420,52 @@ export default function ZooWorkSheet1() {
         color: "#333333",
         border: "1px solid #cccccc",
         boxShadow: "0 2px 4px rgba(0,0,0,0.05)",
-        cursor: "pointer"
+        cursor: "pointer",
       };
     } else {
       return clickedTerms[id]
-        ? { 
-            backgroundColor: colors[terms.findIndex(t => t.id === id)],
+        ? {
+            backgroundColor: colors[terms.findIndex((t) => t.id === id)],
             color: "#ffffff",
             boxShadow: "0 2px 4px rgba(0,0,0,0.1)",
-            border: "2px solid #333333"
-          } 
-        : { backgroundColor: "#f0f0f0", color: "#333333", border: "1px solid #cccccc", boxShadow: "0 2px 4px rgba(0,0,0,0.05)" };
+            border: "2px solid #333333",
+          }
+        : {
+            backgroundColor: "#f0f0f0",
+            color: "#333333",
+            border: "1px solid #cccccc",
+            boxShadow: "0 2px 4px rgba(0,0,0,0.05)",
+          };
     }
   };
 
   // Loading screen
   if (loading) {
     return (
-      <div style={{ 
-        minHeight: "100vh", 
-        background: "white", 
-        margin: 0, 
-        padding: "32px",
-        display: "flex",
-        justifyContent: "center",
-        alignItems: "center",
-        fontFamily: "Arial, sans-serif"
-      }}>
+      <div
+        style={{
+          minHeight: "100vh",
+          background: "white",
+          margin: 0,
+          padding: "32px",
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+          fontFamily: "Arial, sans-serif",
+        }}
+      >
         <div style={{ textAlign: "center" }}>
-          <div style={{
-            border: "4px solid #f3f3f3",
-            borderTop: "4px solid #357717",
-            borderRadius: "50%",
-            width: "50px",
-            height: "50px",
-            animation: "spin 2s linear infinite",
-            margin: "0 auto 20px"
-          }}></div>
+          <div
+            style={{
+              border: "4px solid #f3f3f3",
+              borderTop: "4px solid #357717",
+              borderRadius: "50%",
+              width: "50px",
+              height: "50px",
+              animation: "spin 2s linear infinite",
+              margin: "0 auto 20px",
+            }}
+          ></div>
           <p>Loading worksheet content...</p>
           <style>{`
             @keyframes spin {
@@ -406,146 +479,175 @@ export default function ZooWorkSheet1() {
   }
 
   return (
-    <div style={{
-      minHeight: "100vh",
-      background: "white",
-      margin: "0",
-      padding: "32px",
-      fontFamily: "Arial, sans-serif",
-      position: "relative",
-    }}>
+    <div
+      style={{
+        minHeight: "100vh",
+        background: "white",
+        margin: "0",
+        padding: "32px",
+        fontFamily: "Arial, sans-serif",
+        position: "relative",
+      }}
+    >
       {/* Status message */}
       {statusMessage && (
-        <div style={{
-          position: "fixed",
-          top: "150px",
-          right: "20px",
-          padding: "10px 15px",
-          backgroundColor: statusMessage.includes("Error") ? "rgba(231, 76, 60, 0.8)" : "#357717",
-          color: "white",
-          borderRadius: "5px",
-          fontWeight: "bold",
-          zIndex: 1000,
-          boxShadow: "0 2px 10px rgba(0,0,0,0.2)",
-          animation: "fadeIn 0.3s ease-out",
-          fontSize: "16px",
-        }}>
+        <div
+          style={{
+            position: "fixed",
+            top: "150px",
+            right: "20px",
+            padding: "10px 15px",
+            backgroundColor: statusMessage.includes("Error")
+              ? "rgba(231, 76, 60, 0.8)"
+              : "#357717",
+            color: "white",
+            borderRadius: "5px",
+            fontWeight: "bold",
+            zIndex: 1000,
+            boxShadow: "0 2px 10px rgba(0,0,0,0.2)",
+            animation: "fadeIn 0.3s ease-out",
+            fontSize: "16px",
+          }}
+        >
           {statusMessage}
         </div>
       )}
 
       {/* Back button */}
-      <button onClick={handleGoBack} style={{
-        position: "absolute",
-        top: "20px",
-        left: "20px",
-        color: "white",
-        border: "none",
-        borderRadius: "50%",
-        background: isHovering ? "#3cb371" : "#357717",
-        width: "60px",
-        height: "60px",
-        display: "flex",
-        alignItems: "center",
-        justifyContent: "center",
-        cursor: "pointer",
-        transition: "all 0.3s ease",
-        fontSize: "36px",
-        fontWeight: "bold",
-        transform: isHovering ? "scale(0.9)" : "scale(1)",
-      }}
-      onMouseEnter={() => setIsHovering(true)}
-      onMouseLeave={() => setIsHovering(false)}>
+      <button
+        onClick={handleGoBack}
+        style={{
+          position: "absolute",
+          top: "20px",
+          left: "20px",
+          color: "white",
+          border: "none",
+          borderRadius: "50%",
+          background: isHovering ? "#3cb371" : "#357717",
+          width: "60px",
+          height: "60px",
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+          cursor: "pointer",
+          transition: "all 0.3s ease",
+          fontSize: "36px",
+          fontWeight: "bold",
+          transform: isHovering ? "scale(0.9)" : "scale(1)",
+        }}
+        onMouseEnter={() => setIsHovering(true)}
+        onMouseLeave={() => setIsHovering(false)}
+      >
         &#8592;
       </button>
 
       <div style={{ maxWidth: "896px", margin: "0 auto" }}>
         {/* Header */}
-        <img 
-          src={stemzLearningLogo} 
-          alt="STEMZ Learning" 
+        <img
+          src={stemzLearningLogo}
+          alt="STEMZ Learning"
           style={{
-            maxWidth: "300px", 
-            display: "block", 
-            margin: "0 auto 30px"
-          }} 
+            maxWidth: "300px",
+            display: "block",
+            margin: "0 auto 30px",
+          }}
         />
-        <h1 style={{
-          color: "#254E17",
-          fontSize: "48px",
-          marginBottom: "10px",
-          fontFamily: "Orbitron, sans-serif",
-          textAlign: "center",
-        }}>
+        <h1
+          style={{
+            color: "#254E17",
+            fontSize: "48px",
+            marginBottom: "10px",
+            fontFamily: "Orbitron, sans-serif",
+            textAlign: "center",
+          }}
+        >
           Categories
         </h1>
-        <h2 style={{
-          color: "#357717",
-          fontSize: "36px",
-          marginBottom: "30px",
-          fontFamily: "Orbitron, sans-serif",
-          textAlign: "center",
-        }}>
+        <h2
+          style={{
+            color: "#357717",
+            fontSize: "36px",
+            marginBottom: "30px",
+            fontFamily: "Orbitron, sans-serif",
+            textAlign: "center",
+          }}
+        >
           Zoology: Lesson 1
         </h2>
 
         {/* Main container */}
-        <div ref={containerRef} style={{
-          position: "relative",
-          backgroundColor: "#f9f9f9",
-          borderRadius: "10px",
-          boxShadow: "0 4px 6px rgba(0,0,0,0.1)",
-          padding: "20px",
-        }}>
+        <div
+          ref={containerRef}
+          style={{
+            position: "relative",
+            backgroundColor: "#f9f9f9",
+            borderRadius: "10px",
+            boxShadow: "0 4px 6px rgba(0,0,0,0.1)",
+            padding: "20px",
+          }}
+        >
           {/* Progress status inside main container */}
-          <div style={{
-            marginBottom: "20px",
-            padding: "10px 15px",
-            borderRadius: "5px",
-            backgroundColor: "#f0f0f0",
-            textAlign: "center",
-            borderLeft: worksheetCompleted ? "4px solid #3cb371" : "4px solid #ccc"
-          }}>
-            <span style={{
-              fontWeight: "bold",
-              marginRight: "15px",
-              color: "#333333",
-            }}>
+          <div
+            style={{
+              marginBottom: "20px",
+              padding: "10px 15px",
+              borderRadius: "5px",
+              backgroundColor: "#f0f0f0",
+              textAlign: "center",
+              borderLeft: worksheetCompleted
+                ? "4px solid #3cb371"
+                : "4px solid #ccc",
+            }}
+          >
+            <span
+              style={{
+                fontWeight: "bold",
+                marginRight: "15px",
+                color: "#333333",
+              }}
+            >
               Worksheet:
             </span>
-            <span style={{
-              color: worksheetCompleted ? "#3cb371" : "#666666",
-              fontWeight: worksheetCompleted ? "bold" : "normal",
-            }}>
+            <span
+              style={{
+                color: worksheetCompleted ? "#3cb371" : "#666666",
+                fontWeight: worksheetCompleted ? "bold" : "normal",
+              }}
+            >
               {worksheetCompleted ? "Completed" : "Not Completed"}
             </span>
-            <span style={{
-              marginLeft: "15px",
-              color: "#555555",
-            }}>
+            <span
+              style={{
+                marginLeft: "15px",
+                color: "#555555",
+              }}
+            >
               ({pointsEarned} {pointsEarned === 1 ? "point" : "points"})
             </span>
           </div>
 
-          <p style={{
-            textAlign: "center",
-            color: "#666666",
-            marginBottom: "30px",
-          }}>
-            Match the term to the correct definition. You will find the definitions as we go through the lesson.
+          <p
+            style={{
+              textAlign: "center",
+              color: "#666666",
+              marginBottom: "30px",
+            }}
+          >
+            Match the term to the correct definition. You will find the
+            definitions as we go through the lesson.
           </p>
 
           {/* Terms and definitions */}
-          <div style={{
-            display: "flex",
-            justifyContent: "space-between",
-            marginBottom: "20px",
-          }}>
+          <div
+            style={{
+              display: "flex",
+              justifyContent: "space-between",
+              marginBottom: "20px",
+            }}
+          >
             {/* Terms column */}
             <div style={{ width: "45%", paddingLeft: "20px" }}>
-              <h3 style={{ color: "#333333", marginBottom: "15px" }}>
-                Terms
-              </h3>
+              <h3 style={{ color: "#333333", marginBottom: "15px" }}>Terms</h3>
               {terms.map((term) => (
                 <div
                   key={term.id}
@@ -660,13 +762,13 @@ export default function ZooWorkSheet1() {
                   fontWeight: "bold",
                 }}
               >
-                {Object.keys(matches).length === 0 
+                {Object.keys(matches).length === 0
                   ? "Please match some terms before checking answers."
                   : isAllCorrect()
-                    ? "Congratulations! All answers are correct."
-                    : Object.keys(matches).length < terms.length
-                      ? "Please match all terms before checking answers."
-                      : "Some matches are incorrect. Please review and try again."}
+                  ? "Congratulations! All answers are correct."
+                  : Object.keys(matches).length < terms.length
+                  ? "Please match all terms before checking answers."
+                  : "Some matches are incorrect. Please review and try again."}
               </p>
             </div>
           )}
@@ -675,13 +777,25 @@ export default function ZooWorkSheet1() {
 
       <style jsx>{`
         @keyframes fadeIn {
-          from { opacity: 0; transform: translateY(-10px); }
-          to { opacity: 1; transform: translateY(0); }
+          from {
+            opacity: 0;
+            transform: translateY(-10px);
+          }
+          to {
+            opacity: 1;
+            transform: translateY(0);
+          }
         }
-        
+
         @keyframes fadeOut {
-          from { opacity: 1; transform: translateY(0); }
-          to { opacity: 0; transform: translateY(-10px); }
+          from {
+            opacity: 1;
+            transform: translateY(0);
+          }
+          to {
+            opacity: 0;
+            transform: translateY(-10px);
+          }
         }
       `}</style>
     </div>

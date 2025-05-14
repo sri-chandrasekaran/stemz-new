@@ -2,7 +2,7 @@ import React, { useState, useEffect, useRef } from "react";
 import { Timer } from "lucide-react";
 import stemzLearningLogo from "../../assets/logo.png";
 import { useNavigate } from "react-router-dom";
-import { call_api } from "../api";
+import { call_api } from "../../api";
 
 const mathProblems = [
   [
@@ -144,7 +144,7 @@ export default function PsychWorkSheet2() {
   const [wasStopped, setWasStopped] = useState(false);
   const [submissionCount, setSubmissionCount] = useState(0);
   const [trialResults, setTrialResults] = useState([]);
-  
+
   // Progress tracking states
   const [userProgress, setUserProgress] = useState(null);
   const [loading, setLoading] = useState(true);
@@ -156,7 +156,7 @@ export default function PsychWorkSheet2() {
   // Constants for progress tracking
   const lessonNumber = "lesson2";
   const courseKey = "psychology";
-  
+
   // Refs
   const inputRefs = useRef(
     Array(10)
@@ -190,7 +190,7 @@ export default function PsychWorkSheet2() {
         navigate("/login");
         return;
       }
-      
+
       try {
         const response = await call_api(null, "auth/verify", "POST");
         if (response && response.success) {
@@ -218,15 +218,16 @@ export default function PsychWorkSheet2() {
         const response = await call_api(null, "points", "GET");
         if (response) {
           setUserProgress(response);
-          
+
           // Check if there's course data available
           if (response.courses && response.courses[courseKey]) {
             const lesson = response.courses[courseKey].lessons[lessonNumber];
-            
+
             if (lesson && lesson.activities && lesson.activities.worksheet) {
-              const savedCompleted = lesson.activities.worksheet.completed || false;
+              const savedCompleted =
+                lesson.activities.worksheet.completed || false;
               const savedPoints = lesson.activities.worksheet.earned || 0;
-              
+
               setWorksheetCompleted(savedCompleted);
               setPointsEarned(savedPoints);
             }
@@ -234,7 +235,7 @@ export default function PsychWorkSheet2() {
           setLoading(false);
         }
       } catch (err) {
-        console.error('Error fetching course progress:', err);
+        console.error("Error fetching course progress:", err);
         setLoading(false);
       }
     };
@@ -252,26 +253,26 @@ export default function PsychWorkSheet2() {
       setShowResults(true);
       setHasAlerted(true);
       alert("Time's up! Let's check your answers.");
-      
+
       // Save trial results
-      const correctCount = Object.keys(answers).filter(key => {
-        const [rowIndex, colIndex] = key.split('-').map(Number);
+      const correctCount = Object.keys(answers).filter((key) => {
+        const [rowIndex, colIndex] = key.split("-").map(Number);
         return checkAnswer(rowIndex, colIndex);
       }).length;
-      
+
       const attemptedCount = Object.keys(answers).length;
-      
-      setTrialResults(prev => [
-        ...prev, 
+
+      setTrialResults((prev) => [
+        ...prev,
         {
           trialNumber: submissionCount + 1,
           attempted: attemptedCount,
-          correct: correctCount
-        }
+          correct: correctCount,
+        },
       ]);
-      
-      setSubmissionCount(prevCount => prevCount + 1);
-      
+
+      setSubmissionCount((prevCount) => prevCount + 1);
+
       // After two submissions, award points and mark as completed
       if (submissionCount + 1 >= 2) {
         handleWorksheetComplete();
@@ -407,26 +408,26 @@ export default function PsychWorkSheet2() {
   const handleSubmit = () => {
     setShowResults(true);
     setIsTimerRunning(false);
-    
+
     // Count correct answers
-    const correctCount = Object.keys(answers).filter(key => {
-      const [rowIndex, colIndex] = key.split('-').map(Number);
+    const correctCount = Object.keys(answers).filter((key) => {
+      const [rowIndex, colIndex] = key.split("-").map(Number);
       return checkAnswer(rowIndex, colIndex);
     }).length;
-    
+
     const attemptedCount = Object.keys(answers).length;
-    
+
     // Save trial results
-    setTrialResults(prev => [
-      ...prev, 
+    setTrialResults((prev) => [
+      ...prev,
       {
         trialNumber: submissionCount + 1,
         attempted: attemptedCount,
-        correct: correctCount
-      }
+        correct: correctCount,
+      },
     ]);
-    
-    setSubmissionCount(prevCount => prevCount + 1);
+
+    setSubmissionCount((prevCount) => prevCount + 1);
 
     const newBorders = {};
     mathProblems.forEach((row, rowIndex) => {
@@ -448,7 +449,7 @@ export default function PsychWorkSheet2() {
       });
     });
     setBorders(newBorders);
-    
+
     // After two submissions, award points and mark as completed
     if (submissionCount + 1 >= 2) {
       handleWorksheetComplete();
@@ -477,19 +478,19 @@ export default function PsychWorkSheet2() {
   const handleGoBack = () => {
     window.history.back();
   };
-  
+
   // Mark worksheet as completed and award full points
   const handleWorksheetComplete = () => {
     // Award full points (5 points) after two submissions
     const earnedPoints = 5;
-    
+
     // Mark as completed
     setWorksheetCompleted(true);
     setPointsEarned(earnedPoints);
-    
+
     // Update the backend
     const updatedProgress = { ...userProgress };
-    
+
     // Ensure the path exists
     if (!updatedProgress.courses) updatedProgress.courses = {};
     if (!updatedProgress.courses[courseKey]) {
@@ -499,55 +500,66 @@ export default function PsychWorkSheet2() {
       updatedProgress.courses[courseKey].lessons = {};
     }
     if (!updatedProgress.courses[courseKey].lessons[lessonNumber]) {
-      updatedProgress.courses[courseKey].lessons[lessonNumber] = { 
+      updatedProgress.courses[courseKey].lessons[lessonNumber] = {
         activities: {},
-        title: "The Math Experiment"
+        title: "The Math Experiment",
       };
     }
     if (!updatedProgress.courses[courseKey].lessons[lessonNumber].activities) {
       updatedProgress.courses[courseKey].lessons[lessonNumber].activities = {};
     }
-    
+
     // Set worksheet data
-    updatedProgress.courses[courseKey].lessons[lessonNumber].activities.worksheet = {
+    updatedProgress.courses[courseKey].lessons[
+      lessonNumber
+    ].activities.worksheet = {
       completed: true,
       earned: earnedPoints,
       points: 5, // Total possible points is 5
       type: "worksheet",
-      title: "The Math Experiment"
+      title: "The Math Experiment",
     };
-    
+
     // Update lesson points
-    updatedProgress.courses[courseKey].lessons[lessonNumber].lessonPoints = earnedPoints;
-    
+    updatedProgress.courses[courseKey].lessons[lessonNumber].lessonPoints =
+      earnedPoints;
+
     // Mark lesson as completed if video is also completed
-    if (updatedProgress.courses[courseKey].lessons[lessonNumber].activities.video?.completed) {
+    if (
+      updatedProgress.courses[courseKey].lessons[lessonNumber].activities.video
+        ?.completed
+    ) {
       updatedProgress.courses[courseKey].lessons[lessonNumber].completed = true;
     }
-    
+
     // Update course points
     let coursePoints = 0;
-    Object.values(updatedProgress.courses[courseKey].lessons).forEach(lesson => {
-      coursePoints += lesson.lessonPoints || 0;
-    });
+    Object.values(updatedProgress.courses[courseKey].lessons).forEach(
+      (lesson) => {
+        coursePoints += lesson.lessonPoints || 0;
+      }
+    );
     updatedProgress.courses[courseKey].coursePoints = coursePoints;
-    
+
     // Update total points
     let totalPoints = 0;
-    Object.values(updatedProgress.courses).forEach(course => {
+    Object.values(updatedProgress.courses).forEach((course) => {
       totalPoints += course.coursePoints || 0;
     });
     updatedProgress.totalPoints = totalPoints;
-    
+
     // Send to API
     call_api(updatedProgress, "points", "POST")
-      .then(response => {
+      .then((response) => {
         if (response) {
           setUserProgress(updatedProgress);
-          showStatus("✓ Experiment completed! You've earned full points!", 3000);
+          showStatus(
+            "✓ Experiment completed! You've earned full points!",
+            3000
+          );
         }
       })
-      .catch(error => {
+      .catch((error) => {
         console.error("Update error:", error);
         showStatus("❌ Error saving progress", 3000);
       });
@@ -556,26 +568,30 @@ export default function PsychWorkSheet2() {
   // Loading screen
   if (loading) {
     return (
-      <div style={{ 
-        minHeight: "100vh", 
-        background: "white", 
-        margin: 0, 
-        padding: "32px",
-        display: "flex",
-        justifyContent: "center",
-        alignItems: "center",
-        fontFamily: "Arial, sans-serif"
-      }}>
+      <div
+        style={{
+          minHeight: "100vh",
+          background: "white",
+          margin: 0,
+          padding: "32px",
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+          fontFamily: "Arial, sans-serif",
+        }}
+      >
         <div style={{ textAlign: "center" }}>
-          <div style={{
-            border: "4px solid #f3f3f3",
-            borderTop: "4px solid #357717",
-            borderRadius: "50%",
-            width: "50px",
-            height: "50px",
-            animation: "spin 2s linear infinite",
-            margin: "0 auto 20px"
-          }}></div>
+          <div
+            style={{
+              border: "4px solid #f3f3f3",
+              borderTop: "4px solid #357717",
+              borderRadius: "50%",
+              width: "50px",
+              height: "50px",
+              animation: "spin 2s linear infinite",
+              margin: "0 auto 20px",
+            }}
+          ></div>
           <p>Loading worksheet content...</p>
           <style>{`
             @keyframes spin {
@@ -589,128 +605,153 @@ export default function PsychWorkSheet2() {
   }
 
   return (
-    <div style={{
-      minHeight: "100vh",
-      background: "white",
-      margin: "0",
-      padding: "32px",
-      fontFamily: "Arial, sans-serif",
-      position: "relative",
-    }}>
+    <div
+      style={{
+        minHeight: "100vh",
+        background: "white",
+        margin: "0",
+        padding: "32px",
+        fontFamily: "Arial, sans-serif",
+        position: "relative",
+      }}
+    >
       {/* Status message */}
       {statusMessage && (
-        <div style={{
-          position: "fixed",
-          top: "150px",
-          right: "20px",
-          padding: "10px 15px",
-          backgroundColor: statusMessage.includes("Error") ? "rgba(231, 76, 60, 0.8)" : "#357717",
-          color: "white",
-          borderRadius: "5px",
-          fontWeight: "bold",
-          zIndex: 1000,
-          boxShadow: "0 2px 10px rgba(0,0,0,0.2)",
-          animation: "fadeIn 0.3s ease-out",
-          fontSize: "16px",
-        }}>
+        <div
+          style={{
+            position: "fixed",
+            top: "150px",
+            right: "20px",
+            padding: "10px 15px",
+            backgroundColor: statusMessage.includes("Error")
+              ? "rgba(231, 76, 60, 0.8)"
+              : "#357717",
+            color: "white",
+            borderRadius: "5px",
+            fontWeight: "bold",
+            zIndex: 1000,
+            boxShadow: "0 2px 10px rgba(0,0,0,0.2)",
+            animation: "fadeIn 0.3s ease-out",
+            fontSize: "16px",
+          }}
+        >
           {statusMessage}
         </div>
       )}
 
       {/* Back button */}
-      <button onClick={handleGoBack} style={{
-        position: "absolute",
-        top: "20px",
-        left: "20px",
-        color: "white",
-        border: "none",
-        borderRadius: "50%",
-        background: isHovering ? "#3cb371" : "#357717",
-        width: "60px",
-        height: "60px",
-        display: "flex",
-        alignItems: "center",
-        justifyContent: "center",
-        cursor: "pointer",
-        transition: "all 0.3s ease",
-        fontSize: "36px",
-        fontWeight: "bold",
-        transform: isHovering ? "scale(0.9)" : "scale(1)",
-      }}
-      onMouseEnter={() => setIsHovering(true)}
-      onMouseLeave={() => setIsHovering(false)}>
+      <button
+        onClick={handleGoBack}
+        style={{
+          position: "absolute",
+          top: "20px",
+          left: "20px",
+          color: "white",
+          border: "none",
+          borderRadius: "50%",
+          background: isHovering ? "#3cb371" : "#357717",
+          width: "60px",
+          height: "60px",
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+          cursor: "pointer",
+          transition: "all 0.3s ease",
+          fontSize: "36px",
+          fontWeight: "bold",
+          transform: isHovering ? "scale(0.9)" : "scale(1)",
+        }}
+        onMouseEnter={() => setIsHovering(true)}
+        onMouseLeave={() => setIsHovering(false)}
+      >
         &#8592;
       </button>
 
       <div style={{ maxWidth: "896px", margin: "0 auto" }}>
         {/* Header */}
-        <img 
-          src={stemzLearningLogo} 
-          alt="STEMZ Learning" 
+        <img
+          src={stemzLearningLogo}
+          alt="STEMZ Learning"
           style={{
-            maxWidth: "300px", 
-            display: "block", 
-            margin: "0 auto 30px"
-          }} 
+            maxWidth: "300px",
+            display: "block",
+            margin: "0 auto 30px",
+          }}
         />
-        <h1 style={{
-          color: "#254E17",
-          fontSize: "48px",
-          marginBottom: "10px",
-          fontFamily: "Orbitron, sans-serif",
-          textAlign: "center",
-        }}>
+        <h1
+          style={{
+            color: "#254E17",
+            fontSize: "48px",
+            marginBottom: "10px",
+            fontFamily: "Orbitron, sans-serif",
+            textAlign: "center",
+          }}
+        >
           The Math Experiment
         </h1>
-        <h2 style={{
-          color: "#357717",
-          fontSize: "36px",
-          marginBottom: "30px",
-          fontFamily: "Orbitron, sans-serif",
-          textAlign: "center",
-        }}>
+        <h2
+          style={{
+            color: "#357717",
+            fontSize: "36px",
+            marginBottom: "30px",
+            fontFamily: "Orbitron, sans-serif",
+            textAlign: "center",
+          }}
+        >
           Psychology: Lesson 2
         </h2>
 
         {/* Progress status */}
-        <div style={{
-          marginBottom: "20px",
-          padding: "10px 15px",
-          borderRadius: "5px",
-          backgroundColor: "#f0f0f0",
-          textAlign: "center",
-          borderLeft: worksheetCompleted ? "4px solid #3cb371" : "4px solid #ccc"
-        }}>
-          <span style={{
-            fontWeight: "bold",
-            marginRight: "15px",
-            color: "#333333",
-          }}>
+        <div
+          style={{
+            marginBottom: "20px",
+            padding: "10px 15px",
+            borderRadius: "5px",
+            backgroundColor: "#f0f0f0",
+            textAlign: "center",
+            borderLeft: worksheetCompleted
+              ? "4px solid #3cb371"
+              : "4px solid #ccc",
+          }}
+        >
+          <span
+            style={{
+              fontWeight: "bold",
+              marginRight: "15px",
+              color: "#333333",
+            }}
+          >
             Worksheet:
           </span>
-          <span style={{
-            color: worksheetCompleted ? "#3cb371" : "#666666",
-            fontWeight: worksheetCompleted ? "bold" : "normal",
-          }}>
+          <span
+            style={{
+              color: worksheetCompleted ? "#3cb371" : "#666666",
+              fontWeight: worksheetCompleted ? "bold" : "normal",
+            }}
+          >
             {worksheetCompleted ? "Completed" : "Not Completed"}
           </span>
-          <span style={{
-            marginLeft: "15px",
-            color: "#555555",
-          }}>
+          <span
+            style={{
+              marginLeft: "15px",
+              color: "#555555",
+            }}
+          >
             ({pointsEarned} {pointsEarned === 1 ? "point" : "points"})
           </span>
         </div>
 
         {/* Instructions */}
-        <div style={{
-          marginBottom: "30px",
-          lineHeight: "1.6",
-          backgroundColor: "#f9f9f9",
-          padding: "20px",
-          borderRadius: "10px",
-          boxShadow: "0 4px 6px rgba(0,0,0,0.1)"
-        }}>
+        <div
+          style={{
+            marginBottom: "30px",
+            lineHeight: "1.6",
+            backgroundColor: "#f9f9f9",
+            padding: "20px",
+            borderRadius: "10px",
+            boxShadow: "0 4px 6px rgba(0,0,0,0.1)",
+          }}
+        >
           <h3 style={{ marginTop: 0 }}>Instructions:</h3>
 
           <p>
@@ -720,103 +761,148 @@ export default function PsychWorkSheet2() {
               following the video's instructions!
             </strong>
           </p>
-          <p>For this psychology experiment, you'll need to complete two trials. <strong>You'll get full points after completing both trials</strong>, regardless of how many problems you solve correctly.</p>
+          <p>
+            For this psychology experiment, you'll need to complete two trials.{" "}
+            <strong>You'll get full points after completing both trials</strong>
+            , regardless of how many problems you solve correctly.
+          </p>
           <p>You can use:</p>
           <ul>
             <li>
-              <span style={{
-                display: "inline-block",
-                padding: "2px 8px",
-                backgroundColor: "#eee",
-                border: "1px solid #ccc",
-                borderRadius: "3px",
-                margin: "0 3px",
-                fontSize: "12px"
-              }}> ↑ </span>
-              <span style={{
-                display: "inline-block",
-                padding: "2px 8px",
-                backgroundColor: "#eee",
-                border: "1px solid #ccc",
-                borderRadius: "3px",
-                margin: "0 3px",
-                fontSize: "12px"
-              }}> ↓ </span>
-              <span style={{
-                display: "inline-block",
-                padding: "2px 8px",
-                backgroundColor: "#eee",
-                border: "1px solid #ccc",
-                borderRadius: "3px",
-                margin: "0 3px",
-                fontSize: "12px"
-              }}> ← </span>
-              <span style={{
-                display: "inline-block",
-                padding: "2px 8px",
-                backgroundColor: "#eee",
-                border: "1px solid #ccc",
-                borderRadius: "3px",
-                margin: "0 3px",
-                fontSize: "12px"
-              }}> → </span>
+              <span
+                style={{
+                  display: "inline-block",
+                  padding: "2px 8px",
+                  backgroundColor: "#eee",
+                  border: "1px solid #ccc",
+                  borderRadius: "3px",
+                  margin: "0 3px",
+                  fontSize: "12px",
+                }}
+              >
+                {" "}
+                ↑{" "}
+              </span>
+              <span
+                style={{
+                  display: "inline-block",
+                  padding: "2px 8px",
+                  backgroundColor: "#eee",
+                  border: "1px solid #ccc",
+                  borderRadius: "3px",
+                  margin: "0 3px",
+                  fontSize: "12px",
+                }}
+              >
+                {" "}
+                ↓{" "}
+              </span>
+              <span
+                style={{
+                  display: "inline-block",
+                  padding: "2px 8px",
+                  backgroundColor: "#eee",
+                  border: "1px solid #ccc",
+                  borderRadius: "3px",
+                  margin: "0 3px",
+                  fontSize: "12px",
+                }}
+              >
+                {" "}
+                ←{" "}
+              </span>
+              <span
+                style={{
+                  display: "inline-block",
+                  padding: "2px 8px",
+                  backgroundColor: "#eee",
+                  border: "1px solid #ccc",
+                  borderRadius: "3px",
+                  margin: "0 3px",
+                  fontSize: "12px",
+                }}
+              >
+                {" "}
+                →{" "}
+              </span>
               Arrow keys to navigate between boxes
             </li>
             <li>
-              <span style={{
-                display: "inline-block",
-                padding: "2px 8px",
-                backgroundColor: "#eee",
-                border: "1px solid #ccc",
-                borderRadius: "3px",
-                margin: "0 3px",
-                fontSize: "12px"
-              }}>Tab</span>
+              <span
+                style={{
+                  display: "inline-block",
+                  padding: "2px 8px",
+                  backgroundColor: "#eee",
+                  border: "1px solid #ccc",
+                  borderRadius: "3px",
+                  margin: "0 3px",
+                  fontSize: "12px",
+                }}
+              >
+                Tab
+              </span>
               Move to next box
             </li>
             <li>
-              <span style={{
-                display: "inline-block",
-                padding: "2px 8px",
-                backgroundColor: "#eee",
-                border: "1px solid #ccc",
-                borderRadius: "3px",
-                margin: "0 3px",
-                fontSize: "12px"
-              }}>Enter</span>
+              <span
+                style={{
+                  display: "inline-block",
+                  padding: "2px 8px",
+                  backgroundColor: "#eee",
+                  border: "1px solid #ccc",
+                  borderRadius: "3px",
+                  margin: "0 3px",
+                  fontSize: "12px",
+                }}
+              >
+                Enter
+              </span>
               Move to the box below
             </li>
             <li>
-              <span style={{
-                display: "inline-block",
-                padding: "2px 8px",
-                backgroundColor: "#eee",
-                border: "1px solid #ccc",
-                borderRadius: "3px",
-                margin: "0 3px",
-                fontSize: "12px"
-              }}>0</span>-
-              <span style={{
-                display: "inline-block",
-                padding: "2px 8px",
-                backgroundColor: "#eee",
-                border: "1px solid #ccc",
-                borderRadius: "3px",
-                margin: "0 3px",
-                fontSize: "12px"
-              }}>9 </span>
+              <span
+                style={{
+                  display: "inline-block",
+                  padding: "2px 8px",
+                  backgroundColor: "#eee",
+                  border: "1px solid #ccc",
+                  borderRadius: "3px",
+                  margin: "0 3px",
+                  fontSize: "12px",
+                }}
+              >
+                0
+              </span>
+              -
+              <span
+                style={{
+                  display: "inline-block",
+                  padding: "2px 8px",
+                  backgroundColor: "#eee",
+                  border: "1px solid #ccc",
+                  borderRadius: "3px",
+                  margin: "0 3px",
+                  fontSize: "12px",
+                }}
+              >
+                9{" "}
+              </span>
               to type numbers directly into the selected box
             </li>
             <li>
-              <span style={{
-                display: "inline-block",
-                padding: "2px 8px",
-                backgroundColor: "#eee",
-                border: "1px solid #ccc",
-                borderRadius: "3px",
-                margin: "0 3px",
-                fontSize: "12px"
-              }}>Backspace </span>
+              <span
+                style={{
+                  display: "inline-block",
+                  padding: "2px 8px",
+                  backgroundColor: "#eee",
+                  border: "1px solid #ccc",
+                  borderRadius: "3px",
+                  margin: "0 3px",
+                  fontSize: "12px",
+                }}
+              >
+                Backspace{" "}
+              </span>
               to delete the last number
             </li>
           </ul>
@@ -827,10 +913,13 @@ export default function PsychWorkSheet2() {
               below, set the timer and go!
             </strong>
           </p>
-          <p>Remember to complete the experiment twice either way to get full points.</p>
+          <p>
+            Remember to complete the experiment twice either way to get full
+            points.
+          </p>
 
-          <button 
-            onClick={handlePrintVersion} 
+          <button
+            onClick={handlePrintVersion}
             style={{
               backgroundColor: "#357717",
               color: "white",
@@ -848,37 +937,50 @@ export default function PsychWorkSheet2() {
             Print Paper Version
           </button>
         </div>
-        
+
         {/* Submission counter */}
-        <div style={{
-          textAlign: "center",
-          marginBottom: "20px",
-          fontSize: "16px",
-          color: submissionCount >= 2 ? "#3cb371" : "#333"
-        }}>
+        <div
+          style={{
+            textAlign: "center",
+            marginBottom: "20px",
+            fontSize: "16px",
+            color: submissionCount >= 2 ? "#3cb371" : "#333",
+          }}
+        >
           <strong>Trial count:</strong> {submissionCount} of 2
           {submissionCount >= 2 && !worksheetCompleted && (
             <span style={{ color: "#3cb371", marginLeft: "10px" }}>
               ✓ You've completed enough trials!
             </span>
           )}
-          
           {/* Display results from previous trials */}
           {trialResults.length > 0 && (
-            <div style={{
-              marginTop: "15px",
-              padding: "10px",
-              backgroundColor: "#f9f9f9",
-              borderRadius: "5px",
-              display: "inline-block"
-            }}>
-              <h4 style={{ marginTop: 0, marginBottom: "10px" }}>Trial Results Comparison:</h4>
-              <div style={{ display: "flex", justifyContent: "center", gap: "30px" }}>
+            <div
+              style={{
+                marginTop: "15px",
+                padding: "10px",
+                backgroundColor: "#f9f9f9",
+                borderRadius: "5px",
+                display: "inline-block",
+              }}
+            >
+              <h4 style={{ marginTop: 0, marginBottom: "10px" }}>
+                Trial Results Comparison:
+              </h4>
+              <div
+                style={{
+                  display: "flex",
+                  justifyContent: "center",
+                  gap: "30px",
+                }}
+              >
                 {trialResults.map((result, index) => (
                   <div key={index} style={{ textAlign: "center" }}>
                     <strong>Trial {result.trialNumber}:</strong>
                     <div>Attempted: {result.attempted}</div>
-                    <div style={{ color: "#3cb371" }}>Correct: {result.correct}</div>
+                    <div style={{ color: "#3cb371" }}>
+                      Correct: {result.correct}
+                    </div>
                   </div>
                 ))}
               </div>
@@ -887,26 +989,32 @@ export default function PsychWorkSheet2() {
         </div>
 
         {/* Timer */}
-        <div style={{
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "center",
-          gap: "20px",
-          marginBottom: "20px",
-        }}>
+        <div
+          style={{
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+            gap: "20px",
+            marginBottom: "20px",
+          }}
+        >
           <Timer size={24} color="#254E17" />
-          <span style={{
-            fontSize: "24px",
-            fontWeight: "bold",
-            color: timeLeft <= 10 ? "#CF3434" : "#254E17",
-          }}>
+          <span
+            style={{
+              fontSize: "24px",
+              fontWeight: "bold",
+              color: timeLeft <= 10 ? "#CF3434" : "#254E17",
+            }}
+          >
             {Math.floor(timeLeft / 60)}:
             {(timeLeft % 60).toString().padStart(2, "0")}
           </span>
-          <div style={{
-            display: "flex",
-            gap: "10px",
-          }}>
+          <div
+            style={{
+              display: "flex",
+              gap: "10px",
+            }}
+          >
             <button
               onClick={handleStartTimer}
               style={{
@@ -944,12 +1052,15 @@ export default function PsychWorkSheet2() {
 
         {/* Math problems grid */}
         {mathProblems.map((row, rowIndex) => (
-          <div key={rowIndex} style={{
-            display: "grid",
-            gridTemplateColumns: "repeat(10, 1fr)",
-            gap: "15px",
-            marginBottom: "30px",
-          }}>
+          <div
+            key={rowIndex}
+            style={{
+              display: "grid",
+              gridTemplateColumns: "repeat(10, 1fr)",
+              gap: "15px",
+              marginBottom: "30px",
+            }}
+          >
             {row.map((problem, colIndex) => {
               const key = `${rowIndex}-${colIndex}`;
               const isCurrent =
@@ -968,32 +1079,52 @@ export default function PsychWorkSheet2() {
                     padding: "10px",
                     backgroundColor: "#f9f9f9",
                     ...(borders[key] || {}),
-                    ...(isCurrent && isTimerRunning ? {
-                      boxShadow: "0 0 0 2px #3cb371"
-                    } : {}),
+                    ...(isCurrent && isTimerRunning
+                      ? {
+                          boxShadow: "0 0 0 2px #3cb371",
+                        }
+                      : {}),
                   }}
                 >
-                  <div style={{
-                    display: "flex",
-                    alignItems: "center",
-                    marginBottom: "5px",
-                  }}>
-                    <span style={{
-                      fontSize: "18px",
-                      marginRight: "5px",
-                    }}>{problem.top}</span>
-                    <span style={{
-                      fontSize: "18px",
-                      marginRight: "5px",
-                    }}>×</span>
-                    <span style={{
-                      fontSize: "18px",
-                      marginRight: "5px",
-                    }}>{problem.bottom}</span>
-                    <span style={{
-                      fontSize: "18px",
-                      marginRight: "5px",
-                    }}>=</span>
+                  <div
+                    style={{
+                      display: "flex",
+                      alignItems: "center",
+                      marginBottom: "5px",
+                    }}
+                  >
+                    <span
+                      style={{
+                        fontSize: "18px",
+                        marginRight: "5px",
+                      }}
+                    >
+                      {problem.top}
+                    </span>
+                    <span
+                      style={{
+                        fontSize: "18px",
+                        marginRight: "5px",
+                      }}
+                    >
+                      ×
+                    </span>
+                    <span
+                      style={{
+                        fontSize: "18px",
+                        marginRight: "5px",
+                      }}
+                    >
+                      {problem.bottom}
+                    </span>
+                    <span
+                      style={{
+                        fontSize: "18px",
+                        marginRight: "5px",
+                      }}
+                    >
+                      =
+                    </span>
                   </div>
                   <input
                     ref={inputRefs.current[rowIndex][colIndex]}
@@ -1019,13 +1150,15 @@ export default function PsychWorkSheet2() {
         ))}
 
         {/* Buttons */}
-        <div style={{
-          display: "flex",
-          justifyContent: "center",
-          gap: "20px",
-          marginTop: "30px",
-          marginBottom: "30px"
-        }}>
+        <div
+          style={{
+            display: "flex",
+            justifyContent: "center",
+            gap: "20px",
+            marginTop: "30px",
+            marginBottom: "30px",
+          }}
+        >
           <button
             onClick={handleSubmit}
             style={{
@@ -1057,18 +1190,20 @@ export default function PsychWorkSheet2() {
             Reset
           </button>
         </div>
-        
+
         {/* Results and experiment status */}
         {showResults && (
-          <div style={{
-            marginTop: "30px",
-            textAlign: "center",
-            padding: "15px",
-            backgroundColor: "#f9f9f9",
-            borderRadius: "5px",
-            boxShadow: "0 2px 4px rgba(0,0,0,0.05)",
-            marginBottom: "30px"
-          }}>
+          <div
+            style={{
+              marginTop: "30px",
+              textAlign: "center",
+              padding: "15px",
+              backgroundColor: "#f9f9f9",
+              borderRadius: "5px",
+              boxShadow: "0 2px 4px rgba(0,0,0,0.05)",
+              marginBottom: "30px",
+            }}
+          >
             <h3>Trial {submissionCount} Results:</h3>
             <p>
               You attempted to solve {Object.keys(answers).length} problems.
@@ -1076,12 +1211,14 @@ export default function PsychWorkSheet2() {
             <p>
               {Object.keys(answers).length > 0 ? (
                 <>
-                  You got {
-                    Object.keys(answers).filter(key => {
-                      const [rowIndex, colIndex] = key.split('-').map(Number);
+                  You got{" "}
+                  {
+                    Object.keys(answers).filter((key) => {
+                      const [rowIndex, colIndex] = key.split("-").map(Number);
                       return checkAnswer(rowIndex, colIndex);
                     }).length
-                  } correct!
+                  }{" "}
+                  correct!
                 </>
               ) : (
                 "You didn't answer any problems this round."
@@ -1121,23 +1258,27 @@ export default function PsychWorkSheet2() {
             )}
           </div>
         )}
-        
+
         {/* Completion message */}
         {worksheetCompleted && (
-          <div style={{
-            marginTop: "20px",
-            marginBottom: "40px",
-            textAlign: "center",
-            padding: "15px",
-            backgroundColor: "#e8f5e9",
-            borderRadius: "5px",
-            boxShadow: "0 2px 4px rgba(0,0,0,0.05)"
-          }}>
-            <p style={{
-              color: "#3cb371",
-              fontSize: "18px",
-              fontWeight: "bold"
-            }}>
+          <div
+            style={{
+              marginTop: "20px",
+              marginBottom: "40px",
+              textAlign: "center",
+              padding: "15px",
+              backgroundColor: "#e8f5e9",
+              borderRadius: "5px",
+              boxShadow: "0 2px 4px rgba(0,0,0,0.05)",
+            }}
+          >
+            <p
+              style={{
+                color: "#3cb371",
+                fontSize: "18px",
+                fontWeight: "bold",
+              }}
+            >
               Experiment completed! You've earned all 5 points.
             </p>
           </div>
@@ -1146,13 +1287,25 @@ export default function PsychWorkSheet2() {
 
       <style jsx>{`
         @keyframes fadeIn {
-          from { opacity: 0; transform: translateY(-10px); }
-          to { opacity: 1; transform: translateY(0); }
+          from {
+            opacity: 0;
+            transform: translateY(-10px);
+          }
+          to {
+            opacity: 1;
+            transform: translateY(0);
+          }
         }
-        
+
         @keyframes fadeOut {
-          from { opacity: 1; transform: translateY(0); }
-          to { opacity: 0; transform: translateY(-10px); }
+          from {
+            opacity: 1;
+            transform: translateY(0);
+          }
+          to {
+            opacity: 0;
+            transform: translateY(-10px);
+          }
         }
       `}</style>
     </div>

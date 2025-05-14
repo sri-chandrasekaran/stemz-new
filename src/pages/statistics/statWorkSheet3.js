@@ -2,7 +2,7 @@ import React, { useState, useRef, useEffect } from "react";
 import stemzLearningLogo from "../../assets/logo.png";
 import statsWorksheet4 from "../../assets/statsworksheet4.png";
 import { useNavigate } from "react-router-dom";
-import { call_api } from "../api";
+import { call_api } from "../../api";
 
 // Correct answers for student counts
 const correctCounts = {
