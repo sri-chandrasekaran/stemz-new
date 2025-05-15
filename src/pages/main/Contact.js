@@ -1,5 +1,5 @@
 // import React from 'react';
-// import Navbar from '../components/Navbar';
+// import Navbar from '../../components/Navbar';
 // import HeroOther from '../components/HeroOther'
 // import Form from '../components/Form'
 // import Footer from '../components/Footer'
@@ -19,14 +19,13 @@
 
 // export default Contact
 
-
-import React from 'react';
-import Navbar from '../../components/Navbar';
-import HeroOther from '../../components/HeroOther';
-import Form from '../../components/Form';
-import Footer from '../../components/Footer';
-import '../css/Home.css';
-import '../css/contact.css';
+import React from "react";
+import Navbar from "../../components/Navbar";
+import HeroOther from "../../components/HeroOther";
+import Form from "../../components/Form";
+import Footer from "../../components/Footer";
+import "../css/Home.css";
+import "../css/contact.css";
 
 const Contact = () => {
   return (
@@ -36,7 +35,7 @@ const Contact = () => {
       <div className="contact-container">
         <Form />
       </div>
-      <div style={{ paddingBottom: '100px' }} />
+      <div style={{ paddingBottom: "100px" }} />
       <Footer />
     </div>
   );

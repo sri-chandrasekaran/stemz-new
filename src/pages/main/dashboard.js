@@ -31,7 +31,8 @@ const Dashboard = () => {
   const [removingCourses, setRemovingCourses] = useState([]);
   // State for tooltip messages
   const [tooltipMessages, setTooltipMessages] = useState({});
-
+  // New state for user progress/points
+  const [userProgress, setUserProgress] = useState(null);
 
   // CSS for spinner animation
   useEffect(() => {
@@ -114,8 +115,22 @@ const Dashboard = () => {
       }
     };
 
+    // New function to fetch user progress/points
+    const fetchUserProgress = async () => {
+      try {
+        const response = await call_api(null, "points", "GET");
+        if (response) {
+          console.log("User progress data:", response);
+          setUserProgress(response);
+        }
+      } catch (error) {
+        console.error("Error fetching user progress:", error);
+      }
+    };
+
     fetchDashboardData();
     fetchRegisteredCourses();
+    fetchUserProgress(); // Add this call
   }, [isAuthenticated]);
 
   // Function to determine which image to use based on course name
@@ -166,7 +181,6 @@ const Dashboard = () => {
 
     return "enrolled-course-image";
   };
-
 
   // Remove course from dashboard
   const removeCourse = async (courseId) => {
@@ -236,7 +250,22 @@ const Dashboard = () => {
       <Dashbar />
       <div className="hello">
         <h1 className="hello-text">Hello {user?.name || ''}!</h1>
+        
+        {/* Points Dashboard - New Section */}
+        {userProgress && (
+          <div className="points-dashboard">
+            <div className="points-icon">🏆</div>
+            <div className="points-info">
+              <span className="points-count">{userProgress.totalPoints || 0}</span>
+              <span className="points-label">Total Learning Points</span>
+            </div>
+            <Link to="/self-paced-classes" className="points-button">
+              View All Courses
+            </Link>
+          </div>
+        )}
       </div>
+      
       <div className="grid-container-wrapper">
         <h3 className="header-courses">Courses Enrolled</h3>
   

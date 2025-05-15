@@ -2,11 +2,22 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
-    text-align: center;
-    margin-top: 570px;
-    margin-left: auto;
-    margin-right: auto;
+    align-items: center;
+    margin: 0 auto;
+    margin-top: 20px;
     max-width: 1450px;
+}
+
+#youtube-player-container {
+    width: 700px;
+    height: 480px;
+    margin: 0 auto;
+}
+
+.astrovid {
+    width: 100%;
+    height: 100%;
+    display: block;
 }
 
 .course-button {
@@ -17,6 +28,12 @@
     border: none;
     border-radius: 5px;
     cursor: pointer;
+    transition: background-color 0.3s ease;
+    font-size: 16px;
+}
+
+.course-button:hover {
+    background-color: #2a5c12;
 }
 
 .centered-container {
@@ -29,100 +46,114 @@
     width: 100%;
 }
 
-.question-overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.8); 
+/* Points status display */
+.points-status {
+    background-color: #f8f8f8;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 15px 20px;
+    margin: 20px auto;
+    margin-top: 590px;
+    max-width: 700px;
+    text-align: center;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.points-row {
     display: flex;
     justify-content: center;
     align-items: center;
-    z-index: 1000; 
-}
-
-.question {
-    background: white;
-    padding: 20px;
-    border-radius: 10px;
-    text-align: center;
-    max-width: 400px;
-    width: 100%;
-}
-
-.question p {
-    margin-bottom: 15px;
-    font-size: 18px;
-    color: black; 
-}
-
-.question input {
-    width: 100%;
-    padding: 10px;
-    margin-top: 10px;
-}
-
-.question button {
-    margin-top: 20px;
-    padding: 10px 20px;
-    background-color: #357717;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-}
-
-.question button:hover {
-    background-color: #2d6315;
-}
-
-.question button:before {
-    content: "✔";
-    margin-right: 10px;
-    font-size: 18px;
-}
-
-.expanding-textarea {
-    width: 100%;
-    padding: 10px;
-    margin-top: 10px;
-    border-radius: 5px;
-    border: 1px solid #ddd;
+    margin: 8px 0;
     font-size: 16px;
-    resize: none;
-    overflow-y: auto; 
-    min-height: 50px;
-    max-height: 200px;
-    line-height: 1.5;
 }
 
-.expanding-textarea:focus {
-    outline: none;
-    border-color: #357717;
+.points-row.total {
+    margin-top: 15px;
+    padding-top: 10px;
+    border-top: 1px solid #ddd;
+    font-weight: bold;
 }
 
-.expanding-textarea:focus-visible {
-    outline: none;
+.points-label {
+    flex: 1;
+    text-align: right;
+    padding-right: 10px;
 }
 
-.expanding-textarea::-webkit-scrollbar {
-    width: 8px; 
+.points-value {
+    flex: 1;
+    text-align: left;
+    font-weight: bold;
 }
 
-.expanding-textarea::-webkit-scrollbar-thumb {
-    background-color: #888;
-    border-radius: 10px;
+.points-earned {
+    flex: 1;
+    text-align: left;
+    color: #357717;
+    font-weight: bold;
+    padding-left: 10px;
 }
 
-.expanding-textarea::-webkit-scrollbar-thumb:hover {
-    background-color: #555;
+.saving-indicator, .saved-indicator {
+    font-size: 14px;
+    padding: 5px 10px;
+    margin-bottom: 10px;
+    border-radius: 4px;
+    text-align: center;
+}
+
+.saving-indicator {
+    background-color: #fff3cd;
+    color: #856404;
+}
+
+.saved-indicator {
+    background-color: #d4edda;
+    color: #155724;
+}
+
+/* Loading state */
+.loading-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 300px;
+    width: 100%;
+    margin-top: 570px;
+}
+
+.loading-spinner {
+    border: 5px solid #f3f3f3;
+    border-top: 5px solid #357717;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    animation: spin 1s linear infinite;
+    margin-bottom: 20px;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
 }
 
 @media screen and (max-width: 800px) {
+    .points-status {
+        margin-top: 50px;
+        width: 90%;
+        padding: 10px;
+    }
+    
     .vidbig {
-        margin-top: 500px;
-        margin-left: -80px;
+        margin-top: 20px;
+    }
+    
+    #youtube-player-container {
+        width: 100%;
+        max-width: 90vw;
+        height: auto;
+        aspect-ratio: 16/9;
     }
 
     .centered-container {
@@ -136,7 +167,22 @@
         margin: 5px;
         padding: 8px 16px;
         font-size: 1rem;
-        width: 100%;
-        max-width: 600px;
+        width: 80%;
+        max-width: 300px;
+    }
+    
+    .loading-container {
+        margin-top: 100px;
+    }
+    
+    .points-row {
+        flex-direction: column;
+        text-align: center;
+        margin: 15px 0;
+    }
+    
+    .points-label, .points-value, .points-earned {
+        text-align: center;
+        padding: 3px 0;
     }
 }

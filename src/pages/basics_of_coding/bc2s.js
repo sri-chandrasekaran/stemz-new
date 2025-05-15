@@ -1,30 +1,28 @@
-import React from 'react'
-import Navbar from '../../components/Navbar'
-import HeroOther from '../../components/HeroOther'
-import Footer from '../../components/Footer'
-import { Link } from 'react-router-dom';
-import '../css/allvideo.css';
+import React from "react";
+import VideoLessonPage from "../../components/VideoLessonPage";
 
 const bc2s = () => {
   return (
-    <div>
-      <Navbar/>
-      <HeroOther overlayText="Lesson 2: Conditional Statements & Loops"/>
-      <div className='vidbig'>
-        <iframe className='astrovid' width="700" height="480" src="https://www.youtube.com/embed/gG1fPD2TrnY" frameborder="0" allowfullscreen></iframe>
-        <div className='centered-container'>
-          <Link to="https://docs.google.com/presentation/d/e/2PACX-1vSzibStSCV4ZCIkakqRBA9QG1MewqaahZ5Pg78S_tL7GNJQeg7RFUDTepQIAZCCxmUhJVGS9SaDQ49D/pub?start=false&loop=false&delayms=3000" target="_blank" rel="noopener noreferrer">
-            <button className="course-button">Slideshow</button>
-          </Link>
-          <Link to="https://docs.google.com/document/d/e/2PACX-1vRvsi-PhT9-ytCbgSjy-hUf13vBwjkxcCV0p0WIWKCr47f1cGhW1S4TkQVL-vxRwf_oXfX4rE3UhX3A/pub" target="_blank" rel="noopener noreferrer">
-            <button className="course-button">Student Notes</button>
-          </Link>
-        </div>
-      </div>
-      <div style={{ paddingBottom: '200px' }} />
-      <Footer/>
-    </div>
-  )
-}
+    <VideoLessonPage
+      lessonTitle="Lesson 2: Conditional Statements & Loops"
+      lessonNumber="lesson2"
+      courseKey="basicsOfCoding"
+      videoUrl="gG1fPD2TrnY"
+      // Resource URLs and paths
+      slideshowUrl="https://docs.google.com/presentation/d/e/2PACX-1vSzibStSCV4ZCIkakqRBA9QG1MewqaahZ5Pg78S_tL7GNJQeg7RFUDTepQIAZCCxmUhJVGS9SaDQ49D/pub?start=false&loop=false&delayms=3000"
+      worksheetPath={null}
+      quizPath={null}
+      // Notes configuration
+      notesUrl="https://docs.google.com/document/d/e/2PACX-1vRvsi-PhT9-ytCbgSjy-hUf13vBwjkxcCV0p0WIWKCr47f1cGhW1S4TkQVL-vxRwf_oXfX4rE3UhX3A/pub"
+      notesLabel="Student Notes"
+      // Points configuration
+      maxVideoPoints={7}
+      worksheetPoints={0}
+      completionThreshold={95}
+      // Version type
+      isParentVersion={false}
+    />
+  );
+};
 
-export default bc2s
+export default bc2s;

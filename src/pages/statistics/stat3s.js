@@ -1,33 +1,28 @@
-import React from 'react'
-import Navbar from '../../components/Navbar'
-import HeroOther from '../../components/HeroOther'
-import Footer from '../../components/Footer'
-import { Link } from 'react-router-dom';
-import '../css/allvideo.css';
+import React from "react";
+import VideoLessonPage from "../../components/VideoLessonPage";
 
-const es1s = () => {
+const stat3s = () => {
   return (
-    <div>
-      <Navbar/>
-      <HeroOther overlayText="Lesson 3: Advanced Percents"/>
-      <div className='vidbig'>
-        <iframe className='astrovid' width="700" height="480" src="https://www.youtube.com/embed/WY7m3HsZf0k" frameborder="0" allowfullscreen></iframe>
-        <div className='centered-container'>
-          <Link to="https://docs.google.com/presentation/d/e/2PACX-1vTAhU91EJ_z6iX-djK_T7sbUCHF8hQUWOR6uCK4GgM1v0725AOGG_LW97hQoFwQvNwQNH_DlBqJHcCV/pub?start=false&loop=false&delayms=3000" target="_blank" rel="noopener noreferrer">
-            <button className="course-button">Slideshow</button>
-          </Link>
-          <Link to="/statworksheet2"> {}
-            <button className="course-button">Worksheet</button>
-          </Link>
-          <Link to="https://docs.google.com/document/d/e/2PACX-1vSIUzrGRC5VAc1ZHeVUJF-xrFpY9-M9CJ6gXZsZ3oxd6btLRCWb_jCll0Y_aWKvRU3SMUC0voYTQbnc/pub" target="_blank" rel="noopener noreferrer">
-            <button className="course-button">Student Notes</button>
-          </Link>
-        </div>
-      </div>
-      <div style={{ paddingBottom: '200px' }} />
-      <Footer/>
-    </div>
-  )
-}
+    <VideoLessonPage
+      lessonTitle="Lesson 3: Advanced Percents"
+      lessonNumber="lesson3"
+      courseKey="statistics"
+      videoUrl="WY7m3HsZf0k"
+      // Resource URLs and paths
+      slideshowUrl="https://docs.google.com/presentation/d/e/2PACX-1vTAhU91EJ_z6iX-djK_T7sbUCHF8hQUWOR6uCK4GgM1v0725AOGG_LW97hQoFwQvNwQNH_DlBqJHcCV/pub?start=false&loop=false&delayms=3000"
+      worksheetPath="/statworksheet2"
+      quizPath={null}
+      // Notes configuration
+      notesUrl="https://docs.google.com/document/d/e/2PACX-1vSIUzrGRC5VAc1ZHeVUJF-xrFpY9-M9CJ6gXZsZ3oxd6btLRCWb_jCll0Y_aWKvRU3SMUC0voYTQbnc/pub"
+      notesLabel="Student Notes"
+      // Points configuration
+      maxVideoPoints={7}
+      worksheetPoints={5}
+      completionThreshold={95}
+      // Version type
+      isParentVersion={false}
+    />
+  );
+};
 
-export default es1s
+export default stat3s;

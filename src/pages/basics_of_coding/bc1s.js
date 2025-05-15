@@ -1,30 +1,28 @@
-import React from 'react'
-import Navbar from '../../components/Navbar'
-import HeroOther from '../../components/HeroOther'
-import Footer from '../../components/Footer'
-import { Link } from 'react-router-dom';
-import '../css/allvideo.css';
+import React from "react";
+import VideoLessonPage from "../../components/VideoLessonPage";
 
 const bc1s = () => {
   return (
-    <div>
-      <Navbar/>
-      <HeroOther overlayText="Lesson 1: Introduction to Scratch"/>
-      <div className='vidbig'>
-        <iframe className='astrovid' width="700" height="480" src="https://www.youtube.com/embed/t7CqLrelByA" frameborder="0" allowfullscreen></iframe>
-        <div className='centered-container'>
-          <Link to="https://docs.google.com/presentation/d/e/2PACX-1vS4npkowAwm_tsvN8WP6jaWYxGrgEN4BxtGBvEJvWj_j7HQB4Swp5ZZip5Mg7Qo1h4MMjboOM5mfqJe/pub?start=false&loop=false&delayms=3000" target="_blank" rel="noopener noreferrer">
-            <button className="course-button">Slideshow</button>
-          </Link>
-          <Link to="https://docs.google.com/document/d/e/2PACX-1vQ3PDkd9xakt8AH9CAshCvpVHHwvNrWuFhNlad8IAydFV0HfBc1PbI6BFt5P2FNtXwh3ro25NsE3Ape/pub" target="_blank" rel="noopener noreferrer">
-            <button className="course-button">Student Notes</button>
-          </Link>
-        </div>
-      </div>
-      <div style={{ paddingBottom: '200px' }} />
-      <Footer/>
-    </div>
-  )
-}
+    <VideoLessonPage
+      lessonTitle="Lesson 1: Introduction to Scratch"
+      lessonNumber="lesson1"
+      courseKey="basicsOfCoding"
+      videoUrl="t7CqLrelByA"
+      // Resource URLs and paths
+      slideshowUrl="https://docs.google.com/presentation/d/e/2PACX-1vS4npkowAwm_tsvN8WP6jaWYxGrgEN4BxtGBvEJvWj_j7HQB4Swp5ZZip5Mg7Qo1h4MMjboOM5mfqJe/pub?start=false&loop=false&delayms=3000"
+      worksheetPath={null} // No worksheet for this lesson
+      quizPath={null}
+      // Notes configuration
+      notesUrl="https://docs.google.com/document/d/e/2PACX-1vQ3PDkd9xakt8AH9CAshCvpVHHwvNrWuFhNlad8IAydFV0HfBc1PbI6BFt5P2FNtXwh3ro25NsE3Ape/pub"
+      notesLabel="Student Notes"
+      // Points configuration
+      maxVideoPoints={7}
+      worksheetPoints={0} // No worksheet points
+      completionThreshold={95}
+      // Version type
+      isParentVersion={false}
+    />
+  );
+};
 
-export default bc1s
+export default bc1s;
