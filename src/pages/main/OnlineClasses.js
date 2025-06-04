@@ -68,9 +68,11 @@ function OnlineClasses() {
       }
       
       try {
-        const response = await call_api(null, "user/courses", "GET");
-        if (response && response.length > 0) {
-          setStudentCourses(response.map(course => course._id));
+        const response = await call_api(null, "classrooms/user/getUserClassrooms", "GET");
+        console.log("User's registered courses:", response);
+        if (response && response.enrolled) {
+          const courseIds = response.enrolled.map(course => course._id).filter(id => id);
+          setStudentCourses(courseIds);
         }
         setLoading2(false);
       } catch (error) {
@@ -86,7 +88,7 @@ function OnlineClasses() {
   useEffect(() => {
     const getAllCourses = async () => {
       try {
-        const response = await call_api(null, "classrooms", "GET");
+        const response = await call_api(null, "classrooms/allIDs", "GET");
         if (response) {
           console.log("Courses:", response);
           setCourses(response);

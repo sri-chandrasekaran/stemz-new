@@ -3,6 +3,33 @@ const CORE_API_URL = "https://core-server-nine.vercel.app";
 // FOR LOCAL BACKEND DEVELOPMENTS
 // const CORE_API_URL = "http://localhost:3000";
 
+// Handle token expiration and redirect to login
+const handleTokenExpiration = (response, data) => {
+  const isTokenExpired = 
+    response.status === 401 || 
+    response.status === 403 || 
+    data?.message?.toLowerCase().includes('token') ||
+    data?.message?.toLowerCase().includes('unauthorized') ||
+    data?.message?.toLowerCase().includes('expired') ||
+    data?.error?.toLowerCase().includes('token') ||
+    data?.error?.toLowerCase().includes('unauthorized');
+
+  if (isTokenExpired) {
+    // Clear expired token
+    localStorage.removeItem('token');
+    
+    // Redirect to login with return URL
+    const currentPath = window.location.pathname;
+    const returnUrl = encodeURIComponent(currentPath);
+    const message = encodeURIComponent('Your session has expired. Please log in again.');
+    
+    window.location.href = `/login?returnUrl=${returnUrl}&message=${message}`;
+    return true;
+  }
+  
+  return false;
+};
+
 function call_api(payload, target, method) {
   const url = CORE_API_URL + "/api/" + target;
   const token = localStorage.getItem("token");
@@ -11,31 +38,57 @@ function call_api(payload, target, method) {
     "Content-Type": "application/json",
   };
 
-  // Add token if exists
   if (token) {
     headers["Authorization"] = `Bearer ${token}`;
   }
 
-  switch (method) {
-    case "GET":
-      return fetch(url, {
-        method: "GET",
-        headers: headers,
-      }).then((response) => response.json());
+  const handleResponse = async (response) => {
+    let data;
+    
+    try {
+      data = await response.json();
+    } catch (error) {
+      data = { 
+        message: response.statusText || 'Unknown error',
+        status: response.status 
+      };
+    }
+    
+    // Check for token expiration first
+    if (handleTokenExpiration(response, data)) {
+      const error = new Error('Token expired - redirecting to login');
+      error.response = {
+        status: response.status,
+        statusText: response.statusText,
+        data: data
+      };
+      throw error;
+    }
+    
+    // Handle other HTTP errors
+    if (!response.ok) {
+      const error = new Error(`HTTP ${response.status}: ${response.statusText}`);
+      error.response = {
+        status: response.status,
+        statusText: response.statusText,
+        data: data
+      };
+      throw error;
+    }
+    
+    return data;
+  };
 
-    case "POST":
-      return fetch(url, {
-        method: "POST",
-        headers: headers,
-        body: payload ? JSON.stringify(payload) : undefined, // Only add body if payload exists
-      }).then(async (response) => {
-        const data = await response.json();
-        console.log("API Response:", data); // Debug log
-        return data;
-      });
-    default:
-      return Promise.reject(new Error("Unsupported method")); // Handle unsupported methods
+  const fetchOptions = {
+    method: method,
+    headers: headers,
+  };
+
+  if (["POST", "PUT", "PATCH", "DELETE"].includes(method) && payload) {
+    fetchOptions.body = JSON.stringify(payload);
   }
+
+  return fetch(url, fetchOptions).then(handleResponse);
 }
 
 module.exports = { call_api };
