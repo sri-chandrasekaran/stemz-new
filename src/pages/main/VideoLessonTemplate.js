@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
-import Navbar from '../components/Navbar';
-import HeroOther from '../components/HeroOther';
-import Footer from '../components/Footer';
+import Navbar from '../../components/Navbar';
+import HeroOther from '../../components/HeroOther';
+import Footer from '../../components/Footer';
 import { Link, useNavigate, useLocation } from 'react-router-dom';
-import { useVideoProgress } from './VideoProgressTracker';
+import { useVideoProgress } from '../../utils/VideoProgressTracker';
 import './css/allvideo.css';
 
 /**

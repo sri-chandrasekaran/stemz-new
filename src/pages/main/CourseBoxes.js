@@ -1,7 +1,7 @@
 import React from 'react';
-import Navbar from '../components/Navbar';
-import HeroOther from '../components/HeroOther';
-import Footer from '../components/Footer';
+import Navbar from '../../components/Navbar';
+import HeroOther from '../../components/HeroOther';
+import Footer from '../../components/Footer';
 import PaymentComponent from './PayPalButton';
 import CourseBox from '../assets/course-boxes.png';
 import './css/courseboxes.css';
