@@ -6,8 +6,7 @@ import Footer from "../../components/Footer";
 import Quiz from "../../components/Quiz";
 import { call_api } from "../../api";
 
-
-const Statquiz = () => {
+const Astroquiz = () => {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [loading, setLoading] = useState(true);
   const navigate = useNavigate();
@@ -49,7 +48,7 @@ const Statquiz = () => {
     return (
       <div>
         <Navbar />
-        <HeroOther overlayText="Statistics Quiz" />
+        <HeroOther overlayText="Astronomy Quiz" />
         <div className="loading-container">
           <div className="loading-spinner"></div>
           <p>Loading quiz content...</p>
@@ -62,13 +61,13 @@ const Statquiz = () => {
   return (
     <div>
       <Navbar />
-      <HeroOther overlayText="Statistics Quiz" />
+      <HeroOther overlayText="Astronomy Quiz" />
       <div className="vidbig">
         {isAuthenticated && (
           <Quiz
-            src="/assets/statquiz.json"
-            courseKey="statistics"
-            lessonNumber="lesson5"
+            src="/assets/astroquiz.json"
+            courseKey="astronomy"
+            lessonNumber="lesson4"
           />
         )}
       </div>
@@ -78,4 +77,4 @@ const Statquiz = () => {
   );
 };
 
-export default Statquiz;
+export default Astroquiz;
