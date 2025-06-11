@@ -13,9 +13,9 @@ const Stat4s = lazy(() => import('../pages/statistics/Stat4s'));
 const Stat5p = lazy(() => import('../pages/statistics/Stat5p'));
 const Stat5s = lazy(() => import('../pages/statistics/Stat5s'));
 const StatQuiz = lazy(() => import('../pages/statistics/StatQuiz'));
-const StatWorkSheet1 = lazy(() => import('../pages/statistics/StatWorksheet1'));
-const StatWorkSheet2 = lazy(() => import('../pages/statistics/StatWorksheet2'));
-const StatWorkSheet3 = lazy(() => import('../pages/statistics/StatWorksheet3'));
+const StatWorksheet1 = lazy(() => import('../pages/statistics/StatWorksheet1'));
+const StatWorksheet2 = lazy(() => import('../pages/statistics/StatWorksheet2'));
+const StatWorksheet3 = lazy(() => import('../pages/statistics/StatWorksheet3'));
 
 // Define route configuration
 const statisticsRoutes = [
@@ -30,9 +30,9 @@ const statisticsRoutes = [
   { path: "/stat5p", component: Stat5p },
   { path: "/stat5s", component: Stat5s },
   { path: "/statquiz", component: StatQuiz },
-  { path: "/statworksheet1", component: StatWorkSheet1 },
-  { path: "/statworksheet2", component: StatWorkSheet2 },
-  { path: "/statworksheet3", component: StatWorkSheet3 },
+  { path: "/statworksheet1", component: StatWorksheet1 },
+  { path: "/statworksheet2", component: StatWorksheet2 },
+  { path: "/statworksheet3", component: StatWorksheet3 },
 ];
 
 // Route component for direct usage

@@ -2,9 +2,9 @@ import React, { lazy, Suspense } from 'react';
 import { Routes, Route } from 'react-router-dom';
 
 // Lazy load components
-const ZooWorkSheet1 = lazy(() => import('../pages/zoology/ZooWorksheet1'));
-const ZooWorkSheet2 = lazy(() => import('../pages/zoology/ZooWorksheet2'));
-const ZooWorkSheet3 = lazy(() => import('../pages/zoology/ZooWorksheet3'));
+const ZooWorksheet1 = lazy(() => import('../pages/zoology/ZooWorksheet1'));
+const ZooWorksheet2 = lazy(() => import('../pages/zoology/ZooWorksheet2'));
+const ZooWorksheet3 = lazy(() => import('../pages/zoology/ZooWorksheet3'));
 const Zoo1p = lazy(() => import('../pages/zoology/Zoo1p'));
 const Zoo1s = lazy(() => import('../pages/zoology/Zoo1s'));
 const Zoo2p = lazy(() => import('../pages/zoology/Zoo2p'));
@@ -30,9 +30,9 @@ const zoologyRoutes = [
   { path: "/zoo5p", component: Zoo5p },
   { path: "/zoo5s", component: Zoo5s },
   { path: "/zooquiz", component: ZooQuiz },
-  { path: "/zooworksheet1", component: ZooWorkSheet1 },
-  { path: "/zooworksheet2", component: ZooWorkSheet2 },
-  { path: "/zooworksheet3", component: ZooWorkSheet3 },
+  { path: "/zooworksheet1", component: ZooWorksheet1 },
+  { path: "/zooworksheet2", component: ZooWorksheet2 },
+  { path: "/zooworksheet3", component: ZooWorksheet3 },
 ];
 
 // Route component for direct usage

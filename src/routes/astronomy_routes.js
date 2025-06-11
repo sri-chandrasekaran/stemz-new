@@ -12,7 +12,7 @@ const Astrovid4s = lazy(() => import('../pages/astronomy/Astrovid4s'));
 const Astrovid4p = lazy(() => import('../pages/astronomy/Astrovid4p'));
 const AstroWorksheet1 = lazy(() => import('../pages/astronomy/AstroWorksheet1'));
 const AstroWorksheet2 = lazy(() => import('../pages/astronomy/AstroWorksheet2'));
-const Astroquiz = lazy(() => import('../pages/astronomy/AstroQuiz'));
+const AstroQuiz = lazy(() => import('../pages/astronomy/AstroQuiz'));
 
 // Define route configuration
 const astronomyRoutes = [
@@ -24,9 +24,9 @@ const astronomyRoutes = [
   { path: "/astrovid3p", component: Astrovid3p },
   { path: "/astrovid4s", component: Astrovid4s },
   { path: "/astrovid4p", component: Astrovid4p },
-  { path: "/astroWorksheet1", component: AstroWorksheet1 },
-  { path: "/astroWorksheet2", component: AstroWorksheet2 },
-  { path: "/astroquiz", component: Astroquiz },
+  { path: "/astroworksheet1", component: AstroWorksheet1 },
+  { path: "/astroworksheet2", component: AstroWorksheet2 },
+  { path: "/astroquiz", component: AstroQuiz },
 ];
 
 // Route component for direct usage

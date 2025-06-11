@@ -5,14 +5,14 @@ import { Routes, Route } from 'react-router-dom';
 const Bio1 = lazy(() => import('../pages/biochemistry/Biochem1'));
 const Bio2 = lazy(() => import('../pages/biochemistry/Biochem2'));
 const BioQuiz = lazy(() => import('../pages/biochemistry/BiochemQuiz'));
-const BiochemWorkSheet = lazy(() => import('../pages/biochemistry/BiochemWorksheet'));
+const BiochemWorksheet = lazy(() => import('../pages/biochemistry/BiochemWorksheet'));
 
 // Define route configuration
 const biochemistryRoutes = [
   { path: "/bio1", component: Bio1 },
   { path: "/bio2", component: Bio2 },
   { path: "/bioquiz", component: BioQuiz },
-  { path: "/biochemworksheet", component: BiochemWorkSheet },
+  { path: "/biochemworksheet", component: BiochemWorksheet },
 ];
 
 // Route component for direct usage
