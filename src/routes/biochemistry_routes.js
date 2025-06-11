@@ -2,10 +2,10 @@ import React, { lazy, Suspense } from 'react';
 import { Routes, Route } from 'react-router-dom';
 
 // Lazy load components
-const Bio1 = lazy(() => import('../pages/biochemistry/bio1'));
-const Bio2 = lazy(() => import('../pages/biochemistry/bio2'));
-const BioQuiz = lazy(() => import('../pages/biochemistry/Bioquiz'));
-const BiochemWorkSheet = lazy(() => import('../pages/biochemistry/BiochemWorkSheet'));
+const Bio1 = lazy(() => import('../pages/biochemistry/Biochem1'));
+const Bio2 = lazy(() => import('../pages/biochemistry/Biochem2'));
+const BioQuiz = lazy(() => import('../pages/biochemistry/BiochemQuiz'));
+const BiochemWorkSheet = lazy(() => import('../pages/biochemistry/BiochemWorksheet'));
 
 // Define route configuration
 const biochemistryRoutes = [

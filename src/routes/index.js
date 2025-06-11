@@ -27,15 +27,15 @@ const Zoology = lazy(() => import("../pages/zoology/Zoology"));
 
 // Subject page routes
 const subjectRoutes = [
-  { path: "/astronomy", component: Astronomy },
-  { path: "/basics-of-coding", component: BasicsOfCoding },
-  { path: "/biochemistry", component: Biochemistry },
-  { path: "/chemistry", component: Chemistry },
-  { path: "/circuits", component: Circuits },
-  { path: "/environmental-science", component: EnvironmentalScience },
-  { path: "/psychology", component: Psychology },
-  { path: "/statistics", component: Statistics },
-  { path: "/zoology", component: Zoology },
+  { path: "/Astronomy", component: Astronomy },
+  { path: "/BasicsOfCoding", component: BasicsOfCoding },
+  { path: "/Biochemistry", component: Biochemistry },
+  { path: "/Chemistry", component: Chemistry },
+  { path: "/Circuits", component: Circuits },
+  { path: "/EnvironmentalScience", component: EnvironmentalScience },
+  { path: "/Psychology", component: Psychology },
+  { path: "/Statistics", component: Statistics },
+  { path: "/Zoology", component: Zoology },
 ];
 
 // Combine all routes

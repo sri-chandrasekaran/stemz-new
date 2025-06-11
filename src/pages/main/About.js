@@ -1,6 +1,6 @@
 import React from 'react';
 import '../css/About.css';
-import '../css/september.css';
+import '../css/September.css';
 import HeroOther from '../../components/HeroOther';
 import Navbar from '../../components/Navbar'
 import Footer from '../../components/Footer'

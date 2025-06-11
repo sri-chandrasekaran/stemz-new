@@ -4,7 +4,7 @@ import HeroOther from '../components/HeroOther';
 import Footer from '../components/Footer';
 import { Link, useNavigate } from 'react-router-dom';
 import { call_api } from '../api';
-import '../routes/css/allvideo.css';
+import '../pages/css/Allvideo.css';
 
 /* global YT */  // Tell ESLint that YT is a global variable
 

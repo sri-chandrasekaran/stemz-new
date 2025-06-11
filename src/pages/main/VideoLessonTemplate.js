@@ -4,7 +4,7 @@ import HeroOther from '../../components/HeroOther';
 import Footer from '../../components/Footer';
 import { Link, useNavigate, useLocation } from 'react-router-dom';
 import { useVideoProgress } from '../../utils/VideoProgressTracker';
-import './css/allvideo.css';
+import '../../pages/css/Allvideo.css';
 
 /**
  * Template for video lesson pages

@@ -2,12 +2,12 @@ import React, { useState, useEffect } from "react";
 import Navbar from "../../components/Navbar";
 import HeroOther from "../../components/HeroOther";
 import Footer from "../../components/Footer";
-import Psychology from "../../assets/psych.jpeg";
+import Coding from "../../assets/coding.jpg";
 import { Link, useNavigate } from "react-router-dom";
-import "../../routes/css/AllClassHomePage.css";
+import "../css/AllClassHomePage.css";
 import { call_api } from "../../api";
 
-const PsychologyPage = () => {
+const BasicsOfCoding = () => {
   const [courseProgress, setCourseProgress] = useState(null);
   const [loading, setLoading] = useState(true);
   const [isAuthenticated, setIsAuthenticated] = useState(false);
@@ -51,12 +51,12 @@ const PsychologyPage = () => {
       try {
         const response = await call_api(null, "points", "GET");
 
-        if (response && response.courses && response.courses.psychology) {
+        if (response && response.courses && response.courses.basicsOfCoding) {
           console.log(
-            "Psychology course progress:",
-            response.courses.psychology
+            "Basics of Coding course progress:",
+            response.courses.basicsOfCoding
           );
-          setCourseProgress(response.courses.psychology);
+          setCourseProgress(response.courses.basicsOfCoding);
           setLoading(false);
         }
       } catch (err) {
@@ -108,7 +108,7 @@ const PsychologyPage = () => {
     return (
       <div>
         <Navbar />
-        <HeroOther overlayText="Psychology" />
+        <HeroOther overlayText="Basics of Coding" />
         <div className="loading-container">
           <div className="loading-spinner"></div>
           <p>Loading course content...</p>
@@ -121,16 +121,17 @@ const PsychologyPage = () => {
   return (
     <div>
       <Navbar />
-      <HeroOther overlayText="Psychology" />
-      <img src={Psychology} alt="Psychology" className="course-img" />
+      <HeroOther overlayText="Basics of Coding" />
+      <img src={Coding} alt="Basics of Coding" className="course-img" />
       <div className="course-description">
         <h2>Recommended Grade Level: 2nd - 5th Grade</h2>
         <h2>Length: 4 Lessons, 1 hour each</h2>
         <h2>
-          In this course we will explore various subjects of psychology
-          including how the brain works, memory, and mind tricks.
+          In this course we will learn about movement, variables, conditional
+          statements and many more, using Scratch. No prior experience is
+          needed!
         </h2>
-        <h3>Creator: Taleen Shomar</h3>
+        <h3>Creator: Sri Chandrasekaran</h3>
 
         <div className="points-display">
           <p
@@ -153,14 +154,14 @@ const PsychologyPage = () => {
         <h1>Student-Led Lessons</h1>
         <div className="lesson-grid">
           <div className="lesson-item">
-            <Link to="/psych1s" onClick={scrollToTop} className="lesson-link">
+            <Link to="/bc1s" onClick={scrollToTop} className="lesson-link">
               <img
-                src="https://i.ytimg.com/vi/TjGatGI4CJM/mqdefault.jpg"
+                src="https://i.ytimg.com/vi/t7CqLrelByA/mqdefault.jpg"
                 alt="Lesson 1 Thumbnail"
                 className="lesson-thumbnail"
               />
               <h3 className="lesson-title">
-                Lesson 1: Psychology & Scientific Method
+                Lesson 1: Introduction to Scratch
               </h3>
             </Link>
             <div
@@ -181,71 +182,46 @@ const PsychologyPage = () => {
           </div>
 
           <div className="lesson-item">
-            <Link to="/psych2s" onClick={scrollToTop} className="lesson-link">
+            <Link to="/bc2s" onClick={scrollToTop} className="lesson-link">
               <img
-                src="https://i.ytimg.com/vi/ieBDGtmN2fI/mqdefault.jpg"
+                src="https://i.ytimg.com/vi/gG1fPD2TrnY/mqdefault.jpg"
                 alt="Lesson 2 Thumbnail"
                 className="lesson-thumbnail"
               />
-              <h3 className="lesson-title">Lesson 2: How the Brain Works</h3>
+              <h3 className="lesson-title">
+                Lesson 2: Conditional Statements & Loops
+              </h3>
             </Link>
-            <div
-              className={
-                isLessonCompleted("lesson2") || getLessonPoints("lesson2") >= 7
-                  ? "lesson-points completed"
-                  : "lesson-points"
-              }
-            >
-              <p>
-                Points: {getLessonPoints("lesson2")}{" "}
-                {isLessonCompleted("lesson2") ? "(completed!)" : ""}
-              </p>
+            <div className="lesson-points">
+              <p>Points: {getLessonPoints("lesson2")}</p>
             </div>
           </div>
 
           <div className="lesson-item">
-            <Link to="/psych3s" onClick={scrollToTop} className="lesson-link">
+            <Link to="/bc3s" onClick={scrollToTop} className="lesson-link">
               <img
-                src="https://i.ytimg.com/vi/Y3OVQ2mD9mo/mqdefault.jpg"
+                src="https://i.ytimg.com/vi/qEcc3yjrwOI/mqdefault.jpg"
                 alt="Lesson 3 Thumbnail"
                 className="lesson-thumbnail"
               />
-              <h3 className="lesson-title">Lesson 3: Memory</h3>
+              <h3 className="lesson-title">Lesson 3: Wait & Sensors</h3>
             </Link>
-            <div
-              className={
-                isLessonCompleted("lesson3") || getLessonPoints("lesson3") >= 7
-                  ? "lesson-points completed"
-                  : "lesson-points"
-              }
-            >
-              <p>
-                Points: {getLessonPoints("lesson3")}{" "}
-                {isLessonCompleted("lesson3") ? "(completed!)" : ""}
-              </p>
+            <div className="lesson-points">
+              <p>Points: {getLessonPoints("lesson3")}</p>
             </div>
           </div>
 
           <div className="lesson-item">
-            <Link to="/psych4s" onClick={scrollToTop} className="lesson-link">
+            <Link to="/bc4s" onClick={scrollToTop} className="lesson-link">
               <img
-                src="https://i.ytimg.com/vi/0KVSJrtktCY/mqdefault.jpg"
+                src="https://i.ytimg.com/vi/6czRyGrNf_4/mqdefault.jpg"
                 alt="Lesson 4 Thumbnail"
                 className="lesson-thumbnail"
               />
-              <h3 className="lesson-title">Lesson 4: Mind Tricks</h3>
+              <h3 className="lesson-title">Lesson 4: Final Review</h3>
             </Link>
-            <div
-              className={
-                isLessonCompleted("lesson4") || getLessonPoints("lesson4") >= 7
-                  ? "lesson-points completed"
-                  : "lesson-points"
-              }
-            >
-              <p>
-                Points: {getLessonPoints("lesson4")}{" "}
-                {isLessonCompleted("lesson4") ? "(completed!)" : ""}
-              </p>
+            <div className="lesson-points">
+              <p>Points: {getLessonPoints("lesson4")}</p>
             </div>
           </div>
         </div>
@@ -255,14 +231,14 @@ const PsychologyPage = () => {
         <h1>Parent-Led Lessons</h1>
         <div className="lesson-grid">
           <div className="lesson-item">
-            <Link to="/psych1p" onClick={scrollToTop} className="lesson-link">
+            <Link to="/bc1p" onClick={scrollToTop} className="lesson-link">
               <img
-                src="https://i.ytimg.com/vi/TjGatGI4CJM/mqdefault.jpg"
+                src="https://i.ytimg.com/vi/t7CqLrelByA/mqdefault.jpg"
                 alt="Lesson 1 Thumbnail"
                 className="lesson-thumbnail"
               />
               <h3 className="lesson-title">
-                Lesson 1: Psychology & Scientific Method
+                Lesson 1: Introduction to Scratch
               </h3>
             </Link>
             <div
@@ -283,13 +259,15 @@ const PsychologyPage = () => {
           </div>
 
           <div className="lesson-item">
-            <Link to="/psych2p" onClick={scrollToTop} className="lesson-link">
+            <Link to="/bc2p" onClick={scrollToTop} className="lesson-link">
               <img
-                src="https://i.ytimg.com/vi/ieBDGtmN2fI/mqdefault.jpg"
+                src="https://i.ytimg.com/vi/gG1fPD2TrnY/mqdefault.jpg"
                 alt="Lesson 2 Thumbnail"
                 className="lesson-thumbnail"
               />
-              <h3 className="lesson-title">Lesson 2: How the Brain Works</h3>
+              <h3 className="lesson-title">
+                Lesson 2: Conditional Statements & Loops
+              </h3>
             </Link>
             <div
               className={
@@ -306,13 +284,13 @@ const PsychologyPage = () => {
           </div>
 
           <div className="lesson-item">
-            <Link to="/psych3p" onClick={scrollToTop} className="lesson-link">
+            <Link to="/bc3p" onClick={scrollToTop} className="lesson-link">
               <img
-                src="https://i.ytimg.com/vi/Y3OVQ2mD9mo/mqdefault.jpg"
+                src="https://i.ytimg.com/vi/qEcc3yjrwOI/mqdefault.jpg"
                 alt="Lesson 3 Thumbnail"
                 className="lesson-thumbnail"
               />
-              <h3 className="lesson-title">Lesson 3: Memory</h3>
+              <h3 className="lesson-title">Lesson 3: Wait & Sensors</h3>
             </Link>
             <div
               className={
@@ -329,13 +307,13 @@ const PsychologyPage = () => {
           </div>
 
           <div className="lesson-item">
-            <Link to="/psych4p" onClick={scrollToTop} className="lesson-link">
+            <Link to="/bc4p" onClick={scrollToTop} className="lesson-link">
               <img
-                src="https://i.ytimg.com/vi/0KVSJrtktCY/mqdefault.jpg"
+                src="https://i.ytimg.com/vi/6czRyGrNf_4/mqdefault.jpg"
                 alt="Lesson 4 Thumbnail"
                 className="lesson-thumbnail"
               />
-              <h3 className="lesson-title">Lesson 4: Mind Tricks</h3>
+              <h3 className="lesson-title">Lesson 4: Final Review</h3>
             </Link>
             <div
               className={
@@ -359,4 +337,4 @@ const PsychologyPage = () => {
   );
 };
 
-export default PsychologyPage;
+export default BasicsOfCoding;

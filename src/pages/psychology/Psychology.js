@@ -2,12 +2,12 @@ import React, { useState, useEffect } from "react";
 import Navbar from "../../components/Navbar";
 import HeroOther from "../../components/HeroOther";
 import Footer from "../../components/Footer";
-import Chemistry from "../../assets/chemistry.jpeg";
+import Psychology from "../../assets/psych.jpeg";
 import { Link, useNavigate } from "react-router-dom";
-import "../../routes/css/AllClassHomePage.css";
+import "../css/AllClassHomePage.css";
 import { call_api } from "../../api";
 
-const ChemistryPage = () => {
+const PsychologyPage = () => {
   const [courseProgress, setCourseProgress] = useState(null);
   const [loading, setLoading] = useState(true);
   const [isAuthenticated, setIsAuthenticated] = useState(false);
@@ -51,9 +51,12 @@ const ChemistryPage = () => {
       try {
         const response = await call_api(null, "points", "GET");
 
-        if (response && response.courses && response.courses.chemistry) {
-          console.log("Chemistry course progress:", response.courses.chemistry);
-          setCourseProgress(response.courses.chemistry);
+        if (response && response.courses && response.courses.psychology) {
+          console.log(
+            "Psychology course progress:",
+            response.courses.psychology
+          );
+          setCourseProgress(response.courses.psychology);
           setLoading(false);
         }
       } catch (err) {
@@ -105,7 +108,7 @@ const ChemistryPage = () => {
     return (
       <div>
         <Navbar />
-        <HeroOther overlayText="Chemistry" />
+        <HeroOther overlayText="Psychology" />
         <div className="loading-container">
           <div className="loading-spinner"></div>
           <p>Loading course content...</p>
@@ -118,18 +121,16 @@ const ChemistryPage = () => {
   return (
     <div>
       <Navbar />
-      <HeroOther overlayText="Chemistry" />
-      <img src={Chemistry} alt="Chemistry" className="course-img" />
+      <HeroOther overlayText="Psychology" />
+      <img src={Psychology} alt="Psychology" className="course-img" />
       <div className="course-description">
-        <h2>Recommended Grade Level: 3rd - 6th Grade</h2>
+        <h2>Recommended Grade Level: 2nd - 5th Grade</h2>
         <h2>Length: 4 Lessons, 1 hour each</h2>
         <h2>
-          In this course, your child will learn about matter, energy, and
-          chemical reactions. The course culminates in a final project that
-          serves as a launching pad to inspire your child to learn more! Parent
-          supervision needed.
+          In this course we will explore various subjects of psychology
+          including how the brain works, memory, and mind tricks.
         </h2>
-        <h3>Creator: Alice Gao</h3>
+        <h3>Creator: Taleen Shomar</h3>
 
         <div className="points-display">
           <p
@@ -149,16 +150,18 @@ const ChemistryPage = () => {
       </div>
 
       <div className="student-l1">
-        <h1>Parent-Led Lessons</h1>
+        <h1>Student-Led Lessons</h1>
         <div className="lesson-grid">
           <div className="lesson-item">
-            <Link to="/chem1" onClick={scrollToTop} className="lesson-link">
+            <Link to="/psych1s" onClick={scrollToTop} className="lesson-link">
               <img
-                src="https://i.ytimg.com/vi/qUcexzJnLew/mqdefault.jpg"
+                src="https://i.ytimg.com/vi/TjGatGI4CJM/mqdefault.jpg"
                 alt="Lesson 1 Thumbnail"
                 className="lesson-thumbnail"
               />
-              <h3 className="lesson-title">Lesson 1: Chemistry & Matter</h3>
+              <h3 className="lesson-title">
+                Lesson 1: Psychology & Scientific Method
+              </h3>
             </Link>
             <div
               className={
@@ -178,13 +181,13 @@ const ChemistryPage = () => {
           </div>
 
           <div className="lesson-item">
-            <Link to="/chem2" onClick={scrollToTop} className="lesson-link">
+            <Link to="/psych2s" onClick={scrollToTop} className="lesson-link">
               <img
-                src="https://i.ytimg.com/vi/EJpJLOAIHRc/mqdefault.jpg"
+                src="https://i.ytimg.com/vi/ieBDGtmN2fI/mqdefault.jpg"
                 alt="Lesson 2 Thumbnail"
                 className="lesson-thumbnail"
               />
-              <h3 className="lesson-title">Lesson 2: Molecules & Atoms</h3>
+              <h3 className="lesson-title">Lesson 2: How the Brain Works</h3>
             </Link>
             <div
               className={
@@ -201,13 +204,13 @@ const ChemistryPage = () => {
           </div>
 
           <div className="lesson-item">
-            <Link to="/chem3" onClick={scrollToTop} className="lesson-link">
+            <Link to="/psych3s" onClick={scrollToTop} className="lesson-link">
               <img
-                src="https://i.ytimg.com/vi/448XzSXabc4/mqdefault.jpg"
+                src="https://i.ytimg.com/vi/Y3OVQ2mD9mo/mqdefault.jpg"
                 alt="Lesson 3 Thumbnail"
                 className="lesson-thumbnail"
               />
-              <h3 className="lesson-title">Lesson 3: Chemical Reactions</h3>
+              <h3 className="lesson-title">Lesson 3: Memory</h3>
             </Link>
             <div
               className={
@@ -224,15 +227,115 @@ const ChemistryPage = () => {
           </div>
 
           <div className="lesson-item">
-            <Link to="/chem4" onClick={scrollToTop} className="lesson-link">
+            <Link to="/psych4s" onClick={scrollToTop} className="lesson-link">
               <img
-                src="https://i.ytimg.com/vi/NpQJoCQEa9U/mqdefault.jpg"
+                src="https://i.ytimg.com/vi/0KVSJrtktCY/mqdefault.jpg"
                 alt="Lesson 4 Thumbnail"
                 className="lesson-thumbnail"
               />
+              <h3 className="lesson-title">Lesson 4: Mind Tricks</h3>
+            </Link>
+            <div
+              className={
+                isLessonCompleted("lesson4") || getLessonPoints("lesson4") >= 7
+                  ? "lesson-points completed"
+                  : "lesson-points"
+              }
+            >
+              <p>
+                Points: {getLessonPoints("lesson4")}{" "}
+                {isLessonCompleted("lesson4") ? "(completed!)" : ""}
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div className="student-l1">
+        <h1>Parent-Led Lessons</h1>
+        <div className="lesson-grid">
+          <div className="lesson-item">
+            <Link to="/psych1p" onClick={scrollToTop} className="lesson-link">
+              <img
+                src="https://i.ytimg.com/vi/TjGatGI4CJM/mqdefault.jpg"
+                alt="Lesson 1 Thumbnail"
+                className="lesson-thumbnail"
+              />
               <h3 className="lesson-title">
-                Lesson 4: Putting It All Together
+                Lesson 1: Psychology & Scientific Method
               </h3>
+            </Link>
+            <div
+              className={
+                isLessonCompleted("lesson1") || getLessonPoints("lesson1") >= 10
+                  ? "lesson-points completed"
+                  : "lesson-points"
+              }
+            >
+              <p>
+                Points: {getLessonPoints("lesson1")}{" "}
+                {isLessonCompleted("lesson1") ||
+                getLessonPoints("lesson1") >= 10
+                  ? "(completed!)"
+                  : ""}
+              </p>
+            </div>
+          </div>
+
+          <div className="lesson-item">
+            <Link to="/psych2p" onClick={scrollToTop} className="lesson-link">
+              <img
+                src="https://i.ytimg.com/vi/ieBDGtmN2fI/mqdefault.jpg"
+                alt="Lesson 2 Thumbnail"
+                className="lesson-thumbnail"
+              />
+              <h3 className="lesson-title">Lesson 2: How the Brain Works</h3>
+            </Link>
+            <div
+              className={
+                isLessonCompleted("lesson2") || getLessonPoints("lesson2") >= 7
+                  ? "lesson-points completed"
+                  : "lesson-points"
+              }
+            >
+              <p>
+                Points: {getLessonPoints("lesson2")}{" "}
+                {isLessonCompleted("lesson2") ? "(completed!)" : ""}
+              </p>
+            </div>
+          </div>
+
+          <div className="lesson-item">
+            <Link to="/psych3p" onClick={scrollToTop} className="lesson-link">
+              <img
+                src="https://i.ytimg.com/vi/Y3OVQ2mD9mo/mqdefault.jpg"
+                alt="Lesson 3 Thumbnail"
+                className="lesson-thumbnail"
+              />
+              <h3 className="lesson-title">Lesson 3: Memory</h3>
+            </Link>
+            <div
+              className={
+                isLessonCompleted("lesson3") || getLessonPoints("lesson3") >= 7
+                  ? "lesson-points completed"
+                  : "lesson-points"
+              }
+            >
+              <p>
+                Points: {getLessonPoints("lesson3")}{" "}
+                {isLessonCompleted("lesson3") ? "(completed!)" : ""}
+              </p>
+            </div>
+          </div>
+
+          <div className="lesson-item">
+            <Link to="/psych4p" onClick={scrollToTop} className="lesson-link">
+              <img
+                src="https://i.ytimg.com/vi/0KVSJrtktCY/mqdefault.jpg"
+                alt="Lesson 4 Thumbnail"
+                className="lesson-thumbnail"
+              />
+              <h3 className="lesson-title">Lesson 4: Mind Tricks</h3>
             </Link>
             <div
               className={
@@ -256,4 +359,4 @@ const ChemistryPage = () => {
   );
 };
 
-export default ChemistryPage;
+export default PsychologyPage;

@@ -114,7 +114,7 @@ const Navbar = () => {
                             <Link to="/astronomy" onClick={scrollToTop}>Astronomy</Link>
                         </li>
                         <li>
-                            <Link to="/basics-of-coding" onClick={scrollToTop}>Basics of Coding</Link>
+                            <Link to="/basicsofcoding" onClick={scrollToTop}>Basics of Coding</Link>
                         </li>
                         <li>
                             <Link to="/biochemistry" onClick={scrollToTop}>Biochemistry</Link>
@@ -126,7 +126,7 @@ const Navbar = () => {
                             <Link to="/circuits" onClick={scrollToTop}>Circuits</Link>
                         </li>
                         <li>
-                            <Link to="/environmental-science" onClick={scrollToTop}>Environmental Science</Link>
+                            <Link to="/environmentalscience" onClick={scrollToTop}>Environmental Science</Link>
                         </li>
                         <li>
                             <Link to="/psychology" onClick={scrollToTop}>Psychology</Link>

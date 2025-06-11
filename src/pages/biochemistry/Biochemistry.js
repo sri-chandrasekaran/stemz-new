@@ -2,13 +2,12 @@ import React, { useState, useEffect } from "react";
 import Navbar from "../../components/Navbar";
 import HeroOther from "../../components/HeroOther";
 import Footer from "../../components/Footer";
-import EnvironmentalScience from "../../assets/environmentalscience.jpg";
+import Biochemistry from "../../assets/biochem.PNG";
 import { Link, useNavigate } from "react-router-dom";
-import "../../routes/css/AllClassHomePage.css";
-
+import "../css/AllClassHomePage.css";
 import { call_api } from "../../api";
 
-const EnvironmentalSciencePage = () => {
+const BiochemistryPage = () => {
   const [courseProgress, setCourseProgress] = useState(null);
   const [loading, setLoading] = useState(true);
   const [isAuthenticated, setIsAuthenticated] = useState(false);
@@ -52,16 +51,12 @@ const EnvironmentalSciencePage = () => {
       try {
         const response = await call_api(null, "points", "GET");
 
-        if (
-          response &&
-          response.courses &&
-          response.courses.environmentalScience
-        ) {
+        if (response && response.courses && response.courses.biochemistry) {
           console.log(
-            "Environmental Science course progress:",
-            response.courses.environmentalScience
+            "Biochemistry course progress:",
+            response.courses.biochemistry
           );
-          setCourseProgress(response.courses.environmentalScience);
+          setCourseProgress(response.courses.biochemistry);
           setLoading(false);
         }
       } catch (err) {
@@ -113,7 +108,7 @@ const EnvironmentalSciencePage = () => {
     return (
       <div>
         <Navbar />
-        <HeroOther overlayText="Environmental Science" />
+        <HeroOther overlayText="Biochemistry" />
         <div className="loading-container">
           <div className="loading-spinner"></div>
           <p>Loading course content...</p>
@@ -126,20 +121,17 @@ const EnvironmentalSciencePage = () => {
   return (
     <div>
       <Navbar />
-      <HeroOther overlayText="Environmental Science" />
-      <img
-        src={EnvironmentalScience}
-        alt="Environmental Science"
-        className="course-img"
-      />
+      <HeroOther overlayText="Biochemistry" />
+      <img src={Biochemistry} alt="Biochemistry" className="course-img" />
       <div className="course-description">
-        <h2>Recommended Grade Level: 2nd - 6th Grade</h2>
-        <h2>Length: 4 Lessons, 1 hour each</h2>
+        <h2>Recommended Grade Level: 3rd - 6th Grade</h2>
+        <h2>Length: 2 Lessons, 1 hour each</h2>
         <h2>
-          In this course, we will learn about biodiversity, the cycles of the
-          earth, pollution, recycling, and more!
+          In this course we will learn about molecules, atoms, proteins and
+          more; we encourage the completion of the Chemistry course prior!
+          Parent supervision is needed.
         </h2>
-        <h3>Creator: Ariana Leon, Belle Chang, Sehar Suleman</h3>
+        <h3>Creator: Alice Gao</h3>
 
         <div className="points-display">
           <p
@@ -159,16 +151,16 @@ const EnvironmentalSciencePage = () => {
       </div>
 
       <div className="student-l1">
-        <h1>Student-Led Lessons</h1>
+        <h1>Parent-Led Lessons</h1>
         <div className="lesson-grid">
           <div className="lesson-item">
-            <Link to="/es1s" onClick={scrollToTop} className="lesson-link">
+            <Link to="/bio1" onClick={scrollToTop} className="lesson-link">
               <img
-                src="https://i.ytimg.com/vi/_WRumK_NwfI/mqdefault.jpg"
+                src="https://i.ytimg.com/vi/Vo_1vhGWER8/mqdefault.jpg"
                 alt="Lesson 1 Thumbnail"
                 className="lesson-thumbnail"
               />
-              <h3 className="lesson-title">Lesson 1: Biomes</h3>
+              <h3 className="lesson-title">Lesson 1: Nucleic Acids</h3>
             </Link>
             <div
               className={
@@ -188,13 +180,15 @@ const EnvironmentalSciencePage = () => {
           </div>
 
           <div className="lesson-item">
-            <Link to="/es2s" onClick={scrollToTop} className="lesson-link">
+            <Link to="/bio2" onClick={scrollToTop} className="lesson-link">
               <img
-                src="https://i.ytimg.com/vi/mpu_qNfo-dM/mqdefault.jpg"
+                src="https://i.ytimg.com/vi/Vg1nWNNHhok/mqdefault.jpg"
                 alt="Lesson 2 Thumbnail"
                 className="lesson-thumbnail"
               />
-              <h3 className="lesson-title">Lesson 2: Cycles of the Earth</h3>
+              <h3 className="lesson-title">
+                Lesson 2: Proteins & Carbohydrates
+              </h3>
             </Link>
             <div
               className={
@@ -209,56 +203,6 @@ const EnvironmentalSciencePage = () => {
               </p>
             </div>
           </div>
-
-          <div className="lesson-item">
-            <Link to="/es3s" onClick={scrollToTop} className="lesson-link">
-              <img
-                src="https://i.ytimg.com/vi/3Q8WkWc_Y5M/mqdefault.jpg"
-                alt="Lesson 3 Thumbnail"
-                className="lesson-thumbnail"
-              />
-              <h3 className="lesson-title">
-                Lesson 3: Pollution in the Water & Air
-              </h3>
-            </Link>
-            <div
-              className={
-                isLessonCompleted("lesson3") || getLessonPoints("lesson3") >= 7
-                  ? "lesson-points completed"
-                  : "lesson-points"
-              }
-            >
-              <p>
-                Points: {getLessonPoints("lesson3")}{" "}
-                {isLessonCompleted("lesson3") ? "(completed!)" : ""}
-              </p>
-            </div>
-          </div>
-
-          <div className="lesson-item">
-            <Link to="/es4s" onClick={scrollToTop} className="lesson-link">
-              <img
-                src="https://i.ytimg.com/vi/-0xfaF9ca9k/mqdefault.jpg"
-                alt="Lesson 4 Thumbnail"
-                className="lesson-thumbnail"
-              />
-              <h3 className="lesson-title">
-                Lesson 4: 3 R's and the Environment
-              </h3>
-            </Link>
-            <div
-              className={
-                isLessonCompleted("lesson4") || getLessonPoints("lesson4") >= 7
-                  ? "lesson-points completed"
-                  : "lesson-points"
-              }
-            >
-              <p>
-                Points: {getLessonPoints("lesson4")}{" "}
-                {isLessonCompleted("lesson4") ? "(completed!)" : ""}
-              </p>
-            </div>
-          </div>
         </div>
       </div>
 
@@ -268,4 +212,4 @@ const EnvironmentalSciencePage = () => {
   );
 };
 
-export default EnvironmentalSciencePage;
+export default BiochemistryPage;

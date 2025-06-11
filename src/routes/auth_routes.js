@@ -4,7 +4,7 @@ import { Routes, Route } from 'react-router-dom';
 // Lazy load components
 const LoginForm = lazy(() => import('../pages/main/LoginForm'));
 const SignUpForm = lazy(() => import('../pages/main/SignUpForm'));
-const Dashboard = lazy(() => import('../pages/main/dashboard'));
+const Dashboard = lazy(() => import('../pages/main/Dashboard'));
 
 // Define route configuration
 const authRoutes = [

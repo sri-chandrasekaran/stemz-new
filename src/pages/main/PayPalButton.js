@@ -3,6 +3,8 @@ import { PayPalScriptProvider, PayPalButtons } from "@paypal/react-paypal-js";
 import emailjs from 'emailjs-com';
 
 const PaymentComponent = () => {
+  console.log("PaymentComponent is rendering");
+  console.log("PayPal Client ID:", process.env.REACT_APP_PAYPAL_CLIENT_ID);
   const [paymentStatus, setPaymentStatus] = useState(null);
 
   const initialOptions = {

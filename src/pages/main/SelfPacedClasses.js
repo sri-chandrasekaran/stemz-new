@@ -200,7 +200,7 @@ const SelfPacedClasses = () => {
             }`}
           >
             <Link
-              to="/basics-of-coding"
+              to="/basicsofcoding"
               onClick={scrollToTop}
               className="course-link"
             >
@@ -223,7 +223,7 @@ const SelfPacedClasses = () => {
                   </p>
                 )}
               </div>
-              <Link to="/basics-of-coding" onClick={scrollToTop}>
+              <Link to="/basicsofcoding" onClick={scrollToTop}>
                 <button className="cta-button spc-courses-button">
                   Access Lessons
                 </button>
@@ -353,7 +353,7 @@ const SelfPacedClasses = () => {
             }`}
           >
             <Link
-              to="/environmental-science"
+              to="/environmentalscience"
               onClick={scrollToTop}
               className="course-link"
             >
@@ -381,7 +381,7 @@ const SelfPacedClasses = () => {
                   </p>
                 )}
               </div>
-              <Link to="/environmental-science" onClick={scrollToTop}>
+              <Link to="/environmentalscience" onClick={scrollToTop}>
                 <button className="cta-button spc-courses-button">
                   Access Lessons
                 </button>

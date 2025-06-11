@@ -2,12 +2,12 @@ import React, { useState, useEffect } from "react";
 import Navbar from "../../components/Navbar";
 import HeroOther from "../../components/HeroOther";
 import Footer from "../../components/Footer";
-import Coding from "../../assets/coding.jpg";
+import Chemistry from "../../assets/chemistry.jpeg";
 import { Link, useNavigate } from "react-router-dom";
-import "../../routes/css/AllClassHomePage.css";
+import "../css/AllClassHomePage.css";
 import { call_api } from "../../api";
 
-const BasicsOfCoding = () => {
+const ChemistryPage = () => {
   const [courseProgress, setCourseProgress] = useState(null);
   const [loading, setLoading] = useState(true);
   const [isAuthenticated, setIsAuthenticated] = useState(false);
@@ -51,12 +51,9 @@ const BasicsOfCoding = () => {
       try {
         const response = await call_api(null, "points", "GET");
 
-        if (response && response.courses && response.courses.basicsOfCoding) {
-          console.log(
-            "Basics of Coding course progress:",
-            response.courses.basicsOfCoding
-          );
-          setCourseProgress(response.courses.basicsOfCoding);
+        if (response && response.courses && response.courses.chemistry) {
+          console.log("Chemistry course progress:", response.courses.chemistry);
+          setCourseProgress(response.courses.chemistry);
           setLoading(false);
         }
       } catch (err) {
@@ -108,7 +105,7 @@ const BasicsOfCoding = () => {
     return (
       <div>
         <Navbar />
-        <HeroOther overlayText="Basics of Coding" />
+        <HeroOther overlayText="Chemistry" />
         <div className="loading-container">
           <div className="loading-spinner"></div>
           <p>Loading course content...</p>
@@ -121,17 +118,18 @@ const BasicsOfCoding = () => {
   return (
     <div>
       <Navbar />
-      <HeroOther overlayText="Basics of Coding" />
-      <img src={Coding} alt="Basics of Coding" className="course-img" />
+      <HeroOther overlayText="Chemistry" />
+      <img src={Chemistry} alt="Chemistry" className="course-img" />
       <div className="course-description">
-        <h2>Recommended Grade Level: 2nd - 5th Grade</h2>
+        <h2>Recommended Grade Level: 3rd - 6th Grade</h2>
         <h2>Length: 4 Lessons, 1 hour each</h2>
         <h2>
-          In this course we will learn about movement, variables, conditional
-          statements and many more, using Scratch. No prior experience is
-          needed!
+          In this course, your child will learn about matter, energy, and
+          chemical reactions. The course culminates in a final project that
+          serves as a launching pad to inspire your child to learn more! Parent
+          supervision needed.
         </h2>
-        <h3>Creator: Sri Chandrasekaran</h3>
+        <h3>Creator: Alice Gao</h3>
 
         <div className="points-display">
           <p
@@ -151,95 +149,16 @@ const BasicsOfCoding = () => {
       </div>
 
       <div className="student-l1">
-        <h1>Student-Led Lessons</h1>
-        <div className="lesson-grid">
-          <div className="lesson-item">
-            <Link to="/bc1s" onClick={scrollToTop} className="lesson-link">
-              <img
-                src="https://i.ytimg.com/vi/t7CqLrelByA/mqdefault.jpg"
-                alt="Lesson 1 Thumbnail"
-                className="lesson-thumbnail"
-              />
-              <h3 className="lesson-title">
-                Lesson 1: Introduction to Scratch
-              </h3>
-            </Link>
-            <div
-              className={
-                isLessonCompleted("lesson1") || getLessonPoints("lesson1") >= 10
-                  ? "lesson-points completed"
-                  : "lesson-points"
-              }
-            >
-              <p>
-                Points: {getLessonPoints("lesson1")}{" "}
-                {isLessonCompleted("lesson1") ||
-                getLessonPoints("lesson1") >= 10
-                  ? "(completed!)"
-                  : ""}
-              </p>
-            </div>
-          </div>
-
-          <div className="lesson-item">
-            <Link to="/bc2s" onClick={scrollToTop} className="lesson-link">
-              <img
-                src="https://i.ytimg.com/vi/gG1fPD2TrnY/mqdefault.jpg"
-                alt="Lesson 2 Thumbnail"
-                className="lesson-thumbnail"
-              />
-              <h3 className="lesson-title">
-                Lesson 2: Conditional Statements & Loops
-              </h3>
-            </Link>
-            <div className="lesson-points">
-              <p>Points: {getLessonPoints("lesson2")}</p>
-            </div>
-          </div>
-
-          <div className="lesson-item">
-            <Link to="/bc3s" onClick={scrollToTop} className="lesson-link">
-              <img
-                src="https://i.ytimg.com/vi/qEcc3yjrwOI/mqdefault.jpg"
-                alt="Lesson 3 Thumbnail"
-                className="lesson-thumbnail"
-              />
-              <h3 className="lesson-title">Lesson 3: Wait & Sensors</h3>
-            </Link>
-            <div className="lesson-points">
-              <p>Points: {getLessonPoints("lesson3")}</p>
-            </div>
-          </div>
-
-          <div className="lesson-item">
-            <Link to="/bc4s" onClick={scrollToTop} className="lesson-link">
-              <img
-                src="https://i.ytimg.com/vi/6czRyGrNf_4/mqdefault.jpg"
-                alt="Lesson 4 Thumbnail"
-                className="lesson-thumbnail"
-              />
-              <h3 className="lesson-title">Lesson 4: Final Review</h3>
-            </Link>
-            <div className="lesson-points">
-              <p>Points: {getLessonPoints("lesson4")}</p>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div className="student-l1">
         <h1>Parent-Led Lessons</h1>
         <div className="lesson-grid">
           <div className="lesson-item">
-            <Link to="/bc1p" onClick={scrollToTop} className="lesson-link">
+            <Link to="/chem1" onClick={scrollToTop} className="lesson-link">
               <img
-                src="https://i.ytimg.com/vi/t7CqLrelByA/mqdefault.jpg"
+                src="https://i.ytimg.com/vi/qUcexzJnLew/mqdefault.jpg"
                 alt="Lesson 1 Thumbnail"
                 className="lesson-thumbnail"
               />
-              <h3 className="lesson-title">
-                Lesson 1: Introduction to Scratch
-              </h3>
+              <h3 className="lesson-title">Lesson 1: Chemistry & Matter</h3>
             </Link>
             <div
               className={
@@ -259,15 +178,13 @@ const BasicsOfCoding = () => {
           </div>
 
           <div className="lesson-item">
-            <Link to="/bc2p" onClick={scrollToTop} className="lesson-link">
+            <Link to="/chem2" onClick={scrollToTop} className="lesson-link">
               <img
-                src="https://i.ytimg.com/vi/gG1fPD2TrnY/mqdefault.jpg"
+                src="https://i.ytimg.com/vi/EJpJLOAIHRc/mqdefault.jpg"
                 alt="Lesson 2 Thumbnail"
                 className="lesson-thumbnail"
               />
-              <h3 className="lesson-title">
-                Lesson 2: Conditional Statements & Loops
-              </h3>
+              <h3 className="lesson-title">Lesson 2: Molecules & Atoms</h3>
             </Link>
             <div
               className={
@@ -284,13 +201,13 @@ const BasicsOfCoding = () => {
           </div>
 
           <div className="lesson-item">
-            <Link to="/bc3p" onClick={scrollToTop} className="lesson-link">
+            <Link to="/chem3" onClick={scrollToTop} className="lesson-link">
               <img
-                src="https://i.ytimg.com/vi/qEcc3yjrwOI/mqdefault.jpg"
+                src="https://i.ytimg.com/vi/448XzSXabc4/mqdefault.jpg"
                 alt="Lesson 3 Thumbnail"
                 className="lesson-thumbnail"
               />
-              <h3 className="lesson-title">Lesson 3: Wait & Sensors</h3>
+              <h3 className="lesson-title">Lesson 3: Chemical Reactions</h3>
             </Link>
             <div
               className={
@@ -307,13 +224,15 @@ const BasicsOfCoding = () => {
           </div>
 
           <div className="lesson-item">
-            <Link to="/bc4p" onClick={scrollToTop} className="lesson-link">
+            <Link to="/chem4" onClick={scrollToTop} className="lesson-link">
               <img
-                src="https://i.ytimg.com/vi/6czRyGrNf_4/mqdefault.jpg"
+                src="https://i.ytimg.com/vi/NpQJoCQEa9U/mqdefault.jpg"
                 alt="Lesson 4 Thumbnail"
                 className="lesson-thumbnail"
               />
-              <h3 className="lesson-title">Lesson 4: Final Review</h3>
+              <h3 className="lesson-title">
+                Lesson 4: Putting It All Together
+              </h3>
             </Link>
             <div
               className={
@@ -337,4 +256,4 @@ const BasicsOfCoding = () => {
   );
 };
 
-export default BasicsOfCoding;
+export default ChemistryPage;

@@ -12,7 +12,7 @@ const Astrovid4s = lazy(() => import('../pages/astronomy/Astrovid4s'));
 const Astrovid4p = lazy(() => import('../pages/astronomy/Astrovid4p'));
 const AstroWorksheet1 = lazy(() => import('../pages/astronomy/AstroWorksheet1'));
 const AstroWorksheet2 = lazy(() => import('../pages/astronomy/AstroWorksheet2'));
-const Astroquiz = lazy(() => import('../pages/astronomy/Astroquiz'));
+const Astroquiz = lazy(() => import('../pages/astronomy/AstroQuiz'));
 
 // Define route configuration
 const astronomyRoutes = [

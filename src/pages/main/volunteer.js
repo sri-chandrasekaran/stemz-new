@@ -11,7 +11,7 @@ import ucsd from '../../assets/ucsd1.png'
 import flc from '../../assets/flc1.png';
 
 import '../css/GetInvolved.css';
-import '../css/volunteer.css';
+import '../../pages/css/Volunteer.css';
 import '../css/About.css';
 
 const Volunteers = () => {

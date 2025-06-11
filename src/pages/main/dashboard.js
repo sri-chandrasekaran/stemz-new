@@ -13,7 +13,7 @@ import CodingBasics1 from "../../assets/coding.jpg";
 import CodingBasics2 from "../../assets/coding2.jpg";
 import Biochemistry from "../../assets/biochem.PNG";
 import Genetics from "../../assets/genetics.jpg";
-import Microbiology from "../../assets/Microbiology.png";
+import Microbiology from "../../assets/microbiology.png";
 import DefaultCourseImg from "../../assets/defaultcourseimg.png";
 import AstronomyImage from "../../assets/astronomy.PNG";
 import Chemistry from "../../assets/chemistry.jpeg";
@@ -355,7 +355,7 @@ const Dashboard = () => {
                 description:
                   "In this course we will learn about movement, variables, conditional statements and many more, using Scratch. No prior experience is needed!",
                 image: Coding,
-                link: "/basics-of-coding",
+                link: "/basicsofcoding",
               },
               {
                 id: 3,
@@ -379,7 +379,7 @@ const Dashboard = () => {
                 description:
                   "In this course we will learn about the field of zoology, some topics include biodiversity, taxonomy, and anatomy.",
                 image: ES,
-                link: "/environmental-science",
+                link: "/environmentalscience",
               },
             ].map((course) => (
               <div key={course.id} className="course-card">

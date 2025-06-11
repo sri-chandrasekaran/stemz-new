@@ -1,7 +1,10 @@
 import React, { useState, useRef, useEffect } from "react";
 import stemzLearningLogo from "../../assets/logo.png";
-import { useNavigate } from "react-router-dom";
-import { call_api } from "../../api";
+import { useWorksheetProgress } from "../../hooks/useWorksheetProgress";
+import { LoadingScreen } from "../../components/LoadingScreen";
+import { StatusMessage } from "../../components/StatusMessage";
+import { BackButton } from "../../components/BackButton";
+import { updateProgress } from "../../utils/updateProgress";
 
 // Original Worksheet
 // https://docs.google.com/document/d/e/2PACX-1vRUirVOL8YLkxol0nTrImCblQ0sB-Xu2LbLwvxLluYWSEPicxO7NpKWZ8avM_bjvTNsYJUGGffU_w8m/pub
@@ -28,95 +31,23 @@ const reflectionQuestions = [
 ];
 
 export default function EsWorkSheet1() {
-  // Navigation
-  const navigate = useNavigate();
-
   // State variables
   const [foundItems, setFoundItems] = useState({});
   const [reflectionAnswers, setReflectionAnswers] = useState({});
   const [isHovering, setIsHovering] = useState(false);
 
-  // Progress tracking states
-  const [userProgress, setUserProgress] = useState(null);
-  const [loading, setLoading] = useState(true);
-  const [isAuthenticated, setIsAuthenticated] = useState(false);
-  const [worksheetCompleted, setWorksheetCompleted] = useState(false);
-  const [pointsEarned, setPointsEarned] = useState(0);
-  const [statusMessage, setStatusMessage] = useState("");
-
-  // Constants for progress tracking
-  const lessonNumber = "lesson1";
-  const courseKey = "environmentalScience";
-
-  // Refs
-  const statusTimeoutRef = useRef(null);
-
-  // Show status message with auto-fade
-  const showStatus = (message, duration = 3000) => {
-    setStatusMessage(message);
-    if (statusTimeoutRef.current) clearTimeout(statusTimeoutRef.current);
-    statusTimeoutRef.current = setTimeout(() => setStatusMessage(""), duration);
-  };
-
-  // Token verification
-  useEffect(() => {
-    const verifyToken = async () => {
-      const token = localStorage.getItem("token");
-      if (!token) {
-        navigate("/login");
-        return;
-      }
-
-      try {
-        const response = await call_api(null, "auth/verify", "POST");
-        if (response && response.success) {
-          setIsAuthenticated(true);
-          setLoading(false);
-        } else {
-          localStorage.removeItem("token");
-          navigate("/login");
-        }
-      } catch (error) {
-        console.error("Token verification error:", error);
-        localStorage.removeItem("token");
-        navigate("/login");
-      }
-    };
-    verifyToken();
-  }, [navigate]);
-
-  // Fetch user progress data
-  useEffect(() => {
-    if (!isAuthenticated) return;
-
-    const fetchUserProgress = async () => {
-      try {
-        const response = await call_api(null, "points", "GET");
-        if (response) {
-          setUserProgress(response);
-
-          // Check if there's course data available
-          if (response.courses && response.courses[courseKey]) {
-            const lesson = response.courses[courseKey].lessons[lessonNumber];
-
-            if (lesson && lesson.activities && lesson.activities.worksheet) {
-              const savedCompleted =
-                lesson.activities.worksheet.completed || false;
-              const savedPoints = lesson.activities.worksheet.earned || 0;
-
-              setWorksheetCompleted(savedCompleted);
-              setPointsEarned(savedPoints);
-            }
-          }
-          setLoading(false);
-        }
-      } catch (err) {
-        console.error("Error fetching course progress:", err);
-        setLoading(false);
-      }
-    };
-    fetchUserProgress();
-  }, [isAuthenticated, courseKey, lessonNumber]);
+  // Use the custom hook for progress tracking
+  const {
+    userProgress,
+    setUserProgress,
+    loading,
+    worksheetCompleted,
+    setWorksheetCompleted,
+    pointsEarned,
+    setPointsEarned,
+    statusMessage,
+    showStatus,
+  } = useWorksheetProgress("environmentalScience", "lesson1");
 
   const handleCheckItem = (itemId) => {
     setFoundItems((prev) => ({
@@ -132,10 +63,6 @@ export default function EsWorkSheet1() {
     }));
   };
 
-  const handleGoBack = () => {
-    window.history.back();
-  };
-
   const handleDownload = () => {
     window.open(
       "https://docs.google.com/document/d/e/2PACX-1vRUirVOL8YLkxol0nTrImCblQ0sB-Xu2LbLwvxLluYWSEPicxO7NpKWZ8avM_bjvTNsYJUGGffU_w8m/pub",
@@ -144,7 +71,7 @@ export default function EsWorkSheet1() {
   };
 
   // Mark worksheet as completed
-  const handleComplete = () => {
+  const handleComplete = async () => {
     // Always award full points (5) for this activity since it's self-reported
     const earnedPoints = 5;
 
@@ -152,120 +79,24 @@ export default function EsWorkSheet1() {
     setWorksheetCompleted(true);
     setPointsEarned(earnedPoints);
 
-    // Update the backend
-    const updatedProgress = { ...userProgress };
-
-    // Ensure the path exists
-    if (!updatedProgress.courses) updatedProgress.courses = {};
-    if (!updatedProgress.courses[courseKey]) {
-      updatedProgress.courses[courseKey] = {
-        lessons: {},
-        title: "Environmental Science",
-      };
-    }
-    if (!updatedProgress.courses[courseKey].lessons) {
-      updatedProgress.courses[courseKey].lessons = {};
-    }
-    if (!updatedProgress.courses[courseKey].lessons[lessonNumber]) {
-      updatedProgress.courses[courseKey].lessons[lessonNumber] = {
-        activities: {},
-        title: "Nature Scavenger Hunt",
-      };
-    }
-    if (!updatedProgress.courses[courseKey].lessons[lessonNumber].activities) {
-      updatedProgress.courses[courseKey].lessons[lessonNumber].activities = {};
-    }
-
-    // Set worksheet data
-    updatedProgress.courses[courseKey].lessons[
-      lessonNumber
-    ].activities.worksheet = {
-      completed: true,
-      earned: earnedPoints,
-      points: 5, // Total possible points is 5
-      type: "worksheet",
-      title: "Nature Scavenger Hunt",
-    };
-
-    // Update lesson points
-    updatedProgress.courses[courseKey].lessons[lessonNumber].lessonPoints =
-      earnedPoints;
-
-    // Mark lesson as completed if video is also completed
-    if (
-      updatedProgress.courses[courseKey].lessons[lessonNumber].activities.video
-        ?.completed
-    ) {
-      updatedProgress.courses[courseKey].lessons[lessonNumber].completed = true;
-    }
-
-    // Update course points
-    let coursePoints = 0;
-    Object.values(updatedProgress.courses[courseKey].lessons).forEach(
-      (lesson) => {
-        coursePoints += lesson.lessonPoints || 0;
-      }
+    // Update progress using the utility function
+    const updatedProgress = await updateProgress(
+      userProgress,
+      "environmentalScience",
+      "lesson1",
+      earnedPoints,
+      "Nature Scavenger Hunt",
+      showStatus
     );
-    updatedProgress.courses[courseKey].coursePoints = coursePoints;
 
-    // Update total points
-    let totalPoints = 0;
-    Object.values(updatedProgress.courses).forEach((course) => {
-      totalPoints += course.coursePoints || 0;
-    });
-    updatedProgress.totalPoints = totalPoints;
-
-    // Send to API
-    call_api(updatedProgress, "points", "POST")
-      .then((response) => {
-        if (response) {
-          setUserProgress(updatedProgress);
-          showStatus("✓ Progress saved! You've earned 5 points!", 3000);
-        }
-      })
-      .catch((error) => {
-        console.error("Update error:", error);
-        showStatus("❌ Error saving progress", 3000);
-      });
+    if (updatedProgress) {
+      setUserProgress(updatedProgress);
+    }
   };
 
   // Loading screen
   if (loading) {
-    return (
-      <div
-        style={{
-          minHeight: "100vh",
-          background: "white",
-          margin: 0,
-          padding: "32px",
-          display: "flex",
-          justifyContent: "center",
-          alignItems: "center",
-          fontFamily: "Arial, sans-serif",
-        }}
-      >
-        <div style={{ textAlign: "center" }}>
-          <div
-            style={{
-              border: "4px solid #f3f3f3",
-              borderTop: "4px solid #357717",
-              borderRadius: "50%",
-              width: "50px",
-              height: "50px",
-              animation: "spin 2s linear infinite",
-              margin: "0 auto 20px",
-            }}
-          ></div>
-          <p>Loading worksheet content...</p>
-          <style>{`
-            @keyframes spin {
-              0% { transform: rotate(0deg); }
-              100% { transform: rotate(360deg); }
-            }
-          `}</style>
-        </div>
-      </div>
-    );
+    return <LoadingScreen />;
   }
 
   return (
@@ -279,57 +110,8 @@ export default function EsWorkSheet1() {
         position: "relative",
       }}
     >
-      {/* Status message */}
-      {statusMessage && (
-        <div
-          style={{
-            position: "fixed",
-            top: "150px",
-            right: "20px",
-            padding: "10px 15px",
-            backgroundColor: statusMessage.includes("Error")
-              ? "rgba(231, 76, 60, 0.8)"
-              : "#357717",
-            color: "white",
-            borderRadius: "5px",
-            fontWeight: "bold",
-            zIndex: 1000,
-            boxShadow: "0 2px 10px rgba(0,0,0,0.2)",
-            animation: "fadeIn 0.3s ease-out",
-            fontSize: "16px",
-          }}
-        >
-          {statusMessage}
-        </div>
-      )}
-
-      {/* Back button */}
-      <button
-        onClick={handleGoBack}
-        style={{
-          position: "absolute",
-          top: "20px",
-          left: "20px",
-          color: "white",
-          border: "none",
-          borderRadius: "50%",
-          background: isHovering ? "#3cb371" : "#357717",
-          width: "60px",
-          height: "60px",
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "center",
-          cursor: "pointer",
-          transition: "all 0.3s ease",
-          fontSize: "36px",
-          fontWeight: "bold",
-          transform: isHovering ? "scale(0.9)" : "scale(1)",
-        }}
-        onMouseEnter={() => setIsHovering(true)}
-        onMouseLeave={() => setIsHovering(false)}
-      >
-        &#8592;
-      </button>
+      <StatusMessage message={statusMessage} />
+      <BackButton />
 
       <div style={{ maxWidth: "896px", margin: "0 auto" }}>
         {/* Header */}
@@ -561,30 +343,6 @@ export default function EsWorkSheet1() {
           </p>
         )}
       </div>
-
-      <style jsx>{`
-        @keyframes fadeIn {
-          from {
-            opacity: 0;
-            transform: translateY(-10px);
-          }
-          to {
-            opacity: 1;
-            transform: translateY(0);
-          }
-        }
-
-        @keyframes fadeOut {
-          from {
-            opacity: 1;
-            transform: translateY(0);
-          }
-          to {
-            opacity: 0;
-            transform: translateY(-10px);
-          }
-        }
-      `}</style>
     </div>
   );
 }
