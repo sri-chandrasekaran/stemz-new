@@ -7,7 +7,7 @@ import CodingBasics1 from '../../assets/coding.jpg'
 import CodingBasics2 from '../../assets/coding2.jpg'
 import Biochemistry from '../../assets/biochem.PNG'
 import Genetics from '../../assets/genetics.jpg'
-import Microbiology from '../../assets/Microbiology.png'
+import Microbiology from '../../assets/microbiology.png'
 import DefaultCourseImg from '../../assets/defaultcourseimg.png'
 import { useNavigate, useLocation } from 'react-router-dom';
 import { call_api } from "../../api";

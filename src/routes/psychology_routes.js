@@ -2,17 +2,17 @@ import React, { lazy, Suspense } from 'react';
 import { Routes, Route } from 'react-router-dom';
 
 // Lazy load components
-const Psych1p = lazy(() => import('../pages/psychology/psych1p'));
-const Psych1s = lazy(() => import('../pages/psychology/psych1s'));
-const Psych2p = lazy(() => import('../pages/psychology/psych2p'));
-const Psych2s = lazy(() => import('../pages/psychology/psych2s'));
-const Psych3p = lazy(() => import('../pages/psychology/psych3p'));
-const Psych3s = lazy(() => import('../pages/psychology/psych3s'));
-const Psych4p = lazy(() => import('../pages/psychology/psych4p'));
-const Psych4s = lazy(() => import('../pages/psychology/psych4s'));
-const PsychQuiz = lazy(() => import('../pages/psychology/Psycquiz'));
-const PsychWorksheet1 = lazy(() => import('../pages/psychology/PsychWorkSheet1'));
-const PsychWorksheet2 = lazy(() => import('../pages/psychology/PsychWorkSheet2'));
+const Psych1p = lazy(() => import('../pages/psychology/Psych1p'));
+const Psych1s = lazy(() => import('../pages/psychology/Psych1s'));
+const Psych2p = lazy(() => import('../pages/psychology/Psych2p'));
+const Psych2s = lazy(() => import('../pages/psychology/Psych2s'));
+const Psych3p = lazy(() => import('../pages/psychology/Psych3p'));
+const Psych3s = lazy(() => import('../pages/psychology/Psych3s'));
+const Psych4p = lazy(() => import('../pages/psychology/Psych4p'));
+const Psych4s = lazy(() => import('../pages/psychology/Psych4s'));
+const PsychQuiz = lazy(() => import('../pages/psychology/PsychQuiz'));
+const PsychWorksheet1 = lazy(() => import('../pages/psychology/PsychWorksheet1'));
+const PsychWorksheet2 = lazy(() => import('../pages/psychology/PsychWorksheet2'));
 
 // Define route configuration
 const psychologyRoutes = [

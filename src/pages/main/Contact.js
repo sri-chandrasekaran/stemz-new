@@ -25,7 +25,7 @@ import HeroOther from "../../components/HeroOther";
 import Form from "../../components/Form";
 import Footer from "../../components/Footer";
 import "../css/Home.css";
-import "../css/contact.css";
+import "../css/Contact.css";
 
 const Contact = () => {
   return (

@@ -4,8 +4,7 @@ import HeroOther from "../../components/HeroOther";
 import Footer from "../../components/Footer";
 import Circuits from "../../assets/circuits.jpg";
 import { Link, useNavigate } from "react-router-dom";
-
-import "../../routes/css/AllClassHomePage.css";
+import "../css/AllClassHomePage.css";
 import { call_api } from "../../api";
 
 const CircuitsPage = () => {

@@ -73,9 +73,7 @@ const Dashbar = () => {
     navigate('/login');
   };
 
-  if (isLoading) {
-    // return <div>Loading...</div>;
-  }
+
 
   return (
     <div className="grid-side">

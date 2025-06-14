@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
-import blankStarMap from "../../assets/StarMap.svg";
-import filledStarMap from "../../assets/StarMapFilled.png";
+import blankStarMap from "../../assets/starmap.svg";
+import filledStarMap from "../../assets/starmapfilled.png";
 import stemzLearningLogo from "../../assets/logo.png";
 import { useNavigate } from "react-router-dom";
 import { call_api } from "../../api";

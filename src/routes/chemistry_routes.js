@@ -2,11 +2,11 @@ import React, { lazy, Suspense } from 'react';
 import { Routes, Route } from 'react-router-dom';
 
 // Lazy load components
-const Chem1 = lazy(() => import('../pages/chemistry/chem1'));
-const Chem2 = lazy(() => import('../pages/chemistry/chem2'));
-const Chem3 = lazy(() => import('../pages/chemistry/chem3'));
-const Chem4 = lazy(() => import('../pages/chemistry/chem4'));
-const ChemQuiz = lazy(() => import('../pages/chemistry/Chemquiz'));
+const Chem1 = lazy(() => import('../pages/chemistry/Chem1'));
+const Chem2 = lazy(() => import('../pages/chemistry/Chem2'));
+const Chem3 = lazy(() => import('../pages/chemistry/Chem3'));
+const Chem4 = lazy(() => import('../pages/chemistry/Chem4'));
+const ChemQuiz = lazy(() => import('../pages/chemistry/ChemQuiz'));
 
 // Define route configuration
 const chemistryRoutes = [

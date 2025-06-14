@@ -8,8 +8,8 @@ const GetInvolved = lazy(() => import('../pages/main/GetInvolved'));
 const Contact = lazy(() => import('../pages/main/Contact'));
 const OnlineClasses = lazy(() => import('../pages/main/OnlineClasses'));
 const SelfPacedClasses = lazy(() => import('../pages/main/SelfPacedClasses'));
-const CourseBoxes = lazy(() => import('./CourseBoxes'));
-const Volunteer = lazy(() => import('../pages/main/volunteer'));
+const CourseBoxes = lazy(() => import('../pages/main/CourseBoxes'));
+const Volunteer = lazy(() => import('../pages/main/Volunteer'));
 
 // Define route configuration
 const mainRoutes = [
