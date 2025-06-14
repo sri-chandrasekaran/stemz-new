@@ -4,7 +4,7 @@ import { useWorksheetProgress } from "../../hooks/useWorksheetProgress";
 import { LoadingScreen } from "../../components/LoadingScreen";
 import { StatusMessage } from "../../components/StatusMessage";
 import { BackButton } from "../../components/BackButton";
-import { updateProgress } from "../../utils/updateProgress";
+import { updateProgress } from "../../utils/UpdateProgress";
 
 // Original Worksheet
 // https://docs.google.com/document/d/e/2PACX-1vRUirVOL8YLkxol0nTrImCblQ0sB-Xu2LbLwvxLluYWSEPicxO7NpKWZ8avM_bjvTNsYJUGGffU_w8m/pub
