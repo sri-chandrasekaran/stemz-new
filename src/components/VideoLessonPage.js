@@ -4,7 +4,8 @@ import HeroOther from '../components/HeroOther';
 import Footer from '../components/Footer';
 import { Link, useNavigate } from 'react-router-dom';
 import { call_api } from '../api';
-import '../routes/css/allvideo.css';
+import '../pages/css/Allvideo.css';
+
 
 /* global YT */  // Tell ESLint that YT is a global variable
 
@@ -31,7 +32,8 @@ const VideoLessonPage = ({
   completionThreshold = 95,
   
   // Version type (affects auth checks and which notes to display)
-  isParentVersion = false
+  isParentVersion = false,
+  bpqQuestions = []
 }) => {
   // State variables
   const [userProgress, setUserProgress] = useState(null);
@@ -55,6 +57,79 @@ const VideoLessonPage = ({
   // Feature flags
   const hasWorksheet = worksheetPath !== null;
   const hasQuiz = quizPath !== null;
+
+  // state variablse specific to bpq
+  const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
+  const [showQuestion, setShowQuestion] = useState(false);
+  const [answer, setAnswer] = useState("");
+  const [bpqTimeouts, setBpqTimeouts] = useState([]); // Renamed for clarity
+  const [questionsScheduled, setQuestionsScheduled] = useState(false);
+
+  const clearAllBpqTimeouts = () => {
+    bpqTimeouts.forEach(timeout => clearTimeout(timeout));
+    setBpqTimeouts([]);
+    console.log("Cleared all BPQ timeouts");
+  };
+
+  
+const scheduleAllQuestions = () => {
+  // ADD: Check if already scheduled to prevent duplicates
+  if (!playerRef.current || !bpqQuestions || bpqQuestions.length === 0 || questionsScheduled) {
+    console.log("Questions already scheduled or no questions to schedule");
+    return;
+  }
+
+  console.log("Scheduling all BPQ questions");
+  
+  // Clear any existing timeouts first
+  clearAllBpqTimeouts();
+  
+  const newTimeouts = [];
+  
+  bpqQuestions.forEach((question, index) => {
+    if (question && typeof question.time === 'number') {
+      console.log(`Scheduling question ${index + 1} at ${question.time} seconds:`, question.text);
+      
+      const timeout = setTimeout(() => {
+        console.log(`Showing BPQ question ${index + 1}:`, question.text);
+        
+        // IMPORTANT: Clear all remaining timeouts when any question shows
+        clearAllBpqTimeouts();
+        
+        // Pause the video
+        if (playerRef.current && typeof playerRef.current.pauseVideo === "function") {
+          playerRef.current.pauseVideo();
+        }
+        
+        // Set the current question and show it
+        setCurrentQuestionIndex(index);
+        setShowQuestion(true);
+      }, question.time * 1000);
+      
+      newTimeouts.push(timeout);
+    }
+  });
+  
+  setBpqTimeouts(newTimeouts);
+  setQuestionsScheduled(true);
+};
+
+const handleAnswerSubmit = () => {
+  console.log(`Answer submitted for question ${currentQuestionIndex + 1}:`, answer);
+  
+  // Hide the question
+  setShowQuestion(false);
+  setAnswer("");
+  
+  // Resume video playback
+  if (playerRef.current && typeof playerRef.current.playVideo === "function") {
+    playerRef.current.playVideo();
+  }
+  
+  // IMPORTANT: Don't schedule more questions after answering
+  // The timeouts were already cleared when the question showed
+};
+  
 
   // Log function for debugging
   const log = (message) => {
@@ -230,13 +305,21 @@ const VideoLessonPage = ({
       }
     };
     
-    // Player ready handler
-    const onPlayerReady = (event) => {
-      log("Player ready");
-      playerRef.current = event.target;
-    };
+  // Keep the existing onPlayerReady as is - it only runs once
+  const onPlayerReady = (event) => {
+    console.log("Player ready");
+    playerRef.current = event.target;
     
-    // Player state change handler
+    // Schedule all BPQ questions when player is ready (ONLY ONCE)
+    if (bpqQuestions && bpqQuestions.length > 0) {
+      scheduleAllQuestions();
+    }
+  };
+
+    
+
+
+    // Modified player state change handler - ONLY schedule on first play
     const onPlayerStateChange = (event) => {
       const stateNames = {
         '-1': 'UNSTARTED',
@@ -248,17 +331,27 @@ const VideoLessonPage = ({
       };
       
       const stateName = stateNames[event.data] || event.data;
-      log(`Player state changed: ${stateName} (${event.data})`);
+      console.log(`Player state changed: ${stateName} (${event.data})`);
       
-      // State handlers
+      // Handle different states
       if (event.data === 1) { // PLAYING
         startProgressTracking();
+        
+        // REMOVED: Don't schedule questions here anymore
+        // Questions are only scheduled once in onPlayerReady
       } else if (event.data === 2 || event.data === 0) { // PAUSED or ENDED
         checkVideoProgress();
         stopProgressTracking();
+        
+        // If video ended, clear all remaining timeouts
+        if (event.data === 0) {
+          clearAllBpqTimeouts();
+          setQuestionsScheduled(false);
+        }
       }
     };
-    
+
+     
     // Start initialization
     if (window.YT && window.YT.Player) {
       log("YouTube API already loaded");
@@ -542,6 +635,24 @@ const VideoLessonPage = ({
     };
   }, []);
 
+  useEffect(() => {
+    return () => {
+      console.log("Component unmounting, cleaning up BPQ timeouts");
+      clearAllBpqTimeouts();
+      setQuestionsScheduled(false);
+    };
+  }, [bpqTimeouts]);
+  
+  // Reset BPQ state when video URL changes
+  useEffect(() => {
+    console.log("Video URL changed, resetting BPQ state");
+    clearAllBpqTimeouts();
+    setQuestionsScheduled(false);
+    setCurrentQuestionIndex(0);
+    setShowQuestion(false);
+    setAnswer("");
+  }, [videoUrl]);
+
   if (loading) {
     return (
       <div>
@@ -600,6 +711,56 @@ const VideoLessonPage = ({
           {statusMessage}
         </div>
       )}
+
+
+      {showQuestion && currentQuestionIndex < bpqQuestions.length && (
+        <div className="question-overlay" style={{
+          position: 'fixed',
+          top: 0,
+          left: 0,
+          width: '100%',
+          height: '100%',
+          backgroundColor: 'rgba(0, 0, 0, 0.8)',
+          display: 'flex',
+          justifyContent: 'center',
+          alignItems: 'center',
+          zIndex: 1000
+        }}>
+          <div className="question-box" style={{
+            backgroundColor: 'white',
+            padding: '30px',
+            borderRadius: '10px',
+            maxWidth: '500px',
+            width: '90%',
+            textAlign: 'center'
+          }}>
+            <h3>Question {currentQuestionIndex + 1}</h3>
+            <p style={{ fontSize: '18px', marginBottom: '20px' }}>
+              {bpqQuestions[currentQuestionIndex]?.text || "Question not available"}
+            </p>
+            <textarea
+              value={answer}
+              onChange={(e) => setAnswer(e.target.value)}
+              placeholder="Type your answer here..."
+              style={{
+                width: '100%',
+                minHeight: '100px',
+                padding: '10px',
+                borderRadius: '5px',
+                border: '1px solid #ccc',
+                marginBottom: '20px',
+                resize: 'vertical'
+              }}
+            />
+            <button 
+              onClick={handleAnswerSubmit}
+            >
+              Submit & Continue
+            </button>
+          </div>
+        </div>
+      )}
+
       
       {/* Progress display - show for both versions */}
       <div className="points-status">
