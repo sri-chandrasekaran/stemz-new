@@ -11,12 +11,19 @@ const SignUpForm = () => {
     
   const [name, setName] = useState('');
   const [grade, setGrade] = useState('');
+  const [role, setRole] = useState('student')
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
   async function submit(e) {
     e.preventDefault();
-    const payload = { name, password, email };
+    const payload = { 
+      name, 
+      password, 
+      email, 
+      role,
+      ...(role === 'student' && { grade }) // grade only gets rendered if role == student
+     };
   
     try {
       const response = await call_api(payload, "auth/signup", "POST");
@@ -58,21 +65,38 @@ const SignUpForm = () => {
         <form className="signup-form" onSubmit={submit}>
           <h1>Sign Up</h1>
           <div className="form-group">
-            <input
-              type="text"
-              onChange={(e) => setName(e.target.value)}
-              placeholder="Student Name"
-              required
-            />
+            <select
+                id="role"
+                className="form-select"
+                value={role}
+                onChange={(e) => setRole(e.target.value)}
+                required
+              >
+              <option value="student">Student</option>
+              <option value="teacher">Teacher</option>
+            </select>
           </div>
           <div className="form-group">
             <input
               type="text"
-              onChange={(e) => setGrade(e.target.value)}
-              placeholder="Grade"
+              onChange={(e) => setName(e.target.value)}
+              placeholder={role === "student" ? "Student Name" : "Teacher Name"}
               required
             />
           </div>
+
+          {/* grade only shows up if role == student */}
+          {role === 'student' && (
+              <div className="form-group">
+                <input
+                  type="text"
+                  onChange={(e) => setGrade(e.target.value)}
+                  placeholder="Grade"
+                  required
+                />
+              </div>
+            )}
+
           <div className="form-group">
             <input
               type="email"
