@@ -1,18 +1,7 @@
 {
     "title": "Statistics Quiz",
-    "total": 26,
+    "total": 33,
     "questions": [
-        {
-            "question": "What is Statistics?",
-            "options": [
-                "A type of cooking technique",
-                "A genre of music",
-                "A type of math that deals with the collection and analysis of numbers",
-                "A kind of storytelling method"
-            ],
-            "score": 1,
-            "correctAnswerIndex": 2
-        },
         {
             "question": "What is a fraction?",
             "options": [
@@ -45,17 +34,6 @@
             ],
             "score": 1,
             "correctAnswerIndex": 0
-        },
-        {
-            "question": "What is a Survey?",
-            "options": [
-                "A type of painting",
-                "A tool to help you collect data (aka information)",
-                "A type of exercise routine",
-                "A method of flying a plane"
-            ],
-            "score": 1,
-            "correctAnswerIndex": 1
         },
         {
             "question": "What is a pie chart?",
@@ -102,37 +80,15 @@
             "correctAnswerIndex": 0
         },
         {
-            "question": "How do you find percentages if the total is not 100?",
+            "question": "What is a variable?",
             "options": [
-                "Divide the number by 10",
-                "Multiply by a random number",
-                "Guess and check until you find the right answer",
-                "Convert the numbers into a fraction and then a decimal to multiply by 100 and find percent."
-            ],
-            "score": 3,
-            "correctAnswerIndex": 3
-        },
-        {
-            "question": "What is a numerator in a fraction?",
-            "options": [
-                "The part of a plant that grows underground",
-                "A type of clothing",
-                "Number on top",
-                "A kind of bird"
+                "A type of graph",
+                "A fixed number that never changes",
+                "A variable is anything that can be measured or counted",
+                "A kind of chart with circles"
             ],
             "score": 1,
             "correctAnswerIndex": 2
-        },
-        {
-            "question": "What is a denominator in a fraction?",
-            "options": [
-                "A type of tree",
-                "Number on bottom",
-                "A kind of musical instrument",
-                "A type of chemical reaction"
-            ],
-            "score": 1,
-            "correctAnswerIndex": 1
         },
         {
             "question": "What does numerator represent?",
@@ -155,6 +111,72 @@
             ],
             "score": 2,
             "correctAnswerIndex": 2
+        },
+        {
+            "question": "If you score 18 out of 20 on a quiz, what percent did you get correct?",
+            "options": [
+                "85%",
+                "90%",
+                "80%",
+                "95%"
+            ],
+            "score": 3,
+            "correctAnswerIndex": 1
+        },
+        {
+            "question": "If your team wins 3 out of 5 games, what fraction did they lose?",
+            "options": [
+                "3/5",
+                "1/5",
+                "4/5",
+                "2/5"
+            ],
+            "score": 3,
+            "correctAnswerIndex": 3
+        },
+        {
+            "question": "You have 1/4 of a pie left. What percent is that?",
+            "options": [
+                "25%",
+                "50%",
+                "75%",
+                "10%"
+            ],
+            "score": 2,
+            "correctAnswerIndex": 0
+        },
+        {
+            "question": "Which pet is most popular if a bar graph shows cats (5), dogs (8), and birds (3)?",
+            "options": [
+                "Cats",
+                "Dogs",
+                "Birds",
+                "All the same"
+            ],
+            "score": 2,
+            "correctAnswerIndex": 1
+        },
+        {
+            "question": "What can a line graph help you understand?",
+            "options": [
+                "How something changes over time",
+                "How to write music",
+                "What plants grow best",
+                "The best sports team"
+            ],
+            "score": 2,
+            "correctAnswerIndex": 0
+        },
+        {
+            "question": "If you survey 100 students and 60 like pizza, what percent like pizza?",
+            "options": [
+                "40%",
+                "30%",
+                "90%",
+                "60%"
+            ],
+            "score": 1,
+            "correctAnswerIndex": 3
         }
     ]
 }

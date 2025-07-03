@@ -1,6 +1,6 @@
 {
     "title": "Biochemistry Quiz",
-    "total": 26,
+    "total": 35,
     "questions": [
         {
             "question": "What is Chemistry?",
@@ -23,17 +23,6 @@
             ],
             "score": 2,
             "correctAnswerIndex": 1
-        },
-        {
-            "question": "What are electrons, neutrons, and protons made of?",
-            "options": [
-                "They are made up of smaller atoms",
-                "They are made up of photons, the basic units of light",
-                "They are made up of molecules",
-                "They are made up of quarks, which are fundamental particles and cannot be broken up"
-            ],
-            "score": 3,
-            "correctAnswerIndex": 3
         },
         {
             "question": "What are atoms?",
@@ -69,6 +58,17 @@
             "correctAnswerIndex": 3
         },
         {
+            "question": "What are electrons, neutrons, and protons made of?",
+            "options": [
+                "They are made up of smaller atoms",
+                "They are made up of photons, the basic units of light",
+                "They are made up of molecules",
+                "They are made up of quarks, which are fundamental particles and cannot be broken up"
+            ],
+            "score": 3,
+            "correctAnswerIndex": 3
+        },
+        {
             "question": "What is a protein?",
             "options": [
                 "Proteins are types of carbohydrates",
@@ -93,10 +93,10 @@
         {
             "question": "What is a carbohydrate?",
             "options": [
-                "Carbohydrates are molecules in your body that store energy and provide structure",
-                "Carbohydrates are types of lipids",
-                "Carbohydrates are single atoms",
-                "Carbohydrates are proteins found in the body"
+                "Molecules in our body that store energy and provide structure",
+                "Types of protein",
+                "Sugary flavors",
+                "Chemical bonds"
             ],
             "score": 2,
             "correctAnswerIndex": 0
@@ -124,15 +124,26 @@
             "correctAnswerIndex": 2
         },
         {
+            "question": "What are DNA and RNA made of?",
+            "options": [
+                "Sugar and starch",
+                "Nucleic acids",
+                "Proteins",
+                "Atoms"
+            ],
+            "score": 1,
+            "correctAnswerIndex": 1
+        },
+        {
             "question": "Which of these is not a difference between DNA and RNA?",
             "options": [
                 "They have different sugars",
-                "DNA is only found in animal cells, while RNA is found in plant cells",
                 "RNA has uracil and DNA has thymine",
+                "DNA is only found in animal cells, while RNA is found in plant cells",
                 "RNA has 1 strand and DNA has 2 strands"
             ],
             "score": 3,
-            "correctAnswerIndex": 1
+            "correctAnswerIndex": 2
         },
         {
             "question": "Where is RNA found?",
@@ -155,6 +166,61 @@
             ],
             "score": 1,
             "correctAnswerIndex": 2
+        },
+        {
+            "question": "What are fats?",
+            "options": [
+                "Carbohydrates",
+                "Molecules that store long-term energy",
+                "Proteins",
+                "Water"
+            ],
+            "score": 1,
+            "correctAnswerIndex": 1
+        },
+        {
+            "question": "What role do proteins play in the body?",
+            "options": [
+                "Store information",
+                "Help with structure and function",
+                "Carry oxygen only",
+                "Help digest sugars only"
+            ],
+            "score": 2,
+            "correctAnswerIndex": 1
+        },
+        {
+            "question": "What do carbohydrates provide?",
+            "options": [
+                "Energy",
+                "Water",
+                "Vitamins",
+                "Minerals"
+            ],
+            "score": 2,
+            "correctAnswerIndex": 0
+        },
+        {
+            "question": "What makes up proteins?",
+            "options": [
+                "Sugars",
+                "Amino acids",
+                "Atoms",
+                "Lipids"
+            ],
+            "score": 1,
+            "correctAnswerIndex": 1
+        },
+        {
+            "question": "What is a molecule made of?",
+            "options": [
+                "Only one element",
+                "One atom only",
+                "Random cells",
+                "Two or more atoms bonded together"
+            ],
+            "score": 2,
+            "correctAnswerIndex": 3
         }
     ]
 }
