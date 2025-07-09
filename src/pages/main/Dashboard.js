@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import Navbar from "../../components/Navbar";
 import Dashbar from "../../components/Dashbar";
 import Footer from "../../components/Footer";
+import Chatbot from "../../components/Chatbot";
 import "../css/Dashboard.css";
 import { useNavigate, Link } from "react-router-dom";
 import { call_api } from "../../api";
@@ -33,6 +34,8 @@ const Dashboard = () => {
   const [tooltipMessages, setTooltipMessages] = useState({});
   // New state for user progress/points
   const [userProgress, setUserProgress] = useState(null);
+  // State for chatbot
+  const [isChatbotOpen, setIsChatbotOpen] = useState(false);
 
   // CSS for spinner animation
   useEffect(() => {
@@ -398,7 +401,28 @@ const Dashboard = () => {
             ))}
           </div>
         </div>
+        
+        {/* Chatbot Section */}
+        <div className="chatbot-section">
+          <h3 className="header-chatbot">Need Help? Ask Our AI Assistant</h3>
+          <p className="chatbot-description">
+            Get instant help with your STEM questions, course recommendations, or learning tips!
+          </p>
+          <button 
+            className="dashboard-chatbot-btn"
+            onClick={() => setIsChatbotOpen(true)}
+          >
+            💬 Start Chat with AI Assistant
+          </button>
+        </div>
       </div>
+      
+      {/* Chatbot Component */}
+      <Chatbot 
+        isOpen={isChatbotOpen} 
+        onClose={() => setIsChatbotOpen(false)} 
+      />
+      
       <Footer />
     </div>
   );

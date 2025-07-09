@@ -96,6 +96,36 @@
   }
 }
 
+/* Chatbot Section */
+.chatbot-section {
+  margin: 40px 0;
+  padding: 30px;
+  background: linear-gradient(135deg, #f8fff8 0%, #e8f5e8 100%);
+  border-radius: 15px;
+  text-align: center;
+  box-shadow: 0 4px 15px rgba(53, 119, 22, 0.1);
+  border: 1px solid rgba(53, 119, 22, 0.1);
+}
+
+.header-chatbot {
+  font-size: 28px;
+  color: #357716;
+  margin-bottom: 15px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.chatbot-description {
+  font-size: 16px;
+  color: #4a9c1f;
+  margin-bottom: 25px;
+  line-height: 1.5;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
 @media screen and (max-width: 1000px) {
   .points-dashboard {
     margin: 15px 30px 0;
