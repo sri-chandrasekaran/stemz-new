@@ -10,13 +10,13 @@ const SignUpForm = () => {
   const navigate = useNavigate();
     
   const [name, setName] = useState('');
-  const [grade, setGrade] = useState('');
+  const [gradeLevel, setGradeLevel] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
   async function submit(e) {
     e.preventDefault();
-    const payload = { name, password, email };
+    const payload = { name, password, email, gradeLevel };
   
     try {
       const response = await call_api(payload, "auth/signup", "POST");
@@ -68,7 +68,7 @@ const SignUpForm = () => {
           <div className="form-group">
             <input
               type="text"
-              onChange={(e) => setGrade(e.target.value)}
+              onChange={(e) => setGradeLevel(e.target.value)}
               placeholder="Grade"
               required
             />
