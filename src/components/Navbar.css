@@ -116,9 +116,24 @@
     display: none;
     cursor: pointer;
 }
+.notification-link {
+    display: flex !important;
+    align-items: center;
+    color: inherit;
+}
+
+.notification-link:hover {
+    color: #357717;
+}
+
 
 /* Mobile responsive styles */
 @media screen and (max-width: 1100px) {
+    .notification-link {
+        justify-content: flex-start;
+        padding: 10px 0;
+    }
+
     .hamburger {
         display: block;
     }
