@@ -88,12 +88,27 @@ const SignUpForm = () => {
           {/* grade only shows up if role == student */}
           {role === 'student' && (
               <div className="form-group">
-                <input
+                {/* <input
                   type="text"
                   onChange={(e) => setGrade(e.target.value)}
                   placeholder="Grade"
                   required
-                />
+                /> */}
+                <select
+                  value={grade}
+                  onChange={(e) => setGrade(e.target.value)}
+                  className="form-select"
+                  required
+                >
+                  <option value="">Select Grade</option>
+                  <option value="K">K</option>
+                  <option value="1">1st Grade</option>
+                  <option value="2">2nd Grade</option>
+                  <option value="3">3rd Grade</option>
+                  <option value="4">4th Grade</option>
+                  <option value="5">5th Grade</option>
+                  <option value="6">6th Grade</option>
+                </select>
               </div>
             )}
 

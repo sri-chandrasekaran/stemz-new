@@ -37,22 +37,69 @@ const Quiz = ({ src, courseKey, lessonNumber }) => {
     setStatusTimeoutRef(timeoutId);
   }, [statusTimeoutRef]);
 
-  // Load quiz data
-  useEffect(() => {
-    console.log(`Loading quiz from source: ${src}`);
-    console.log(`Quiz parameters - courseKey: ${courseKey}, lessonNumber: ${lessonNumber}`);
-    
-    fetch(src)
-      .then(response => response.text())
-      .then(data => {
-        const parsedData = JSON.parse(data);
-        console.log('Quiz data loaded:', parsedData);
-        setQuestions(parsedData.questions);
-        setTotal(parsedData.total);
-        setQuizTitle(parsedData.title || 'Quiz');
-      })
-      .catch(error => console.error('Error fetching quiz data:', error));
-  }, [src, courseKey, lessonNumber]);
+  const capitalizeFirst = (str) => str.charAt(0).toUpperCase() + str.slice(1);
+
+// Load quiz data from backend with dynamic grade
+useEffect(() => {
+  const fetchQuizFromBackend = async () => {
+    try {
+      // First, get the current user's grade
+      console.log("Step 1: Getting user info from auth/verify");
+      const userResponse = await call_api(null, "auth/verify", "POST");
+      console.log("Auth verify response:", userResponse);
+      
+      if (!userResponse || !userResponse.user) {
+        console.error("Could not get user info");
+        return;
+      }
+
+      console.log("Step 2: Getting user details with ID:", userResponse.user.id);
+      // Get the full user details to access grade
+      const userDetailsResponse = await call_api(null, `users/id/${userResponse.user.id}`, "GET");
+      console.log("User details response:", userDetailsResponse);
+      
+      if (!userDetailsResponse) {
+        console.error("Could not fetch user details");
+        return;
+      }
+      
+      if (!userDetailsResponse.grade) {
+        console.error("User has no grade field. User object:", userDetailsResponse);
+        return;
+      }
+
+      const userGrade = userDetailsResponse.grade;
+      console.log(`Step 3: User grade found: ${userGrade}`);
+
+      // Now fetch quiz questions with dynamic grade
+      console.log(`Step 4: Fetching quiz questions for course: ${courseKey}, grade: ${userGrade}`);
+      const response = await call_api(null, `quizquestions?course_id=${courseKey}&grade=${userGrade}`, "GET");
+      console.log("Quiz API response:", response);
+      
+      if (response && response.questions && response.questions.length > 0) {
+        console.log('Loaded questions from backend:', response.questions);
+        setQuestions(response.questions.map(q => ({
+          question: q.question,
+          options: q.options,
+          correctAnswerIndex: q.correctAnswerIndex,
+        })));
+        setTotal(response.questions.length);
+        // setQuizTitle(`${courseKey} Quiz - Grade ${userGrade}`);
+        setQuizTitle(`${capitalizeFirst(courseKey)} Quiz - Grade ${userGrade}`);
+
+      } else {
+        console.error("No questions found for this grade level");
+      }
+    } catch (err) {
+      console.error("Error fetching quiz questions:", err);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  fetchQuizFromBackend();
+}, [courseKey, lessonNumber]);
+
 
   // Fetch user progress data
   useEffect(() => {

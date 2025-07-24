@@ -65,7 +65,7 @@ const Chemquiz = () => {
       <div className="vidbig">
         {isAuthenticated && (
           <Quiz
-            src="/assets/chemquiz.json"
+            // src="/assets/chemquiz.json"
             courseKey="chemistry"
             lessonNumber="lesson4"
           />

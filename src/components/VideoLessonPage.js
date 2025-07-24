@@ -62,57 +62,74 @@ const VideoLessonPage = ({
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
   const [showQuestion, setShowQuestion] = useState(false);
   const [answer, setAnswer] = useState("");
-  const [bpqTimeouts, setBpqTimeouts] = useState([]); // Renamed for clarity
-  const [questionsScheduled, setQuestionsScheduled] = useState(false);
+  const [questionsShown, setQuestionsShown] = useState(new Set());
+  // const [bpqTimeouts, setBpqTimeouts] = useState([]); // Renamed for clarity
+  // const [questionsScheduled, setQuestionsScheduled] = useState(false);
 
-  const clearAllBpqTimeouts = () => {
-    bpqTimeouts.forEach(timeout => clearTimeout(timeout));
-    setBpqTimeouts([]);
-    console.log("Cleared all BPQ timeouts");
-  };
+//   const clearAllBpqTimeouts = () => {
+//     bpqTimeouts.forEach(timeout => clearTimeout(timeout));
+//     setBpqTimeouts([]);
+//     console.log("Cleared all BPQ timeouts");
+//   };
 
   
-const scheduleAllQuestions = () => {
-  // ADD: Check if already scheduled to prevent duplicates
-  if (!playerRef.current || !bpqQuestions || bpqQuestions.length === 0 || questionsScheduled) {
-    console.log("Questions already scheduled or no questions to schedule");
-    return;
-  }
+// const scheduleAllQuestions = () => {
+//   // ADD: Check if already scheduled to prevent duplicates
+//   if (!playerRef.current || !bpqQuestions || bpqQuestions.length === 0 || questionsScheduled) {
+//     console.log("Questions already scheduled or no questions to schedule");
+//     return;
+//   }
 
-  console.log("Scheduling all BPQ questions");
+//   console.log("Scheduling all BPQ questions");
   
-  // Clear any existing timeouts first
-  clearAllBpqTimeouts();
+//   // Clear any existing timeouts first
+//   clearAllBpqTimeouts();
   
-  const newTimeouts = [];
+//   const newTimeouts = [];
   
-  bpqQuestions.forEach((question, index) => {
-    if (question && typeof question.time === 'number') {
-      console.log(`Scheduling question ${index + 1} at ${question.time} seconds:`, question.text);
+//   bpqQuestions.forEach((question, index) => {
+//     if (question && typeof question.time === 'number') {
+//       console.log(`Scheduling question ${index + 1} at ${question.time} seconds:`, question.text);
       
-      const timeout = setTimeout(() => {
-        console.log(`Showing BPQ question ${index + 1}:`, question.text);
+//       const timeout = setTimeout(() => {
+//         console.log(`Showing BPQ question ${index + 1}:`, question.text);
         
-        // IMPORTANT: Clear all remaining timeouts when any question shows
-        clearAllBpqTimeouts();
+//         // IMPORTANT: Clear all remaining timeouts when any question shows
+//         clearAllBpqTimeouts();
         
-        // Pause the video
-        if (playerRef.current && typeof playerRef.current.pauseVideo === "function") {
-          playerRef.current.pauseVideo();
-        }
+//         // Pause the video
+//         if (playerRef.current && typeof playerRef.current.pauseVideo === "function") {
+//           playerRef.current.pauseVideo();
+//         }
         
-        // Set the current question and show it
-        setCurrentQuestionIndex(index);
-        setShowQuestion(true);
-      }, question.time * 1000);
+//         // Set the current question and show it
+//         setCurrentQuestionIndex(index);
+//         setShowQuestion(true);
+//       }, question.time * 1000);
       
-      newTimeouts.push(timeout);
-    }
-  });
+//       newTimeouts.push(timeout);
+//     }
+//   });
   
-  setBpqTimeouts(newTimeouts);
-  setQuestionsScheduled(true);
-};
+//   setBpqTimeouts(newTimeouts);
+//   setQuestionsScheduled(true);
+// };
+
+// const handleAnswerSubmit = () => {
+//   console.log(`Answer submitted for question ${currentQuestionIndex + 1}:`, answer);
+  
+//   // Hide the question
+//   setShowQuestion(false);
+//   setAnswer("");
+  
+//   // Resume video playback
+//   if (playerRef.current && typeof playerRef.current.playVideo === "function") {
+//     playerRef.current.playVideo();
+//   }
+  
+//   // IMPORTANT: Don't schedule more questions after answering
+//   // The timeouts were already cleared when the question showed
+// };
 
 const handleAnswerSubmit = () => {
   console.log(`Answer submitted for question ${currentQuestionIndex + 1}:`, answer);
@@ -125,9 +142,6 @@ const handleAnswerSubmit = () => {
   if (playerRef.current && typeof playerRef.current.playVideo === "function") {
     playerRef.current.playVideo();
   }
-  
-  // IMPORTANT: Don't schedule more questions after answering
-  // The timeouts were already cleared when the question showed
 };
   
 
@@ -310,10 +324,10 @@ const handleAnswerSubmit = () => {
     console.log("Player ready");
     playerRef.current = event.target;
     
-    // Schedule all BPQ questions when player is ready (ONLY ONCE)
-    if (bpqQuestions && bpqQuestions.length > 0) {
-      scheduleAllQuestions();
-    }
+    // // Schedule all BPQ questions when player is ready (ONLY ONCE)
+    // if (bpqQuestions && bpqQuestions.length > 0) {
+    //   scheduleAllQuestions();
+    // }
   };
 
     
@@ -344,9 +358,12 @@ const handleAnswerSubmit = () => {
         stopProgressTracking();
         
         // If video ended, clear all remaining timeouts
+        // if (event.data === 0) {
+        //   clearAllBpqTimeouts();
+        //   setQuestionsScheduled(false);
+        // }
         if (event.data === 0) {
-          clearAllBpqTimeouts();
-          setQuestionsScheduled(false);
+          setQuestionsShown(new Set());
         }
       }
     };
@@ -373,6 +390,17 @@ const handleAnswerSubmit = () => {
   }, []);
 
   // Start tracking progress
+  // const startProgressTracking = () => {
+  //   log("Starting progress tracking");
+    
+  //   // Clear any existing interval
+  //   if (progressIntervalRef.current) {
+  //     clearInterval(progressIntervalRef.current);
+  //   }
+    
+  //   // Set up new interval - check every 300 second
+  //   progressIntervalRef.current = setInterval(checkVideoProgress, 5000);
+  // };
   const startProgressTracking = () => {
     log("Starting progress tracking");
     
@@ -381,8 +409,11 @@ const handleAnswerSubmit = () => {
       clearInterval(progressIntervalRef.current);
     }
     
-    // Set up new interval - check every 300 second
-    progressIntervalRef.current = setInterval(checkVideoProgress, 5000);
+    // Set up new interval - check every 1 second
+    progressIntervalRef.current = setInterval(() => {
+      checkVideoProgress();
+      checkForBPQQuestions(); // ADD THIS LINE
+    }, 1000); // CHANGE from 5000 to 1000
   };
   
   // Stop tracking progress
@@ -392,6 +423,47 @@ const handleAnswerSubmit = () => {
     clearInterval(progressIntervalRef.current);
     progressIntervalRef.current = null;
     log("Stopped progress tracking");
+  };
+  
+  const checkForBPQQuestions = () => {
+    if (!playerRef.current || !bpqQuestions || bpqQuestions.length === 0 || showQuestion) {
+      return;
+    }
+  
+    try {
+      const currentTime = playerRef.current.getCurrentTime();
+      
+      // Find questions that should be shown at the current time
+      bpqQuestions.forEach((question, index) => {
+        if (question && typeof question.time === 'number') {
+          // Check if we're at or past the question time (within 1 second tolerance)
+          // and haven't shown this question yet
+          if (currentTime >= question.time && 
+              currentTime < question.time + 1 && 
+              !questionsShown.has(index)) {
+            
+            console.log(`Showing BPQ question ${index + 1} at video time ${currentTime}:`, question.text);
+            
+            // Mark this question as shown
+            setQuestionsShown(prev => new Set([...prev, index]));
+            
+            // Pause the video
+            if (typeof playerRef.current.pauseVideo === "function") {
+              playerRef.current.pauseVideo();
+            }
+            
+            // Set the current question and show it
+            setCurrentQuestionIndex(index);
+            setShowQuestion(true);
+            
+            // Break after showing one question
+            return;
+          }
+        }
+      });
+    } catch (error) {
+      console.log("Error checking for BPQ questions:", error);
+    }
   };
   
   // Check video progress
@@ -635,19 +707,27 @@ const handleAnswerSubmit = () => {
     };
   }, []);
 
-  useEffect(() => {
-    return () => {
-      console.log("Component unmounting, cleaning up BPQ timeouts");
-      clearAllBpqTimeouts();
-      setQuestionsScheduled(false);
-    };
-  }, [bpqTimeouts]);
+  // useEffect(() => {
+  //   return () => {
+  //     console.log("Component unmounting, cleaning up BPQ timeouts");
+  //     clearAllBpqTimeouts();
+  //     setQuestionsScheduled(false);
+  //   };
+  // }, [bpqTimeouts]);
   
   // Reset BPQ state when video URL changes
+  // useEffect(() => {
+  //   console.log("Video URL changed, resetting BPQ state");
+  //   clearAllBpqTimeouts();
+  //   setQuestionsScheduled(false);
+  //   setCurrentQuestionIndex(0);
+  //   setShowQuestion(false);
+  //   setAnswer("");
+  // }, [videoUrl]);
+
   useEffect(() => {
     console.log("Video URL changed, resetting BPQ state");
-    clearAllBpqTimeouts();
-    setQuestionsScheduled(false);
+    setQuestionsShown(new Set());
     setCurrentQuestionIndex(0);
     setShowQuestion(false);
     setAnswer("");
