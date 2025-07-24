@@ -3,7 +3,7 @@ import VideoLessonPage from "../../components/VideoLessonPage";
 import { call_api } from '../../api';
 
 
-const circuit1s = () => {
+const Circuit1s = () => {
   const [bpqQuestions, setBpqQuestions] = useState([]);
   const [loading, setLoading] = useState(true);
 
@@ -92,4 +92,4 @@ const circuit1s = () => {
   );
 };
 
-export default circuit1s;
+export default Circuit1s;

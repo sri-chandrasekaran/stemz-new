@@ -2,7 +2,7 @@ import React,{ useEffect, useState }  from "react";
 import VideoLessonPage from "../../components/VideoLessonPage";
 import { call_api } from '../../api';
 
-const circuit2s = () => {
+const Circuit2s = () => {
   const [bpqQuestions, setBpqQuestions] = useState([]);
   const [loading, setLoading] = useState(true);
 
@@ -91,4 +91,4 @@ const circuit2s = () => {
   );
 };
 
-export default circuit2s;
+export default Circuit2s;

@@ -2,7 +2,7 @@ import React,{ useEffect, useState }  from "react";
 import VideoLessonPage from "../../components/VideoLessonPage";
 import { call_api } from '../../api';
 
-const chem4 = () => {
+const Chem4 = () => {
   const [bpqQuestions, setBpqQuestions] = useState([]);
   const [loading, setLoading] = useState(true);
 
@@ -91,4 +91,4 @@ const chem4 = () => {
   );
 };
 
-export default chem4;
+export default Chem4;

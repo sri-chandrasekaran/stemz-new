@@ -2,7 +2,7 @@ import React,{ useEffect, useState }  from "react";
 import VideoLessonPage from "../../components/VideoLessonPage";
 import { call_api } from '../../api';
 
-const zoo3s = () => {
+const Zoo3s = () => {
   const [bpqQuestions, setBpqQuestions] = useState([]);
   const [loading, setLoading] = useState(true);
 
@@ -92,4 +92,4 @@ const zoo3s = () => {
   );
 };
 
-export default zoo3s;
+export default Zoo3s;
