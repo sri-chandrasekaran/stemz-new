@@ -403,10 +403,10 @@ const Dashboard = () => {
         </div>
         
         {/* Chatbot Section */}
-        <div className="chatbot-section">
-          <h3 className="header-chatbot">Need Help? Ask Our AI Assistant</h3>
+        {/* <div className="chatbot-section">
+          <h3 className="header-chatbot">Need Help? Ask Our AI Tutor</h3>
           <p className="chatbot-description">
-            Get instant help with your STEM questions, course recommendations, or learning tips!
+            Get instant help with your questions related to the courses, or learning tips!
           </p>
           <button 
             className="dashboard-chatbot-btn"
@@ -414,14 +414,14 @@ const Dashboard = () => {
           >
             💬 Start Chat with AI Assistant
           </button>
-        </div>
+        </div> */}
       </div>
       
       {/* Chatbot Component */}
-      <Chatbot 
+      {/* <Chatbot 
         isOpen={isChatbotOpen} 
         onClose={() => setIsChatbotOpen(false)} 
-      />
+      /> */}
       
       <Footer />
     </div>

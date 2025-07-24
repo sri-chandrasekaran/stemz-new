@@ -45,7 +45,7 @@ const Chatbot = ({ isOpen, onClose }) => {
 
     try {
       // Replace with your local API endpoint
-      const response = await fetch('http://localhost:5000/chat', {
+      const response = await fetch('http://localhost:3001/api/chat', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -88,10 +88,10 @@ const Chatbot = ({ isOpen, onClose }) => {
   if (!isOpen) return null;
 
   return (
-    <div className="chatbot-overlay" onClick={onClose}>
-      <div className="chatbot-container" onClick={(e) => e.stopPropagation()}>
+    <div className="chatbot-popup">
+      <div className="chatbot-container">
         <div className="chatbot-header">
-          <h3>STEM Learning Assistant</h3>
+          <h3>AI Tutor</h3>
           <button className="chatbot-close-btn" onClick={onClose}>×</button>
         </div>
         
@@ -126,7 +126,7 @@ const Chatbot = ({ isOpen, onClose }) => {
             value={inputMessage}
             onChange={(e) => setInputMessage(e.target.value)}
             onKeyPress={handleKeyPress}
-            placeholder="Ask me anything about STEM..."
+            placeholder="Ask me anything about the courses..."
             disabled={isLoading}
           />
           <button 

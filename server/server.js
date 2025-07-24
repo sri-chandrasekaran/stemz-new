@@ -12,11 +12,11 @@ const path = require('path');
 const cookieParser = require("cookie-parser");
 const collection = require("./mongo.js")
 
-//
-const routes = require('../src/routes/*');
+// Import chat routes
+const chatRoutes = require('./routes/api/chat');
 
-app.use('/', routes);
-//
+// Use chat routes
+app.use('/api', chatRoutes);
 
 app.use(express.json())
 app.use(express.urlencoded({extended: true }))
