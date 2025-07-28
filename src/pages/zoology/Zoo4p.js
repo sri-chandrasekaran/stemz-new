@@ -87,6 +87,7 @@ const Zoo4p = () => {
       completionThreshold={95}
       // Version type
       isParentVersion={true}
+      bpqQuestions={bpqQuestions}
     />
   );
 };

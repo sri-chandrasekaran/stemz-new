@@ -63,57 +63,7 @@ const VideoLessonPage = ({
   const [showQuestion, setShowQuestion] = useState(false);
   const [answer, setAnswer] = useState("");
   const [questionsShown, setQuestionsShown] = useState(new Set());
-  // const [bpqTimeouts, setBpqTimeouts] = useState([]); // Renamed for clarity
-  // const [questionsScheduled, setQuestionsScheduled] = useState(false);
-
-//   const clearAllBpqTimeouts = () => {
-//     bpqTimeouts.forEach(timeout => clearTimeout(timeout));
-//     setBpqTimeouts([]);
-//     console.log("Cleared all BPQ timeouts");
-//   };
-
   
-// const scheduleAllQuestions = () => {
-//   // ADD: Check if already scheduled to prevent duplicates
-//   if (!playerRef.current || !bpqQuestions || bpqQuestions.length === 0 || questionsScheduled) {
-//     console.log("Questions already scheduled or no questions to schedule");
-//     return;
-//   }
-
-//   console.log("Scheduling all BPQ questions");
-  
-//   // Clear any existing timeouts first
-//   clearAllBpqTimeouts();
-  
-//   const newTimeouts = [];
-  
-//   bpqQuestions.forEach((question, index) => {
-//     if (question && typeof question.time === 'number') {
-//       console.log(`Scheduling question ${index + 1} at ${question.time} seconds:`, question.text);
-      
-//       const timeout = setTimeout(() => {
-//         console.log(`Showing BPQ question ${index + 1}:`, question.text);
-        
-//         // IMPORTANT: Clear all remaining timeouts when any question shows
-//         clearAllBpqTimeouts();
-        
-//         // Pause the video
-//         if (playerRef.current && typeof playerRef.current.pauseVideo === "function") {
-//           playerRef.current.pauseVideo();
-//         }
-        
-//         // Set the current question and show it
-//         setCurrentQuestionIndex(index);
-//         setShowQuestion(true);
-//       }, question.time * 1000);
-      
-//       newTimeouts.push(timeout);
-//     }
-//   });
-  
-//   setBpqTimeouts(newTimeouts);
-//   setQuestionsScheduled(true);
-// };
 
 // const handleAnswerSubmit = () => {
 //   console.log(`Answer submitted for question ${currentQuestionIndex + 1}:`, answer);
@@ -126,24 +76,251 @@ const VideoLessonPage = ({
 //   if (playerRef.current && typeof playerRef.current.playVideo === "function") {
 //     playerRef.current.playVideo();
 //   }
-  
-//   // IMPORTANT: Don't schedule more questions after answering
-//   // The timeouts were already cleared when the question showed
 // };
 
-const handleAnswerSubmit = () => {
+const handleAnswerSubmit = async () => {
   console.log(`Answer submitted for question ${currentQuestionIndex + 1}:`, answer);
+  
+  // Call NLP API to get scores
+  if (answer.trim()) {
+    showStatus("Analyzing response...");
+    
+    const scores = await callNLPAPI(answer);
+    
+    if (scores) {
+      console.log('🎯 NLP ANALYSIS COMPLETE 🎯');
+      console.log('=====================================');
+      console.log(`Question ${currentQuestionIndex + 1}: "${bpqQuestions[currentQuestionIndex]?.text}"`);
+      console.log(`Student Response: "${answer}"`);
+      console.log('=====================================');
+      console.log('📊 QUALITATIVE SCORES (out of 20):');
+      console.log(`🎨 Creativity: ${scores.creativity}/20`);
+      console.log(`🧠 Critical Thinking: ${scores.critical_thinking}/20`);
+      console.log(`👁️ Observation: ${scores.observation}/20`);
+      console.log(`❓ Curiosity: ${scores.curiosity}/20`);
+      console.log(`🔧 Problem Solving: ${scores.problem_solving}/20`);
+      console.log('=====================================');
+      
+      // Calculate average score
+      const avgScore = (scores.creativity + scores.critical_thinking + 
+                       scores.observation + scores.curiosity + scores.problem_solving) / 5;
+      console.log(`📈 Average Score: ${avgScore.toFixed(1)}/20`);
+      
+  //     // Create full response data structure for future backend integration
+  //     const responseData = {
+  //       courseKey,
+  //       lessonNumber,
+  //       questionIndex: currentQuestionIndex,
+  //       questionText: bpqQuestions[currentQuestionIndex]?.text,
+  //       studentResponse: answer,
+  //       nlpScores: scores,
+  //       averageScore: parseFloat(avgScore.toFixed(1)),
+  //       timestamp: new Date().toISOString(),
+  //     };
+      
+  //     console.log('💾 Full Response Data Structure:', responseData);
+  //     console.log('=====================================');
+      
+  //     showStatus("✓ Response analyzed!");
+  //   } else {
+  //     console.log('❌ NLP Analysis failed - check Flask server');
+  //     showStatus("❌ Error analyzing response");
+  //   }
+  // } else {
+  //   console.log('⚠️ Empty response - skipping NLP analysis');
+  // }  
+         // Save to backend
+      showStatus("Saving response...");
+      
+      const responseData = {
+        questionId: `${lessonNumber}_q${currentQuestionIndex + 1}`,
+        initialAnswer: answer,
+        finalAnswer: answer, // You can modify this if you implement revision features
+        feedback: "", // Add feedback if you implement it
+        scores: {
+          "Creativity": scores.creativity,
+          "Critical Thinking": scores.critical_thinking,
+          "Observation": scores.observation,
+          "Curiosity": scores.curiosity,
+          "Problem Solving": scores.problem_solving
+        }
+      };
+      
+      try {
+        const saveResponse = await call_api(
+          responseData, 
+          `studentresponses/${courseKey}/lesson/${lessonNumber}/bpq`, 
+          "POST"
+        );
+        
+        if (saveResponse && saveResponse.success) {
+          console.log('✅ Response saved to backend successfully');
+          showStatus("✓ Response saved!");
+        } else {
+          console.log('❌ Failed to save response to backend');
+          showStatus("❌ Error saving response");
+        }
+      } catch (error) {
+        console.error('Error saving response:', error);
+        showStatus("❌ Error saving response");
+      }
+      
+    } else {
+      console.log('❌ NLP Analysis failed - check Flask server');
+      showStatus("❌ Error analyzing response");
+    }
+  } else {
+    console.log('⚠️ Empty response - skipping NLP analysis');
+  }
   
   // Hide the question
   setShowQuestion(false);
   setAnswer("");
   
-  // Resume video playback
+  // Resume video playbook
   if (playerRef.current && typeof playerRef.current.playVideo === "function") {
     playerRef.current.playVideo();
   }
 };
+
+const callNLPAPI = async (responseText) => {
+  try {
+    const response = await fetch('http://127.0.0.1:5000/predict', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(responseText)
+    });
+    
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    
+    const scores = await response.json();
+    return scores;
+  } catch (error) {
+    console.error('Error calling NLP API:', error);
+    console.error('Make sure your Flask server is running on http://127.0.0.1:5000');
+    return null;
+  }
+};
+
+const checkSavedResponses = async () => {
+  try {
+    console.log('🔍 Checking saved responses...');
+    const response = await call_api(null, `studentresponses/${courseKey}`, "GET");
+    console.log("📋 ALL SAVED RESPONSES:", JSON.stringify(response, null, 2));
+    
+    // Also check specifically for this lesson
+    if (response && response.responses) {
+      const thisLesson = response.responses.find(r => r.lessonId === lessonNumber);
+      if (thisLesson) {
+        console.log("📚 THIS LESSON'S RESPONSES:", JSON.stringify(thisLesson, null, 2));
+      } else {
+        console.log("❌ No responses found for this lesson");
+      }
+    }
+  } catch (error) {
+    console.error("Error fetching saved responses:", error);
+  }
+};
   
+// const testTeacherAPI = async () => {
+//   try {
+//     console.log('🧑‍🏫 Testing teacher API...');
+//     const token = localStorage.getItem('token');
+    
+//     const response = await fetch(`/api/teachers/bpq-responses/${courseKey}`, {
+//       method: 'GET',
+//       headers: {
+//         'Authorization': `Bearer ${token}`,
+//         'Content-Type': 'application/json'
+//       }
+//     });
+    
+//     console.log('📊 Response Status:', response.status);
+//     console.log('📊 Response Headers:', [...response.headers.entries()]);
+    
+//     const responseText = await response.text(); // Get as text first
+//     console.log('📊 Raw Response:', responseText);
+    
+//     // Try to parse as JSON
+//     try {
+//       const data = JSON.parse(responseText);
+//       console.log('📊 Parsed JSON:', data);
+//     } catch (parseError) {
+//       console.log('❌ Not valid JSON, probably HTML error page');
+//     }
+    
+//   } catch (error) {
+//     console.error('❌ Teacher API Error:', error);
+//   }
+// };
+
+const testAnalyticsAPI = async () => {
+  try {
+    console.log('📊 Testing analytics API...');
+    const token = localStorage.getItem('token');
+    
+    // Use the analytics endpoint instead
+    const response = await fetch(`/api/teachers/analytics-scores/${courseKey}`, {
+      method: 'GET',
+      headers: {
+        'Authorization': `Bearer ${token}`,
+        'Content-Type': 'application/json'
+      }
+    });
+    
+    console.log('📊 Response Status:', response.status);
+    console.log('📊 Response Headers:', [...response.headers.entries()]);
+    
+    const responseText = await response.text(); // Get as text first
+    console.log('📊 Raw Response:', responseText);
+    
+    // Try to parse as JSON
+    try {
+      const data = JSON.parse(responseText);
+      console.log('📊 Parsed JSON:', data);
+      
+      // If successful, log the clean analytics data
+      if (data.success && data.data) {
+        console.log('✅ Analytics Data Retrieved!');
+        console.log('👥 Number of students:', data.data.length);
+        
+        // Log each student's analytics
+        data.data.forEach((student, index) => {
+          console.log(`\n👤 Student ${index + 1}:`, {
+            name: student.studentName,
+            email: student.studentEmail,
+            averageScores: student.averageScores,
+            totalResponses: student.totalResponses
+          });
+        });
+        
+        // Find Sri specifically (if exists)
+        const sriData = data.data.find(student => 
+          student.studentName.toLowerCase().includes('sri')
+        );
+        
+        if (sriData) {
+          console.log('\n🎯 Sri\'s Analytics:', {
+            creativity: sriData.averageScores.Creativity,
+            criticalThinking: sriData.averageScores['Critical Thinking'],
+            observation: sriData.averageScores.Observation,
+            curiosity: sriData.averageScores.Curiosity,
+            problemSolving: sriData.averageScores['Problem Solving']
+          });
+        }
+      }
+    } catch (parseError) {
+      console.log('❌ Not valid JSON, probably HTML error page');
+    }
+    
+  } catch (error) {
+    console.error('❌ Analytics API Error:', error);
+  }
+};
 
   // Log function for debugging
   const log = (message) => {
@@ -323,11 +500,6 @@ const handleAnswerSubmit = () => {
   const onPlayerReady = (event) => {
     console.log("Player ready");
     playerRef.current = event.target;
-    
-    // // Schedule all BPQ questions when player is ready (ONLY ONCE)
-    // if (bpqQuestions && bpqQuestions.length > 0) {
-    //   scheduleAllQuestions();
-    // }
   };
 
     
@@ -389,18 +561,6 @@ const handleAnswerSubmit = () => {
     };
   }, []);
 
-  // Start tracking progress
-  // const startProgressTracking = () => {
-  //   log("Starting progress tracking");
-    
-  //   // Clear any existing interval
-  //   if (progressIntervalRef.current) {
-  //     clearInterval(progressIntervalRef.current);
-  //   }
-    
-  //   // Set up new interval - check every 300 second
-  //   progressIntervalRef.current = setInterval(checkVideoProgress, 5000);
-  // };
   const startProgressTracking = () => {
     log("Starting progress tracking");
     
@@ -707,23 +867,6 @@ const handleAnswerSubmit = () => {
     };
   }, []);
 
-  // useEffect(() => {
-  //   return () => {
-  //     console.log("Component unmounting, cleaning up BPQ timeouts");
-  //     clearAllBpqTimeouts();
-  //     setQuestionsScheduled(false);
-  //   };
-  // }, [bpqTimeouts]);
-  
-  // Reset BPQ state when video URL changes
-  // useEffect(() => {
-  //   console.log("Video URL changed, resetting BPQ state");
-  //   clearAllBpqTimeouts();
-  //   setQuestionsScheduled(false);
-  //   setCurrentQuestionIndex(0);
-  //   setShowQuestion(false);
-  //   setAnswer("");
-  // }, [videoUrl]);
 
   useEffect(() => {
     console.log("Video URL changed, resetting BPQ state");
@@ -917,6 +1060,36 @@ const handleAnswerSubmit = () => {
             <button className="course-button">{notesLabel}</button>
           </Link>
         )}
+
+      <button 
+        onClick={checkSavedResponses} 
+        style={{
+          margin: '10px',
+          padding: '10px 15px',
+          backgroundColor: '#ff6b6b',
+          color: 'white',
+          border: 'none',
+          borderRadius: '5px',
+          cursor: 'pointer'
+        }}
+      >
+        🔍 Check Saved Responses (Debug)
+      </button>
+
+      <button 
+      onClick={testAnalyticsAPI} 
+      style={{
+        margin: '10px',
+        padding: '10px 15px',
+        backgroundColor: '#4CAF50',
+        color: 'white',
+        border: 'none',
+        borderRadius: '5px',
+        cursor: 'pointer'
+      }}
+      >
+        🧑‍🏫 Test analytics API
+      </button>
       </div>
       
       <style jsx>{`

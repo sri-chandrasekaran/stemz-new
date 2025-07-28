@@ -87,6 +87,7 @@ const Circuit3s = () => {
       completionThreshold={95}
       // Version type
       isParentVersion={false}
+      bpqQuestions={bpqQuestions}
     />
   );
 };

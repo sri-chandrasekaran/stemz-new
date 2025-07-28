@@ -87,6 +87,7 @@ const Chem4 = () => {
       completionThreshold={95}
       // Version type
       isParentVersion={false}
+      bpqQuestions={bpqQuestions}
     />
   );
 };

@@ -85,7 +85,7 @@ const Astrovid1p = () => {
       
       // Version type
       isParentVersion={true}
-      
+      bpqQuestions={bpqQuestions}
       // Points configuration
       maxVideoPoints={7}
       worksheetPoints={5}

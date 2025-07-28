@@ -87,6 +87,7 @@ const Astrovid3p = () => {
       completionThreshold={95}
       // Version type
       isParentVersion={true}
+      bpqQuestions={bpqQuestions}
     />
   );
 };
