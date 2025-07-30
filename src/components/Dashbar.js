@@ -123,7 +123,7 @@ const Dashbar = () => {
   if (isLoading) {
     return (
       <div className="grid-side">
-        <div>Loading...</div>
+
       </div>
     );
   }
