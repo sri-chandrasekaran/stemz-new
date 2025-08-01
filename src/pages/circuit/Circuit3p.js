@@ -73,7 +73,7 @@ const Circuit3p = () => {
       lessonTitle="Lesson 3: Creating a Functioning Circuit"
       lessonNumber="lesson3"
       courseKey="circuits"
-      videoUrl="4ZBUoBPdojA"
+      videoUrl="pK9h_Ts3gWw"
       // Resource URLs and paths
       slideshowUrl="https://docs.google.com/presentation/d/e/2PACX-1vQHwS6QoKw-5dD3US0sKlltaH2sezbHE0gkWm1ZYDR-mmL_CQtGl1lIvpJMas7-3Lse-thok9I-jYjP/pub?start=false&loop=false&delayms=3000"
       worksheetPath={null}

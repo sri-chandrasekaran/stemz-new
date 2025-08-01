@@ -73,7 +73,7 @@ const Circuit2p = () => {
       lessonTitle="Lesson 2: More Circuit Board Tools"
       lessonNumber="lesson2"
       courseKey="circuits"
-      videoUrl="pK9h_Ts3gWw"
+      videoUrl="4ZBUoBPdojA"
       // Resource URLs and paths
       slideshowUrl="https://docs.google.com/presentation/d/e/2PACX-1vQKXKuhKmKYY8iKcw7S5N_hMPgAoFGbFCE-_9j_bFp-z7HQUGweO7n1c8sHpm2m3sIrRgrBUs1it6XG/pub?start=false&loop=false&delayms=3000"
       worksheetPath="/circuitworksheet"
