@@ -322,6 +322,132 @@ const testAnalyticsAPI = async () => {
   }
 };
 
+const testIndividualStudentResponsesAPI = async () => {
+  try {
+    console.log('🎓 Testing Individual Student Responses API...');
+    const token = localStorage.getItem('token');
+    const courseKey = "astronomy"; // Adjust this value accordingly
+    const studentId = "67c55a722a7acc6cb17c712e"; // Replace with an actual student ID
+
+    // Use the individual student responses endpoint
+    const response = await fetch(`/api/teachers/bpq-responses/${courseKey}/student/${studentId}`, {
+      method: 'GET',
+      headers: {
+        'Authorization': `Bearer ${token}`,
+        'Content-Type': 'application/json'
+      }
+    });
+
+    console.log('🎓 Response Status:', response.status);
+    console.log('🎓 Response Headers:', [...response.headers.entries()]);
+
+    const responseText = await response.text();
+    console.log('🎓 Raw Response:', responseText);
+
+    // Try to parse as JSON
+    try {
+      const data = JSON.parse(responseText);
+      console.log('🎓 Parsed JSON:', data);
+
+      // If successful, log the student's responses
+      if (data.success && data.responses) {
+        console.log('✅ Individual Student Responses Retrieved!');
+        console.log('👤 Student ID:', data.student.id);
+        console.log('📝 Responses:', data.responses);
+      }
+    } catch (parseError) {
+      console.log('❌ Not valid JSON, probably HTML error page');
+    }
+
+  } catch (error) {
+    console.error('❌ Individual Student Responses API Error:', error);
+  }
+};
+
+const testStudentOverallScoresAPI = async () => {
+  try {
+    console.log('🏆 Testing Student Overall Scores API...');
+    const token = localStorage.getItem('token');
+    const studentId = "67c55a722a7acc6cb17c712e"; // Replace with an actual student ID
+
+    // Use the overall scores endpoint
+    const response = await fetch(`/api/teacher/student-overall-scores/${studentId}`, {
+      method: 'GET',
+      headers: {
+        'Authorization': `Bearer ${token}`,
+        'Content-Type': 'application/json'
+      }
+    });
+
+    console.log('🏆 Response Status:', response.status);
+    console.log('🏆 Response Headers:', [...response.headers.entries()]);
+
+    const responseText = await response.text();
+    console.log('🏆 Raw Response:', responseText);
+
+    // Try to parse as JSON
+    try {
+      const data = JSON.parse(responseText);
+      console.log('🏆 Parsed JSON:', data);
+
+      // If successful, log the student's overall scores
+      if (data.success && data.data) {
+        console.log('✅ Student Overall Scores Retrieved!');
+        console.log('👤 Student ID:', data.data.studentId);
+        console.log('🏅 Overall Scores:', data.data.averageScores);
+      }
+    } catch (parseError) {
+      console.log('❌ Not valid JSON, probably HTML error page');
+    }
+
+  } catch (error) {
+    console.error('❌ Student Overall Scores API Error:', error);
+  }
+};
+
+const testStudentCourseScoresAPI = async () => {
+  try {
+    console.log('📚 Testing Student Course Scores API...');
+    const token = localStorage.getItem('token');
+    const courseKey = "astronomy"; // Replace with the specific course
+    const studentId = "67c55a722a7acc6cb17c712e"; // Replace with an actual student ID
+
+    // Use the student course scores endpoint
+    const response = await fetch(`/api/teacher/student-course-scores/${courseKey}/student/${studentId}`, {
+      method: 'GET',
+      headers: {
+        'Authorization': `Bearer ${token}`,
+        'Content-Type': 'application/json'
+      }
+    });
+
+    console.log('📚 Response Status:', response.status);
+    console.log('📚 Response Headers:', [...response.headers.entries()]);
+
+    const responseText = await response.text();
+    console.log('📚 Raw Response:', responseText);
+
+    // Try to parse as JSON
+    try {
+      const data = JSON.parse(responseText);
+      console.log('📚 Parsed JSON:', data);
+
+      // If successful, log the student's course-specific scores
+      if (data.success && data.data) {
+        console.log('✅ Student Course Scores Retrieved!');
+        console.log('👤 Student ID:', data.data.studentId);
+        console.log('📈 Course Scores:', data.data.averageScores);
+      }
+    } catch (parseError) {
+      console.log('❌ Not valid JSON, probably HTML error page');
+    }
+
+  } catch (error) {
+    console.error('❌ Student Course Scores API Error:', error);
+  }
+};
+
+
   // Log function for debugging
   const log = (message) => {
     const timestamp = new Date().toLocaleTimeString();
@@ -1060,37 +1186,8 @@ const testAnalyticsAPI = async () => {
             <button className="course-button">{notesLabel}</button>
           </Link>
         )}
-
-      <button 
-        onClick={checkSavedResponses} 
-        style={{
-          margin: '10px',
-          padding: '10px 15px',
-          backgroundColor: '#ff6b6b',
-          color: 'white',
-          border: 'none',
-          borderRadius: '5px',
-          cursor: 'pointer'
-        }}
-      >
-        🔍 Check Saved Responses (Debug)
-      </button>
-
-      <button 
-      onClick={testAnalyticsAPI} 
-      style={{
-        margin: '10px',
-        padding: '10px 15px',
-        backgroundColor: '#4CAF50',
-        color: 'white',
-        border: 'none',
-        borderRadius: '5px',
-        cursor: 'pointer'
-      }}
-      >
-        🧑‍🏫 Test analytics API
-      </button>
       </div>
+      
       
       <style jsx>{`
         @keyframes fadeIn {
