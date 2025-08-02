@@ -65,11 +65,7 @@ const Astroquiz = () => {
       <div className="vidbig">
         {isAuthenticated && (
           <Quiz
-<<<<<<< HEAD
             // src="/assets/astroquiz.json"
-=======
-            // src="/assets/astroquiz1.json"
->>>>>>> main
             courseKey="astronomy"
             lessonNumber="lesson4"
           />

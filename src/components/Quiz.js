@@ -22,6 +22,7 @@ const Quiz = ({ courseKey, lessonNumber }) => {
   const [userGrade, setUserGrade] = useState(null);
   const [maxPossiblePoints, setMaxPossiblePoints] = useState(0);
   const [quizNotFound, setQuizNotFound] = useState(false);
+  const [total, setTotal] = useState(0);
 
   // Show status message with auto-fade (existing)
   const showStatus = useCallback((message, duration = 3000) => {
