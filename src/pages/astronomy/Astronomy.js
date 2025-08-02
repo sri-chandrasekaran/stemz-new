@@ -6,12 +6,14 @@ import AstronomyImage from "../../assets/astronomy.PNG";
 import { Link, useNavigate } from "react-router-dom";
 import "../css/AllClassHomePage.css";
 import { call_api } from "../../api";
+import { FaAssignment, FaExternalLinkAlt } from 'react-icons/fa';
 
 const Astronomy = () => {
   const [courseProgress, setCourseProgress] = useState(null);
   const [loading, setLoading] = useState(true);
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const navigate = useNavigate();
+  const [courseAssignments, setCourseAssignments] = useState([]);
 
   // Token verification
   useEffect(() => {
@@ -42,6 +44,21 @@ const Astronomy = () => {
 
     verifyToken();
   }, [navigate]);
+
+  useEffect(() => {
+    const fetchCourseAssignments = async () => {
+      if (!isAuthenticated) return;
+      
+      try {
+        const response = await call_api(null, 'assignments/course/astronomy', 'GET');
+        setCourseAssignments(response || []);
+      } catch (error) {
+        console.error('Error fetching course assignments:', error);
+      }
+    };
+    
+    fetchCourseAssignments();
+  }, [isAuthenticated]);
 
   // Fetch course progress data
   useEffect(() => {
@@ -166,6 +183,43 @@ const Astronomy = () => {
           )}
         </div>
       </div>
+
+      {courseAssignments.length > 0 && (
+        <div className="course-assignments-section">
+          <h2 className="assignments-title">📝 Assignments for Astronomy</h2>
+          <div className="assignments-container">
+            {courseAssignments.map(assignment => (
+              <div key={assignment._id} className="course-assignment-card">
+                <div className="assignment-header">
+                  <h3 className="assignment-title">{assignment.title}</h3>
+                  <span className="classroom-badge">{assignment.classroom_id?.name}</span>
+                </div>
+                
+                <div className="assignment-details">
+                  <p className="assignment-description">{assignment.description}</p>
+                  <div className="assignment-meta">
+                    <span className="lesson-info">📖 {assignment.lesson_number}</span>
+                    <span className="activity-info">🎯 {assignment.activity_type}</span>
+                    <span className="teacher-info">👨‍🏫 {assignment.teacher_id?.name}</span>
+                  </div>
+                  
+                  {assignment.due_date && (
+                    <div className="due-date-info">
+                      ⏰ Due: {new Date(assignment.due_date).toLocaleDateString()}
+                    </div>
+                  )}
+                </div>
+                
+                <div className="assignment-actions">
+                  <Link to={assignment.direct_link} className="assignment-link">
+                    Start Assignment <FaExternalLinkAlt />
+                  </Link>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      )}
 
       <div className="student-l1">
         <h1>Student-Led Lessons</h1>
