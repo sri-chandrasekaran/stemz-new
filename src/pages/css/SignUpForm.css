@@ -70,7 +70,6 @@
     color: #357717;
   }
   
-<<<<<<< HEAD
   .form-group {
     margin-bottom: 1rem;
     display: flex;
@@ -104,7 +103,6 @@
     cursor: pointer;
   }
   
-=======
   /* Role Selection Container */
 .signup-form .role-selection {
   display: flex;
@@ -141,4 +139,3 @@
 .signup-form .role-selection label:hover {
   border-color: #357717;
 }
->>>>>>> main
