@@ -33,12 +33,12 @@ const Zoo4p = () => {
           return;
         }
         
-        if (!userDetailsResponse.grade) {
+        if (!userDetailsResponse.gradeLevel) {
           console.error("User has no grade field. User object:", userDetailsResponse);
           return;
         }
 
-        const userGrade = userDetailsResponse.grade;
+        const userGrade = userDetailsResponse.gradeLevel;
         console.log(`Step 3: User grade found: ${userGrade}`);
 
         // Step 4: Now fetch BPQ questions with the user's actual grade
