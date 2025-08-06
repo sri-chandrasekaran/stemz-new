@@ -68,19 +68,6 @@ const VideoLessonPage = ({
   const [questionsShown, setQuestionsShown] = useState(new Set());
   
 
-// const handleAnswerSubmit = () => {
-//   console.log(`Answer submitted for question ${currentQuestionIndex + 1}:`, answer);
-  
-//   // Hide the question
-//   setShowQuestion(false);
-//   setAnswer("");
-  
-//   // Resume video playback
-//   if (playerRef.current && typeof playerRef.current.playVideo === "function") {
-//     playerRef.current.playVideo();
-//   }
-// };
-
 const handleAnswerSubmit = async () => {
   console.log(`Answer submitted for question ${currentQuestionIndex + 1}:`, answer);
   
@@ -108,30 +95,6 @@ const handleAnswerSubmit = async () => {
       const avgScore = (scores.creativity + scores.critical_thinking + 
                        scores.observation + scores.curiosity + scores.problem_solving) / 5;
       console.log(`📈 Average Score: ${avgScore.toFixed(1)}/20`);
-      
-  //     // Create full response data structure for future backend integration
-  //     const responseData = {
-  //       courseKey,
-  //       lessonNumber,
-  //       questionIndex: currentQuestionIndex,
-  //       questionText: bpqQuestions[currentQuestionIndex]?.text,
-  //       studentResponse: answer,
-  //       nlpScores: scores,
-  //       averageScore: parseFloat(avgScore.toFixed(1)),
-  //       timestamp: new Date().toISOString(),
-  //     };
-      
-  //     console.log('💾 Full Response Data Structure:', responseData);
-  //     console.log('=====================================');
-      
-  //     showStatus("✓ Response analyzed!");
-  //   } else {
-  //     console.log('❌ NLP Analysis failed - check Flask server');
-  //     showStatus("❌ Error analyzing response");
-  //   }
-  // } else {
-  //   console.log('⚠️ Empty response - skipping NLP analysis');
-  // }  
          // Save to backend
       showStatus("Saving response...");
       
@@ -186,25 +149,69 @@ const handleAnswerSubmit = async () => {
   }
 };
 
-const callNLPAPI = async (responseText) => {
+const callNLPAPI = async (inputText) => {
   try {
-    const response = await fetch('http://127.0.0.1:5000/predict', {
+    // Step 1: POST request to get EVENT_ID
+    const postResponse = await fetch('https://sri-chandrasekaran-flask-nlp-api.hf.space/gradio_api/call/predict_scores', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify(responseText)
+      body: JSON.stringify({
+        data: [inputText]
+      })
     });
-    
-    if (!response.ok) {
-      throw new Error(`HTTP error! status: ${response.status}`);
+
+    if (!postResponse.ok) {
+      throw new Error(`POST request failed: ${postResponse.status}`);
     }
-    
-    const scores = await response.json();
-    return scores;
+
+    const postResult = await postResponse.json();
+    console.log('POST response:', postResult);
+
+    const eventId = postResult.event_id;
+    if (!eventId) {
+      throw new Error('No event_id received');
+    }
+
+    // Step 2: GET request as text (SSE format)
+    const getResponse = await fetch(`https://sri-chandrasekaran-flask-nlp-api.hf.space/gradio_api/call/predict_scores/${eventId}`);
+
+    if (!getResponse.ok) {
+      throw new Error(`GET request failed: ${getResponse.status}`);
+    }
+
+    const responseText = await getResponse.text();
+    console.log('GET response text:', responseText);
+
+    // Parse SSE format to extract the JSON data
+    const lines = responseText.split('\n');
+    let resultData = null;
+
+    for (const line of lines) {
+      if (line.startsWith('data: ')) {
+        try {
+          const jsonStr = line.substring(6); // Remove 'data: ' prefix
+          const parsed = JSON.parse(jsonStr);
+          console.log('Parsed line:', parsed);
+          
+          // The data is directly an array with the scores object
+          if (Array.isArray(parsed) && parsed.length > 0) {
+            resultData = parsed[0]; // Get the first element of the array
+            break;
+          }
+        } catch (e) {
+          console.log('Failed to parse line:', line, e);
+          continue;
+        }
+      }
+    }
+
+    console.log('Final parsed result:', resultData);
+    return resultData;
+
   } catch (error) {
     console.error('Error calling NLP API:', error);
-    console.error('Make sure your Flask server is running on http://127.0.0.1:5000');
     return null;
   }
 };
