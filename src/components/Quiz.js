@@ -41,66 +41,113 @@ const Quiz = ({ courseKey, lessonNumber }) => {
 
   const capitalizeFirst = (str) => str.charAt(0).toUpperCase() + str.slice(1);
 
-// Load quiz data from backend with dynamic grade
-useEffect(() => {
-  const fetchQuizFromBackend = async () => {
+  const saveQuizResponsesToDB = async (earnedPoints, correctCount, percentCorrect) => {
     try {
-      // First, get the current user's grade
-      console.log("Step 1: Getting user info from auth/verify");
-      const userResponse = await call_api(null, "auth/verify", "POST");
-      console.log("Auth verify response:", userResponse);
+      showStatus("Saving quiz responses...");
       
-      if (!userResponse || !userResponse.user) {
-        console.error("Could not get user info");
-        return;
-      }
-
-      console.log("Step 2: Getting user details with ID:", userResponse.user.id);
-      // Get the full user details to access grade
-      const userDetailsResponse = await call_api(null, `users/id/${userResponse.user.id}`, "GET");
-      console.log("User details response:", userDetailsResponse);
+      // Prepare quiz answers data
+      const quizAnswers = questions.map((question, questionIndex) => ({
+        questionId: `${courseKey}_lesson${lessonNumber}_q${questionIndex + 1}`,
+        selectedAnswer: question.options[selectedAnswers[questionIndex]] || "No answer selected",
+        correct: selectedAnswers[questionIndex] === question.correctAnswerIndex
+      }));
       
-      if (!userDetailsResponse) {
-        console.error("Could not fetch user details");
-        return;
-      }
+      // Prepare quiz attempt data - this matches your controller expectation
+      const quizAttemptData = {
+        attemptNumber: 1, // You might want to increment this based on existing attempts
+        answers: quizAnswers,
+        score: earnedPoints,
+        total: maxPossiblePoints,
+        submittedAt: new Date()
+      };
       
-      if (!userDetailsResponse.gradeLevel) {
-        console.error("User has no grade field. User object:", userDetailsResponse);
-        return;
-      }
-
-      const userGrade = userDetailsResponse.gradeLevel;
-      console.log(`Step 3: User grade found: ${userGrade}`);
-
-      // Now fetch quiz questions with dynamic grade
-      console.log(`Step 4: Fetching quiz questions for course: ${courseKey}, grade: ${userGrade}`);
-      const response = await call_api(null, `quizquestions?course_id=${courseKey}&grade=${userGrade}`, "GET");
-      console.log("Quiz API response:", response);
+      console.log('Saving quiz response data:', quizAttemptData);
       
-      if (response && response.questions && response.questions.length > 0) {
-        console.log('Loaded questions from backend:', response.questions);
-        setQuestions(response.questions.map(q => ({
-          question: q.question,
-          options: q.options,
-          correctAnswerIndex: q.correctAnswerIndex,
-        })));
-        setTotal(response.questions.length);
-        // setQuizTitle(`${courseKey} Quiz - Grade ${userGrade}`);
-        setQuizTitle(`${capitalizeFirst(courseKey)} Quiz - Grade ${userGrade}`);
-
+      // Save to backend - send quizAttemptData directly since controller expects it in req.body
+      // studentId comes from JWT token via authenticateToken middleware
+      const saveResponse = await call_api(
+        quizAttemptData, 
+        `studentresponses/${courseKey}/lesson/lesson${lessonNumber}/quiz`, 
+        "POST"
+      );
+      
+      if (saveResponse && saveResponse.success) {
+        console.log('✅ Quiz responses saved to backend successfully');
+        showStatus("✓ Quiz responses saved!");
+        return true;
       } else {
-        console.error("No questions found for this grade level");
+        console.log('❌ Failed to save quiz responses to backend');
+        showStatus("❌ Error saving quiz responses");
+        return false;
       }
-    } catch (err) {
-      console.error("Error fetching quiz questions:", err);
-    } finally {
-      setLoading(false);
+      
+    } catch (error) {
+      console.error('Error saving quiz responses:', error);
+      showStatus("❌ Error saving quiz responses");
+      return false;
     }
   };
 
-  fetchQuizFromBackend();
-}, [courseKey, lessonNumber]);
+// // Load quiz data from backend with dynamic grade
+// useEffect(() => {
+//   const fetchQuizFromBackend = async () => {
+//     try {
+//       // First, get the current user's grade
+//       console.log("Step 1: Getting user info from auth/verify");
+//       const userResponse = await call_api(null, "auth/verify", "POST");
+//       console.log("Auth verify response:", userResponse);
+      
+//       if (!userResponse || !userResponse.user) {
+//         console.error("Could not get user info");
+//         return;
+//       }
+
+//       console.log("Step 2: Getting user details with ID:", userResponse.user.id);
+//       // Get the full user details to access grade
+//       const userDetailsResponse = await call_api(null, `users/id/${userResponse.user.id}`, "GET");
+//       console.log("User details response:", userDetailsResponse);
+      
+//       if (!userDetailsResponse) {
+//         console.error("Could not fetch user details");
+//         return;
+//       }
+      
+//       if (!userDetailsResponse.gradeLevel) {
+//         console.error("User has no grade field. User object:", userDetailsResponse);
+//         return;
+//       }
+
+//       const userGrade = userDetailsResponse.gradeLevel;
+//       console.log(`Step 3: User grade found: ${userGrade}`);
+
+//       // Now fetch quiz questions with dynamic grade
+//       console.log(`Step 4: Fetching quiz questions for course: ${courseKey}, grade: ${userGrade}`);
+//       const response = await call_api(null, `quizquestions?course_id=${courseKey}&grade=${userGrade}`, "GET");
+//       console.log("Quiz API response:", response);
+      
+//       if (response && response.questions && response.questions.length > 0) {
+//         console.log('Loaded questions from backend:', response.questions);
+//         setQuestions(response.questions.map(q => ({
+//           question: q.question,
+//           options: q.options,
+//           correctAnswerIndex: q.correctAnswerIndex,
+//         })));
+//         setTotal(response.questions.length);
+//         // setQuizTitle(`${courseKey} Quiz - Grade ${userGrade}`);
+//         setQuizTitle(`${capitalizeFirst(courseKey)} Quiz - Grade ${userGrade}`);
+
+//       } else {
+//         console.error("No questions found for this grade level");
+//       }
+//     } catch (err) {
+//       console.error("Error fetching quiz questions:", err);
+//     } finally {
+//       setLoading(false);
+//     }
+//   };
+
+//   fetchQuizFromBackend();
+// }, [courseKey, lessonNumber]);
 
   // Get user's grade level (existing)
   useEffect(() => {
@@ -128,7 +175,7 @@ useEffect(() => {
     fetchUserGrade();
   }, [showStatus]);
 
-  // Load quiz data based on user's grade (existing)
+  // // Load quiz data based on user's grade (existing)
   useEffect(() => {
     if (!userGrade) return;
 
@@ -149,12 +196,15 @@ useEffect(() => {
         const quizPrefix = quizFileMap[courseKey] || 'quiz';
         
         let quizFile;
-        if (userGrade >= 1 && userGrade <= 3) {
-          quizFile = `/assets/${quizPrefix}-grade1-3.json`;
-        } else if (userGrade >= 4 && userGrade <= 6) {
-          quizFile = `/assets/${quizPrefix}-grade4-6.json`;
+        if (userGrade >= 1 && userGrade <= 2) {
+          quizFile = `/assets/${quizPrefix}-grade1-2.json`;
+        } else if (userGrade >= 3 && userGrade <= 4) {
+          quizFile = `/assets/${quizPrefix}-grade3-4.json`;
+        } else if (userGrade >= 5 && userGrade <= 6) {
+          quizFile = `/assets/${quizPrefix}-grade5-6.json`;
         } else {
-          quizFile = `/assets/${quizPrefix}-grade1-3.json`;
+          // Default fallback for grades outside 1-6 range
+          quizFile = `/assets/${quizPrefix}-grade1-2.json`;
         }
         
         console.log(`Loading quiz from: ${quizFile} for grade ${userGrade}`);
@@ -165,9 +215,9 @@ useEffect(() => {
           console.log(`Primary fetch failed: ${response.status} ${response.statusText}`);
           const fallbackResponse = await fetch(`/assets/${quizPrefix}.json`);
           if (!fallbackResponse.ok) {
-            const otherGradeFile = userGrade <= 3 ? 
-              `/assets/${quizPrefix}-grade6.json` : 
-              `/assets/${quizPrefix}-grade1.json`;
+            const otherGradeFile = userGrade <= 2 ? 
+              `/assets/${quizPrefix}-grade5-6.json` : 
+              `/assets/${quizPrefix}-grade1-2.json`;
             const lastResortResponse = await fetch(otherGradeFile);
             if (!lastResortResponse.ok) {
               throw new Error(`No quiz file found. Tried: ${quizFile}, /assets/${quizPrefix}.json, ${otherGradeFile}`);
@@ -286,6 +336,8 @@ useEffect(() => {
     setPercentCorrect(percentCorrect);
     setPointsEarned(earnedPoints);
     setShowResults(true);
+
+    await saveQuizResponsesToDB(earnedPoints, correctCount, percentCorrect);
     
     // 🆕 UPDATED: Report quiz failure to Physical Classroom system
     await reportQuizFailureToPhysicalClassroom(earnedPoints, correctCount, percentCorrect);

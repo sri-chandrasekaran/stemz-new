@@ -1,0 +1,172 @@
+{
+    "title": "Chemistry Quiz",
+    "gradeLevel": 1,
+    "questions": [
+      {
+        "question": "What is chemistry?",
+        "options": [
+        "Chemistry is the study of stars and galaxies.",
+        "Chemistry is the art of painting with colors.",
+        "Chemistry is the branch of science that studies the properties of matter and how matter interacts with energy.",
+        "Chemistry is the study of ancient civilizations' artifacts and relics."
+        ],
+        "score": 1,
+        "correctAnswerIndex": 2
+      },
+      {
+        "question": "What makes up matter?",
+        "options": [
+        "Energy",
+        "Atoms",
+        "Subatomic particles",
+        "Magic"
+        ],
+        "score": 2,
+        "correctAnswerIndex": 1
+      },
+      {
+        "question": "What are atoms?",
+        "options": [
+        "Tiny insects that live in the ground.",
+        "Small rocks found in rivers.",
+        "The basic units of all living things.",
+        "Atoms are the extremely small building blocks of all matter."
+        ],
+        "score": 2,
+        "correctAnswerIndex": 3
+      },
+      {
+        "question": "What is the measure of how much matter is in something?",
+        "options": [
+        "Mass",
+        "Volume",
+        "Temperature",
+        "Density"
+        ],
+        "score": 1,
+        "correctAnswerIndex": 0
+      },
+      {
+        "question": "What is a molecule?",
+        "options": [
+        "A tiny creature living in the ocean.",
+        "A group of two or more atoms (the smallest unit of a substance that has the same qualities of that substance).",
+        "A small piece of dirt.",
+        "A type of rock found in caves."
+        ],
+        "score": 2,
+        "correctAnswerIndex": 1
+      },
+      {
+        "question": "What are atoms in molecules held together by?",
+        "options": [
+        "Glue",
+        "Strings",
+        "Carbon Dioxide",
+        "Chemical Bonds"
+        ],
+        "score": 3,
+        "correctAnswerIndex": 3
+      },
+      {
+        "question": "What is a chemical reaction?",
+        "options": [
+        "A game that scientists play in a lab.",
+        "Mixing two colors to get a new color.",
+        "A process where one or more substances change into one or more different substances.",
+        "Pouring water into a cup."
+        ],
+        "score": 3,
+        "correctAnswerIndex": 2
+      },
+      {
+        "question": "What do chemists study?",
+        "options": [
+        "Stars and planets",
+        "Cars and trucks",
+        "Matter and how it changes",
+        "Balloons and bubbles"
+        ],
+        "score": 1,
+        "correctAnswerIndex": 2
+      },
+      {
+        "question": "What is an example of a mixture?",
+        "options": [
+          "Salt and pepper",
+          "Iron",
+          "Water",
+          "Oxygen"
+        ],
+        "score": 2,
+        "correctAnswerIndex": 0
+      },
+      {
+        "question": "What are some things chemistry can help us make?",
+        "options": [
+        "Candy, paint, and slime",
+        "Water, air, and trees",
+        "Books, pencils, and paper",
+        "Shoes, clothes, and toys"
+        ],
+        "score": 3,
+        "correctAnswerIndex": 0
+      },
+      {
+        "question": "What happens when you mix vinegar and baking soda?",
+        "options": [
+        "Nothing",
+        "A chemical reaction with bubbles",
+        "It makes food",
+        "It smells nice"
+        ],
+        "score": 2,
+        "correctAnswerIndex": 1
+      },
+      {
+        "question": "What are atoms made of?",
+        "options": [
+        "Water and sand",
+        "Glue and string",
+        "Cells and tissue",
+        "Protons, neutrons, and electrons"
+        ],
+        "score": 3,
+        "correctAnswerIndex": 3
+      },
+      {
+        "question": "Which of the following is a gas?",
+        "options": [
+        "Water",
+        "Ice",
+        "Oxygen",
+        "Juice"
+        ],
+        "score": 2,
+        "correctAnswerIndex": 2
+      },
+      {
+       "question": "What does chemistry help us understand?",
+        "options": [
+        "How to sing better",
+        "How matter works and changes",
+        "How to paint with water",
+        "How plants grow in gardens"
+        ],
+        "score": 1,
+        "correctAnswerIndex": 1
+      },
+      {
+        "question": "What is density?",
+        "options": [
+        "How fast atoms move",
+        "How tightly packed matter is in an object",
+        "How hot something feels",
+        "The shape of a molecule"
+        ],
+        "score": 3,
+        "correctAnswerIndex": 1
+      }
+    ]
+  }
+  

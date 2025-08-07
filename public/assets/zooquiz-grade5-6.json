@@ -1,0 +1,183 @@
+{
+    "title": "Zoology Quiz",
+    "gradeLevel": 5,
+    "questions": [
+      {
+        "question": "What is physiology?",
+    "options": [
+      "The study of plant growth.",
+      "The study of weather patterns.",
+      "Branch of biology that deals with the functions of organisms and their parts.",
+      "The study of mineral deposits."
+    ],
+    "score": 1,
+    "correctAnswerIndex": 2
+      },
+      {
+        "question": "Which of the following is an example of an animal’s physiology?",
+    "options": [
+      "How a cheetah’s muscles allow it to run fast",
+      "The number of spots a cheetah has",
+      "The way a cheetah hunts for food",
+      "How cheetahs communicate with each other"
+    ],
+    "score": 3,
+    "correctAnswerIndex": 0
+      },
+      {
+        "question": "Why do some animals migrate?",
+    "options": [
+      "To escape from scientists",
+      "To find better food, water, or climate conditions",
+      "To exercise more",
+      "Because they get bored"
+    ],
+    "score": 2,
+    "correctAnswerIndex": 1
+      },
+      {
+        "question": "Which of the following is an example of animal distribution?",
+    "options": [
+      "How lions hunt in groups",
+      "Where penguins are found in the wild",
+      "How animals talk to each other",
+      "The different foods animals eat"
+    ],
+    "score": 3,
+    "correctAnswerIndex": 1
+      },
+      {
+        "question": "What is ethology?",
+    "options": [
+      "The scientific study of animal behavior, usually focused on behaviors under natural conditions.",
+      "The study of human cultures.",
+      "The study of plant diseases.",
+      "The study of rock formations."
+    ],
+    "score": 3,
+    "correctAnswerIndex": 0
+      },
+      {
+        "question": "Which of these is NOT an example of a symbiotic relationship?",
+    "options": [
+      "A clownfish living in a sea anemone for protection",
+      "A bird cleaning a crocodile's teeth",
+      "A dog running in the park alone",
+      "A bee pollinating a flower"
+    ],
+    "score": 2,
+    "correctAnswerIndex": 2
+      },
+      {
+        "question": "What are symbiotic relationships?",
+    "options": [
+      "One organism (form of life) having a close relationship with a different organism.",
+      "The relationship between soil and plants.",
+      "The interaction between predators and prey.",
+      "The relationship between the sun and the earth."
+    ],
+    "score": 2,
+    "correctAnswerIndex": 0
+      },
+      {
+        "question": "What does biodiversity tell us about an ecosystem?",
+    "options": [
+      "How many people live there",
+      "The variety of species and how healthy the ecosystem is",
+      "The number of buildings in the area",
+      "The temperature of the soil"
+    ],
+    "score": 2,
+    "correctAnswerIndex": 1
+      },
+      {
+        "question": "Which of these best describes animal migration?",
+    "options": [
+      "Moving to a new place for fun",
+      "Traveling from one place to another for food, shelter, or breeding",
+      "Walking around in circles",
+      "Getting lost in the forest"
+    ],
+    "score": 1,
+    "correctAnswerIndex": 1
+      },
+      {
+        "question": "Which part of the brain is most involved in an animal’s survival instinct?",
+    "options": [
+      "Heart",
+      "Cerebellum",
+      "Brainstem",
+      "Muscles"
+    ],
+    "score": 2,
+    "correctAnswerIndex": 2
+      },
+      {
+        "question": "What is an example of mutualism in a symbiotic relationship?",
+    "options": [
+      "A lion chasing a zebra",
+      "A bee pollinating a flower and getting nectar",
+      "A frog eating insects",
+      "A fish swimming in water"
+    ],
+    "score": 2,
+    "correctAnswerIndex": 1
+      },
+      {
+        "question": "How can studying animal anatomy help humans?",
+    "options": [
+      "It helps us write better stories",
+      "It helps us understand how animals dance",
+      "It teaches us about biology and helps us improve medicine and science",
+      "It makes animals smarter"
+    ],
+    "score": 1,
+    "correctAnswerIndex": 2
+      },
+      {
+        "question": "What does \"population density\" mean in animal science?",
+    "options": [
+      "How heavy animals are",
+      "How tall animals grow",
+      "How many animals live in a specific area",
+      "How far animals can jump"
+    ],
+    "score": 2,
+    "correctAnswerIndex": 2
+      },
+      {
+        "question": "Which of the following is an example of animal conservation?",
+    "options": [
+      "Building more houses in forests",
+      "Polluting the ocean",
+      "Creating safe habitats and protecting endangered species",
+      "Catching all animals for zoos"
+    ],
+    "score": 2,
+    "correctAnswerIndex": 2
+      },
+      {
+        "question": "Why might an animal’s behavior change over time?",
+    "options": [
+      "It wants to try something new",
+      "It watches TV",
+      "It’s reacting to changes in environment, food availability, or threats",
+      "It wants to look cooler"
+    ],
+    "score": 1,
+    "correctAnswerIndex": 2
+      },
+      {
+        "question": "Which of these is not a type of 'species distribution'?",
+    "options": [
+      "Uniform",
+      "Clumped",
+      "Cellular",
+      "Random"
+    ],
+    "score": 2,
+    "correctAnswerIndex": 2
+      }
+    ]
+  }
+  
