@@ -45,7 +45,7 @@ const Chatbot = ({ isOpen, onClose }) => {
 
     try {
       // Replace with your local API endpoint
-      const response = await fetch('http://localhost:3001/api/chat', {
+      const response = await fetch('http://localhost:5001/api/chatbot', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -57,9 +57,13 @@ const Chatbot = ({ isOpen, onClose }) => {
 
       const data = await response.json();
       
+
+      console.log('Response from server:', data);
+
+
       const botMessage = {
         id: Date.now() + 1,
-        text: data.response || "I'm sorry, I couldn't process your request right now.",
+        text: data.reply || "I'm sorry, I couldn't process your request right now.",
         sender: 'bot',
         timestamp: new Date().toLocaleTimeString()
       };
