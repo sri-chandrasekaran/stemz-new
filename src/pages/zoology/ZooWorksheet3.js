@@ -86,6 +86,84 @@ export default function ZooWorkSheet4() {
     statusTimeoutRef.current = setTimeout(() => setStatusMessage(""), duration);
   };
 
+  const saveWorksheetResponsesToDB = async (earnedPoints, correctCount, totalQuestions) => {
+    try {
+      showStatus("Saving worksheet responses...");
+      
+      // Prepare relationship answers
+      const relationshipAnswers = [];
+      animals.forEach((rowAnimal) => {
+        columnAnimals.forEach((colAnimal) => {
+          const key = `${rowAnimal}-${colAnimal}`;
+          const userAnswer = relationships[key];
+          const correctAnswer = correctAnswers[key];
+          
+          relationshipAnswers.push({
+            questionId: `${courseKey}_lesson${lessonNumber}_relationship_${key}`,
+            questionText: `What is the relationship between ${rowAnimal} and ${colAnimal}?`,
+            selectedAnswer: relationshipTypes.find(rt => rt.value === userAnswer)?.label || "No answer selected",
+            selectedValue: userAnswer || "No answer selected",
+            correctAnswer: relationshipTypes.find(rt => rt.value === correctAnswer)?.label || "",
+            correctValue: correctAnswer,
+            correct: userAnswer === correctAnswer
+          });
+        });
+      });
+  
+      // Add keystone species question
+      const keystoneAnswer = {
+        questionId: `${courseKey}_lesson${lessonNumber}_keystone_species`,
+        questionText: "Which animal is most likely to be a keystone species?",
+        selectedAnswer: keystoneSpecies || "No answer selected",
+        correctAnswer: correctKeystoneSpecies,
+        correct: keystoneSpecies === correctKeystoneSpecies
+      };
+  
+      // Combine all answers
+      const allAnswers = [...relationshipAnswers, keystoneAnswer];
+  
+      // Prepare worksheet attempt data
+      const worksheetAttemptData = {
+        attemptNumber: 1, // You might want to increment this based on existing attempts
+        answers: allAnswers,
+        score: earnedPoints,
+        total: 5, // maxPossiblePoints for worksheet
+        correctCount: correctCount,
+        totalQuestions: totalQuestions,
+        percentCorrect: Math.round((correctCount / totalQuestions) * 100),
+        submittedAt: new Date(),
+        // Additional data specific to this worksheet
+        relationships: relationships,
+        keystoneSpecies: keystoneSpecies,
+        correctKeystoneSpecies: correctKeystoneSpecies
+      };
+  
+      console.log('Saving worksheet response data:', worksheetAttemptData);
+  
+      // Save to backend
+      const saveResponse = await call_api(
+        worksheetAttemptData,
+        `studentresponses/${courseKey}/lesson/${lessonNumber}/worksheet`,
+        "POST"
+      );
+  
+      if (saveResponse && saveResponse.success) {
+        console.log('✅ Worksheet responses saved to backend successfully');
+        showStatus("✓ Worksheet responses saved!");
+        return true;
+      } else {
+        console.log('❌ Failed to save worksheet responses to backend');
+        showStatus("❌ Error saving worksheet responses");
+        return false;
+      }
+    } catch (error) {
+      console.error('Error saving worksheet responses:', error);
+      showStatus("❌ Error saving worksheet responses");
+      return false;
+    }
+  };
+  
+
   // Token verification
   useEffect(() => {
     const verifyToken = async () => {
@@ -220,6 +298,8 @@ export default function ZooWorkSheet4() {
     // Mark as completed and save progress
     setWorksheetCompleted(true);
     setPointsEarned(earnedPoints);
+
+    saveWorksheetResponsesToDB(earnedPoints, correctCount, totalPossibleCorrect);
 
     // Save progress to backend
     const updatedProgress = { ...userProgress };

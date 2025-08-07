@@ -77,6 +77,62 @@ export default function PsychWorkSheet1() {
     statusTimeoutRef.current = setTimeout(() => setStatusMessage(""), duration);
   };
 
+  const saveWorksheetResponsesToDB = async (earnedPoints, correctCount, totalQuestions) => {
+    try {
+      showStatus("Saving worksheet responses...");
+      
+      // Prepare worksheet answers data - mapping user matches to the expected format
+      const worksheetAnswers = terms.map((term, termIndex) => ({
+        questionId: `${courseKey}_lesson${lessonNumber.replace('lesson', '')}_worksheet_${term.id}`,
+        userMatch: matches[term.id] || "No match selected",
+        correctMatch: correctMatches[term.id],
+        correct: matches[term.id] === correctMatches[term.id]
+      }));
+      
+      // Calculate percentage
+      const percentCorrect = totalQuestions > 0 ? (correctCount / totalQuestions) * 100 : 0;
+      
+      // Prepare worksheet attempt data - this matches your controller expectation
+      const worksheetAttemptData = {
+        attemptNumber: 1, // You might want to increment this based on existing attempts
+        answers: worksheetAnswers,
+        score: earnedPoints,
+        total: totalQuestions, // Total possible points (5 in your case)
+        correctCount: correctCount,
+        percentCorrect: percentCorrect,
+        submittedAt: new Date(),
+        worksheetType: "scientific_method_matching", // Specific to this psychology worksheet
+        componentMatches: matches, // Store the actual matches made
+        worksheetTitle: "Turning the Game into an Experiment"
+      };
+      
+      console.log('Saving psychology worksheet response data:', worksheetAttemptData);
+      
+      // Save to backend - send worksheetAttemptData directly since controller expects it in req.body
+      // studentId comes from JWT token via authenticateToken middleware
+      const saveResponse = await call_api(
+        worksheetAttemptData, 
+        `studentresponses/${courseKey}/lesson/lesson${lessonNumber.replace('lesson', '')}/worksheet`, 
+        "POST"
+      );
+      
+      if (saveResponse && saveResponse.success) {
+        console.log('✅ Psychology worksheet responses saved to backend successfully');
+        showStatus("✓ Worksheet responses saved!");
+        return true;
+      } else {
+        console.log('❌ Failed to save psychology worksheet responses to backend');
+        showStatus("❌ Error saving worksheet responses");
+        return false;
+      }
+      
+    } catch (error) {
+      console.error('Error saving psychology worksheet responses:', error);
+      showStatus("❌ Error saving worksheet responses");
+      return false;
+    }
+  };
+
   // Token verification
   useEffect(() => {
     const verifyToken = async () => {
@@ -176,7 +232,7 @@ export default function PsychWorkSheet1() {
   };
 
   // Check answers and award partial credit
-  const checkAnswers = () => {
+  const checkAnswers = async () => {
     setShowResults(true);
 
     // First check if all terms are matched
@@ -192,10 +248,18 @@ export default function PsychWorkSheet1() {
 
     // Award points based on correct answers (1 point per correct answer)
     const earnedPoints = correctCount;
+    const totalQuestions = terms.length;
 
     // Always mark as completed with partial credit
     setWorksheetCompleted(true);
     setPointsEarned(earnedPoints);
+
+    const saveSuccess = await saveWorksheetResponsesToDB(earnedPoints, correctCount, totalQuestions);
+  
+    if (!saveSuccess) {
+      // Still update local progress even if database save fails
+      showStatus("⚠️ Responses saved locally, but database save failed");
+    }
 
     // Update the backend
     setTimeout(() => {
