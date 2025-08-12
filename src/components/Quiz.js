@@ -47,7 +47,7 @@ const Quiz = ({ courseKey, lessonNumber }) => {
       
       // Prepare quiz answers data
       const quizAnswers = questions.map((question, questionIndex) => ({
-        questionId: `${courseKey}_lesson${lessonNumber}_q${questionIndex + 1}`,
+        questionId: `${courseKey}_${lessonNumber}_q${questionIndex + 1}`,
         selectedAnswer: question.options[selectedAnswers[questionIndex]] || "No answer selected",
         correct: selectedAnswers[questionIndex] === question.correctAnswerIndex
       }));
