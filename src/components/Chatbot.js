@@ -7,6 +7,9 @@ const Chatbot = ({ isOpen, onClose }) => {
   const [isLoading, setIsLoading] = useState(false);
   const messagesEndRef = useRef(null);
 
+  // Retrieve userId from localStorage (or another source)
+  const userId = localStorage.getItem('userId'); // Ensure this is set when the user logs in
+
   const scrollToBottom = () => {
     messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
   };
@@ -44,22 +47,29 @@ const Chatbot = ({ isOpen, onClose }) => {
     setIsLoading(true);
 
     try {
+      // Retrieve the token from localStorage
+      const token = localStorage.getItem('token');
+
+      if (!token) {
+        console.error('No token found in localStorage');
+        return;
+      }
+
       // Replace with your local API endpoint
       const response = await fetch('http://localhost:5001/api/chatbot', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
+          Authorization: `Bearer ${token}`, // Send token in the Authorization header
         },
         body: JSON.stringify({
-          message: inputMessage
-        })
+          message: inputMessage, // Only send the message in the body
+        }),
       });
 
       const data = await response.json();
-      
 
       console.log('Response from server:', data);
-
 
       const botMessage = {
         id: Date.now() + 1,
@@ -146,4 +156,4 @@ const Chatbot = ({ isOpen, onClose }) => {
   );
 };
 
-export default Chatbot; 
+export default Chatbot;
