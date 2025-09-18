@@ -7,8 +7,37 @@ const Chatbot = ({ isOpen, onClose }) => {
   const [isLoading, setIsLoading] = useState(false);
   const messagesEndRef = useRef(null);
 
-  // Retrieve userId from localStorage (or another source)
-  const userId = localStorage.getItem('userId'); // Ensure this is set when the user logs in
+  // Collect visible text snippets from the current page to use as "pageQuestions"
+  const collectPageTexts = () => {
+    try {
+      const selectors = [
+        'p','li','label',
+        'h1','h2','h3','h4',
+        '.question','.question-text','.prompt','.worksheet','.quiz','.item'
+      ];
+      const nodes = Array.from(document.querySelectorAll(selectors.join(',')));
+      const texts = nodes
+        .map(n => (n.innerText || n.textContent || '').replace(/\s+/g, ' ').trim())
+        .filter(t => t.length > 10); // ignore very short noise
+
+      // dedupe while preserving order
+      const seen = new Set();
+      const deduped = [];
+      for (const t of texts) {
+        if (!seen.has(t)) {
+          seen.add(t);
+          deduped.push(t);
+        }
+      }
+
+      const MAX_ITEMS = 30;
+      const MAX_CHARS = 1000;
+      return deduped.slice(0, MAX_ITEMS).map(t => (t.length > MAX_CHARS ? t.slice(0, MAX_CHARS) : t));
+    } catch (err) {
+      console.error('collectPageTexts error:', err);
+      return [];
+    }
+  };
 
   const scrollToBottom = () => {
     messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
@@ -52,28 +81,49 @@ const Chatbot = ({ isOpen, onClose }) => {
 
       if (!token) {
         console.error('No token found in localStorage');
+        setIsLoading(false);
         return;
       }
 
-      // Replace with your local API endpoint
-      const response = await fetch('http://localhost:5001/api/chatbot', {
+      // collect page texts (limited / truncated)
+      const pageQuestions = collectPageTexts();
+
+      // debug: inspect what will be sent
+      console.debug('Chatbot sending payload', { message: inputMessage, pageQuestionsCount: pageQuestions.length });
+
+      // safe Authorization header (avoid "Bearer Bearer ...")
+      const authHeader = token.startsWith('Bearer ') ? token : `Bearer ${token}`;
+
+    const response = await fetch('http://localhost:5001/api/chatbot/ask', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
-          Authorization: `Bearer ${token}`, // Send token in the Authorization header
+          Authorization: authHeader,
         },
         body: JSON.stringify({
-          message: inputMessage, // Only send the message in the body
+          message: inputMessage,
+          pageQuestions,
         }),
       });
 
-      const data = await response.json();
+      if (!response.ok) {
+        const text = await response.text().catch(() => null);
+        console.error('Chatbot API error', response.status, text);
+        throw new Error(text || `HTTP ${response.status}`);
+      }
+
+      const data = await response.json().catch((err) => {
+        console.error('Failed to parse JSON from chatbot response', err);
+        return null;
+      });
 
       console.log('Response from server:', data);
 
+      // prefer fields the backend may return; include `answer` first
+      const botText = (data && (data.answer || data.reply || data.message || data.error)) || "I'm sorry, I couldn't process your request right now.";
       const botMessage = {
         id: Date.now() + 1,
-        text: data.reply || "I'm sorry, I couldn't process your request right now.",
+        text: botText,
         sender: 'bot',
         timestamp: new Date().toLocaleTimeString()
       };
@@ -83,7 +133,7 @@ const Chatbot = ({ isOpen, onClose }) => {
       console.error('Error sending message:', error);
       const errorMessage = {
         id: Date.now() + 1,
-        text: "I'm having trouble connecting right now. Please try again later.",
+        text: error.message || "I'm having trouble connecting right now. Please try again later.",
         sender: 'bot',
         timestamp: new Date().toLocaleTimeString()
       };
