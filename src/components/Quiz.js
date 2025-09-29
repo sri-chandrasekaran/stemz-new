@@ -312,6 +312,40 @@ const Quiz = ({ courseKey, lessonNumber }) => {
     });
   };
 
+  // 🆕 Live-save answers on change
+useEffect(() => {
+  if (Object.keys(selectedAnswers).length === 0 || !questions.length) return;
+
+  const savePartialQuiz = async () => {
+    try {
+      // Prepare answers array
+      const quizAnswers = questions.map((question, idx) => ({
+        questionId: `${courseKey}_${lessonNumber}_q${idx + 1}`,
+        selectedAnswer: question.options[selectedAnswers[idx]] || "No answer selected",
+      }));
+
+      // Send to backend partial-save endpoint
+      const response = await call_api(
+        { answers: quizAnswers, attemptNumber: 1 }, 
+        `studentresponses/${courseKey}/lesson/${lessonNumber}/quiz/partial`, 
+        "POST"
+      );
+
+      if (response?.success) {
+        console.log("✅ Partial quiz saved:", quizAnswers);
+      } else {
+        console.warn("❌ Partial quiz save failed");
+      }
+    } catch (err) {
+      console.error("❌ Error saving partial quiz:", err);
+    }
+  };
+
+  const timeout = setTimeout(savePartialQuiz, 500); // debounce to avoid spamming
+  return () => clearTimeout(timeout);
+}, [selectedAnswers, questions, courseKey, lessonNumber]);
+
+
   // Calculate score and update points on quiz submission
   const handleSubmit = async (event) => {
     event.preventDefault();
