@@ -66,6 +66,37 @@ const VideoLessonPage = ({
   const [showQuestion, setShowQuestion] = useState(false);
   const [answer, setAnswer] = useState("");
   const [questionsShown, setQuestionsShown] = useState(new Set());
+
+  useEffect(() => {
+    if (!showQuestion) return; // only active while question is shown
+    if (!answer) return; // skip empty answers
+  
+    const interval = setInterval(async () => {
+      try {
+        const eventData = {
+          questionId: `${lessonNumber}_q${currentQuestionIndex + 1}`,
+          eventType: "autosave",
+          value: answer,
+          timestamp: new Date().toISOString(),
+        };
+  
+        console.log("💾 Auto-saving snapshot:", eventData);
+  
+        await call_api(
+          { events: [eventData] },
+          `studentresponses/${courseKey}/lesson/${lessonNumber}/bpq`,
+          "POST"
+        );
+  
+        showStatus("✓ Response auto-saved", 1000);
+      } catch (err) {
+        console.error("❌ Error auto-saving response:", err);
+        showStatus("❌ Auto-save failed", 1000);
+      }
+    }, 3000); // every 3 seconds
+  
+    return () => clearInterval(interval); // cleanup on unmount or answer change
+  }, [answer, showQuestion, currentQuestionIndex, courseKey, lessonNumber]);  
   
 
 const handleAnswerSubmit = async () => {
