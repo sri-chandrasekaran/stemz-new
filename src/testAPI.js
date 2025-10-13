@@ -1,4 +1,4 @@
-const { call_api } = require('./api');
+import { call_api } from './api';
 
 // Test signup
 const testSignup = async () => {

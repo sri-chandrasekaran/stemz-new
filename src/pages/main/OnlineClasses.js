@@ -12,6 +12,7 @@ import DefaultCourseImg from '../../assets/defaultcourseimg.png'
 import { useNavigate, useLocation } from 'react-router-dom';
 import { call_api } from "../../api";
 import axios from "axios";
+import { buildApiUrl } from "../../config/api-config";
 
 function OnlineClasses() {
   const [Courses, setCourses] = useState([]);
@@ -43,7 +44,7 @@ function OnlineClasses() {
 
     const fetchDashboardData = async () => {
       try {
-        const response = await axios.get('https://www.stemzlearning.org/dashboard', {
+        const response = await axios.get(buildApiUrl('auth/me'), {
           withCredentials: true,
         });
         if (response.data.success) {
@@ -188,9 +189,9 @@ function OnlineClasses() {
     // Convert course name to lowercase for case-insensitive matching
     const name = courseName.toLowerCase();
 
-    if (name.includes('coding') && name.includes('1') || name.includes('basics of coding i')) {
+    if ((name.includes('coding') && name.includes('1')) || name.includes('basics of coding i')) {
       return CodingBasics1;
-    } else if (name.includes('coding') && name.includes('2') || name.includes('basics of coding ii')) {
+    } else if ((name.includes('coding') && name.includes('2')) || name.includes('basics of coding ii')) {
       return CodingBasics2;
     } else if (name.includes('biochem')) {
       return Biochemistry;
@@ -207,9 +208,9 @@ function OnlineClasses() {
   const getImageClass = (courseName) => {
     const name = courseName.toLowerCase();
     
-    if (name.includes('coding') && name.includes('1') || name.includes('basics of coding i')) {
+    if ((name.includes('coding') && name.includes('1')) || name.includes('basics of coding i')) {
       return "coding1-course-img";
-    } else if (name.includes('coding') && name.includes('2') || name.includes('basics of coding ii')) {
+    } else if ((name.includes('coding') && name.includes('2')) || name.includes('basics of coding ii')) {
       return "coding2-course-img";
     } else if (name.includes('biochem')) {
       return "biochem-course-img";
@@ -226,9 +227,9 @@ function OnlineClasses() {
   const getCourseTypeKey = (courseName) => {
     const name = courseName.toLowerCase();
     
-    if (name.includes('coding') && name.includes('1') || name.includes('basics of coding i')) {
+    if ((name.includes('coding') && name.includes('1')) || name.includes('basics of coding i')) {
       return "coding1";
-    } else if (name.includes('coding') && name.includes('2') || name.includes('basics of coding ii')) {
+    } else if ((name.includes('coding') && name.includes('2')) || name.includes('basics of coding ii')) {
       return "coding2";
     } else if (name.includes('biochem')) {
       return "biochemistry";

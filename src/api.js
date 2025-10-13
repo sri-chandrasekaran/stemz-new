@@ -1,7 +1,4 @@
-const CORE_API_URL = "https://core-server-nine.vercel.app";
-
-// FOR LOCAL BACKEND DEVELOPMENTS
-// const CORE_API_URL = "http://localhost:3000";
+import { buildApiUrl } from './config/api-config';
 
 // Handle token expiration and redirect to login
 const handleTokenExpiration = (response, data) => {
@@ -30,8 +27,8 @@ const handleTokenExpiration = (response, data) => {
   return false;
 };
 
-function call_api(payload, target, method) {
-  const url = CORE_API_URL + "/api/" + target;
+export function call_api(payload, target, method) {
+  const url = buildApiUrl(target);
   const token = localStorage.getItem("token");
 
   const headers = {
@@ -90,5 +87,3 @@ function call_api(payload, target, method) {
 
   return fetch(url, fetchOptions).then(handleResponse);
 }
-
-module.exports = { call_api };

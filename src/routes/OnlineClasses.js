@@ -6,6 +6,7 @@ import Footer from '../components/Footer'
 import PhotoCarousel from '../components/PhotoCarousel';
 import ES from '../assets/environmentalscience.jpg'
 import axios from "axios";
+import { buildApiUrl } from "../config/api-config";
 import { useNavigate, Link } from 'react-router-dom';
 
 function OnlineClasses() {
@@ -21,7 +22,7 @@ function OnlineClasses() {
   useEffect(() => {
     const fetchDashboardData = async () => {
       try {
-        const response = await axios.get('https://www.stemzlearning.org/dashboard', {
+        const response = await axios.get(buildApiUrl('auth/me'), {
           withCredentials: true,
         });
         if (response.data.success) {
@@ -42,7 +43,7 @@ function OnlineClasses() {
     const email = user?.email
     const getStudentClasses = async () => {
       try {
-        const response = await axios.post('https://www.stemzlearning.org/check-class', {
+        const response = await axios.post(buildApiUrl('classrooms/user/check-class'), {
           user_email: email
         })
         if (response.data) {
@@ -60,7 +61,7 @@ function OnlineClasses() {
   useEffect(() => {
     const getAllClasses = async () => {
       try {
-        const response = await axios.post('https://www.stemzlearning.org/get_all_courses');
+        const response = await axios.get(buildApiUrl('classrooms/allIDs'));
         if (response.data) {
           setCourses(response.data);
           setLoading(false);
@@ -75,7 +76,7 @@ function OnlineClasses() {
   function Add_to_student(course_id) {
     const postClass = async () => {
       try {
-        const res = await axios.post('https://www.stemzlearning.org/register-class', {
+        const res = await axios.post(buildApiUrl(`classrooms/${course_id}/enroll`), {
           course_id: course_id, user_email: user?.email
         })
         if (res.data) {

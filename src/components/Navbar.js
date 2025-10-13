@@ -4,6 +4,7 @@ import {FaBars, FaTimes} from 'react-icons/fa';
 import { Link, useNavigate } from 'react-router-dom';
 import logo from '../assets/logo.png'
 import axios from "axios";
+import { buildApiUrl } from "../config/api-config";
 
 
 const Navbar = () => {
@@ -71,7 +72,7 @@ const Navbar = () => {
       } else {
         // If no token in localStorage, check with the server
         axios
-          .get('https://www.stemzlearning.org/dashboard', {
+          .get(buildApiUrl('auth/me'), {
             withCredentials: true,
           })
           .then((response) => {

@@ -16,6 +16,7 @@ import Stats from '../assets/statistics.jpeg'
 import Zoology from '../assets/zoology.jpg'
 import { useLocation, useNavigate, Link } from 'react-router-dom';
 import axios from "axios";
+import { buildApiUrl } from "../config/api-config";
 
 
 const Dashboard = () => {
@@ -31,7 +32,7 @@ const Dashboard = () => {
       console.log("I'm on dashboard")
       const fetchDashboardData = async () => {
         try {
-          const response = await axios.get('https://www.stemzlearning.org/dashboard', {
+          const response = await axios.get(buildApiUrl('auth/me'), {
             withCredentials: true,
           });
           if (response.data.success) {
@@ -62,7 +63,7 @@ const Dashboard = () => {
     const getclasses = async () => {
       try {
         console.log("here")
-        const res = await axios.post('https://www.stemzlearning.org/get_courses', {
+        const res = await axios.post(buildAppUrl('get_courses'), {
           cl_reg: cl_reg, cl_recomm: cl_recomm
         })
         if (res.data) {

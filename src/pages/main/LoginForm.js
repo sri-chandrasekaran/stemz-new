@@ -58,8 +58,6 @@ const LoginForm = () => {
         const decoded = jwtDecode(response.token);
   
         if (decoded.role === 'teacher') {
-          // Redirect teacher to teacher site
-          // window.location.href =  'http://localhost:3002'
           window.location.href = 'https://teachers.stemzlearning.org/';
         } else {
           navigate("/dashboard");

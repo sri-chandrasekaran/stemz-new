@@ -3,7 +3,6 @@
   "version": "0.1.0",
   "private": true,
   "homepage": ".",
-  "proxy": "http://localhost:3000",
   "dependencies": {
     "@paypal/react-paypal-js": "^8.5.0",
     "@sendgrid/mail": "^8.1.3",
