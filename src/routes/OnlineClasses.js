@@ -5,8 +5,8 @@ import HeroOther from '../components/HeroOther'
 import Footer from '../components/Footer'
 import PhotoCarousel from '../components/PhotoCarousel';
 import ES from '../assets/environmentalscience.jpg'
-import axios from "axios";
-import { buildApiUrl } from "../config/api-config";
+import { getCurrentUser } from "../services/authService";
+import { checkUserInClassrooms, getAllClassrooms, enrollInClassroom } from "../services/classroomService";
 import { useNavigate, Link } from 'react-router-dom';
 
 function OnlineClasses() {
@@ -22,16 +22,13 @@ function OnlineClasses() {
   useEffect(() => {
     const fetchDashboardData = async () => {
       try {
-        const response = await axios.get(buildApiUrl('auth/me'), {
-          withCredentials: true,
-        });
-        if (response.data.success) {
-          setUser(response.data.dashboardData.user);
-          setDashboardData(response.data.dashboardData);
+        const data = await getCurrentUser();
+        if (data.success) {
+          setUser(data.dashboardData.user);
+          setDashboardData(data.dashboardData);
         }
       } catch (error) {
         console.log("user is not logged")
-        // Handle error, e.g., redirect to login if token is invalid
       }
     };
 
@@ -43,15 +40,13 @@ function OnlineClasses() {
     const email = user?.email
     const getStudentClasses = async () => {
       try {
-        const response = await axios.post(buildApiUrl('classrooms/user/check-class'), {
-          user_email: email
-        })
-        if (response.data) {
-          setStudentCourses(response.data);
+        const response = await checkUserInClassrooms({ user_email: email });
+        if (response) {
+          setStudentCourses(response);
           setLoading2(false)
         }
       } catch (error) {
-        console.error('Axios error:', error);
+        console.error('Error checking classes:', error);
       }};
       getStudentClasses()
     }, [user]); 
@@ -61,13 +56,13 @@ function OnlineClasses() {
   useEffect(() => {
     const getAllClasses = async () => {
       try {
-        const response = await axios.get(buildApiUrl('classrooms/allIDs'));
-        if (response.data) {
-          setCourses(response.data);
+        const response = await getAllClassrooms();
+        if (response) {
+          setCourses(response);
           setLoading(false);
         }
       } catch (error) {
-        console.error('Axios error:', error);
+        console.error('Error fetching classrooms:', error);
       }}
       getAllClasses()
     }); 
@@ -76,14 +71,12 @@ function OnlineClasses() {
   function Add_to_student(course_id) {
     const postClass = async () => {
       try {
-        const res = await axios.post(buildApiUrl(`classrooms/${course_id}/enroll`), {
-          course_id: course_id, user_email: user?.email
-        })
-        if (res.data) {
+        const res = await enrollInClassroom(course_id, { course_id: course_id, user_email: user?.email });
+        if (res) {
           console.log("success")
         }
       } catch (error) {
-        console.error('Axios error:', error);
+        console.error('Error enrolling:', error);
     }};
     postClass();
     var btn = document.getElementById(course_id)

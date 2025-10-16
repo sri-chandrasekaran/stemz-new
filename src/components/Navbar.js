@@ -3,8 +3,7 @@ import './Navbar.css';
 import {FaBars, FaTimes} from 'react-icons/fa';
 import { Link, useNavigate } from 'react-router-dom';
 import logo from '../assets/logo.png'
-import axios from "axios";
-import { buildApiUrl } from "../config/api-config";
+import { getCurrentUser } from "../services/authService";
 
 
 const Navbar = () => {
@@ -71,12 +70,9 @@ const Navbar = () => {
         setCheck(true);
       } else {
         // If no token in localStorage, check with the server
-        axios
-          .get(buildApiUrl('auth/me'), {
-            withCredentials: true,
-          })
-          .then((response) => {
-            if (response.data.success) {
+        getCurrentUser()
+          .then((data) => {
+            if (data.success) {
               setCheck(true);
             } else {
               setCheck(false);

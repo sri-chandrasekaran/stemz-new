@@ -15,8 +15,8 @@ import Psych from '../assets/psych.jpeg'
 import Stats from '../assets/statistics.jpeg'
 import Zoology from '../assets/zoology.jpg'
 import { useLocation, useNavigate, Link } from 'react-router-dom';
-import axios from "axios";
-import { buildApiUrl } from "../config/api-config";
+import { getCurrentUser } from "../services/authService";
+import { getCoursesForUser } from "../services/coursesService";
 
 
 const Dashboard = () => {
@@ -32,17 +32,13 @@ const Dashboard = () => {
       console.log("I'm on dashboard")
       const fetchDashboardData = async () => {
         try {
-          const response = await axios.get(buildApiUrl('auth/me'), {
-            withCredentials: true,
-          });
-          if (response.data.success) {
-            setUser(response.data.dashboardData.user);
-            setDashboardData(response.data.dashboardData);
+          const data = await getCurrentUser();
+          if (data.success) {
+            setUser(data.dashboardData.user);
+            setDashboardData(data.dashboardData);
           }
         } catch (error) {
-          console.error('Axios error:', error);
-          // Handle error, e.g., redirect to login if token is invalid
-          //navigate('/login');
+          console.error('Error fetching user:', error);
         }
       };
   
@@ -62,19 +58,16 @@ const Dashboard = () => {
     //console.log(user?.classes.split(","))
     const getclasses = async () => {
       try {
-        console.log("here")
-        const res = await axios.post(buildAppUrl('get_courses'), {
-          cl_reg: cl_reg, cl_recomm: cl_recomm
-        })
-        if (res.data) {
-          console.log("success")
-          setCourses_reg(res.data.registered);
-          setCourses_recomm(res.data.recommended)
+        const res = await getCoursesForUser({ cl_reg, cl_recomm });
+        if (res) {
+          setCourses_reg(res.registered);
+          setCourses_recomm(res.recommended);
           setLoading(false);
         }
       } catch (error) {
-        console.error('Axios error:', error);
-    }};
+        console.error('Error fetching courses:', error);
+      }
+    };
     getclasses();
    }, [user]);
 

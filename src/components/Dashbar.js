@@ -153,7 +153,7 @@ const Dashbar = () => {
           {user?.gradeLevel && (
             <button 
               onClick={handleEditGrade}
-              class ="points-button"
+              className="points-button"
             >
               Change Grade
             </button>
