@@ -327,7 +327,7 @@ useEffect(() => {
       // Send to backend partial-save endpoint
       const response = await call_api(
         { answers: quizAnswers, attemptNumber: 1 }, 
-        `studentresponses/${courseKey}/lesson/${lessonNumber}/quiz/partial`, 
+        `student-responses/${courseKey}/lesson/${lessonNumber}/quiz/partial`, 
         "POST"
       );
 
