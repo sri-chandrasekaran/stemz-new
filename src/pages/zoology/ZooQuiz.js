@@ -65,7 +65,7 @@ const Zooquiz = () => {
       <div className="vidbig">
         {isAuthenticated && (
           <Quiz
-            src="/assets/zooquiz.json"
+            // src="/assets/zooquiz.json"
             courseKey="zoology"
             lessonNumber="lesson5"
           />

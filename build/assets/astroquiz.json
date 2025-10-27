@@ -19,7 +19,7 @@
                 "the sun",
                 "satellites",
                 "planets",
-                "aestheroids"
+                "aesteroids"
             ],
             "score": 3,
             "correctAnswerIndex": 3
@@ -47,15 +47,15 @@
             "correctAnswerIndex": 0
         },
         {
-            "question": "What did Nicolaus Copernicus discover?",
+            "question": "What galaxy is the Earth located in?",
             "options": [
-                "three universal laws gravity",
-                "the earth revolves around the sun",
-                "how the human body is structured",
-                "what satellites can go into easily"
+                "Milky Way",
+                "Andromeda",
+                "Keppler",
+                "Sunflower"
             ],
             "score": 3,
-            "correctAnswerIndex": 1
+            "correctAnswerIndex": 0
         },
         {
             "question": "What is a telescope?",
@@ -102,48 +102,59 @@
             "correctAnswerIndex": 0
         },
         {
-            "question": "Who was the first person to walk on the moon?",
+            "question": "Which planet is known for its red color?",
             "options": [
-                "Albert Einstein",
-                "Chris Pratt",
-                "Nicolaus Copernicus",
-                "Neil Armstrong"
+                "Neptune",
+                "Mars",
+                "Uranus",
+                "Mercury"
             ],
             "score": 3,
-            "correctAnswerIndex": 3
+            "correctAnswerIndex": 1
         },
         {
-            "question": "What planet is famous for the beautiful rings that surround it?",
+            "question": "What do we call icy space objects with tails?",
             "options": [
-                "Mars",
-                "Earth",
-                "Saturn",
-                "Uranus"
+                "Asteroids",
+                "Stars",
+                "Comets",
+                "Planets"
             ],
             "score": 1,
             "correctAnswerIndex": 2
         },
         {
-            "question": "What is the name of the force holding us to the Earth?",
+            "question": "What planet is known as the gas giant?",
             "options": [
-                "Magnetic force",
-                "Gravity",
-                "Electricity",
-                "Nuclear Energy"
+                "Earth",
+                "Saturn",
+                "Mars",
+                "Jupiter"
             ],
             "score": 2,
-            "correctAnswerIndex": 1
+            "correctAnswerIndex": 3
         },
         {
-            "question": "What galaxy is the Earth located in?",
+            "question": "Which of these planets is farthest from the Sun?",
             "options": [
-                "Milky Way",
-                "Andromeda",
-                "Keppler",
-                "Sunflower"
+                "Neptune",
+                "Earth",
+                "Venus",
+                "Mars"
             ],
             "score": 2,
             "correctAnswerIndex": 0
+        },
+        {
+            "question": "What do the planets of the Solar System do?",
+            "options": [
+                "Orbit around the moon",
+                "Stay still while the Sun moves",
+                "Orbit around the Sun",
+                "Travel to other galaxies"
+            ],
+            "score": 2,
+            "correctAnswerIndex": 2
         },
         {
             "question": "Which of the following careers are related to astronomy?",

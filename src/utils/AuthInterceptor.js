@@ -1,3 +1,4 @@
+import { buildApiUrl } from '../config/api-config';
 let navigate = null;
 
 // Setup function to be called once in your App component
@@ -45,8 +46,7 @@ export const handleTokenExpiration = (error) => {
 
 // Enhanced call_api function with global error handling
 export const call_api_with_global_auth = async (payload, target, method) => {
-  const CORE_API_URL = "https://core-server-nine.vercel.app";
-  const url = CORE_API_URL + "/api/" + target;
+  const url = buildApiUrl(target);
   const token = localStorage.getItem("token");
 
   const headers = {

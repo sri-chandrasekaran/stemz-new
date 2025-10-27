@@ -1,0 +1,194 @@
+{
+    "title": "Astronomy Quiz",
+    "gradeLevel": 5,
+    "questions": [
+      {
+        "question": "Which of the following is not a theory about how the universe started?",
+        "options": [
+          "Big Bang Theory",
+          "Earth-Centered Theory",
+          "Steady State Theory",
+          "Oscillating Theory"
+        ],
+        "score": 2,
+        "correctAnswerIndex": 1
+      },
+      {
+        "question": "What is dark matter?",
+        "options": [
+          "A type of light we cannot see",
+          "Something that glows in the night sky",
+          "Matter we cannot see, but it has gravity",
+          "A type of black hole"
+        ],
+        "score": 2,
+        "correctAnswerIndex": 2
+      },
+      {
+        "question": "Which gas is most common in the Sun?",
+        "options": [
+          "Oxygen",
+          "Hydrogen",
+          "Nitrogen",
+          "Helium"
+        ],
+        "score": 3,
+        "correctAnswerIndex": 1
+      },
+      {
+        "question": "What is a supernova?",
+        "options": [
+          "A type of galaxy",
+          "A shooting star",
+          "An exploding star",
+          "A black hole"
+        ],
+        "score": 2,
+        "correctAnswerIndex": 2
+      },
+      {
+        "question": "What tool do astronomers use to study distant galaxies?",
+        "options": [
+          "Microscope",
+          "Ruler",
+          "Telescope",
+          "Calculator"
+        ],
+        "score": 1,
+        "correctAnswerIndex": 2
+      },
+      {
+        "question": "What is the Hubble Space Telescope used for?",
+        "options": [
+          "Taking pictures of distant space objects",
+          "Sending astronauts to space",
+          "Communicating with aliens",
+          "Predicting the weather"
+        ],
+        "score": 1,
+        "correctAnswerIndex": 0
+      },
+      {
+        "question": "How many planets are in our solar system?",
+        "options": [
+          "5",
+          "7",
+          "8",
+          "10"
+        ],
+        "score": 2,
+        "correctAnswerIndex": 2
+      },
+      {
+        "question": "What is a black hole?",
+        "options": [
+          "A giant rock in space",
+          "A place in space where gravity is so strong, even light can't escape",
+          "A new type of planet",
+          "A small moon"
+        ],
+        "score": 3,
+        "correctAnswerIndex": 1
+      },
+      {
+        "question": "What is a galaxy?",
+        "options": [
+          "something that orbits a star",
+          "the Sun and everything that orbits around the sun",
+          "everything that exists throughout space and time",
+          "a huge collection of gas, dust, and stars and their solar systems, all held by gravity"
+        ],
+        "score": 2,
+        "correctAnswerIndex": 3
+      },
+      {
+        "question": "Which planet is tilted on its side?",
+        "options": [
+          "Jupiter",
+          "Venus",
+          "Uranus",
+          "Saturn"
+        ],
+        "score": 3,
+        "correctAnswerIndex": 2
+      },
+      {
+        "question": "What is a light-year?",
+        "options": [
+          "The time between full moons",
+          "The distance light travels in one year",
+          "The length of a year on Mercury",
+          "A measure of brightness"
+        ],
+        "score": 2,
+        "correctAnswerIndex": 1
+      },
+      {
+        "question": "What is the Kuiper Belt?",
+        "options": [
+          "A place where astronauts go for training",
+          "A type of telescope",
+          "A part of Earth's atmosphere",
+          "A zone of icy bodies beyond Neptune"
+        ],
+        "score": 3,
+        "correctAnswerIndex": 3
+      },
+      {
+        "question": "What is an exoplanet?",
+        "options": [
+          "A planet outside our solar system",
+          "A made-up planet",
+          "A moon",
+          "A black hole"
+        ],
+        "score": 3,
+        "correctAnswerIndex": 0
+      },
+      {
+        "question": "Which planet has the most moons?",
+        "options": [
+          "Jupiter",
+          "Earth",
+          "Mars",
+          "Neptune"
+        ],
+        "score": 2,
+        "correctAnswerIndex": 0
+      },
+      {
+        "question": "What is found at the center of the Milky Way?",
+        "options": [
+          "A bright star",
+          "A moon",
+          "A supermassive black hole",
+          "A rocket station"
+        ],
+        "score": 1,
+        "correctAnswerIndex": 2
+      },
+      {
+        "question": "What did Nicolaus Copernicus discover?",
+        "options": [
+          "three universal laws gravity",
+          "the earth revolves around the sun",
+          "how the human body is structured",
+          "what satellites can go into easily"
+        ],
+        "score": 2,
+        "correctAnswerIndex": 1
+      },
+      {
+        "question": "What planet is closest to the Sun?",
+        "options": [
+          "Venus",
+          "Earth",
+          "Mars",
+          "Mercury"
+        ],
+        "score": 1,
+        "correctAnswerIndex": 3
+      }
+    ]
+  }
+  

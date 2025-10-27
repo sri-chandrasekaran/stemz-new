@@ -1,0 +1,172 @@
+{
+    "title": "Circuit Quiz",
+    "gradeLevel": 1,
+    "questions": [
+      {
+        "question": "What is a circuit?",
+    "options": [
+      "A race track for cars",
+      "A path for electricity to flow",
+      "A road made of wires",
+      "A line drawn on paper"
+    ],
+    "score": 1,
+    "correctAnswerIndex": 1
+      },
+      {
+        "question": "What do we need to make a circuit work?",
+    "options": [
+      "Wires, battery, and light bulb",
+      "Paper and scissors",
+      "Water and sand",
+      "Rope and tape"
+    ],
+    "score": 1,
+    "correctAnswerIndex": 0
+      },
+      {
+       "question": "Which of these is not one of the Parts of a Circuit?",
+    "options": [
+      "Voltage Source",
+      "Conducting Path",
+      "Load",
+      "Transformer"
+    ],
+    "score": 3,
+    "correctAnswerIndex": 3
+      },
+      {
+        "question": "What does a battery do in a circuit?",
+    "options": [
+      "Makes a loud sound",
+      "Provides power",
+      "Cools everything down",
+      "Shines bright colors"
+    ],
+    "score": 2,
+    "correctAnswerIndex": 1
+      },
+      {
+        "question": "What is an electric current?",
+    "options": [
+      "A stream of water",
+      "Electricity moving in a circuit",
+      "A type of bug",
+      "A moving balloon"
+    ],
+    "score": 2,
+    "correctAnswerIndex": 1
+      },
+      {
+        "question": "What do we call something that connects parts in a circuit?",
+    "options": [
+      "Wire",
+      "String",
+      "Rope",
+      "Paper"
+    ],
+    "score": 1,
+    "correctAnswerIndex": 0
+      },
+      {
+        "question": "What happens when you flip a switch in a circuit?",
+    "options": [
+      "The lights blink",
+      "The battery changes color",
+      "The wire flies away",
+      "The circuit opens or closes"
+    ],
+    "score": 3,
+    "correctAnswerIndex": 3
+      },
+      {
+        "question": "Why do we use circuits in our homes?",
+    "options": [
+      "To decorate the walls",
+      "To make music",
+      "To make electricity flow and power devices",
+      "To play games"
+    ],
+    "score": 2,
+    "correctAnswerIndex": 2
+      },
+      {
+        "question": "What do we call something that electricity can flow through easily?",
+    "options": [
+      "A conductor",
+      "A balloon",
+      "A sponge",
+      "A pipe"
+    ],
+    "score": 1,
+    "correctAnswerIndex": 0
+      },
+      {
+        "question": "Which of these items is part of a circuit?",
+        "options": [
+          "Light bulb",
+          "Blanket",
+          "Plate",
+          "Eraser"
+        ],
+        "score": 2,
+        "correctAnswerIndex": 0
+      },
+      {
+        "question": "What do we use a light bulb for in a circuit?",
+    "options": [
+      "To make toys talk",
+      "To make light when electricity flows",
+      "To keep food warm",
+      "To draw pictures"
+    ],
+    "score": 3,
+    "correctAnswerIndex": 1
+      },
+      {
+        "question": "What is the purpose of a circuit board?",
+    "options": [
+      "To cook food",
+      "To hold drinks",
+      "To help electricity connect and work better",
+      "To play music"
+    ],
+    "score": 2,
+    "correctAnswerIndex": 2
+      },
+      {
+        "question": "Why do we use batteries in toys?",
+        "options": [
+          "To make them soft",
+          "To clean them",
+          "To make them smell nice",
+          "To make them move and light up"
+        ],
+        "score": 1,
+        "correctAnswerIndex": 3
+      },
+      {
+        "question": "What are two examples of where circuits are used?",
+    "options": [
+      "In books and pencils",
+      "In plants and animals",
+      "In TVs and stereos",
+      "In air and water"
+    ],
+    "score": 3,
+    "correctAnswerIndex": 2
+      },
+      {
+        "question": "What do wires do in a circuit?",
+    "options": [
+      "Make music",
+      "Let electricity travel from one place to another",
+      "Hold up books",
+      "Keep things cold"
+    ],
+    "score": 2,
+    "correctAnswerIndex": 1
+      }
+    ]
+  }
+  

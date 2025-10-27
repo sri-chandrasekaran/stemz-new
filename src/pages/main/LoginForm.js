@@ -7,6 +7,7 @@ import '../../components/Form.css';
 import '../css/LoginForm.css';
 // import lightbulbImage from '../assets/lightbulb3.png'
 import { useNavigate, Link } from 'react-router-dom';
+import { jwtDecode } from 'jwt-decode';
 
 const LoginForm = () => {
     const navigate = useNavigate();
@@ -41,28 +42,34 @@ const LoginForm = () => {
       verifyToken();
   }, [navigate]);
   
-    const submit = async (e) => {
-      e.preventDefault();
-      setError("");
-
-      try {
-          const response = await call_api({
-              email,
-              password,
-          }, "auth/login", "POST");
-          
-          if (response && response.token) {
-              localStorage.setItem('token', response.token);
-              // console.log("Token stored:", localStorage.getItem('token')); // Verify token storage
-              navigate("/dashboard");
-          } else {
-              setError("Login failed - no token received");
-          }
-      } catch (error) {
-          console.error("Login failed:", error);
-          setError("Invalid email or password");
+  const submit = async (e) => {
+    e.preventDefault();
+    setError("");
+  
+    try {
+      const response = await call_api({
+        email,
+        password,
+      }, "auth/login", "POST");
+  
+      if (response && response.token) {
+        localStorage.setItem('token', response.token);
+  
+        const decoded = jwtDecode(response.token);
+  
+        if (decoded.role === 'teacher') {
+          window.location.href = 'https://teachers.stemzlearning.org/';
+        } else {
+          navigate("/dashboard");
+        }
+      } else {
+        setError("Login failed - no token received");
       }
-  };
+    } catch (error) {
+      console.error("Login failed:", error);
+      setError("Invalid email or password");
+    }
+  };  
 
   return (
     <div>

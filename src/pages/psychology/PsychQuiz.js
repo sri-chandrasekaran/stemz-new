@@ -66,7 +66,7 @@ const Psycquiz = () => {
       <div className="vidbig">
         {isAuthenticated && (
           <Quiz
-            src="/assets/psycquiz.json"
+            // src="/assets/psycquiz.json"
             courseKey="psychology"
             lessonNumber="lesson4"
           />

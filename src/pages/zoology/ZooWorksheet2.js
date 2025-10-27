@@ -93,6 +93,58 @@ export default function ZooWorkSheet2() {
     statusTimeoutRef.current = setTimeout(() => setStatusMessage(""), duration);
   };
 
+  const saveWorksheetResponsesToDB = async (earnedPoints, correctCount, totalQuestions) => {
+    try {
+      showStatus("Saving worksheet responses...");
+      
+      // Prepare worksheet answers data
+      const worksheetAnswers = questions.map((question) => ({
+        questionId: `${courseKey}_lesson${lessonNumber}_q${question.id}`,
+        questionText: question.text,
+        selectedAnswer: question.options.find(opt => opt.letter === selectedOptions[question.id])?.text || "No answer selected",
+        selectedLetter: selectedOptions[question.id] || "No answer selected",
+        correctAnswer: question.options.find(opt => opt.letter === question.correctAnswer)?.text || "",
+        correctLetter: question.correctAnswer,
+        correct: selectedOptions[question.id] === question.correctAnswer
+      }));
+  
+      // Prepare worksheet attempt data
+      const worksheetAttemptData = {
+        attemptNumber: 1, // You might want to increment this based on existing attempts
+        answers: worksheetAnswers,
+        score: earnedPoints,
+        total: 5, // maxPossiblePoints for worksheet
+        correctCount: correctCount,
+        totalQuestions: totalQuestions,
+        percentCorrect: Math.round((correctCount / totalQuestions) * 100),
+        submittedAt: new Date()
+      };
+  
+      console.log('Saving worksheet response data:', worksheetAttemptData);
+  
+      // Save to backend
+      const saveResponse = await call_api(
+        worksheetAttemptData,
+        `studentresponses/${courseKey}/lesson/${lessonNumber}/worksheet`,
+        "POST"
+      );
+  
+      if (saveResponse && saveResponse.success) {
+        console.log('✅ Worksheet responses saved to backend successfully');
+        showStatus("✓ Worksheet responses saved!");
+        return true;
+      } else {
+        console.log('❌ Failed to save worksheet responses to backend');
+        showStatus("❌ Error saving worksheet responses");
+        return false;
+      }
+    } catch (error) {
+      console.error('Error saving worksheet responses:', error);
+      showStatus("❌ Error saving worksheet responses");
+      return false;
+    }
+  };
+
   // Token verification
   useEffect(() => {
     const verifyToken = async () => {
@@ -186,6 +238,8 @@ export default function ZooWorkSheet2() {
     // Mark as completed with partial credit
     setWorksheetCompleted(true);
     setPointsEarned(earnedPoints);
+
+    saveWorksheetResponsesToDB(earnedPoints, correctCount, questions.length)
 
     // Update the backend
     setTimeout(() => {

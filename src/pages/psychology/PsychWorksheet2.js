@@ -171,6 +171,92 @@ export default function PsychWorkSheet2() {
     if (statusTimeoutRef.current) clearTimeout(statusTimeoutRef.current);
     statusTimeoutRef.current = setTimeout(() => setStatusMessage(""), duration);
   };
+  
+  const saveWorksheetResponsesToDB = async (trialData, earnedPoints) => {
+    try {
+      showStatus("Saving worksheet responses...");
+      
+      // For this psychology experiment, we track detailed trial data
+      const worksheetData = {
+        worksheetType: "psychology_experiment",
+        experimentType: "math_performance_under_conditions",
+        totalTrials: trialResults.length,
+        trialResults: trialResults,
+        experimentCompleted: trialResults.length >= 2,
+        mathProblems: {
+          totalProblemsAvailable: 100, // 10x10 grid
+          problemsAttempted: Object.keys(answers).length,
+          problemsCorrect: Object.keys(answers).filter((key) => {
+            const [rowIndex, colIndex] = key.split("-").map(Number);
+            return checkAnswer(rowIndex, colIndex);
+          }).length
+        },
+        timerData: {
+          timeLimit: 60,
+          timeUsed: 60 - timeLeft,
+          timerStopped: wasStopped
+        }
+      };
+  
+      // Create individual answer records for the current trial
+      const currentTrialAnswers = [];
+      mathProblems.forEach((row, rowIndex) => {
+        row.forEach((problem, colIndex) => {
+          const key = `${rowIndex}-${colIndex}`;
+          if (answers[key] !== undefined) {
+            const userAnswer = parseInt(answers[key]);
+            const correctAnswer = problem.top * problem.bottom;
+            currentTrialAnswers.push({
+              questionId: `${courseKey}_${lessonNumber}_math_${rowIndex}_${colIndex}`,
+              questionText: `${problem.top} × ${problem.bottom} = ?`,
+              selectedAnswer: answers[key] || "No answer",
+              correctAnswer: correctAnswer.toString(),
+              correct: userAnswer === correctAnswer,
+              trialNumber: submissionCount
+            });
+          }
+        });
+      });
+  
+      // Prepare worksheet attempt data
+      const worksheetAttemptData = {
+        attemptNumber: submissionCount,
+        answers: currentTrialAnswers,
+        score: earnedPoints,
+        total: 5, // Always 5 points for completion
+        correctCount: currentTrialAnswers.filter(a => a.correct).length,
+        totalQuestions: currentTrialAnswers.length,
+        percentCorrect: currentTrialAnswers.length > 0 ? 
+          Math.round((currentTrialAnswers.filter(a => a.correct).length / currentTrialAnswers.length) * 100) : 0,
+        submittedAt: new Date(),
+        // Additional data specific to this worksheet
+        worksheetData: worksheetData
+      };
+  
+      console.log('Saving worksheet response data:', worksheetAttemptData);
+  
+      // Save to backend
+      const saveResponse = await call_api(
+        worksheetAttemptData,
+        `studentresponses/${courseKey}/lesson/${lessonNumber}/worksheet`,
+        "POST"
+      );
+  
+      if (saveResponse && saveResponse.success) {
+        console.log('✅ Worksheet responses saved to backend successfully');
+        showStatus("✓ Worksheet responses saved!");
+        return true;
+      } else {
+        console.log('❌ Failed to save worksheet responses to backend');
+        showStatus("❌ Error saving worksheet responses");
+        return false;
+      }
+    } catch (error) {
+      console.error('Error saving worksheet responses:', error);
+      showStatus("❌ Error saving worksheet responses");
+      return false;
+    }
+  };
 
   useEffect(() => {
     inputRefs.current = Array(10)
@@ -272,6 +358,13 @@ export default function PsychWorkSheet2() {
       ]);
 
       setSubmissionCount((prevCount) => prevCount + 1);
+
+      const earnedPoints = submissionCount + 1 >= 2 ? 5 : 0;
+      saveWorksheetResponsesToDB(
+        [...trialResults, { trialNumber: submissionCount + 1, attempted: attemptedCount, correct: correctCount }],
+        earnedPoints
+      );
+
 
       // After two submissions, award points and mark as completed
       if (submissionCount + 1 >= 2) {
@@ -449,6 +542,12 @@ export default function PsychWorkSheet2() {
       });
     });
     setBorders(newBorders);
+
+    const earnedPoints = submissionCount + 1 >= 2 ? 5 : 0; // Only award points after 2 trials
+    saveWorksheetResponsesToDB(
+      [...trialResults, { trialNumber: submissionCount + 1, attempted: attemptedCount, correct: correctCount }],
+      earnedPoints
+    );
 
     // After two submissions, award points and mark as completed
     if (submissionCount + 1 >= 2) {

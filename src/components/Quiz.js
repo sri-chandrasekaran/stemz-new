@@ -3,13 +3,13 @@ import './Form.css'
 import PropTypes from 'prop-types';
 import { call_api } from '../api';
 import './Quiz.css';
+import { jwtDecode } from 'jwt-decode';
 
-const Quiz = ({ src, courseKey, lessonNumber }) => {
-  // State variables
+const Quiz = ({ courseKey, lessonNumber }) => {
+  // State variables (existing)
   const [questions, setQuestions] = useState([]);
   const [selectedAnswers, setSelectedAnswers] = useState({});
   const [showResults, setShowResults] = useState(false);
-  const [total, setTotal] = useState(0);
   const [quizTitle, setQuizTitle] = useState('');
   const [userProgress, setUserProgress] = useState(null);
   const [loading, setLoading] = useState(true);
@@ -19,17 +19,19 @@ const Quiz = ({ src, courseKey, lessonNumber }) => {
   const [savingPoints, setSavingPoints] = useState(false);
   const [statusMessage, setStatusMessage] = useState('');
   const [statusTimeoutRef, setStatusTimeoutRef] = useState(null);
+  const [userGrade, setUserGrade] = useState(null);
+  const [maxPossiblePoints, setMaxPossiblePoints] = useState(0);
+  const [quizNotFound, setQuizNotFound] = useState(false);
+  const [total, setTotal] = useState(0);
 
-  // Show status message with auto-fade
+  // Show status message with auto-fade (existing)
   const showStatus = useCallback((message, duration = 3000) => {
     setStatusMessage(message);
     
-    // Clear any existing timeout
     if (statusTimeoutRef) {
       clearTimeout(statusTimeoutRef);
     }
     
-    // Set new timeout to clear message
     const timeoutId = setTimeout(() => {
       setStatusMessage("");
     }, duration);
@@ -37,25 +39,230 @@ const Quiz = ({ src, courseKey, lessonNumber }) => {
     setStatusTimeoutRef(timeoutId);
   }, [statusTimeoutRef]);
 
-  // Load quiz data
-  useEffect(() => {
-    console.log(`Loading quiz from source: ${src}`);
-    console.log(`Quiz parameters - courseKey: ${courseKey}, lessonNumber: ${lessonNumber}`);
-    
-    fetch(src)
-      .then(response => response.text())
-      .then(data => {
-        const parsedData = JSON.parse(data);
-        console.log('Quiz data loaded:', parsedData);
-        setQuestions(parsedData.questions);
-        setTotal(parsedData.total);
-        setQuizTitle(parsedData.title || 'Quiz');
-      })
-      .catch(error => console.error('Error fetching quiz data:', error));
-  }, [src, courseKey, lessonNumber]);
+  const capitalizeFirst = (str) => str.charAt(0).toUpperCase() + str.slice(1);
 
-  // Fetch user progress data
+  const saveQuizResponsesToDB = async (earnedPoints, correctCount, percentCorrect) => {
+    try {
+      showStatus("Saving quiz responses...");
+      
+      // Prepare quiz answers data
+      const quizAnswers = questions.map((question, questionIndex) => ({
+        questionId: `${courseKey}_${lessonNumber}_q${questionIndex + 1}`,
+        selectedAnswer: question.options[selectedAnswers[questionIndex]] || "No answer selected",
+        correct: selectedAnswers[questionIndex] === question.correctAnswerIndex
+      }));
+      
+      // Prepare quiz attempt data - this matches your controller expectation
+      const quizAttemptData = {
+        attemptNumber: 1, // You might want to increment this based on existing attempts
+        answers: quizAnswers,
+        score: earnedPoints,
+        total: maxPossiblePoints,
+        submittedAt: new Date()
+      };
+      
+      console.log('Saving quiz response data:', quizAttemptData);
+      
+      // Save to backend - send quizAttemptData directly since controller expects it in req.body
+      // studentId comes from JWT token via authenticateToken middleware
+      const saveResponse = await call_api(
+        quizAttemptData, 
+        `student-responses/${courseKey}/lesson/${lessonNumber}/quiz`, 
+        "POST"
+      );
+      
+      if (saveResponse && saveResponse.success) {
+        console.log('✅ Quiz responses saved to backend successfully');
+        showStatus("✓ Quiz responses saved!");
+        return true;
+      } else {
+        console.log('❌ Failed to save quiz responses to backend');
+        showStatus("❌ Error saving quiz responses");
+        return false;
+      }
+      
+    } catch (error) {
+      console.error('Error saving quiz responses:', error);
+      showStatus("❌ Error saving quiz responses");
+      return false;
+    }
+  };
+
+// // Load quiz data from backend with dynamic grade
+// useEffect(() => {
+//   const fetchQuizFromBackend = async () => {
+//     try {
+//       // First, get the current user's grade
+//       console.log("Step 1: Getting user info from auth/verify");
+//       const userResponse = await call_api(null, "auth/verify", "POST");
+//       console.log("Auth verify response:", userResponse);
+      
+//       if (!userResponse || !userResponse.user) {
+//         console.error("Could not get user info");
+//         return;
+//       }
+
+//       console.log("Step 2: Getting user details with ID:", userResponse.user.id);
+//       // Get the full user details to access grade
+//       const userDetailsResponse = await call_api(null, `users/id/${userResponse.user.id}`, "GET");
+//       console.log("User details response:", userDetailsResponse);
+      
+//       if (!userDetailsResponse) {
+//         console.error("Could not fetch user details");
+//         return;
+//       }
+      
+//       if (!userDetailsResponse.gradeLevel) {
+//         console.error("User has no grade field. User object:", userDetailsResponse);
+//         return;
+//       }
+
+//       const userGrade = userDetailsResponse.gradeLevel;
+//       console.log(`Step 3: User grade found: ${userGrade}`);
+
+//       // Now fetch quiz questions with dynamic grade
+//       console.log(`Step 4: Fetching quiz questions for course: ${courseKey}, grade: ${userGrade}`);
+//       const response = await call_api(null, `quizquestions?course_id=${courseKey}&grade=${userGrade}`, "GET");
+//       console.log("Quiz API response:", response);
+      
+//       if (response && response.questions && response.questions.length > 0) {
+//         console.log('Loaded questions from backend:', response.questions);
+//         setQuestions(response.questions.map(q => ({
+//           question: q.question,
+//           options: q.options,
+//           correctAnswerIndex: q.correctAnswerIndex,
+//         })));
+//         setTotal(response.questions.length);
+//         // setQuizTitle(`${courseKey} Quiz - Grade ${userGrade}`);
+//         setQuizTitle(`${capitalizeFirst(courseKey)} Quiz - Grade ${userGrade}`);
+
+//       } else {
+//         console.error("No questions found for this grade level");
+//       }
+//     } catch (err) {
+//       console.error("Error fetching quiz questions:", err);
+//     } finally {
+//       setLoading(false);
+//     }
+//   };
+
+//   fetchQuizFromBackend();
+// }, [courseKey, lessonNumber]);
+
+  // Get user's grade level (existing)
   useEffect(() => {
+    const fetchUserGrade = async () => {
+      try {
+        const token = localStorage.getItem('token');
+        if (!token) return;
+        
+        const decoded = jwtDecode(token);
+        const userId = decoded.id;
+        
+        const userResponse = await call_api(null, `users/id/${userId}`, "GET");
+        if (userResponse?.gradeLevel) {
+          setUserGrade(userResponse.gradeLevel);
+        } else {
+          setUserGrade(1);
+          showStatus("Please update your grade level in your profile for personalized quizzes", 5000);
+        }
+      } catch (error) {
+        console.error('Error fetching user grade:', error);
+        setUserGrade(1);
+      }
+    };
+
+    fetchUserGrade();
+  }, [showStatus]);
+
+  // // Load quiz data based on user's grade (existing)
+  useEffect(() => {
+    if (!userGrade) return;
+
+    const loadQuizData = async () => {
+      try {
+        const quizFileMap = {
+          'astronomy': 'astroquiz',
+          'basicsOfCoding': 'bcquiz',
+          'biochemistry': 'bioquiz',
+          'chemistry': 'chemquiz',
+          'circuits': 'circuitquiz',
+          'environmentalScience': 'envsciquiz',
+          'psychology': 'psycquiz',
+          'statistics': 'statquiz',
+          'zoology': 'zooquiz'
+        };
+        
+        const quizPrefix = quizFileMap[courseKey] || 'quiz';
+        
+        let quizFile;
+        if (userGrade >= 1 && userGrade <= 2) {
+          quizFile = `/assets/${quizPrefix}-grade1-2.json`;
+        } else if (userGrade >= 3 && userGrade <= 4) {
+          quizFile = `/assets/${quizPrefix}-grade3-4.json`;
+        } else if (userGrade >= 5 && userGrade <= 6) {
+          quizFile = `/assets/${quizPrefix}-grade5-6.json`;
+        } else {
+          // Default fallback for grades outside 1-6 range
+          quizFile = `/assets/${quizPrefix}-grade1-2.json`;
+        }
+        
+        console.log(`Loading quiz from: ${quizFile} for grade ${userGrade}`);
+        
+        const response = await fetch(quizFile);
+        
+        if (!response.ok) {
+          console.log(`Primary fetch failed: ${response.status} ${response.statusText}`);
+          const fallbackResponse = await fetch(`/assets/${quizPrefix}.json`);
+          if (!fallbackResponse.ok) {
+            const otherGradeFile = userGrade <= 2 ? 
+              `/assets/${quizPrefix}-grade5-6.json` : 
+              `/assets/${quizPrefix}-grade1-2.json`;
+            const lastResortResponse = await fetch(otherGradeFile);
+            if (!lastResortResponse.ok) {
+              throw new Error(`No quiz file found. Tried: ${quizFile}, /assets/${quizPrefix}.json, ${otherGradeFile}`);
+            }
+            const lastResortData = await lastResortResponse.json();
+            processQuizData(lastResortData);
+            return;
+          }
+          const fallbackData = await fallbackResponse.json();
+          processQuizData(fallbackData);
+          return;
+        }
+        
+        const data = await response.json();
+        processQuizData(data);
+        
+      } catch (error) {
+        console.error('Error loading quiz data:', error);
+        setQuizNotFound(true);
+        setLoading(false);
+      }
+    };
+
+    loadQuizData();
+  }, [userGrade, courseKey]);
+
+  // Process quiz data and calculate max possible points (existing)
+  const processQuizData = (quizData) => {
+    console.log('Quiz data loaded:', quizData);
+    
+    setQuestions(quizData.questions || []);
+    setQuizTitle(quizData.title || 'Quiz');
+    
+    const maxPoints = (quizData.questions || []).reduce((total, question) => {
+      return total + (question.score || 1);
+    }, 0);
+    
+    setMaxPossiblePoints(maxPoints);
+    console.log(`Max possible points: ${maxPoints}`);
+  };
+
+  // Fetch user progress data (existing)
+  useEffect(() => {
+    if (!userGrade) return;
+    
     const fetchUserProgress = async () => {
       try {
         console.log('Fetching user progress data...');
@@ -65,7 +272,6 @@ const Quiz = ({ src, courseKey, lessonNumber }) => {
           console.log('User progress data received:', JSON.stringify(response, null, 2));
           setUserProgress(response);
           
-          // Check if there's quiz data available
           if (response.courses && 
               response.courses[courseKey] && 
               response.courses[courseKey].lessons && 
@@ -76,21 +282,15 @@ const Quiz = ({ src, courseKey, lessonNumber }) => {
             const quizData = response.courses[courseKey].lessons[lessonNumber].activities.quiz;
             console.log('Existing quiz data found:', quizData);
             
-            // Load previous scores for display, but don't automatically show results
-            // This allows the student to take the quiz again immediately
             if (quizData.completed) {
-              // Just store the previous scores for comparison, don't show results yet
               setPointsEarned(quizData.earned || 0);
               setCorrectAnswers(quizData.correctAnswers || 0);
               setPercentCorrect(quizData.percentCorrect || 0);
               
-              // Optional: Show a welcome back message
               if (showStatus) {
                 showStatus(`Your best score: ${quizData.earned} points`, 5000);
               }
             }
-          } else {
-            console.log('No existing quiz data found for this course/lesson');
           }
           
           setLoading(false);
@@ -102,9 +302,9 @@ const Quiz = ({ src, courseKey, lessonNumber }) => {
     };
 
     fetchUserProgress();
-  }, [courseKey, lessonNumber, showStatus]);
+  }, [courseKey, lessonNumber, showStatus, userGrade]);
 
-  // Handle answer selection
+  // Handle answer selection (existing)
   const handleAnswerChange = (questionIndex, optionIndex) => {
     setSelectedAnswers({
       ...selectedAnswers,
@@ -112,45 +312,69 @@ const Quiz = ({ src, courseKey, lessonNumber }) => {
     });
   };
 
+  // 🆕 Live-save answers on change
+useEffect(() => {
+  if (Object.keys(selectedAnswers).length === 0 || !questions.length) return;
+
+  const savePartialQuiz = async () => {
+    try {
+      // Prepare answers array
+      const quizAnswers = questions.map((question, idx) => ({
+        questionId: `${courseKey}_${lessonNumber}_q${idx + 1}`,
+        selectedAnswer: question.options[selectedAnswers[idx]] || "No answer selected",
+      }));
+
+      // Send to backend partial-save endpoint
+      const response = await call_api(
+        { answers: quizAnswers, attemptNumber: 1 }, 
+        `studentresponses/${courseKey}/lesson/${lessonNumber}/quiz/partial`,
+        "POST"
+      );
+
+      if (response?.success) {
+        console.log("✅ Partial quiz saved:", quizAnswers);
+      } else {
+        console.warn("❌ Partial quiz save failed");
+      }
+    } catch (err) {
+      console.error("❌ Error saving partial quiz:", err);
+    }
+  };
+
+  const timeout = setTimeout(savePartialQuiz, 500); // debounce to avoid spamming
+  return () => clearTimeout(timeout);
+}, [selectedAnswers, questions, courseKey, lessonNumber]);
+
+
   // Calculate score and update points on quiz submission
   const handleSubmit = async (event) => {
     event.preventDefault();
     
-    // Calculate correctAnswers
+    // Calculate points earned using actual question weights
+    let earnedPoints = 0;
     let correctCount = 0;
     
-    questions.forEach((q, questionIndex) => {
-      const isCorrect = selectedAnswers[questionIndex] === q.correctAnswerIndex;
+    questions.forEach((question, questionIndex) => {
+      const isCorrect = selectedAnswers[questionIndex] === question.correctAnswerIndex;
       if (isCorrect) {
         correctCount++;
+        earnedPoints += question.score || 1;
       }
     });
     
-    // Calculate percentage correct
     const percentCorrect = Math.round((correctCount / questions.length) * 100);
     console.log(`Quiz results: ${correctCount}/${questions.length} correct (${percentCorrect}%)`);
+    console.log(`Points earned: ${earnedPoints}/${maxPossiblePoints}`);
     
-    // Calculate points earned based on quiz structure
-    // If all answers correct (100%), award 5 + 5 bonus = 10 points
-    // Otherwise, award based on percentage of 5 points (rounded)
-    let earnedPoints = 0;
-    
-    if (correctCount === questions.length) {
-      // Perfect score - gets full points plus bonus
-      earnedPoints = 10; // 5 regular + 5 bonus
-      console.log('Perfect score! Awarding 10 points (5 regular + 5 bonus)');
-    } else {
-      // Calculate based on percentage of base points (5)
-      // For example: 50% correct = 2.5 → rounds to 3 points
-      earnedPoints = Math.round((5 * correctCount) / questions.length);
-      console.log(`Partial score. Awarding ${earnedPoints} points`);
-    }
-    
-    // Update state
     setCorrectAnswers(correctCount);
     setPercentCorrect(percentCorrect);
     setPointsEarned(earnedPoints);
     setShowResults(true);
+
+    await saveQuizResponsesToDB(earnedPoints, correctCount, percentCorrect);
+    
+    // 🆕 UPDATED: Report quiz failure to Physical Classroom system
+    await reportQuizFailureToPhysicalClassroom(earnedPoints, correctCount, percentCorrect);
     
     // Only update backend if new score is higher than previous
     const previousPoints = userProgress?.courses?.[courseKey]?.lessons?.[lessonNumber]?.activities?.quiz?.earned || 0;
@@ -169,7 +393,7 @@ const Quiz = ({ src, courseKey, lessonNumber }) => {
     }
   };
   
-  // Update points in backend
+  // Update points in backend (existing)
   const updateBackend = async (earnedPoints, correctCount, percentCorrect) => {
     if (!userProgress) {
       console.error('No user progress data available. Cannot update backend.');
@@ -180,26 +404,11 @@ const Quiz = ({ src, courseKey, lessonNumber }) => {
       setSavingPoints(true);
       showStatus("Saving quiz results...");
       
-      // Debug info
-      console.log('Quiz update parameters:', {
-        courseKey, 
-        lessonNumber,
-        quizTitle,
-        earnedPoints,
-        correctCount,
-        percentCorrect
-      });
-      
-      console.log('User progress before update:', JSON.stringify(userProgress, null, 2));
-      
-      // Create a deep clone of the userProgress
       const updatedProgress = JSON.parse(JSON.stringify(userProgress));
       
-      // Ensure all needed objects exist with correct structure
       if (!updatedProgress.courses[courseKey]) {
-        console.log(`Creating missing course: ${courseKey}`);
         updatedProgress.courses[courseKey] = { 
-          title: courseKey === "astronomy" ? "Astronomy" : courseKey,
+          title: courseKey,
           coursePoints: 0, 
           completed: false,
           lessons: {}
@@ -207,9 +416,8 @@ const Quiz = ({ src, courseKey, lessonNumber }) => {
       }
       
       if (!updatedProgress.courses[courseKey].lessons[lessonNumber]) {
-        console.log(`Creating missing lesson: ${lessonNumber}`);
         updatedProgress.courses[courseKey].lessons[lessonNumber] = { 
-          title: lessonNumber === "lesson4" ? "The Universe" : lessonNumber,
+          title: lessonNumber,
           lessonPoints: 0, 
           completed: false,
           activities: {} 
@@ -220,85 +428,63 @@ const Quiz = ({ src, courseKey, lessonNumber }) => {
         updatedProgress.courses[courseKey].lessons[lessonNumber].activities = {};
       }
       
-      // Get or create quiz activity
       if (!updatedProgress.courses[courseKey].lessons[lessonNumber].activities.quiz) {
-        console.log('Creating missing quiz activity');
         updatedProgress.courses[courseKey].lessons[lessonNumber].activities.quiz = {
-          title: quizTitle || "Astronomy Quiz",
+          title: quizTitle,
           type: "quiz",
           completed: false,
-          points: 5,
-          extraPoints: 5,
+          points: maxPossiblePoints,
+          extraPoints: 0,
           questionsCount: questions.length,
           correctAnswers: 0,
           percentCorrect: 0,
-          earned: 0
+          earned: 0,
+          isDynamic: true
         };
       }
       
-      // Update quiz data
-      console.log('Updating quiz data with new results');
       const quizData = updatedProgress.courses[courseKey].lessons[lessonNumber].activities.quiz;
       quizData.completed = true;
       quizData.correctAnswers = correctCount;
       quizData.percentCorrect = percentCorrect;
       quizData.earned = earnedPoints;
       quizData.questionsCount = questions.length;
+      quizData.points = maxPossiblePoints;
       
-      // Recalculate lesson points from ALL activities
+      console.log(`Quiz completed: ${earnedPoints}/${maxPossiblePoints} points from ${questions.length} questions`);
+      
       let lessonPoints = 0;
       const activities = updatedProgress.courses[courseKey].lessons[lessonNumber].activities;
       
       Object.keys(activities).forEach(activityKey => {
         const points = activities[activityKey].earned || 0;
         lessonPoints += points;
-        console.log(`Activity ${activityKey} contributes ${points} points`);
       });
       
-      // Update lesson points
-      console.log(`Setting lesson points to ${lessonPoints}`);
       updatedProgress.courses[courseKey].lessons[lessonNumber].lessonPoints = lessonPoints;
       
-      // Check if video is complete before marking lesson as completed
       const videoComplete = updatedProgress.courses[courseKey].lessons[lessonNumber].activities.video?.completed || 
                         (updatedProgress.courses[courseKey].lessons[lessonNumber].activities.video?.percentWatched >= 95);
       
-      // Only set lesson to complete if both quiz and video are complete
       updatedProgress.courses[courseKey].lessons[lessonNumber].completed = videoComplete;
       
-      console.log(`Setting lesson completion to ${videoComplete} (video completed: ${videoComplete}, quiz completed: true)`);
-      
-      // Recalculate course points
       let coursePoints = 0;
       Object.values(updatedProgress.courses[courseKey].lessons).forEach(lesson => {
-        const points = lesson.lessonPoints || 0;
-        coursePoints += points;
-        console.log(`Lesson "${lesson.title}" contributes ${points} points`);
+        coursePoints += lesson.lessonPoints || 0;
       });
       
-      // Update course points
-      console.log(`Setting course points to ${coursePoints}`);
       updatedProgress.courses[courseKey].coursePoints = coursePoints;
       
-      // Recalculate total points
       let totalPoints = 0;
       Object.values(updatedProgress.courses).forEach(course => {
-        const points = course.coursePoints || 0;
-        totalPoints += points;
-        console.log(`Course "${course.title}" contributes ${points} points`);
+        totalPoints += course.coursePoints || 0;
       });
       
-      // Update total points
-      console.log(`Setting total points to ${totalPoints}`);
       updatedProgress.totalPoints = totalPoints;
       
       console.log('Updated progress to be sent to backend:', JSON.stringify(updatedProgress, null, 2));
       
-      // Send to backend and log response
-      console.log('Calling API with path "points" and method "POST"');
       const response = await call_api(updatedProgress, "points", "POST");
-      
-      console.log('API response:', response);
       
       if (response) {
         setUserProgress(updatedProgress);
@@ -313,8 +499,56 @@ const Quiz = ({ src, courseKey, lessonNumber }) => {
       setSavingPoints(false);
     }
   };
+
+  // 🆕 UPDATED: Report quiz failure to Physical Classroom system
+  const reportQuizFailureToPhysicalClassroom = async (earnedPoints, correctCount, percentCorrect) => {
+    // Only report if score is below 70% (can be adjusted)
+    if (percentCorrect >= 70) {
+      console.log(`Quiz passed with ${percentCorrect}%. No failure report needed.`);
+      return;
+    }
+    
+    try {
+      const token = localStorage.getItem('token');
+      if (!token) {
+        console.log('No auth token found. Cannot report quiz failure.');
+        return;
+      }
+      
+      const decoded = jwtDecode(token);
+      const studentId = decoded.id;
+      
+      console.log(`Reporting quiz failure: ${percentCorrect}% on ${quizTitle}`);
+      
+      // 🆕 UPDATED: Use correct field names for Physical Classroom backend
+      const failureData = {
+        studentId: studentId,
+        course: courseKey,           // ✅ Use 'course' not 'courseName'
+        lesson: lessonNumber,        // ✅ Use 'lesson' not 'lessonNumber'  
+        activityTitle: quizTitle,    // ✅ Use 'activityTitle' not 'quizTitle'
+        score: earnedPoints,         // ✅ Add actual score
+        maxScore: maxPossiblePoints  // ✅ Add max possible score
+      };
+      
+      console.log('Physical Classroom quiz failure data:', failureData);
+      
+      // Send to Physical Classroom notification system
+      const response = await call_api(failureData, 'notifications/quiz-failure', 'POST');
+      
+      if (response) {
+        console.log('✅ Quiz failure reported to teachers successfully');
+        showStatus("Teachers have been notified to provide additional help", 4000);
+      } else {
+        console.log('Quiz failure report sent but no response received');
+      }
+      
+    } catch (error) {
+      console.error('Error reporting quiz failure to Physical Classroom:', error);
+      // Don't show error to student - this is background functionality
+    }
+  };
   
-  // Cleanup on unmount
+  // Cleanup on unmount (existing)
   useEffect(() => {
     return () => {
       if (statusTimeoutRef) {
@@ -332,15 +566,26 @@ const Quiz = ({ src, courseKey, lessonNumber }) => {
     );
   }
 
+  if (quizNotFound) {
+    return (
+      <div className="quiz-container">
+        <h2>Quiz Not Available</h2>
+        <p>Sorry, the quiz for this course is not available at the moment.</p>
+      </div>
+    );
+  }
+
   return (
     <div className="quiz-container">
       <h2>{quizTitle}</h2>
       
-      <div className="bonus-points-note">
-        Getting all questions correct will reward you with extra points!
+      <div className="quiz-info">
+        <p>Grade Level: {userGrade}</p>
+        <p>Total Questions: {questions.length}</p>
+        <p>Maximum Points: {maxPossiblePoints}</p>
       </div>
       
-      {/* Previous best score banner */}
+      {/* Previous best score banner (existing) */}
       {!showResults && userProgress?.courses?.[courseKey]?.lessons?.[lessonNumber]?.activities?.quiz?.completed && (
         <div className="previous-score-banner">
           <div className="score-info">
@@ -351,29 +596,29 @@ const Quiz = ({ src, courseKey, lessonNumber }) => {
                 ({userProgress.courses[courseKey].lessons[lessonNumber].activities.quiz.correctAnswers} of {userProgress.courses[courseKey].lessons[lessonNumber].activities.quiz.questionsCount} correct)
               </span>
             </p>
-            {userProgress.courses[courseKey].lessons[lessonNumber].activities.quiz.earned === 10 && (
-              <p className="perfect-score-message">Perfect score achieved! 🏆</p>
-            )}
           </div>
         </div>
       )}
       
-      {/* Status message notification */}
+      {/* Status message notification (existing) */}
       {statusMessage && (
         <div className="status-notification" style={{
           position: 'fixed',
           top: '150px',
           right: '20px',
           padding: '10px 15px',
-          backgroundColor: statusMessage.includes("Error") ? 'rgba(231, 76, 60, 0.8)' : '#357717',
+          backgroundColor: statusMessage.includes("Error") ? 'rgba(231, 76, 60, 0.8)' : 
+                           statusMessage.includes("Teachers have been notified") ? 'rgba(255, 152, 0, 0.9)' : '#357717',
           color: 'white',
           borderRadius: '5px',
           fontWeight: 'bold',
           zIndex: 1000,
           boxShadow: '0 2px 10px rgba(0,0,0,0.2)',
           animation: 'fadeIn 0.3s ease-out',
-          fontSize: '16px'
+          fontSize: '16px',
+          maxWidth: '300px'
         }}>
+          {statusMessage.includes("Teachers have been notified") && <span style={{ marginRight: '8px' }}>🎓</span>}
           {statusMessage}
         </div>
       )}
@@ -388,8 +633,23 @@ const Quiz = ({ src, courseKey, lessonNumber }) => {
             </div>
             <div className="result-row">
               <span className="result-label">Points earned:</span>
-              <span className="result-value">{pointsEarned} out of {correctAnswers === questions.length ? 10 : 5} points</span>
+              <span className="result-value">{pointsEarned} out of {maxPossiblePoints} points</span>
             </div>
+            {/* 🆕 Show if teachers were notified */}
+            {percentCorrect < 70 && (
+              <div className="result-row" style={{ 
+                marginTop: '10px', 
+                padding: '8px', 
+                backgroundColor: '#fff3cd', 
+                border: '1px solid #ffeaa7',
+                borderRadius: '4px',
+                fontSize: '14px'
+              }}>
+                <span style={{ color: '#856404' }}>
+                  🎓 Your teachers have been notified to provide additional help with this topic.
+                </span>
+              </div>
+            )}
           </div>
         </div>
       )}
@@ -398,6 +658,9 @@ const Quiz = ({ src, courseKey, lessonNumber }) => {
         <form onSubmit={handleSubmit}>
           {questions.map((q, questionIndex) => (
             <div key={questionIndex} className="quiz-question">
+              <p>
+                <strong>Question {questionIndex + 1}</strong> ({q.score || 1} point{(q.score || 1) > 1 ? 's' : ''})
+              </p>
               <p>{q.question}</p>
               {q.options.map((option, optionIndex) => {
                 const isCorrect = optionIndex === q.correctAnswerIndex;
@@ -434,7 +697,7 @@ const Quiz = ({ src, courseKey, lessonNumber }) => {
           ))}
           {!showResults && (
             <button type="submit" disabled={Object.keys(selectedAnswers).length !== questions.length}>
-              Submit Answers
+              Submit Quiz
             </button>
           )}
           {showResults && (
@@ -464,7 +727,6 @@ const Quiz = ({ src, courseKey, lessonNumber }) => {
 };
 
 Quiz.propTypes = {
-  src: PropTypes.string.isRequired,
   courseKey: PropTypes.string.isRequired,
   lessonNumber: PropTypes.string.isRequired
 };

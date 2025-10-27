@@ -33,11 +33,14 @@ const Cards = () => {
         </div>
         <div className='card'>
             {/* <img src={organizations} alt="Organizations" className="card-image"/> */}
-            <h3>Connecting with Local Community Organizations</h3>
+            <h3>Building the Teacher Analytics Platform</h3>
             <span className='bar'></span>
-            <p>We are reaching out to local elementary schools and community programs to host in-person events.</p>
-            <Link to="/get-involved" onClick={scrollToTop}>
+            <p>We are building a tool for teachers to monitor their students' qualitative metrics, engagement, and cognitive skills. Join our early access list!</p>
+            {/* <Link to="/get-involved" onClick={scrollToTop}>
                 <button className="cta-button involved-button">Get Involved</button>
+            </Link> */}
+            <Link to="https://airtable.com/apphYpekX3PY52RJM/pagIDkCOGCJxrpDDC/form" target="_blank" rel="noopener noreferrer">
+                <button className="cta-button">Join</button>
             </Link>
         </div>
     </div>

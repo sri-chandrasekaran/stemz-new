@@ -1,0 +1,187 @@
+.hero {
+    background-color: #357717;
+    margin-top: 100px;
+    z-index: 1;
+    height: 85vh;
+}
+
+.hero {
+    background-color: #357717;
+    position: absolute;
+    top: -15px;
+    left: 0;
+    right: 0;
+    bottom: 0;
+}
+
+.hero-title {
+    padding-top: 250px;
+    padding-left: 50px;
+    font-size: 70px;
+    color: white;
+}
+
+.hero-description {
+    padding-left: 50px;
+    font-size: 42px;
+    color: white;
+}
+
+.btns {
+    margin-top: 25px;
+    text-align: center;
+}
+
+.mission {
+    text-align: center;
+    margin-top: 815px; /* Adjust this margin as needed */
+    max-width: 1100px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.mission h1 {
+    font-size: 45px;
+}
+
+.mission p {
+    font-size: 30px;
+    padding: 18px;
+    margin-left: 4px;
+    margin-right: 4px;
+
+}
+
+.us {
+    /* padding-top: 100px;
+    margin-left: 100px; */
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Center items horizontally */
+    text-align: center; /* Center text content */
+    padding-top: 90px; /* Adjust this value as needed for vertical spacing */
+}
+
+
+.us h1 {
+    margin-left: -520px;
+}
+
+.us p {
+    /* max-width: 540px;
+    margin-top: 10px;
+    font-size: 24px;
+    text-align: center; */
+    max-width: 540px;
+    margin-top: 10px; /* Adjust vertical spacing as needed */
+    font-size: 24px; /* Adjust the font size as needed */
+    margin-left: -550px;
+}
+
+.us .folsom-img {
+    margin-right: 60px; /* Add margin to separate the picture and text */
+    
+}
+
+.action-buttons {
+    margin-top: 25px; 
+    text-align: center;
+}
+  
+.cta-button,
+.secondary-button {
+    padding: 10px 20px;
+    font-size: 1rem;
+    background-color: #f0f0f0;
+    color: #333;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin: 10px; /* Add margin between buttons */
+}
+
+.secondary-button {
+    background-color: #f0f0f0;
+    color: #333;
+  }
+  
+.cta-button:hover,
+.secondary-button:hover {
+    background-color: #357717; /* Change the background color on hover */
+    color: white;
+}
+
+.folsom-img {
+    margin-left: 750px;
+    margin-top: -250px;
+}
+
+
+/* phone */
+@media screen and (max-width:800px) {
+
+    .hero {
+        position: relative;
+    }
+    .hero-title {
+        padding-top: 150px; /* Reduce padding for better fit */
+        font-size: 36px; /* Decrease font size for better fit */
+        margin-left: -30px;
+    }
+
+    .hero-description {
+        padding-left: 20px; /* Adjust padding for better fit */
+        font-size: 24px; /* Decrease font size for better fit */
+    }
+
+    .mission {
+        padding-top: 15px; /* Adjust padding for better fit */
+    }
+
+    .mission h1 {
+        font-size: 32px; /* Decrease font size for better fit */
+        margin-left: 10px;
+    }
+
+    .mission p {
+        font-size: 18px; /* Decrease font size for better fit */
+        padding: 12px; /* Adjust padding for better fit */
+    }
+
+    .us h1 {
+        margin-left: 0; /* Remove unnecessary margin */
+        font-size: 32px; /* Decrease font size for better fit */
+        margin-left: 12px;
+    }
+
+    .us p {
+        margin-top: 20px; /* Adjust margin for better fit */
+        font-size: 18px; /* Decrease font size for better fit */
+        margin-left: 10px;
+    }
+
+    .action-buttons {
+        margin-top: 15px; /* Adjust margin for better fit */
+        margin-left: 2px; 
+    }
+
+    .cta-button,
+    .secondary-button {
+        padding: 8px 16px; /* Adjust padding for better fit */
+        font-size: 0.9rem; /* Decrease font size for better fit */
+        margin: 37px; /* Adjust margin for better fit */
+    }
+
+    .folsom-img {
+        margin-left: 65px; /* Remove unnecessary margin */
+        margin-top: 60px; /* Adjust margin for better fit */
+    }
+}
+
+/* larger computers */
+
+@media screen and (min-width: 1200px) {
+    .mission {
+        margin-top: calc(815px + 27px);
+    }
+}

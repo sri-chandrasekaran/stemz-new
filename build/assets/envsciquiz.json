@@ -1,6 +1,6 @@
 {
     "title": "Environmental Science Quiz",
-    "total": 32,
+    "total": 36,
     "questions": [
         {
             "question": "What is Environmental Science?",
@@ -14,70 +14,26 @@
             "correctAnswerIndex": 2
         },
         {
-            "question": "What is a Biome?",
+            "question": "Which of the following is an example of practicing the 3 R’s (Reduce, Reuse, Recycle)?",
             "options": [
-                "A single habitat with unique climate and species.",
-                "A collection of habitats that share a similar climate and ecosystem.",
-                "A region with only one type of plant life.",
-                "A small area within a forest."
-            ],
-            "score": 2,
-            "correctAnswerIndex": 1
-        },
-        {
-            "question": "What is an Aquatic Biome?",
-            "options": [
-                "A biome found only in oceans.",
-                "A dry area with very little water.",
-                "A forested area near a river.",
-                "Something made up of freshwater and marine regions."
+                "Leaving the lights on when you leave a room.",
+                "Throwing away clothes that no longer fit.",
+                "Putting a plastic bottle in the recycling bin or using it as a planter.",
+                "Buying new clothes every month."
             ],
             "score": 3,
-            "correctAnswerIndex": 3
-        },
-        {
-            "question": "What is a Grassland Biome?",
-            "options": [
-                "A Grassland Biome is typically made up of large areas of grasses.",
-                "A dense forest with many trees.",
-                "A wetland area with a lot of water.",
-                "A mountainous region with rocky terrain."
-            ],
-            "score": 3,
-            "correctAnswerIndex": 0
-        },
-        {
-            "question": "What is a Desert Biome?",
-            "options": [
-                "A tropical area with heavy rainfall.",
-                "A Desert Biome exists in regions with little to no precipitation (rain or snow that falls to the ground) and varying climates- too hot or too cold.",
-                "A forest area with many animals.",
-                "A coastal region with sandy beaches."
-            ],
-            "score": 3,
-            "correctAnswerIndex": 1
-        },
-        {
-            "question": "What is a Forest Biome?",
-            "options": [
-                "A desert area with few plants.",
-                "A water-covered region with aquatic life.",
-                "A large open area with only grasses.",
-                "An area filled with many trees as well as plants, animals, and other living things."
-            ],
-            "score": 3,
-            "correctAnswerIndex": 3
+            "correctAnswerIndex": 2
         },
         {
             "question": "What are Earth’s Cycles?",
             "options": [
                 "The movement of tectonic plates.",
                 "The pattern of weather changes over seasons.",
-                "The Earth is constantly reusing its own materials. This is known as the Earth’s Cycles.",
-                "The orbit of the Earth around the Sun."
+                "The orbit of the Earth around the Sun.",
+                "The Earth is constantly reusing its own materials. This is known as the Earth’s Cycles."
             ],
             "score": 2,
-            "correctAnswerIndex": 2
+            "correctAnswerIndex": 3
         },
         {
             "question": "What do the cycles represent?",
@@ -87,30 +43,30 @@
                 "The rotation of the Earth on its axis.",
                 "The seasonal changes in weather."
             ],
-            "score": 2,
+            "score": 1,
             "correctAnswerIndex": 1
         },
         {
-            "question": "What is pollution?",
+            "question": "What does reducing consumption help save?",
             "options": [
-                "Pollution is the introduction of contaminants into the environment.",
-                "The natural decay of organic matter.",
-                "The creation of new plant life.",
-                "The cycle of water through the atmosphere."
+                "Energy and natural resources like water and trees",
+                "Toys and games",
+                "Time and money",
+                "Cars and buildings"
             ],
-            "score": 1,
+            "score": 2,
             "correctAnswerIndex": 0
         },
         {
-            "question": "What is water pollution?",
+            "question": "What is the Nitrogen Cycle?",
             "options": [
-                "The natural evaporation of water from lakes.",
-                "The process of water turning into ice.",
-                "The cycle of water moving through plants.",
-                "When waste, chemicals, or other harmful substances enter a body of water and become harmful to animals and humans that need water to survive."
+                "A cycle showing how water travels through rivers.",
+                "A cycle showing how nitrogen moves between living organisms, the atmosphere, and the ground.",
+                "A cycle of how plants grow using sunlight.",
+                "A cycle about how animals migrate during different seasons."
             ],
-            "score": 2,
-            "correctAnswerIndex": 3
+            "score": 3,
+            "correctAnswerIndex": 1
         },
         {
             "question": "What causes water pollution?",
@@ -124,17 +80,6 @@
             "correctAnswerIndex": 2
         },
         {
-            "question": "Which of the following is not one of the 3 R’s?",
-            "options": [
-                "Reduce",
-                "Remove",
-                "Reuse",
-                "Recycle"
-            ],
-            "score": 2,
-            "correctAnswerIndex": 1
-        },
-        {
             "question": "What is composting?",
             "options": [
                 "The process of turning food scraps and dead plants into compost.",
@@ -146,15 +91,103 @@
             "correctAnswerIndex": 0
         },
         {
-            "question": "What is compost?",
+            "question": "What can you do at home to reduce pollution?",
             "options": [
-                "A type of plastic used in packaging.",
-                "A chemical fertilizer made in a lab.",
-                "Soil mixed with food scraps and dead plants that act as a fertilizer for (other) plants.",
-                "A type of rock used in landscaping."
+                "Leave water running all the time.",
+                "Recycle and avoid littering.",
+                "Burn trash in your yard.",
+                "Use more plastic bags"
+            ],
+            "score": 1,
+            "correctAnswerIndex": 1
+        },
+        {
+            "question": "What are some effects of global warming?",
+            "options": [
+                "Melting glaciers, rising ocean levels, extreme weather, and animal migration",
+                "More snowfall, colder winters, and longer nights",
+                "Decrease in rainfall and increase in sunlight",
+                "Movement of the moon closer to Earth"
+            ],
+            "score": 3,
+            "correctAnswerIndex": 0
+        },
+        {
+            "question": "What is the best way to protect a forest biome?",
+            "options": [
+                "Cut down more trees.",
+                "Set fires to clear land.",
+                "Protect animals and avoid deforestation.",
+                "Remove all plants and bushes."
             ],
             "score": 3,
             "correctAnswerIndex": 2
+        },
+        {
+            "question": "What is the ozone layer made of?",
+            "options": [
+                "Water molecules in the ocean",
+                "Dust particles in the sky",
+                "Ozone molecules in Earth’s atmosphere",
+                "Smoke from volcanoes"
+            ],
+            "score": 1,
+            "correctAnswerIndex": 2
+        },
+        {
+            "question": "What does the ozone layer protect us from?",
+            "options": [
+                "Cold weather and rainstorms",
+                "Air pollution from factories",
+                "Noise from airplanes",
+                "Ultraviolet rays from the sun"
+            ],
+            "score": 2,
+            "correctAnswerIndex": 3
+        },
+        {
+            "question": "Why is recycling important?",
+            "options": [
+                "It wastes time.",
+                "It helps reduce trash and protects the Earth’s resources.",
+                "It is bad for animals.",
+                "It uses too much water."
+            ],
+            "score": 1,
+            "correctAnswerIndex": 1
+        },
+        {
+            "question": "What happens when we pollute the air?",
+            "options": [
+                "The clouds get bigger.",
+                "The Earth gets more rain.",
+                "The air becomes unhealthy to breathe and harms the environment.",
+                "The seasons change faster."
+            ],
+            "score": 3,
+            "correctAnswerIndex": 2
+        },
+        {
+            "question": "How can composting help the environment?",
+            "options": [
+                "It helps clean the oceans.",
+                "It reduces waste and improves soil health.",
+                "It creates more pollution.",
+                "It makes the air colder."
+            ],
+            "score": 2,
+            "correctAnswerIndex": 1
+        },
+        {
+            "question": "What is one way you can help the environment in your everyday life?",
+            "options": [
+                "Use reusable shopping bags and unplug electronics when not in use",
+                "Use more plastic bags when shopping",
+                "Leave the lights on all day and night",
+                "Drive your car everywhere, even short distances"
+            ],
+            "score": 3,
+            "correctAnswerIndex": 0
         }
     ]
 }

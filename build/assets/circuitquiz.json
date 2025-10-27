@@ -1,6 +1,6 @@
 {
     "title": "Circuit Quiz",
-    "score": 24,
+    "score": 32,
     "questions": [
         {
             "question": "What is a Circuit?",
@@ -122,6 +122,61 @@
             ],
             "score": 3,
             "correctAnswerIndex": 2
+        },
+        {
+            "question": "What is a switch used for in a circuit",
+            "options": [
+                "To block electricity permanently",
+                "To control the flow of electric current",
+                "To convert electric current into sound",
+                "To increase the voltage"
+            ],
+            "score": 2,
+            "correctAnswerIndex": 1
+        },
+        {
+            "question": "What is an example of a load in a circuit?",
+            "options": [
+                "Wire",
+                "Battery",
+                "Light bulb",
+                "Switch"
+            ],
+            "score": 1,
+            "correctAnswerIndex": 2
+        },
+        {
+            "question": "What do we use circuits for?",
+            "options": [
+                "Only for lights",
+                "Only for batteries",
+                "For most electronic devices like phones and TVs",
+                "Just for science experiments"
+            ],
+            "score": 2,
+            "correctAnswerIndex": 2
+        },
+        {
+            "question": "What happens if a circuit is broken?",
+            "options": [
+                "Electricity flows faster",
+                "Electricity keeps flowing",
+                "Electricity stops flowing",
+                "More light is produced"
+            ],
+            "score": 2,
+            "correctAnswerIndex": 2
+        },
+        {
+            "question": "Why are circuits important?",
+            "options": [
+                "They help plants grow faster",
+                "They teach us how different technology like TVs and computers work",
+                "They are used to decorate rooms",
+                "They keep food cold in refrigerators"
+            ],
+            "score": 1,
+            "correctAnswerIndex": 1
         }
     ]
 }

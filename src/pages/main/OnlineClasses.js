@@ -11,7 +11,8 @@ import Microbiology from '../../assets/microbiology.png'
 import DefaultCourseImg from '../../assets/defaultcourseimg.png'
 import { useNavigate, useLocation } from 'react-router-dom';
 import { call_api } from "../../api";
-import axios from "axios";
+import { getCurrentUser } from "../../services/authService";
+import { getAllClassrooms, getUserClassrooms, enrollInClassroom } from "../../services/classroomService";
 
 function OnlineClasses() {
   const [Courses, setCourses] = useState([]);
@@ -43,16 +44,13 @@ function OnlineClasses() {
 
     const fetchDashboardData = async () => {
       try {
-        const response = await axios.get('https://www.stemzlearning.org/dashboard', {
-          withCredentials: true,
-        });
-        if (response.data.success) {
-          setUser(response.data.dashboardData.user);
-          setDashboardData(response.data.dashboardData);
+        const data = await getCurrentUser();
+        if (data.success) {
+          setUser(data.dashboardData.user);
+          setDashboardData(data.dashboardData);
         }
       } catch (error) {
         console.log("user is not logged")
-        // Handle error, e.g., redirect to login if token is invalid
       }
     };
 
@@ -66,10 +64,8 @@ function OnlineClasses() {
         setLoading2(false);
         return;
       }
-      
       try {
-        const response = await call_api(null, "classrooms/user/getUserClassrooms", "GET");
-        console.log("User's registered courses:", response);
+        const response = await getUserClassrooms();
         if (response && response.enrolled) {
           const courseIds = response.enrolled.map(course => course._id).filter(id => id);
           setStudentCourses(courseIds);
@@ -88,9 +84,8 @@ function OnlineClasses() {
   useEffect(() => {
     const getAllCourses = async () => {
       try {
-        const response = await call_api(null, "classrooms/allIDs", "GET");
+        const response = await getAllClassrooms();
         if (response) {
-          console.log("Courses:", response);
           setCourses(response);
           setLoading(false);
         }
@@ -150,11 +145,7 @@ function OnlineClasses() {
       });
 
       // Make API call to enroll in the course
-      const response = await call_api(
-        null, 
-        `classrooms/${courseId}/enroll`, 
-        "POST"
-      );
+      const response = await enrollInClassroom(courseId, {});
 
       if (response) {
         console.log("Registration success:", response);
@@ -188,9 +179,9 @@ function OnlineClasses() {
     // Convert course name to lowercase for case-insensitive matching
     const name = courseName.toLowerCase();
 
-    if (name.includes('coding') && name.includes('1') || name.includes('basics of coding i')) {
+    if ((name.includes('coding') && name.includes('1')) || name.includes('basics of coding i')) {
       return CodingBasics1;
-    } else if (name.includes('coding') && name.includes('2') || name.includes('basics of coding ii')) {
+    } else if ((name.includes('coding') && name.includes('2')) || name.includes('basics of coding ii')) {
       return CodingBasics2;
     } else if (name.includes('biochem')) {
       return Biochemistry;
@@ -207,9 +198,9 @@ function OnlineClasses() {
   const getImageClass = (courseName) => {
     const name = courseName.toLowerCase();
     
-    if (name.includes('coding') && name.includes('1') || name.includes('basics of coding i')) {
+    if ((name.includes('coding') && name.includes('1')) || name.includes('basics of coding i')) {
       return "coding1-course-img";
-    } else if (name.includes('coding') && name.includes('2') || name.includes('basics of coding ii')) {
+    } else if ((name.includes('coding') && name.includes('2')) || name.includes('basics of coding ii')) {
       return "coding2-course-img";
     } else if (name.includes('biochem')) {
       return "biochem-course-img";
@@ -226,9 +217,9 @@ function OnlineClasses() {
   const getCourseTypeKey = (courseName) => {
     const name = courseName.toLowerCase();
     
-    if (name.includes('coding') && name.includes('1') || name.includes('basics of coding i')) {
+    if ((name.includes('coding') && name.includes('1')) || name.includes('basics of coding i')) {
       return "coding1";
-    } else if (name.includes('coding') && name.includes('2') || name.includes('basics of coding ii')) {
+    } else if ((name.includes('coding') && name.includes('2')) || name.includes('basics of coding ii')) {
       return "coding2";
     } else if (name.includes('biochem')) {
       return "biochemistry";

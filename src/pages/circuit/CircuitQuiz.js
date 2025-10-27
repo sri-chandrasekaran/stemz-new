@@ -65,7 +65,7 @@ const Circuitquiz = () => {
       <div className="vidbig">
         {isAuthenticated && (
           <Quiz
-            src="/assets/circuitquiz.json"
+            // src="/assets/circuitquiz.json"
             courseKey="circuits"
             lessonNumber="lesson3"
           />

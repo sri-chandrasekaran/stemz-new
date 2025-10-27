@@ -1,0 +1,216 @@
+{
+    "title": "Psychology Quiz",
+    "gradeLevel": 3,
+    "questions": [
+      {
+        "question": "What is psychology?",
+      "options": [
+        "The study of physical health and exercise.",
+        "The analysis of weather patterns and their effects.",
+        "The branch of science that studies how the brain works and how the mind influences behavior in people and animals.",
+        "The study of ancient artifacts and cultures."
+      ],
+      "score": 1,
+      "correctAnswerIndex": 2
+      },
+      {
+        "question": "What makes us choose one choice over the other?",
+      "options": [
+        "Random chance",
+        "Behavioral Psychology",
+        "Genetic predisposition",
+        "The alignment of stars"
+      ],
+      "score": 3,
+      "correctAnswerIndex": 1
+      },
+      {
+        "question": "How is the brain the control system of the body?",
+      "options": [
+        "It controls only muscle movements.",
+        "It stores all nutrients and energy for the body.",
+        "It processes food and nutrients for the body.",
+        "The brain receives signals from the rest of the body & makes sense of them."
+      ],
+      "score": 3,
+      "correctAnswerIndex": 3
+      },
+      {
+        "question": "What does the cerebrum do?",
+      "options": [
+        "Helps us interpret the world around us with memory, vision, hearing, and our senses.",
+        "Controls digestion and waste elimination.",
+        "Regulates heart rate and blood pressure.",
+        "Manages muscle reflexes and coordination."
+      ],
+      "score": 2,
+      "correctAnswerIndex": 0
+      },
+      {
+        "question": "What does the cerebellum do?",
+      "options": [
+        "Processes emotional responses.",
+        "Conducts motor functions like muscle movement & balance.",
+        "Controls language and communication.",
+        "Manages hunger and thirst."
+      ],
+      "score": 2,
+      "correctAnswerIndex": 1
+      },
+      {
+        "question": "What does the brain stem do?",
+      "options": [
+        "Controls thoughts and decision-making.",
+        "Regulates vision and hearing.",
+        "Manages sensory perceptions.",
+        "Conducts necessary functions like breathing, heart rate, etc."
+      ],
+      "score": 2,
+      "correctAnswerIndex": 3
+      },
+      {
+        "question": "What is short term memory?",
+      "options": [
+        "A memory that lasts forever",
+        "A memory that lasts a few hours",
+        "A memory that lasts 20–30 seconds",
+        "A memory that lasts a year"
+      ],
+      "score": 2,
+      "correctAnswerIndex": 2
+      },
+      {
+        "question": "How do you make a short term memory?",
+      "options": [
+        "Feel/See something and have it registered in your brain.",
+        "Write down information repeatedly.",
+        "Dream about an event.",
+        "Perform a physical activity."
+      ],
+      "score": 1,
+      "correctAnswerIndex": 0
+      },
+      {
+        "question": "What did Freudian Psychology do?",
+      "options": [
+        "Studied the effects of diet on mental health.",
+        "Focused on brain chemistry and medication.",
+        "Emphasized the importance of childhood memories on the brain.",
+        "Analyzed animal behavior and instincts."
+      ],
+      "score": 3,
+      "correctAnswerIndex": 2
+      },
+      {
+        "question": "What makes us fall for mind tricks?",
+      "options": [
+        "Visual and auditory illusions.",
+        "Speed of Processing and Selective Attention Theory.",
+        "Influence of external stimuli.",
+        "Changes in atmospheric pressure."
+      ],
+      "score": 2,
+      "correctAnswerIndex": 1
+      },
+      {
+        "question": "What animal was the hippocampus named after?",
+      "options": [
+        "Dolphin.",
+        "Whale.",
+        "Seahorse.",
+        "Octopus."
+      ],
+      "score": 1,
+      "correctAnswerIndex": 2
+      },
+      {
+        "question": "What makes a memory long term?",
+      "options": [
+        "Experiencing it once.",
+        "Experiencing the memory more than once.",
+        "Forgetting it initially.",
+        "Reading about it in a book."
+      ],
+      "score": 1,
+      "correctAnswerIndex": 1
+      },
+      {
+        "question": "What is memory fading?",
+      "options": [
+        "When you stop reviewing the memory, it fades from your memory and gets replaced.",
+        "When memories get stronger over time.",
+        "When memories become more vivid and detailed.",
+        "When new memories are created quickly."
+      ],
+      "score": 1,
+      "correctAnswerIndex": 0
+      },
+      {
+        "question": "What is targeted forgetting?",
+      "options": [
+        "The inability to remember anything.",
+        "Remembering only selective details.",
+        "Learn new information that is different to old information and 'Delete' old information while you sleep.",
+        "Forgetting all information from the past month."
+      ],
+      "score": 2,
+      "correctAnswerIndex": 2
+      },
+      {
+        "question": "What part of your brain helps you understand emotions?",
+      "options": [
+        "The cerebrum",
+        "The amygdala",
+        "The brain stem",
+        "The lungs"
+      ],
+      "score": 2,
+      "correctAnswerIndex": 1
+      },
+      {
+        "question": "How does the nervous system work with the brain?",
+      "options": [
+        "It works with your feet only",
+        "It sends messages from your body to your brain and back",
+        "It stores food",
+        "It helps you sleep"
+      ],
+      "score": 3,
+      "correctAnswerIndex": 1
+      },
+      {
+        "question": "Why is sleep important for memory?",
+      "options": [
+        "It helps your muscles grow",
+        "It helps your brain organize memories and information",
+        "It stops you from forgetting names",
+        "It gives you dreams"
+      ],
+      "score": 3,
+      "correctAnswerIndex": 1
+      },
+      {
+        "question": "Why do people sometimes forget names or facts?",
+      "options": [
+        "Their ears are not working",
+        "They didn’t store the memory well",
+        "They are too tall",
+        "Their brain is full"
+      ],
+      "score": 2,
+      "correctAnswerIndex": 1
+      },
+      {
+        "question": "What part of the brain helps you move your arms and legs?",
+      "options": [
+        "Brain stem",
+        "Frontal lobe",
+        "Cerebellum",
+        "Spine"
+      ],
+      "score": 2,
+      "correctAnswerIndex": 2
+      }
+    ]
+  }
+  

@@ -1,5 +1,12 @@
-/* Dashboard.css - With unique class names for enrolled courses + middle screen layout */
-/* Points Dashboard */
+/* Dashboard.css - Integrated with Notification Center 
+   Layout designed to accommodate right sidebar (~300px width)
+   - Large screens: Side-by-side layout with reduced course width
+   - Medium screens: Maintained side-by-side with adjusted proportions  
+   - Small screens: Stacked vertically to avoid crowding
+   - Mobile: Full responsive with minimal sidebar consideration
+*/
+
+/* Points Dashboard - Account for sidebar */
 .points-dashboard {
   background: #f5f9f2;
   border-radius: 10px;
@@ -7,7 +14,8 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin: 20px 100px 0;
+  margin: 20px 80px 0 100px; /* Adjusted margins to account for sidebar */
+  max-width: 1200px; /* Set max width */
   box-shadow: 0 4px 12px rgba(53, 119, 23, 0.1);
   transition: transform 0.3s ease;
 }
@@ -62,6 +70,8 @@
   transition: all 0.3s ease;
   text-decoration: none;
   display: inline-block;
+  margin-top: 5px;
+  margin-bottom: 5px;
 }
 
 .points-button:hover {
@@ -155,6 +165,7 @@
     font-size: 0.85rem;
   }
 }
+
 /* Welcome Section */
 .hello {
   margin-top: 90px;
@@ -169,119 +180,100 @@
   margin-left: 100px;
 }
 
-/* Layout and Container */
+/* Layout and Container - Account for right sidebar */
 .grid-container-wrapper {
   margin-top: 75px;
   margin-left: 80px;
-  width: calc(100% - 300px);
+  width: calc(100% - 380px); /* Reduced to account for right sidebar (300px + 80px margin) */
+  max-width: 1200px; /* Set maximum width for better control */
+}
+
+/* MAIN DASHBOARD CONTENT - SIDE BY SIDE LAYOUT */
+.dashboard-main-content {
+  display: grid;
+  grid-template-columns: 0.9fr 1.1fr; /* Reduced courses width, increased notifications width */
+  gap: 30px; /* Reduced gap to fit better */
+  margin-bottom: 50px;
 }
 
 /* Headers */
 .header-courses,
-.header-recommended {
+.header-recommended,
+.header-notifications {
   text-align: left;
   font-size: 34px;
+  margin-bottom: 30px;
 }
 
-.header-courses {
-  margin-bottom: 40px;
+/* ===== ENROLLED COURSES SECTION ===== */
+.enrolled-courses-section {
+  background: white;
+  border-radius: 15px;
+  padding: 20px; /* Reduced padding */
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
 }
 
-.header-recommended {
-  margin: 30px 0 20px;
-}
-
-/* ===== ENROLLED COURSES - UNIQUE CLASS NAMES ===== */
-/* Container for enrolled courses */
 .enrolled-courses-grid {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 30px;
-  width: 90%;
-  margin-bottom: 30px;
-  margin-left: 0;
+  grid-template-columns: 1fr;
+  gap: 20px; /* Reduced gap between cards */
 }
 
-/* Individual enrolled course card */
 .enrolled-course-card {
   position: relative;
-  background: white;
-  border-radius: 20px;
-  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
-  padding: 40px;
+  background: #f9f9f9;
+  border-radius: 20px; /* Slightly smaller border radius */
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.08);
+  padding: 20px; /* Reduced padding significantly */
   display: flex;
   flex-direction: column;
   align-items: center;
   text-align: center;
   transition: transform 0.3s ease;
-  min-height: 550px;
-  width: 100%;
-  box-sizing: border-box;
-  overflow: hidden;
+  border-left: 4px solid #357717;
 }
 
 .enrolled-course-card:hover {
-  transform: scale(1.02);
+  transform: translateY(-3px);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.12);
 }
 
-/* Course Images */
-.enrolled-course-image {
-  max-width: 250px;
-  max-height: 250px;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  border-radius: 50%;
-  transition: transform 0.3s ease;
-  margin-bottom: 30px;
-}
-
-.enrolled-course-image:hover {
-  transform: scale(1.05);
-}
-
-/* Specific class image styles */
+.enrolled-course-image,
 .enrolled-coding1-img,
 .enrolled-coding2-img,
 .enrolled-biochem-img,
 .enrolled-genetic-img,
 .enrolled-microbio-img {
-  max-width: 300px;
-  max-height: 300px;
+  max-width: 175px; /* Reduced from 150px */
+  max-height: 175px; /* Reduced from 150px */
   width: 100%;
   height: 100%;
   object-fit: cover;
   border-radius: 50%;
   transition: transform 0.3s ease;
-  margin-bottom: 30px;
+  margin-bottom: 5px; /* Reduced margin */
 }
 
-/* Course Content */
 .enrolled-course-content {
   width: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin-bottom: 30px;
+  margin-bottom: 5px; /* Reduced margin */
 }
 
 .enrolled-course-content h1 {
-  font-size: 38px;
-  margin: 0 0 15px 0;
+  font-size: 24px; /* Reduced from 24px */
+  margin: 0 0 8px 0; /* Reduced margin */
   color: #000;
   font-weight: bold;
 }
 
 .enrolled-course-content h2 {
-  font-size: 18px;
-  margin: 0 0 15px 0;
-  color: #000;
+  font-size: 13px; /* Reduced from 14px */
+  margin: 0 0 6px 0; /* Reduced margin */
+  color: #666;
   font-weight: normal;
-  line-height: 1.5;
-  max-width: 80%;
+  line-height: 1.3; /* Tighter line height */
 }
 
-/* Delete Course Button */
 .enrolled-delete-btn {
   position: absolute;
   top: 10px;
@@ -291,10 +283,8 @@
   background: none;
   border: none;
   font-size: 20px;
-  z-index: 5;
 }
 
-/* Loading spinner for delete */
 .enrolled-loading-spinner {
   position: absolute;
   top: 10px;
@@ -313,73 +303,51 @@
   100% { transform: rotate(360deg); }
 }
 
-/* Button Container */
 .enrolled-button-container {
   width: 100%;
   display: flex;
   justify-content: center;
-  gap: 20px;
-  margin-top: 20px;
+  gap: 12px; /* Reduced gap */
+  margin-top: 10px; /* Reduced margin */
 }
 
-/* Zoom Button */
-.enrolled-zoom-btn {
-  font-size: 18px;
-  padding: 12px 0;
-  width: 200px;
-  color: white;
-  background-color: #5d86c5;
-  border: none;
-  border-radius: 8px;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  font-weight: bold;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  position: relative;
-}
-
-/* Worksheet Button */
+.enrolled-zoom-btn,
 .enrolled-worksheet-btn {
-  font-size: 18px;
-  padding: 12px 0;
-  width: 200px;
+  font-size: 15px; /* Reduced font size */
+  padding: 10px 40px; /* Reduced padding */
   color: white;
-  background-color: #1d5f1b;
   border: none;
-  border-radius: 8px;
+  border-radius: 6px;
   cursor: pointer;
   transition: all 0.3s ease;
-  font-weight: bold;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  font-weight: 600;
   position: relative;
+}
+
+.enrolled-zoom-btn {
+  background-color: #5d86c5;
+}
+
+.enrolled-worksheet-btn {
+  background-color: #357717;
 }
 
 .enrolled-zoom-btn:hover,
 .enrolled-worksheet-btn:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  transform: translateY(-2px);
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.2);
 }
 
-.enrolled-zoom-btn:active,
-.enrolled-worksheet-btn:active {
-  transform: translateY(1px);
-}
-
-/* Tooltip styles for buttons */
 .enrolled-tooltip {
   position: absolute;
-  top: -40px;
+  top: -35px;
   left: 50%;
   transform: translateX(-50%);
   background-color: rgba(0, 0, 0, 0.8);
   color: white;
-  padding: 5px 10px;
+  padding: 4px 8px;
   border-radius: 4px;
-  font-size: 14px;
+  font-size: 12px;
   opacity: 0;
   visibility: hidden;
   transition: opacity 0.3s, visibility 0.3s;
@@ -393,51 +361,35 @@
   visibility: visible;
 }
 
-/* Empty state container */
 .enrolled-empty-state {
   text-align: center;
-  margin: 30px 0;
+  padding: 40px 20px;
 }
 
 .enrolled-empty-message {
-  font-size: 24px;
-  font-weight: 400;
-  margin-bottom: 30px;
-  margin-top: 10px;
-  text-align: center;
+  font-size: 18px;
   color: #666;
-  padding: 30px;
-  background: #f9f9f9;
-  border-radius: 10px;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  margin-bottom: 20px;
 }
 
 .enrolled-loading-message {
   text-align: center;
-  font-size: 18px;
+  font-size: 16px;
   color: #666;
-  margin-top: 20px;
-  padding: 30px;
+  padding: 300px;
   background: #f9f9f9;
   border-radius: 10px;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
 }
 
 .enrolled-explore-btn {
-  width: 100%;
-  max-width: 400px;
-  height: 60px;
-  font-size: 25px;
-  border-radius: 10px;
-  background: #357717;
-  color: white;
+  font-size: 16px;
+  font-weight: bold;
+  padding: 12px 24px;
   border: none;
+  border-radius: 8px;
+  color: white;
+  background: #357717;
   transition: all 0.3s ease;
-  display: inline-flex;
-  justify-content: center;
-  align-items: center;
-  line-height: 1;
-  padding: 20px 30px;
   cursor: pointer;
 }
 
@@ -447,10 +399,319 @@
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
+/* ===== NOTIFICATION CENTER SECTION ===== */
+.notification-center-section {
+  background: white;
+  border-radius: 15px;
+  padding: 30px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+/* Notification tabs */
+.notification-tabs {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 25px;
+}
+
+.tab-button {
+  padding: 12px 24px;
+  border: 2px solid #4CAF50;
+  background: white;
+  color: #4CAF50;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  font-size: 14px;
+  flex: 1;
+  text-align: center;
+}
+
+.tab-button.active,
+.tab-button:hover {
+  background: #4CAF50;
+  color: white;
+}
+
+/* Section headers */
+.section-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+  padding: 15px 20px;
+  background: #f0f8f0;
+  border: 2px solid #4CAF50;
+  border-radius: 8px;
+}
+
+.section-header h2 {
+  color: #2c3e50;
+  margin: 0;
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.clear-all-btn {
+  background: #4CAF50;
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 14px;
+}
+
+.clear-all-btn:hover {
+  background: #357a35;
+}
+
+/* Empty state */
+.empty-state {
+  text-align: center;
+  padding: 40px 20px;
+  background: #f9f9f9;
+  border-radius: 10px;
+  margin-top: 20px;
+}
+
+.empty-icon {
+  font-size: 3rem;
+  margin-bottom: 15px;
+}
+
+.empty-state h3 {
+  font-size: 18px;
+  margin-bottom: 8px;
+  color: #2c3e50;
+}
+
+.empty-state p {
+  color: #7f8c8d;
+  font-size: 14px;
+}
+
+/* Notification and assignment lists */
+.notifications-list,
+.assignments-list {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  margin-top: 20px;
+}
+
+/* Notification cards */
+.notification-card {
+  background: white;
+  border-radius: 10px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  border-left: 4px solid #4CAF50;
+  transition: transform 0.2s ease;
+}
+
+.notification-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.notification-header-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 12px;
+}
+
+.notification-icon {
+  font-size: 18px;
+}
+
+.notification-title {
+  font-size: 16px;
+  font-weight: 600;
+  color: #2c3e50;
+  flex: 1;
+}
+
+.dismiss-btn {
+  background: none;
+  border: none;
+  color: #95a5a6;
+  cursor: pointer;
+  padding: 4px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.dismiss-btn:hover {
+  background: #f8f9fa;
+  color: #e74c3c;
+}
+
+.notification-body {
+  margin-bottom: 12px;
+}
+
+.notification-message {
+  color: #2c3e50;
+  font-size: 14px;
+  margin-bottom: 10px;
+}
+
+.assignment-details,
+.quiz-failure-details {
+  background: #f8f9fa;
+  padding: 10px;
+  border-radius: 6px;
+  margin-top: 10px;
+}
+
+.assignment-info,
+.assignment-meta {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 8px;
+}
+
+.course-tag,
+.activity-tag,
+.activity-type {
+  background: #4CAF50;
+  color: white;
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.due-date {
+  color: #e74c3c;
+  font-weight: 600;
+  font-size: 13px;
+}
+
+.assignment-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  background: #4CAF50;
+  color: white;
+  padding: 8px 12px;
+  border-radius: 5px;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 13px;
+  margin-top: 8px;
+}
+
+.assignment-link:hover {
+  background: #357a35;
+  color: white;
+}
+
+.notification-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 12px;
+  color: #7f8c8d;
+  border-top: 1px solid #ecf0f1;
+  padding-top: 10px;
+}
+
+/* Assignment cards */
+.assignment-card {
+  background: white;
+  border-radius: 10px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  border-left: 4px solid #4CAF50;
+  transition: transform 0.2s ease;
+}
+
+.assignment-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.assignment-header {
+  margin-bottom: 12px;
+}
+
+.assignment-title {
+  font-size: 16px;
+  font-weight: 600;
+  color: #2c3e50;
+  margin-bottom: 8px;
+}
+
+.assignment-tags {
+  display: flex;
+  gap: 8px;
+}
+
+.assignment-description {
+  color: #2c3e50;
+  font-size: 14px;
+  margin-bottom: 12px;
+}
+
+.assignment-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 15px;
+  padding-top: 10px;
+  border-top: 1px solid #ecf0f1;
+}
+
+.classroom-teacher {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  font-size: 12px;
+  color: #7f8c8d;
+}
+
+/* Loading */
+.notification-loading {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 40px;
+}
+
+.loading-spinner {
+  border: 4px solid #f3f3f3;
+  border-top: 4px solid #4CAF50;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  animation: spin 1s linear infinite;
+  margin-bottom: 15px;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
 /* ===== RECOMMENDED COURSES SECTION ===== */
+.recommended-courses-section {
+  background: white;
+  border-radius: 15px;
+  padding: 30px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  margin-top: 30px;
+}
+
 .recommended-container {
   width: 100%;
-  max-width: calc(100% - 30px);
+  max-width: 100%;
 }
 
 .recommended-row {
@@ -509,9 +770,28 @@
   line-height: 1.5;
 }
 
-/* Middle screens (1000px - 1400px) */
-@media screen and (max-width: 1400px) and (min-width: 1000px) {
-  /* Welcome Section */
+/* RESPONSIVE DESIGN */
+
+/* Large screens - side by side layout with sidebar space */
+@media screen and (min-width: 1400px) {
+  .grid-container-wrapper {
+    width: calc(100% - 420px); /* More space for larger screens with sidebar */
+    max-width: 1400px;
+  }
+  
+  .dashboard-main-content {
+    grid-template-columns: 1.2fr 0.8fr; /* Even more space for notifications on large screens */
+    gap: 40px;
+  }
+  
+  .points-dashboard {
+    margin: 20px 100px 0 100px;
+    max-width: 1400px;
+  }
+}
+
+/* Medium screens - maintain side by side but adjust proportions and account for sidebar */
+@media screen and (max-width: 1400px) and (min-width: 1100px) {
   .hello {
     width: 90%;
     border-width: 30px;
@@ -522,31 +802,25 @@
     margin-left: 50px;
   }
 
-  /* Layout */
   .grid-container-wrapper {
-    width: 85%;
-    margin-left: 100px; /* Shifted right for middle screen */
-    max-width: 1000px; /* Increased max width */
+    width: calc(100% - 400px); /* More space for sidebar on medium screens */
+    margin-left: 60px;
+    max-width: 1000px;
   }
 
-  /* Headers */
+  .dashboard-main-content {
+    grid-template-columns: 1.2fr 0.8fr; /* Maintain proportions */
+    gap: 25px;
+  }
+
   .header-courses,
-  .header-recommended {
-    font-size: 28px;
+  .header-recommended,
+  .header-notifications {
+    font-size: 26px; /* Reduced font size */
   }
 
-  /* Enrolled Courses - Middle Screen */
-  .enrolled-courses-grid {
-    grid-template-columns: 1fr;
-    width: 85%;
-    max-width: 800px; /* Wider cards */
-    margin-left: 0;
-  }
-  
   .enrolled-course-card {
-    padding: 40px;
-    min-height: 0;
-    margin-bottom: 40px; /* More space between cards */
+    padding: 15px; /* Even more compact */
   }
 
   .enrolled-course-image,
@@ -555,178 +829,138 @@
   .enrolled-biochem-img,
   .enrolled-genetic-img,
   .enrolled-microbio-img {
-    max-width: 250px;
-    max-height: 250px;
+    max-width: 100px; /* Smaller images */
+    max-height: 100px;
   }
 
   .enrolled-course-content h1 {
-    font-size: 32px;
+    font-size: 18px;
   }
 
   .enrolled-course-content h2 {
-    font-size: 16px;
-    max-width: 90%;
+    font-size: 11px;
   }
 
-  /* Button placement for middle screen */
-  .enrolled-button-container {
-    margin-top: 20px;
-    width: 100%;
+  .notification-center-section,
+  .enrolled-courses-section,
+  .recommended-courses-section {
+    padding: 20px;
   }
 
-  .enrolled-zoom-btn,
-  .enrolled-worksheet-btn {
-    width: 160px;
-    font-size: 16px;
-    padding: 10px 0;
-  }
-
-  /* Recommended courses */
-  .recommended-container {
-    width: 100%;
-    max-width: 100%;
-  }
-
-  .course-card {
-    width: calc(33.33% - 20px);
-  }
-
-  .enrolled-explore-btn {
-    max-width: 350px;
-    height: 55px;
-    font-size: 20px;
+  .points-dashboard {
+    margin: 15px 60px 0 50px;
+    padding: 12px 20px;
+    max-width: 1000px;
   }
 }
 
-/* Small screens (below 1000px) */
+/* Small screens - stack vertically */
 @media screen and (max-width: 1000px) {
+  .dashboard-main-content {
+    grid-template-columns: 1fr;
+    gap: 30px;
+  }
+
   .hello {
     width: 90%;
-    border-width: 30px;
+    border-width: 25px;
   }
 
   .hello-text {
-    font-size: 50px;
-    margin-left: 50px;
-  }
-
-  /* Layout */
-  .grid-container-wrapper {
-    width: 85%;
+    font-size: 45px;
     margin-left: 40px;
-    max-width: 900px;
   }
 
-  /* Headers */
+  .grid-container-wrapper {
+    width: 90%;
+    margin-left: 40px;
+  }
+
   .header-courses,
-  .header-recommended {
-    font-size: 28px;
+  .header-recommended,
+  .header-notifications {
+    font-size: 26px;
   }
 
-  /* Enrolled Courses - Small Screen */
-  .enrolled-courses-grid {
-    grid-template-columns: 1fr;
-    width: 95%;
-    max-width: 600px;
-  }
-  
-  .enrolled-course-card {
-    padding: 30px;
-    min-height: 0;
-  }
-
-  .enrolled-course-image,
-  .enrolled-coding1-img,
-  .enrolled-coding2-img,
-  .enrolled-biochem-img,
-  .enrolled-genetic-img,
-  .enrolled-microbio-img {
-    max-width: 200px;
-    max-height: 200px;
-  }
-
-  .enrolled-course-content h1 {
-    font-size: 32px;
-  }
-
-  .enrolled-course-content h2 {
-    font-size: 16px;
-    max-width: 90%;
-  }
-
-  .enrolled-zoom-btn,
-  .enrolled-worksheet-btn {
-    width: 160px;
-    font-size: 16px;
-    padding: 10px 0;
-  }
-
-  /* Recommended courses */
-  .recommended-container {
-    width: 100%;
-    max-width: 100%;
+  .notification-center-section,
+  .enrolled-courses-section {
+    padding: 20px;
   }
 
   .course-card {
     width: calc(33.33% - 20px);
   }
 
-  .enrolled-explore-btn {
-    max-width: 350px;
-    height: 55px;
-    font-size: 20px;
+  .points-dashboard {
+    margin: 15px 30px 0;
+    padding: 10px 15px;
+    flex-wrap: wrap;
+  }
+
+  .points-button {
+    margin-top: 10px;
+    width: 100%;
+    text-align: center;
   }
 }
 
-/* Very small screens (mobile) */
-@media screen and (max-width: 800px) {
+/* Mobile screens */
+@media screen and (max-width: 768px) {
   .hello {
     width: 90%;
     border-width: 20px;
   }
 
   .hello-text {
-    font-size: 40px;
+    font-size: 35px;
     margin-left: 20px;
   }
 
   .grid-container-wrapper {
-    width: 80%;
-    margin-left: 30px;
+    width: 95%;
+    margin-left: 20px;
   }
 
-  /* Enrolled Courses - Mobile */
-  .enrolled-courses-grid {
-    gap: 30px;
-    max-width: 450px;
+  .dashboard-main-content {
+    gap: 20px;
   }
 
-  .enrolled-course-card {
-    padding: 20px;
+  .header-courses,
+  .header-recommended,
+  .header-notifications {
+    font-size: 24px;
   }
 
-  .enrolled-course-image,
-  .enrolled-coding1-img,
-  .enrolled-coding2-img,
-  .enrolled-biochem-img,
-  .enrolled-genetic-img,
-  .enrolled-microbio-img {
-    max-width: 150px;
-    max-height: 150px;
+  .notification-center-section,
+  .enrolled-courses-section,
+  .recommended-courses-section {
+    padding: 15px;
   }
 
-  .enrolled-course-content h1 {
-    font-size: 26px;
+  .notification-tabs {
+    flex-direction: column;
+    gap: 8px;
   }
 
-  .enrolled-course-content h2 {
-    font-size: 14px;
+  .tab-button {
+    padding: 10px 16px;
+    font-size: 13px;
   }
 
-  .enrolled-zoom-btn,
-  .enrolled-worksheet-btn {
-    width: 130px;
-    font-size: 14px;
+  .section-header {
+    flex-direction: column;
+    gap: 10px;
+    text-align: center;
+    padding: 12px;
+  }
+
+  .section-header h2 {
+    font-size: 18px;
+  }
+
+  .notification-card,
+  .assignment-card {
+    padding: 15px;
   }
 
   .course-card {
@@ -747,10 +981,32 @@
     font-size: 0.8rem;
   }
 
-  .enrolled-explore-btn {
-    max-width: 300px;
-    height: 45px;
+  .enrolled-course-image,
+  .enrolled-coding1-img,
+  .enrolled-coding2-img,
+  .enrolled-biochem-img,
+  .enrolled-genetic-img,
+  .enrolled-microbio-img {
+    max-width: 100px;
+    max-height: 100px;
+  }
+
+  .enrolled-course-content h1 {
     font-size: 18px;
-    padding: 10px 20px;
+  }
+
+  .enrolled-course-content h2 {
+    font-size: 12px;
+  }
+
+  .enrolled-button-container {
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .enrolled-zoom-btn,
+  .enrolled-worksheet-btn {
+    width: 100%;
+    font-size: 13px;
   }
 }

@@ -1,6 +1,6 @@
 {
     "title": "Psychology Quiz",
-    "total": 26,
+    "total": 36,
     "questions": [
         {
             "question": "What is psychology?",
@@ -69,6 +69,28 @@
             "correctAnswerIndex": 3
         },
         {
+            "question": "What is short term memory?",
+            "options": [
+                "A memory that lasts forever",
+                "A memory that lasts a few hours",
+                "A memory that lasts 20–30 seconds",
+                "A memory that lasts a year"
+            ],
+            "score": 2,
+            "correctAnswerIndex": 2
+        },
+        {
+            "question": "How do you make a short term memory?",
+            "options": [
+                "Feel/See something and have it registered in your brain.",
+                "Write down information repeatedly.",
+                "Dream about an event.",
+                "Perform a physical activity."
+            ],
+            "score": 1,
+            "correctAnswerIndex": 0
+        },
+        {
             "question": "What did Freudian Psychology do?",
             "options": [
                 "Studied the effects of diet on mental health.",
@@ -89,28 +111,6 @@
             ],
             "score": 2,
             "correctAnswerIndex": 1
-        },
-        {
-            "question": "How do you make a short term memory?",
-            "options": [
-                "Feel/See something and have it registered in your brain.",
-                "Write down information repeatedly.",
-                "Dream about an event.",
-                "Perform a physical activity."
-            ],
-            "score": 1,
-            "correctAnswerIndex": 0
-        },
-        {
-            "question": "How long can memories stay in short term memory for?",
-            "options": [
-                "Several hours.",
-                "A few days.",
-                "Several weeks.",
-                "20-30 seconds."
-            ],
-            "score": 2,
-            "correctAnswerIndex": 3
         },
         {
             "question": "What animal was the hippocampus named after?",
@@ -152,6 +152,61 @@
                 "Remembering only selective details.",
                 "Learn new information that is different to old information and 'Delete' old information while you sleep.",
                 "Forgetting all information from the past month."
+            ],
+            "score": 2,
+            "correctAnswerIndex": 2
+        },
+        {
+            "question": "What part of your brain helps you understand emotions?",
+            "options": [
+                "The cerebrum",
+                "The amygdala",
+                "The brain stem",
+                "The lungs"
+            ],
+            "score": 2,
+            "correctAnswerIndex": 1
+        },
+        {
+            "question": "How does the nervous system work with the brain?",
+            "options": [
+                "It works with your feet only",
+                "It sends messages from your body to your brain and back",
+                "It stores food",
+                "It helps you sleep"
+            ],
+            "score": 3,
+            "correctAnswerIndex": 1
+        },
+        {
+            "question": "Why is sleep important for memory?",
+            "options": [
+                "It helps your muscles grow",
+                "It helps your brain organize memories and information",
+                "It stops you from forgetting names",
+                "It gives you dreams"
+            ],
+            "score": 3,
+            "correctAnswerIndex": 1
+        },
+        {
+            "question": "Why do people sometimes forget names or facts?",
+            "options": [
+                "Their ears are not working",
+                "They didn’t store the memory well",
+                "They are too tall",
+                "Their brain is full"
+            ],
+            "score": 2,
+            "correctAnswerIndex": 1
+        },
+        {
+            "question": "What part of the brain helps you move your arms and legs?",
+            "options": [
+                "Brain stem",
+                "Frontal lobe",
+                "Cerebellum",
+                "Spine"
             ],
             "score": 2,
             "correctAnswerIndex": 2

@@ -1,6 +1,6 @@
 {
     "title": "Chemistry Quiz",
-    "total": 20,
+    "total": 32,
     "questions": [
         {
             "question": "What is chemistry?",
@@ -14,17 +14,6 @@
             "correctAnswerIndex": 2
         },
         {
-            "question": "What makes up matter?",
-            "options": [
-                "Energy",
-                "Atoms",
-                "Subatomic particles",
-                "Magic"
-            ],
-            "score": 1,
-            "correctAnswerIndex": 1
-        },
-        {
             "question": "What are atoms?",
             "options": [
                 "Tiny insects that live in the ground.",
@@ -34,17 +23,6 @@
             ],
             "score": 2,
             "correctAnswerIndex": 3
-        },
-        {
-            "question": "What is the measure of how much matter is in something?",
-            "options": [
-                "Mass",
-                "Volume",
-                "Temperature",
-                "Density"
-            ],
-            "score": 2,
-            "correctAnswerIndex": 0
         },
         {
             "question": "What is a molecule?",
@@ -67,6 +45,28 @@
             ],
             "score": 1,
             "correctAnswerIndex": 3
+        },
+        {
+            "question": "Where do electrons move around in an atom?",
+            "options": [
+                "On the surface",
+                "In the nucleus",
+                "In shells",
+                "In clouds"
+            ],
+            "score": 2,
+            "correctAnswerIndex": 2
+        },
+        {
+            "question": "What do electrons orbit in an atom?",
+            "options": [
+                "The sun",
+                "The nucleus",
+                "Other electrons",
+                "Molecules"
+            ],
+            "score": 2,
+            "correctAnswerIndex": 1
         },
         {
             "question": "What is a chemical reaction?",
@@ -102,14 +102,80 @@
             "correctAnswerIndex": 0
         },
         {
-            "question": "What stays the same in a reaction?",
+            "question": "How many atoms are in a water molecule?",
             "options": [
-                "The color of the substances.",
-                "The number of atoms.",
-                "The size of the molecules.",
-                "The substances/The properties."
+                "One",
+                "Two",
+                "Three (2 Hydrogen + 1 Oxygen)",
+                "Four"
             ],
             "score": 3,
+            "correctAnswerIndex": 2
+        },
+        {
+            "question": "What is an example of a chemical change?",
+            "options": [
+                "Melting ice",
+                "Cutting paper",
+                "Burning wood",
+                "Freezing water"
+            ],
+            "score": 3,
+            "correctAnswerIndex": 2
+        },
+        {
+            "question": "What do we call the substances you start with in a chemical reaction?",
+            "options": [
+                "Bonds",
+                "Atoms",
+                "Reactants",
+                "Elements"
+            ],
+            "score": 2,
+            "correctAnswerIndex": 2
+        },
+        {
+            "question": "What do you get after a chemical reaction?",
+            "options": [
+                "Reactants",
+                "Products",
+                "Gases only",
+                "Nothing changes"
+            ],
+            "score": 2,
+            "correctAnswerIndex": 1
+        },
+        {
+            "question": "What is an example of a mixture?",
+            "options": [
+                "Salt and pepper",
+                "Iron",
+                "Water",
+                "Oxygen"
+            ],
+            "score": 1,
+            "correctAnswerIndex": 0
+        },
+        {
+            "question": "What does chemistry help us understand?",
+            "options": [
+                "Space travel",
+                "Matter and changes around us",
+                "Stories in books",
+                "Ancient history"
+            ],
+            "score": 1,
+            "correctAnswerIndex": 1
+        },
+        {
+            "question": "What is density?",
+            "options": [
+                "How fast atoms move",
+                "How tightly packed matter is in an object",
+                "How hot something feels",
+                "The shape of a molecule"
+            ],
+            "score": 2,
             "correctAnswerIndex": 1
         }
     ]

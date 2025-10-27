@@ -163,6 +163,132 @@
     animation: spin 1s linear infinite;
     margin-bottom: 20px;
   }
+
+  /* Course Assignments Section */
+.course-assignments-section {
+  max-width: 1200px;
+  margin: 30px auto;
+  padding: 20px;
+  background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+  border-radius: 15px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+}
+
+.assignments-title {
+  color: #2c3e50;
+  text-align: center;
+  margin-bottom: 25px;
+  font-size: 2rem;
+  font-weight: bold;
+}
+
+.assignments-container {
+  display: grid;
+  gap: 20px;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+}
+
+.course-assignment-card {
+  background: white;
+  border-radius: 12px;
+  padding: 20px;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+  border-left: 4px solid #27ae60;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.course-assignment-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+}
+
+.assignment-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 15px;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.assignment-title {
+  color: #2c3e50;
+  font-size: 1.3rem;
+  margin: 0;
+  flex: 1;
+  min-width: 200px;
+}
+
+.classroom-badge {
+  background: #3498db;
+  color: white;
+  padding: 6px 12px;
+  border-radius: 20px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.assignment-description {
+  color: #34495e;
+  line-height: 1.6;
+  margin-bottom: 15px;
+  font-size: 1rem;
+}
+
+.assignment-meta {
+  display: flex;
+  gap: 15px;
+  margin-bottom: 15px;
+  flex-wrap: wrap;
+}
+
+.lesson-info,
+.activity-info,
+.teacher-info {
+  background: #ecf0f1;
+  padding: 5px 10px;
+  border-radius: 8px;
+  font-size: 0.9rem;
+  color: #2c3e50;
+  font-weight: 500;
+}
+
+.due-date-info {
+  background: #ffe5e5;
+  color: #e74c3c;
+  padding: 8px 12px;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 0.9rem;
+  margin-bottom: 15px;
+  border-left: 3px solid #e74c3c;
+}
+
+.assignment-actions {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.assignment-link {
+  background: #27ae60;
+  color: white;
+  padding: 10px 20px;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  transition: background 0.2s ease;
+}
+
+.assignment-link:hover {
+  background: #219a52;
+  color: white;
+}
+
+
   
   @keyframes spin {
     0% { transform: rotate(0deg); }
@@ -178,6 +304,29 @@
   }
   
   @media screen and (max-width: 800px) {
+    .course-assignments-section {
+      margin: 20px 10px;
+      padding: 15px;
+    }
+    
+    .assignments-container {
+      grid-template-columns: 1fr;
+    }
+    
+    .assignment-header {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+    
+    .assignment-meta {
+      flex-direction: column;
+      gap: 8px;
+    }
+    
+    .assignment-actions {
+      justify-content: center;
+    }
+
     .course-img {
       height: 300px;
       width: 300px;
