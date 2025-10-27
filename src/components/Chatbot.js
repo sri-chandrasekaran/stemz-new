@@ -1,5 +1,6 @@
 import React, { useState, useRef, useEffect } from 'react';
 import './Chatbot.css';
+import { buildApiUrl } from '../config/api-config';
 
 const Chatbot = ({ isOpen, onClose }) => {
   const [messages, setMessages] = useState([]);
@@ -94,7 +95,7 @@ const Chatbot = ({ isOpen, onClose }) => {
       // safe Authorization header (avoid "Bearer Bearer ...")
       const authHeader = token.startsWith('Bearer ') ? token : `Bearer ${token}`;
 
-    const response = await fetch('http://localhost:5001/api/chatbot/ask', {
+    const response = await fetch(buildApiUrl('chatbot/ask'), {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
