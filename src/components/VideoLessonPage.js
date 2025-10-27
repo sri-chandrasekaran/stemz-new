@@ -183,7 +183,7 @@ const handleAnswerSubmit = async () => {
 const callNLPAPI = async (inputText) => {
   try {
     // Step 1: POST request to get EVENT_ID
-    const postResponse = await fetch('https://sri-chandrasekaran-flask-nlp-api.hf.space/gradio_api/call/predict_scores', {
+    const postResponse = await fetch('https://stemz-learning-qualitative-metrics-nlp.hf.space/gradio_api/call/predict_scores', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -206,7 +206,7 @@ const callNLPAPI = async (inputText) => {
     }
 
     // Step 2: GET request as text (SSE format)
-    const getResponse = await fetch(`https://sri-chandrasekaran-flask-nlp-api.hf.space/gradio_api/call/predict_scores/${eventId}`);
+    const getResponse = await fetch(`https://stemz-learning-qualitative-metrics-nlp.hf.space/gradio_api/call/predict_scores/${eventId}`);
 
     if (!getResponse.ok) {
       throw new Error(`GET request failed: ${getResponse.status}`);
