@@ -67,7 +67,7 @@ const Quiz = ({ courseKey, lessonNumber }) => {
       // studentId comes from JWT token via authenticateToken middleware
       const saveResponse = await call_api(
         quizAttemptData, 
-        `studentresponses/${courseKey}/lesson/${lessonNumber}/quiz`, 
+        `student-responses/${courseKey}/lesson/${lessonNumber}/quiz`, 
         "POST"
       );
       
