@@ -69,9 +69,10 @@ const VideoLessonPage = ({
 
   useEffect(() => {
     if (!showQuestion) return; // only active while question is shown
-    if (!answer) return; // skip empty answers
   
     const interval = setInterval(async () => {
+      if (!answer) return; // skip empty answers
+
       try {
         const eventData = {
           questionId: `${lessonNumber}_q${currentQuestionIndex + 1}`,
@@ -83,8 +84,9 @@ const VideoLessonPage = ({
         console.log("💾 Auto-saving snapshot:", eventData);
   
         await call_api(
-          { events: [eventData] },
-          `studentresponses/${courseKey}/lesson/${lessonNumber}/bpq`,
+          // { events: [eventData] },
+          eventData,
+          `studentresponses/${courseKey}/lesson/${lessonNumber}/bpqEvent`,
           "POST"
         );
   
@@ -93,10 +95,10 @@ const VideoLessonPage = ({
         console.error("❌ Error auto-saving response:", err);
         showStatus("❌ Auto-save failed", 1000);
       }
-    }, 3000); // every 3 seconds
+    }, 5000); // every 3 seconds
   
     return () => clearInterval(interval); // cleanup on unmount or answer change
-  }, [answer, showQuestion, currentQuestionIndex, courseKey, lessonNumber]);  
+  }, [showQuestion, currentQuestionIndex, courseKey, lessonNumber]);  
   
 
 const handleAnswerSubmit = async () => {
