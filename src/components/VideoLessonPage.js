@@ -68,22 +68,21 @@ const VideoLessonPage = ({
   const [questionsShown, setQuestionsShown] = useState(new Set());
 
   // useEffect(() => {
-  //   if (!showQuestion) return; // only active while question is shown
-  //   if (!answer) return; // skip empty answers
+  //   if (!showQuestion) return;
   
   //   const interval = setInterval(async () => {
+  //     if (!answer) return; // skip empty answers
   //     try {
   //       const eventData = {
   //         questionId: `${lessonNumber}_q${currentQuestionIndex + 1}`,
-  //         eventType: "autosave",
   //         value: answer,
-  //         timestamp: new Date().toISOString(),
+  //         cursorPos: 0, // optional if you track it
   //       };
   
-  //       console.log("💾 Auto-saving snapshot:", eventData);
+  //       console.log("💾 Continuous auto-saving snapshot:", eventData);
   
   //       await call_api(
-  //         { events: [eventData] },
+  //         eventData,
   //         `studentresponses/${courseKey}/lesson/${lessonNumber}/bpq/autosave`,
   //         "POST"
   //       );
@@ -93,21 +92,23 @@ const VideoLessonPage = ({
   //       console.error("❌ Error auto-saving response:", err);
   //       showStatus("❌ Auto-save failed", 1000);
   //     }
-  //   }, 3000); // every 3 seconds
+  //   }, 3000); // runs every 3 seconds
   
-  //   return () => clearInterval(interval); // cleanup on unmount or answer change
-  // }, [answer, showQuestion, currentQuestionIndex, courseKey, lessonNumber]);  
-  
+  //   return () => clearInterval(interval); // cleanup on unmount or question change
+  // }, [showQuestion, courseKey, lessonNumber, currentQuestionIndex, answer]);
+
   useEffect(() => {
     if (!showQuestion) return;
+    if (answer === undefined || answer === null) return;
   
-    const interval = setInterval(async () => {
-      if (!answer) return; // skip empty answers
+    // set a 400–500ms delay after the last keystroke
+    const timeout = setTimeout(async () => {
+      if (!answer.trim()) return; // skip empty
       try {
         const eventData = {
           questionId: `${lessonNumber}_q${currentQuestionIndex + 1}`,
           value: answer,
-          cursorPos: 0, // optional if you track it
+          cursorPos: 0,
         };
   
         console.log("💾 Continuous auto-saving snapshot:", eventData);
@@ -118,15 +119,17 @@ const VideoLessonPage = ({
           "POST"
         );
   
-        showStatus("✓ Response auto-saved", 1000);
+        showStatus("✓ Auto-saved", 800);
       } catch (err) {
         console.error("❌ Error auto-saving response:", err);
-        showStatus("❌ Auto-save failed", 1000);
+        showStatus("❌ Auto-save failed", 800);
       }
-    }, 3000); // runs every 3 seconds
+    }, 500); // wait 0.5s after user stops typing
   
-    return () => clearInterval(interval); // cleanup on unmount or question change
-  }, [showQuestion, courseKey, lessonNumber, currentQuestionIndex, answer]);
+    // cleanup on new keystroke → resets timer
+    return () => clearTimeout(timeout);
+  }, [answer, showQuestion, currentQuestionIndex, courseKey, lessonNumber]);
+  
   
 
 const handleAnswerSubmit = async () => {
