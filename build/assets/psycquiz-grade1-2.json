@@ -1,0 +1,172 @@
+{
+    "title": "Psychology Quiz",
+    "gradeLevel": 1,
+    "questions": [
+      {
+       "question": "What is psychology?",
+    "options": [
+      "The study of physical health and exercise.",
+      "The analysis of weather patterns and their effects.",
+      "The branch of science that studies how the brain works and how the mind influences behavior in people and animals.",
+      "The study of ancient artifacts and cultures."
+    ],
+    "score": 1,
+    "correctAnswerIndex": 2
+      },
+      {
+        "question": "What does your brain help you do?",
+    "options": [
+      "Run fast and climb trees",
+      "Think, feel, and remember things",
+      "Wash your hands",
+      "Jump high"
+    ],
+    "score": 3,
+    "correctAnswerIndex": 1
+      },
+      {
+        "question": "How do we remember things better?",
+    "options": [
+      "By watching TV",
+      "By sleeping more",
+      "By eating candy",
+      "By repeating and practicing"
+    ],
+    "score": 2,
+    "correctAnswerIndex": 3
+      },
+      {
+        "question": "What part of your body helps you think and make choices?",
+    "options": [
+      "Your foot",
+      "Your stomach",
+      "Your brain",
+      "Your nose"
+    ],
+    "score": 1,
+    "correctAnswerIndex": 2
+      },
+      {
+        "question": "Why do we sometimes forget things?",
+    "options": [
+      "Because our shoes are too tight",
+      "Because we don’t review them often",
+      "Because we eat too much",
+      "Because we jump too much"
+    ],
+    "score": 3,
+    "correctAnswerIndex": 1
+      },
+      {
+        "question": "What is a memory?",
+    "options": [
+      "A toy you play with",
+      "Something you forget",
+      "Something you remember from the past",
+      "Something you eat"
+    ],
+    "score": 2,
+    "correctAnswerIndex": 2
+      },
+      {
+        "question": "What are the three main parts of the brain?",
+    "options": [
+      "Cerebrum, Cerebellum, Brain Stem",
+      "Cerebrum, Heart, Lungs",
+      "Brain Stem, Spine, Muscles",
+      "Hippocampus, Eyes, Ears"
+    ],
+    "score": 3,
+    "correctAnswerIndex": 0
+      },
+      {
+        "question": "What is a short term memory?",
+    "options": [
+      "A memory that stays forever",
+      "A memory that only lasts a short time",
+      "A dream",
+      "A storybook"
+    ],
+    "score": 1,
+    "correctAnswerIndex": 1
+      },
+      {
+        "question": "What helps you stay focused on one thing?",
+    "options": [
+      "Loud noises",
+      "Selective attention",
+      "Shiny shoes",
+      "Jumping jacks"
+    ],
+    "score": 2,
+    "correctAnswerIndex": 1
+      },
+      {
+        "question": "Why do people make different choices?",
+    "options": [
+      "Because they all like pizza",
+      "Because they want the same thing",
+      "Because of their pets",
+      "Because of how their brains work and past experiences"
+    ],
+    "score": 2,
+    "correctAnswerIndex": 3
+      },
+      {
+        "question": "What is the brain like?",
+    "options": [
+      "A computer that controls your body",
+      "A pillow",
+      "A balloon",
+      "A toy"
+    ],
+    "score": 3,
+    "correctAnswerIndex": 0
+      },
+      {
+        "question": "What helps you balance and move your body?",
+    "options": [
+      "Your eyes",
+      "The cerebellum",
+      "Your toes",
+      "The heart"
+    ],
+    "score": 3,
+    "correctAnswerIndex": 1
+      },
+      {
+        "question": "What part of your brain helps you breathe and keep your heart beating?",
+    "options": [
+      "Brain stem",
+      "Arms",
+      "Nose",
+      "Eyes"
+    ],
+    "score": 2,
+    "correctAnswerIndex": 0
+      },
+      {
+        "question": "What can help you remember something better?",
+    "options": [
+      "Saying it once",
+      "Sleeping all day",
+      "Practicing it more than once",
+      "Forgetting it on purpose"
+    ],
+    "score": 2,
+    "correctAnswerIndex": 2
+      },
+      {
+       "question": "What do you do when you forget something on purpose?",
+    "options": [
+      "Call a friend",
+      "Use targeted forgetting",
+      "Eat lunch",
+      "Watch a movie"
+    ],
+    "score": 3,
+    "correctAnswerIndex": 1
+      }
+    ]
+  }
+  

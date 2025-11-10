@@ -1,0 +1,227 @@
+{
+    "title": "Psychology Quiz",
+    "gradeLevel": 5,
+    "questions": [
+      {
+        "question": "What is psychology?",
+        "options": [
+          "The study of physical health and exercise.",
+          "The analysis of weather patterns and their effects.",
+          "The branch of science that studies how the brain works and how the mind influences behavior in people and animals.",
+          "The study of ancient artifacts and cultures."
+        ],
+        "score": 1,
+        "correctAnswerIndex": 2
+      },
+      {
+        "question": "What makes us choose one choice over the other?",
+    "options": [
+      "Random chance",
+      "Behavioral Psychology",
+      "Genetic predisposition",
+      "The alignment of stars"
+    ],
+    "score": 2,
+    "correctAnswerIndex": 1
+      },
+      {
+        "question": "How is the brain the control system of the body?",
+    "options": [
+      "It controls only muscle movements.",
+      "It stores all nutrients and energy for the body.",
+      "It processes food and nutrients for the body.",
+      "The brain receives signals from the rest of the body & makes sense of them."
+    ],
+    "score": 3,
+    "correctAnswerIndex": 3
+      },
+      {
+        "question": "What does the cerebrum do?",
+    "options": [
+      "Helps us interpret the world around us with memory, vision, hearing, and our senses.",
+      "Controls digestion and waste elimination.",
+      "Regulates heart rate and blood pressure.",
+      "Manages muscle reflexes and coordination."
+    ],
+    "score": 3,
+    "correctAnswerIndex": 0
+      },
+      {
+        "question": "What does the cerebellum do?",
+    "options": [
+      "Processes emotional responses.",
+      "Conducts motor functions like muscle movement & balance.",
+      "Controls language and communication.",
+      "Manages hunger and thirst."
+    ],
+    "score": 2,
+    "correctAnswerIndex": 1
+      },
+      {
+        "question": "What does the brain stem do?",
+    "options": [
+      "Controls thoughts and decision-making.",
+      "Regulates vision and hearing.",
+      "Manages sensory perceptions.",
+      "Conducts necessary functions like breathing, heart rate, etc."
+    ],
+    "score": 2,
+    "correctAnswerIndex": 3
+      },
+      {
+        "question": "What did Freudian Psychology emphasize?",
+    "options": [
+      "That the brain controls only physical movements.",
+      "That all our actions are based on the weather.",
+      "That our actions and behaviors are shaped by past experiences and unconscious thoughts.",
+      "That our brain works best during sleep."
+    ],
+    "score": 2,
+    "correctAnswerIndex": 2
+      },
+      {
+        "question": "What makes us fall for mind tricks?",
+    "options": [
+      "Visual and auditory illusions.",
+      "Speed of Processing and Selective Attention Theory.",
+      "Influence of external stimuli.",
+      "Changes in atmospheric pressure."
+    ],
+    "score": 3,
+    "correctAnswerIndex": 1
+      },
+      {
+        "question": "How do you make a short term memory?",
+    "options": [
+      "Feel/See something and have it registered in your brain.",
+      "Write down information repeatedly.",
+      "Dream about an event.",
+      "Perform a physical activity."
+    ],
+    "score": 2,
+    "correctAnswerIndex": 0
+      },
+      {
+        "question": "How long can memories stay in short term memory for?",
+    "options": [
+      "Several hours.",
+      "A few days.",
+      "Several weeks.",
+      "20-30 seconds."
+    ],
+    "score": 1,
+    "correctAnswerIndex": 3
+      },
+      {
+        "question": "What animal was the hippocampus named after?",
+    "options": [
+      "Dolphin.",
+      "Whale.",
+      "Seahorse.",
+      "Octopus."
+    ],
+    "score": 2,
+    "correctAnswerIndex": 2
+      },
+      {
+        "question": "What makes a memory long term?",
+    "options": [
+      "Experiencing it once.",
+      "Experiencing the memory more than once.",
+      "Forgetting it initially.",
+      "Reading about it in a book."
+    ],
+    "score": 1,
+    "correctAnswerIndex": 1
+      },
+      {
+        "question": "What is memory fading?",
+    "options": [
+      "When you stop reviewing the memory, it fades from your memory and gets replaced.",
+      "When memories get stronger over time.",
+      "When memories become more vivid and detailed.",
+      "When new memories are created quickly."
+    ],
+    "score": 2,
+    "correctAnswerIndex": 0
+      },
+      {
+        "question": "What is targeted forgetting?",
+    "options": [
+      "The inability to remember anything.",
+      "Remembering only selective details.",
+      "Learn new information that is different to old information and 'Delete' old information while you sleep.",
+      "Forgetting all information from the past month."
+    ],
+    "score": 2,
+    "correctAnswerIndex": 2
+      },
+      {
+        "question": "Why is the nervous system important in how we respond to the world?",
+    "options": [
+      "It makes you run faster",
+      "It allows your body to send and receive messages to and from the brain",
+      "It helps your muscles grow",
+      "It stores all your memories"
+    ],
+    "score": 2,
+    "correctAnswerIndex": 1
+      },
+      {
+        "question": "Why was the hippocampus named after a seahorse?",
+    "options": [
+      "Because it helps humans swim like a seahorse.",
+      "Because scientists wanted to name it after a sea creature.",
+      "Because the shape of the hippocampus looks like a seahorse.",
+      "Because seahorses have strong memories."
+    ],
+    "score": 3,
+    "correctAnswerIndex": 2
+      },
+      {
+        "question": "What part of the brain is responsible for memory storage?",
+    "options": [
+      "Brain stem",
+      "Hippocampus",
+      "Cerebellum",
+      "Amygdala"
+    ],
+    "score": 3,
+    "correctAnswerIndex": 1
+      },
+      {
+        "question": "Why is studying psychology important?",
+    "options": [
+      "It helps you become a faster reader and memorize historical dates.",
+      "It helps you understand yourself and others, manage emotions, and explore careers like therapy and research.",
+      "It teaches you how to build machines and code computers.",
+      "It focuses only on solving math equations and physical health."
+    ],
+    "score": 1,
+    "correctAnswerIndex": 1
+      },
+      {
+        "question": "What is selective attention?",
+    "options": [
+      "Choosing what memories to keep",
+      "Remembering everything at once",
+      "Listening to only music",
+      "Focusing on one thing while ignoring others"
+    ],
+    "score": 2,
+    "correctAnswerIndex": 3
+      },
+      {
+        "question": "Which of the following is a strategy to help remember information better?",
+    "options": [
+      "Ignore connections between words.",
+      "Memorize words in random order only.",
+      "Convert words into pictures, create stories, or group related information together.",
+      "Try to memorize only one word at a time without context."
+    ],
+    "score": 3,
+    "correctAnswerIndex": 2
+      }
+    ]
+  }
+  

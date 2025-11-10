@@ -1,0 +1,194 @@
+{
+    "title": "Zoology Quiz",
+    "gradeLevel": 1,
+    "questions": [
+      {
+        "question": "What is zoology?",
+    "options": [
+      "The study of plants",
+      "The study of animals and how they live",
+      "The study of stars and planets",
+      "The study of weather"
+    ],
+    "score": 1,
+    "correctAnswerIndex": 1
+      },
+      {
+        "question": "What is Metamorphosis?",
+    "options": [
+      "The process of photosynthesis.",
+      "Changes in physical form & structure.",
+      "The formation of sedimentary rocks.",
+      "The process of pollination."
+    ],
+    "score": 3,
+    "correctAnswerIndex": 1
+      },
+      {
+        "question": "What are Biotic Factors?",
+    "options": [
+      "Climate conditions in an area.",
+      "Types of soil found in an ecosystem.",
+      "Living condition/thing that affects an ecosystem and the organisms within it.",
+      "The study of water cycles."
+    ],
+    "score": 2,
+    "correctAnswerIndex": 2
+      },
+      {
+        "question": "What are Abiotic Factors?",
+    "options": [
+      "Living organisms in an ecosystem.",
+      "The study of animal behavior.",
+      "The interaction between species.",
+      "Non-living condition/thing that affects an ecosystem and the organisms in it."
+    ],
+    "score": 2,
+    "correctAnswerIndex": 3
+      },
+      {
+        "question": "How do animals talk to each other?",
+    "options": [
+      "They use words like people",
+      "They use sounds, body movements, and smells",
+      "They write letters",
+      "They use their hands to make signs"
+    ],
+    "score": 3,
+    "correctAnswerIndex": 1
+      },
+      {
+        "question": "What happens when an animal blends into its environment?",
+    "options": [
+      "It disappears forever",
+      "It is using camouflage to hide from predators",
+      "It turns into a different animal",
+      "It gets bigger"
+    ],
+    "score": 2,
+    "correctAnswerIndex": 1
+      },
+      {
+        "question": "Which animal below is a mammal?",
+    "options": [
+      "A frog",
+      "A fish",
+      "A dog",
+      "A butterfly"
+    ],
+    "score": 1,
+    "correctAnswerIndex": 2
+      },
+      {
+        "question": "What do baby animals need when they are born?",
+    "options": [
+      "Toys and games",
+      "Food, warmth, and protection",
+      "A classroom",
+      "Sunglasses and shoes"
+    ],
+    "score": 1,
+    "correctAnswerIndex": 1
+      },
+      {
+        "question": "What do you think happens if animals don’t find food or water?",
+    "options": [
+      "They move to another place or may not survive",
+      "They buy food from a store",
+      "They eat toys",
+      "They grow wings and fly away"
+    ],
+    "score": 2,
+    "correctAnswerIndex": 0
+      },
+      {
+        "question": "Which of these is a way animals protect themselves?",
+    "options": [
+      "Watching TV",
+      "Learning to read",
+      "Using camouflage or hiding",
+      "Building playgrounds"
+    ],
+    "score": 3,
+    "correctAnswerIndex": 2
+      },
+      {
+       "question": "What is a keystone species?",
+    "options": [
+      "A species that has no natural predators.",
+      "A species that is found only in one particular habitat.",
+      "A species that is at the top of the food chain.",
+      "A species that other species in the ecosystem largely depend on."
+    ],
+    "score": 3,
+    "correctAnswerIndex": 3
+      },
+      {
+        "question": "What do animals use their senses for?",
+    "options": [
+      "To play games",
+      "To sing songs",
+      "To go shopping",
+      "To find food and stay safe"
+    ],
+    "score": 2,
+    "correctAnswerIndex": 3
+      },
+      {
+        "question": "Why do some animals have sharp teeth?",
+    "options": [
+      "To smile bigger",
+      "To help them eat their food",
+      "To scare other animals",
+      "To write letters"
+    ],
+    "score": 2,
+    "correctAnswerIndex": 1
+      },
+      {
+        "question": "What is one reason animals live in groups?",
+    "options": [
+      "To work together and stay safe",
+      "To take naps together",
+      "To go to school",
+      "To sing together"
+    ],
+    "score": 3,
+    "correctAnswerIndex": 0
+      },
+      {
+        "question": "Which of these is a cold place where animals live?",
+    "options": [
+      "The desert",
+      "The jungle",
+      "The tundra",
+      "The beach"
+    ],
+    "score": 2,
+    "correctAnswerIndex": 2
+      },
+      {
+        "question": "Why do birds build nests?",
+    "options": [
+      "To decorate trees",
+      "To lay eggs and keep them safe",
+      "To play games",
+      "To hold their toys"
+    ],
+    "score": 2,
+    "correctAnswerIndex": 1
+      },
+      {
+        "question": "What do scientists who study animals do?",
+    "options": [
+      "Observe and learn about how animals live",
+      "Fly airplanes",
+      "Build tall buildings",
+      "Cook food for zoos"
+    ],
+    "score": 1,
+    "correctAnswerIndex": 0
+      }
+    ]
+  }
+  
