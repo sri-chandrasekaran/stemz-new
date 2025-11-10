@@ -99,23 +99,21 @@ const VideoLessonPage = ({
   // }, [answer, showQuestion, currentQuestionIndex, courseKey, lessonNumber]);  
   
   useEffect(() => {
-    if (!showQuestion) return; 
-    if (!answer) return;
+    if (!showQuestion) return;
   
-    // Set a timeout for 3 seconds after the last change
-    const timeout = setTimeout(async () => {
+    const interval = setInterval(async () => {
+      if (!answer) return; // skip empty answers
       try {
         const eventData = {
           questionId: `${lessonNumber}_q${currentQuestionIndex + 1}`,
-          eventType: "autosave",
           value: answer,
-          timestamp: new Date().toISOString(),
+          cursorPos: 0, // optional if you track it
         };
   
-        console.log("💾 Auto-saving snapshot:", eventData);
+        console.log("💾 Continuous auto-saving snapshot:", eventData);
   
         await call_api(
-          { events: [eventData] },
+          eventData,
           `studentresponses/${courseKey}/lesson/${lessonNumber}/bpq/autosave`,
           "POST"
         );
@@ -125,12 +123,10 @@ const VideoLessonPage = ({
         console.error("❌ Error auto-saving response:", err);
         showStatus("❌ Auto-save failed", 1000);
       }
-    }, 3000); // wait 3 seconds after last keystroke
+    }, 3000); // runs every 3 seconds
   
-    // Clear timeout if answer changes before 3s
-    return () => clearTimeout(timeout);
-  
-  }, [answer, showQuestion, currentQuestionIndex, courseKey, lessonNumber]);
+    return () => clearInterval(interval); // cleanup on unmount or question change
+  }, [showQuestion, courseKey, lessonNumber, currentQuestionIndex, answer]);
   
 
 const handleAnswerSubmit = async () => {
