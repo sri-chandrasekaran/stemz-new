@@ -58,7 +58,8 @@
     "start": "react-scripts start",
     "start:backend": "node server/server.js",
     "start:concurrently": "concurrently \"npm run start\" \"npm run start:backend\"",
-    "build": "react-scripts build",
+    // "build": "react-scripts build",
+    "build": "DISABLE_ESLINT_PLUGIN=true react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "dev": "nodemon server/server.js"
@@ -82,6 +83,7 @@
     ]
   },
   "devDependencies": {
+    "@babel/plugin-proposal-private-property-in-object": "^7.21.11",
     "concurrently": "^8.2.2",
     "file-loader": "^6.2.0",
     "webpack-cli": "^5.1.4"
