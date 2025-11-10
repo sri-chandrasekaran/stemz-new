@@ -85,7 +85,7 @@ const VideoLessonPage = ({
   
         await call_api(
           eventData,
-          `studentresponses/${courseKey}/lesson/${lessonNumber}/bpqEvent`,
+          `studentresponses/${courseKey}/${lessonNumber}/bpqEvent`,
           "POST"
         );
   
