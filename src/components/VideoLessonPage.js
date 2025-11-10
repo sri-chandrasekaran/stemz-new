@@ -85,7 +85,7 @@ const VideoLessonPage = ({
   
         await call_api(
           eventData,
-          `studentresponses/${courseKey}/${lessonNumber}/bpqEvent`,
+          `studentresponses/${courseKey}/lesson/${lessonNumber}/bpq/autosave`,
           "POST"
         );
   
