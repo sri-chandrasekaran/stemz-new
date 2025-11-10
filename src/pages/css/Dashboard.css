@@ -79,6 +79,93 @@
   transform: translateY(-2px);
 }
 
+/* Media query adjustments */
+@media screen and (max-width: 1400px) and (min-width: 1000px) {
+  .points-dashboard {
+    margin: 15px 50px 0;
+    padding: 12px 20px;
+  }
+  
+  .points-icon {
+    width: 50px;
+    height: 50px;
+    font-size: 1.7rem;
+  }
+  
+  .points-count {
+    font-size: 1.8rem;
+  }
+  
+  .points-label {
+    font-size: 0.9rem;
+  }
+  
+  .points-button {
+    padding: 10px 16px;
+    font-size: 0.9rem;
+  }
+}
+
+/* Chatbot Section */
+.chatbot-section {
+  margin: 40px 0;
+  padding: 30px;
+  background: linear-gradient(135deg, #f8fff8 0%, #e8f5e8 100%);
+  border-radius: 15px;
+  text-align: center;
+  box-shadow: 0 4px 15px rgba(53, 119, 22, 0.1);
+  border: 1px solid rgba(53, 119, 22, 0.1);
+}
+
+.header-chatbot {
+  font-size: 28px;
+  color: #357716;
+  margin-bottom: 15px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.chatbot-description {
+  font-size: 16px;
+  color: #4a9c1f;
+  margin-bottom: 25px;
+  line-height: 1.5;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+@media screen and (max-width: 1000px) {
+  .points-dashboard {
+    margin: 15px 30px 0;
+    padding: 10px 15px;
+    flex-wrap: wrap;
+  }
+  
+  .points-icon {
+    width: 45px;
+    height: 45px;
+    font-size: 1.5rem;
+  }
+  
+  .points-count {
+    font-size: 1.6rem;
+  }
+  
+  .points-label {
+    font-size: 0.85rem;
+  }
+  
+  .points-button {
+    margin-top: 10px;
+    width: 100%;
+    text-align: center;
+    padding: 8px 12px;
+    font-size: 0.85rem;
+  }
+}
+
 /* Welcome Section */
 .hello {
   margin-top: 90px;
