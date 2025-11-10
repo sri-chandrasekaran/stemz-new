@@ -67,36 +67,6 @@ const VideoLessonPage = ({
   const [answer, setAnswer] = useState("");
   const [questionsShown, setQuestionsShown] = useState(new Set());
 
-  // useEffect(() => {
-  //   if (!showQuestion) return;
-  
-  //   const interval = setInterval(async () => {
-  //     if (!answer) return; // skip empty answers
-  //     try {
-  //       const eventData = {
-  //         questionId: `${lessonNumber}_q${currentQuestionIndex + 1}`,
-  //         value: answer,
-  //         cursorPos: 0, // optional if you track it
-  //       };
-  
-  //       console.log("💾 Continuous auto-saving snapshot:", eventData);
-  
-  //       await call_api(
-  //         eventData,
-  //         `studentresponses/${courseKey}/lesson/${lessonNumber}/bpq/autosave`,
-  //         "POST"
-  //       );
-  
-  //       showStatus("✓ Response auto-saved", 1000);
-  //     } catch (err) {
-  //       console.error("❌ Error auto-saving response:", err);
-  //       showStatus("❌ Auto-save failed", 1000);
-  //     }
-  //   }, 3000); // runs every 3 seconds
-  
-  //   return () => clearInterval(interval); // cleanup on unmount or question change
-  // }, [showQuestion, courseKey, lessonNumber, currentQuestionIndex, answer]);
-
   useEffect(() => {
     if (!showQuestion) return;
     if (answer === undefined || answer === null) return;
