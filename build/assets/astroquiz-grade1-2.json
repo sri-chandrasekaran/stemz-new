@@ -1,0 +1,172 @@
+{
+    "title": "Astronomy Quiz",
+    "gradeLevel": 1,
+    "questions": [
+      {
+        "question": "What is a Constellation?",
+        "options": [
+          "A group of stars that form a pattern",
+          "A type of spaceship",
+          "A science tool",
+          "A kind of cookie"
+        ],
+        "score": 2,
+        "correctAnswerIndex": 0
+      },
+      {
+        "question": "How does astronomy help us understand life on Earth?",
+        "options": [
+        "It helps us understand how we are different and the processes that allow us to live on Earth", 
+        "It explains animal behavior", 
+        "It helps us build houses", 
+        "It teaches us how to swim"
+    ],
+        "score": 2,
+        "correctAnswerIndex": 0
+      },
+      {
+        "question": "Which two countries were involved in the Space Race?",
+        "options": [
+          "The US and China",
+          "The US and the USSR",
+          "Canada and Mexico",
+          "Germany and Japan"
+        ],
+        "score": 2,
+        "correctAnswerIndex": 1
+      },
+      {
+        "question": "What is astronomy?",
+        "options": [
+          "The study of heavenly bodies to learn what influence they may have on human life.",
+          "A science that deals with the structures of living things.",
+          "A science that deals with objects and matter outside the earth's atmosphere.",
+          "The study of numbers and how they are related to each other and to the real world."
+        ],
+        "score": 1,
+        "correctAnswerIndex": 2
+      },
+      {
+        "question": "What do we use a telescope for?",
+        "options": [
+          "To talk to aliens",
+          "To see faraway things in space",
+          "To see faraway things in space",
+          "To cook food"
+        ],
+        "score": 2,
+        "correctAnswerIndex": 1
+      },
+      {
+        "question": "What was Pluto once known as?",
+        "options": [
+          "The closest planet to Earth",
+          "The largest gas planet",
+          "The farthest known planet",
+          "A comet from the Sun"
+        ],
+        "score": 3,
+        "correctAnswerIndex": 2
+      },
+      {
+        "question": "What process occurs in the Sun that creates large amounts of energy?",
+        "options": [
+          "Evaporation",
+          "Nuclear fusion",
+          "Combustion",
+          "Photosynthesis"
+        ],
+        "score": 3,
+        "correctAnswerIndex": 1
+      },
+      {
+        "question": "What are the two main properties of a telescope?",
+        "options": [
+          "Sound and color",
+          "Light-gathering ability and magnification",
+          "Size and weight",
+          "Shape and speed"
+        ],
+        "score": 2,
+        "correctAnswerIndex": 1
+      },
+      {
+        "question": "Why is astronomy important in everyday life?",
+        "options": [
+          "It teaches us how to fly airplanes",
+          "It gives us perspective on our place in the universe",
+          "It tells us what time to eat dinner",
+          "It helps us grow plants faster"
+        ],
+        "score": 1,
+        "correctAnswerIndex": 1
+      },
+      {
+        "question": "What is the name of the force holding us to the Earth?",
+        "options": [
+          "Magnetic force",
+          "Electricity",
+          "Nuclear Energy",
+          "Gravity"
+        ],
+        "score": 3,
+        "correctAnswerIndex": 3
+      },
+      {
+        "question": "What planet is famous for its rings?",
+        "options": [
+          "Earth",
+          "Mars",
+          "Saturn",
+          "Mercury"
+        ],
+        "score": 3,
+        "correctAnswerIndex": 2
+      },
+      {
+        "question": "What is the Moon?",
+        "options": [
+          "A bright light bulb",
+          "A giant cookie",
+          "A piece of glass",
+          "A rocky object that orbits Earth"
+        ],
+        "score": 2,
+        "correctAnswerIndex": 3
+      },
+      {
+        "question": "Which planet is red?",
+        "options": [
+          "Mars",
+          "Jupiter",
+          "Earth",
+          "Neptune"
+        ],
+        "score": 1,
+        "correctAnswerIndex": 0
+      },
+      {
+        "question": "What is a star?",
+        "options": [
+          "A sphere of very hot gasses, made up of hydrogen and helium",
+          "the largest objects in the solar system after the Sun",
+          "cosmic snowballs of frozen gasses, rock, and dust",
+          "small rocky object that orbits the Sun"
+        ],
+        "score": 3,
+        "correctAnswerIndex": 0
+      },
+      {
+        "question": "Who was the first person to walk on the moon?",
+        "options": [
+          "Albert Einstein",
+          "Chris Pratt",
+          "Nicolaus Copernicus",
+          "Neil Armstrong"
+        ],
+        "score": 3,
+        "correctAnswerIndex": 3
+      }
+    ]
+  }
+  

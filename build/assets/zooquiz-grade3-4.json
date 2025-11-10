@@ -1,0 +1,194 @@
+{
+    "title": "Zoology Quiz",
+    "gradeLevel": 3,
+    "questions": [
+      {
+        "question": "What is zoology?",
+      "options": [
+        "The study of plant genetics.",
+        "The study of celestial bodies.",
+        "The scientific study of the classification, structure, distribution, behavior, and physiology of animals.",
+        "The study of rock formations."
+      ],
+      "score": 1,
+      "correctAnswerIndex": 2
+      },
+      {
+        "question": "What is Taxonomy?",
+      "options": [
+        "The study of weather patterns.",
+        "The study of ancient artifacts.",
+        "The scientific study of naming and classifying groups of living organisms based on their characteristics.",
+        "The study of economic systems."
+      ],
+      "score": 2,
+      "correctAnswerIndex": 2
+      },
+      {
+        "question": "What is natural selection?",
+      "options": [
+        "A process in which animals who are better adapted to their environment tend to survive by producing more offspring. It is the main process of evolution.",
+        "The selection of plants based on their height.",
+        "The process of choosing the best crops for farming.",
+        "A method for breeding livestock."
+      ],
+      "score": 2,
+      "correctAnswerIndex": 0
+      },
+      {
+        "question": "Which of the following is an example of an animal behavior that helps it survive?",
+      "options": [
+        "A cat playing with a ball",
+        "A bird building a nest to lay eggs",
+        "A fish sleeping on land",
+        "A dog eating vegetables only"
+      ],
+      "score": 2,
+      "correctAnswerIndex": 1
+      },
+      {
+        "question": "Which of these accurately describes the theory of evolution?",
+      "options": [
+        "The process by which rocks are formed.",
+        "The change in the characteristics of a species over several generations. Relies on mutations and the process of natural selection.",
+        "The study of chemical reactions.",
+        "Time changing."
+      ],
+      "score": 3,
+      "correctAnswerIndex": 1
+      },
+      {
+        "question": "Why is biodiversity important?",
+      "options": [
+        "It makes animals look different.",
+        "It means all animals are the same.",
+        "It only helps animals in zoos",
+        "It helps ecosystems stay healthy by having a variety of species."
+      ],
+      "score": 2,
+      "correctAnswerIndex": 3
+      },
+      {
+        "question": "What is an example of an abiotic factor in an ecosystem?",
+      "options": [
+        "Trees",
+        "Birds",
+        "Rocks and sunlight",
+        "Fish"
+      ],
+      "score": 2,
+      "correctAnswerIndex": 2
+      },
+      {
+        "question": "Which of these is an adaptation that helps an animal survive?",
+      "options": [
+        "A giraffe having a long neck to reach leaves",
+        "A fish riding a bicycle",
+        "A monkey learning to read books",
+        "A dog growing wings"
+      ],
+      "score": 3,
+      "correctAnswerIndex": 0
+      },
+      {
+        "question": "What is ecology?",
+      "options": [
+        "The study of stars and galaxies.",
+        "A branch of biology that deals with the relations of organisms to each other and to their surroundings.",
+        "The study of ancient civilizations.",
+        "The study of human anatomy."
+      ],
+      "score": 1,
+      "correctAnswerIndex": 1
+      },
+      {
+        "question": "Which of the following is a biotic factor?",
+      "options": [
+        "Temperature",
+        "Sunlight",
+        "Plants and animals",
+        "Rocks and soil"
+      ],
+      "score": 2,
+      "correctAnswerIndex": 2
+      },
+      {
+        "question": "How does camouflage help animals survive?",
+      "options": [
+        "By making them stronger",
+        "By helping them hide from predators",
+        "By giving them better eyesight",
+        "By making them faster"
+      ],
+      "score": 2,
+      "correctAnswerIndex": 1
+      },
+      {
+        "question": "Why is it important to protect animals’ habitats?",
+      "options": [
+        "So they don’t get bored",
+        "Because it’s where they find food, water, and shelter",
+        "So they can go shopping",
+        "To make animals look pretty"
+      ],
+      "score": 3,
+      "correctAnswerIndex": 1
+      },
+      {
+        "question": "What does it mean when an animal is endangered?",
+      "options": [
+        "It is the fastest in the world",
+        "It has too many friends",
+        "There are only a few of them left, and they might disappear forever",
+        "It lives in a zoo"
+      ],
+      "score": 2,
+      "correctAnswerIndex": 2
+      },
+      {
+        "question": "Why do scientists study animal behavior?",
+      "options": [
+        "To train animals to dance",
+        "To understand how animals survive and interact with their environment",
+        "To help animals become smarter",
+        "To build robot animals"
+      ],
+      "score": 1,
+      "correctAnswerIndex": 1
+      },
+      {
+        "question": "How does an animal’s environment affect the way it behaves?",
+      "options": [
+        "Animals behave in ways that help them survive in their surroundings",
+        "It doesn’t affect it at all",
+        "Animals always act the same everywhere",
+        "It only affects their size"
+      ],
+      "score": 2,
+      "correctAnswerIndex": 0
+      },
+      {
+        "question": "What is one reason animals might need to adapt over time?",
+      "options": [
+        "To look more colorful",
+        "To win races",
+        "To survive changes in their habitat or environment",
+        "To become taller"
+      ],
+      "score": 3,
+      "correctAnswerIndex": 2
+      },
+      {
+        "question": "What do scientists mean when they say an animal is part of a 'food chain'?",
+      "options": [
+        "It wears a chain around its neck",
+        "It eats only food from stores",
+        "It eats only fruits and vegetables",
+        "It is part of a group that passes energy by eating and being eaten"
+      ],
+      "score": 2,
+      "correctAnswerIndex": 3
+      }
+    ]
+  }
+  

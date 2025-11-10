@@ -1,0 +1,194 @@
+{
+    "title": "Chemistry Quiz",
+    "gradeLevel": 5,
+    "questions": [
+      {
+        "question": "What is a molecule?",
+    "options": [
+      "A tiny creature living in the ocean.",
+      "A group of two or more atoms (the smallest unit of a substance that has the same qualities of that substance).",
+      "A small piece of dirt.",
+      "A type of rock found in caves."
+    ],
+    "score": 1,
+    "correctAnswerIndex": 1
+      },
+      {
+        "question": "What are atoms in molecules held together by?",
+    "options": [
+      "Glue",
+      "Strings",
+      "Carbon Dioxide",
+      "Chemical Bonds"
+    ],
+    "score": 2,
+    "correctAnswerIndex": 3
+      },
+      {
+        "question": "What stays the same in a chemical reaction?",
+    "options": [
+      "The color and smell",
+      "The number of atoms and the mass",
+      "The size of the container and temperature",
+      "The smell and taste"
+    ],
+    "score": 3,
+    "correctAnswerIndex": 1
+      },
+      {
+        "question": "What changes in a chemical reaction?",
+    "options": [
+      "The volume of the container",
+      "The number of atoms",
+      "The substances and their properties",
+      "The size of the atoms"
+    ],
+    "score": 3,
+    "correctAnswerIndex": 2
+      },
+      {
+        "question": "What are the three states of matter?",
+    "options": [
+      "Rock, paper, scissors",
+      "Fire, water, earth",
+      "Solid, liquid, gas",
+      "Atom, cell, molecule"
+    ],
+    "score": 1,
+    "correctAnswerIndex": 2
+      },
+      {
+        "question": "What happens to atoms during a chemical reaction?",
+    "options": [
+      "They disappear",
+      "They melt",
+      "They explode",
+      "They rearrange to make new substances"
+    ],
+    "score": 2,
+    "correctAnswerIndex": 3
+      },
+      {
+        "question": "What does H2O mean?",
+        "options": [
+          "Two atoms of oxygen and one of hydrogen",
+          "Two atoms of hydrogen and one of oxygen",
+          "Two molecules and one electron",
+          "Water that is hot"
+        ],
+        "score": 2,
+        "correctAnswerIndex": 1
+      },
+      {
+        "question": "What are elements?",
+    "options": [
+      "Mixtures of materials",
+      "Substances made of one type of atom",
+      "Atoms with no electrons",
+      "Tools used in labs"
+    ],
+    "score": 1,
+    "correctAnswerIndex": 1
+      },
+      {
+        "question": "What is a compound?",
+    "options": [
+      "A mix of gases",
+      "A group of atoms all the same",
+      "A substance made of two or more elements",
+      "A part of a circuit"
+    ],
+    "score": 2,
+    "correctAnswerIndex": 2
+      },
+      {
+        "question": "What is a property?",
+    "options": [
+      "A type of land where a house is built",
+      "A tool used in a lab",
+      "Something observed or measured without changing the substance",
+      "A container used to store chemicals"
+    ],
+    "score": 1,
+    "correctAnswerIndex": 2
+      },
+      {
+        "question": "What is the periodic table?",
+    "options": [
+      "A chart of all known atoms",
+      "A calendar",
+      "A list of chemicals",
+      "A book of chemistry rules"
+    ],
+    "score": 1,
+    "correctAnswerIndex": 0
+      },
+      {
+        "question": "What are chemical bonds made of?",
+    "options": [
+      "Magnets",
+      "Atoms sharing or transferring electrons",
+      "Rubber bands",
+      "Gravity"
+    ],
+    "score": 3,
+    "correctAnswerIndex": 1
+      },
+      {
+        "question": "What is a reagent?",
+    "options": [
+      "A product of a reaction",
+      "A tool used in chemistry",
+      "A substance added to cause a reaction",
+      "A metal substance"
+    ],
+    "score": 2,
+    "correctAnswerIndex": 2
+      },
+      {
+       "question": "What happens when an atom’s outer shell is not full?",
+    "options": [
+      "It changes into a different atom",
+      "It forms chemical bonds with other atoms",
+      "It loses energy",
+      "It breaks apart"
+    ],
+    "score": 3,
+    "correctAnswerIndex": 1
+      },
+      {
+        "question": "What is the purpose of chemical bonding between atoms?",
+    "options": [
+      "To make atoms colorful",
+      "To stabilize atoms by filling their electron shells",
+      "To increase their mass",
+      "To create heat"
+    ],
+    "score": 2,
+    "correctAnswerIndex": 1
+      },
+      {
+        "question": "What is a product in a chemical reaction?",
+    "options": [
+      "The item created from a chemical reaction",
+      "The starting material",
+      "The lab tool",
+      "A kind of solution"
+    ],
+    "score": 2,
+    "correctAnswerIndex": 0
+      },
+      {
+        "question": "What is a supersaturated solution?",
+    "options": [
+      "A liquid that is colder than usual",
+      "A solution that has less water than usual",
+      "A liquid that has more dissolved particles than what could normally be achieved",
+      "A mixture of gases and liquids"
+    ],
+    "score": 3,
+    "correctAnswerIndex": 2
+      }
+    ]
+  }
+  
