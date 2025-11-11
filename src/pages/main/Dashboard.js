@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import Navbar from "../../components/Navbar";
 import Dashbar from "../../components/Dashbar";
 import Footer from "../../components/Footer";
+import Chatbot from "../../components/Chatbot";
 import "../css/Dashboard.css";
 import { useNavigate, Link } from "react-router-dom";
 import { call_api } from "../../api";
@@ -55,6 +56,9 @@ const Dashboard = () => {
   const [removingCourses, setRemovingCourses] = useState([]);
   const [tooltipMessages, setTooltipMessages] = useState({});
   const [userProgress, setUserProgress] = useState(null);
+  
+  // State for chatbot
+  const [isChatbotOpen, setIsChatbotOpen] = useState(false);
   
   // Physical Classroom notification states
   const [physicalNotifications, setPhysicalNotifications] = useState([]);
@@ -849,7 +853,28 @@ const Dashboard = () => {
             ))}
           </div>
         </div>
+        
+        {/* Chatbot Section */}
+        {/* <div className="chatbot-section">
+          <h3 className="header-chatbot">Need Help? Ask Our AI Tutor</h3>
+          <p className="chatbot-description">
+            Get instant help with your questions related to the courses, or learning tips!
+          </p>
+          <button 
+            className="dashboard-chatbot-btn"
+            onClick={() => setIsChatbotOpen(true)}
+          >
+            💬 Start Chat with AI Assistant
+          </button>
+        </div> */}
       </div>
+      
+      {/* Chatbot Component */}
+      {/* <Chatbot 
+        isOpen={isChatbotOpen} 
+        onClose={() => setIsChatbotOpen(false)} 
+      /> */}
+      
       <Footer />
     </div>
   );
