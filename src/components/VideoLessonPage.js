@@ -741,25 +741,7 @@ const callNLPAPI = async (inputText) => {
       alert('Test failed: ' + error.message);
     }
   };
-  
-  // Then add this button in your JSX, somewhere visible
-  <button 
-    onClick={testEventsEndpoint}
-    style={{
-      position: 'fixed',
-      bottom: '20px',
-      right: '20px',
-      padding: '10px 20px',
-      backgroundColor: '#ff0000',
-      color: 'white',
-      border: 'none',
-      borderRadius: '5px',
-      cursor: 'pointer',
-      zIndex: 9999
-    }}
-  >
-    TEST EVENTS
-  </button>
+
   
   // Update points in backend when they change
   useEffect(() => {
@@ -1197,6 +1179,24 @@ const callNLPAPI = async (inputText) => {
             <button className="course-button">{notesLabel}</button>
           </Link>
         )}
+
+  {/* <button 
+    onClick={testEventsEndpoint}
+    style={{
+      position: 'fixed',
+      bottom: '20px',
+      right: '20px',
+      padding: '10px 20px',
+      backgroundColor: '#ff0000',
+      color: 'white',
+      border: 'none',
+      borderRadius: '5px',
+      cursor: 'pointer',
+      zIndex: 9999
+    }}
+  >
+    TEST EVENTS
+  </button> */}
       </div>
       
 
