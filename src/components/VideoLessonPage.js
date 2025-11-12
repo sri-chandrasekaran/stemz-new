@@ -1180,7 +1180,7 @@ const callNLPAPI = async (inputText) => {
           </Link>
         )}
 
-  {/* <button 
+  <button 
     onClick={testEventsEndpoint}
     style={{
       position: 'fixed',
@@ -1196,7 +1196,7 @@ const callNLPAPI = async (inputText) => {
     }}
   >
     TEST EVENTS
-  </button> */}
+  </button>
       </div>
       
 
