@@ -726,22 +726,6 @@ const callNLPAPI = async (inputText) => {
     navigate(quizPath);
   };
 
-
-  const testEventsEndpoint = async () => {
-    try {
-      const response = await call_api(
-        {}, 
-        'studentresponses/test-events', 
-        'POST'
-      );
-      console.log('Test endpoint response:', response);
-      alert('Test saved! Check MongoDB for a "testevents" collection');
-    } catch (error) {
-      console.error('Test endpoint error:', error);
-      alert('Test failed: ' + error.message);
-    }
-  };
-
   
   // Update points in backend when they change
   useEffect(() => {
@@ -1179,24 +1163,6 @@ const callNLPAPI = async (inputText) => {
             <button className="course-button">{notesLabel}</button>
           </Link>
         )}
-
-  <button 
-    onClick={testEventsEndpoint}
-    style={{
-      position: 'fixed',
-      bottom: '20px',
-      right: '20px',
-      padding: '10px 20px',
-      backgroundColor: '#ff0000',
-      color: 'white',
-      border: 'none',
-      borderRadius: '5px',
-      cursor: 'pointer',
-      zIndex: 9999
-    }}
-  >
-    TEST EVENTS
-  </button>
       </div>
       
 
