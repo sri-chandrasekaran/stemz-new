@@ -2,7 +2,9 @@
 // Centralized API base URL configuration for prod and dev.
 
 // Manual switch: set to 'dev' or 'prod'
-export const API_ENV = 'prod'; // change to 'prod' for production
+// Note: In React/webpack, environment variables are accessed via process.env automatically
+// No need to call load_dotenv() in frontend code
+export const API_ENV = process.env.API_ENV || 'dev'; // change to 'prod' for production
 
 const BASES = {
   prod: 'https://core-server-nine.vercel.app/api',

@@ -30,6 +30,9 @@ import {
 // Import toast system
 import { ToastContainer, useNotificationToast } from "../../components/NotificationToast";
 
+// Import StudyGroups component
+import StudyGroups from "../../components/StudyGroups";
+
 // Import all images (existing code)
 import Coding from "../../assets/coding.jpg";
 import CodingBasics1 from "../../assets/coding.jpg";
@@ -794,6 +797,9 @@ const Dashboard = () => {
               </>
             )}
           </div>
+
+          {/* Study Groups Section */}
+          <StudyGroups />
         </div>
 
         {/* Recommended Courses Section (existing) */}

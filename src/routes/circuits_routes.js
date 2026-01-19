@@ -9,7 +9,7 @@ const Circuit1p = lazy(() => import('../pages/circuit/Circuit1p'));
 const Circuit2p = lazy(() => import('../pages/circuit/Circuit2p'));
 const Circuit3p = lazy(() => import('../pages/circuit/Circuit3p'));
 const CircuitQuiz = lazy(() => import('../pages/circuit/CircuitQuiz'));
-const CircuitWorksheet = lazy(() => import('../pages/circuit/CircuitWorksheet'));
+const CircuitWorksheet = lazy(() => import('../pages/circuit/CircuitWorkSheet'));
 
 // Define route configuration
 const circuitsRoutes = [
