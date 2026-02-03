@@ -11,7 +11,7 @@ import {
 import { getUserClassrooms, getClassroomUsers } from '../services/classroomService';
 import { 
   getMessagesByStudyGroup, 
-  sendMessage, 
+  postGroupMessage, 
   deleteMessage 
 } from '../services/groupMessagesService';
 import './StudyGroups.css';
@@ -115,8 +115,9 @@ const StudyGroups = () => {
   const loadMessages = async (groupId) => {
     try {
       setLoadingMessages(true);
-      const messagesData = await getMessagesByStudyGroup(groupId, { limit: 100 });
-      setMessages(Array.isArray(messagesData) ? messagesData : []);
+      const messagesData = await getMessagesByStudyGroup(groupId);
+      const list = Array.isArray(messagesData) ? messagesData : [];
+      setMessages(list);
       // Scroll to bottom after messages load
       setTimeout(() => {
         scrollToBottom();
@@ -142,8 +143,7 @@ const StudyGroups = () => {
 
     try {
       setSendingMessage(true);
-      await sendMessage({
-        studyGroupId: selectedGroup._id,
+      await postGroupMessage(selectedGroup._id, {
         content: newMessage.trim()
       });
       setNewMessage('');
@@ -524,14 +524,21 @@ const StudyGroups = () => {
                     </div>
                   ) : (
                     <div className="messages-list">
-                      {messages.map((message) => {
-                        const isOwnMessage = message.senderId?._id === currentUserId || 
-                                           (typeof message.senderId === 'string' && message.senderId === currentUserId);
-                        const senderName = typeof message.senderId === 'object' 
-                          ? (message.senderId.name || message.senderId.email || 'Unknown')
-                          : 'Unknown';
-                        
-                        return (
+                      {(() => {
+                        const members = selectedGroup.memberUserIds ?? [];
+                        const memberMap = members.reduce((acc, m) => {
+                          const id = typeof m === 'object' ? m._id : m;
+                          const name = typeof m === 'object' ? (m.name || m.email) : null;
+                          if (id) acc[id] = name || 'Member';
+                          return acc;
+                        }, {});
+                        return messages.map((message) => {
+                          const senderId = message.senderUserId ?? message.senderId ?? message.sender;
+                          const senderIdStr = typeof senderId === 'object' ? senderId?._id : senderId;
+                          const isOwnMessage = senderIdStr === currentUserId;
+                          const senderName = memberMap[senderIdStr] ?? (typeof senderId === 'object' ? (senderId?.name || senderId?.email || 'Member') : 'Member');
+
+                          return (
                           <div 
                             key={message._id} 
                             className={`message-item ${isOwnMessage ? 'message-own' : ''}`}
@@ -551,8 +558,9 @@ const StudyGroups = () => {
                             </div>
                             <div className="message-content">{message.content}</div>
                           </div>
-                        );
-                      })}
+                          );
+                        });
+                      })()}
                       <div ref={messagesEndRef} />
                     </div>
                   )}
