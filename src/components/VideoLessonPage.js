@@ -4,6 +4,8 @@ import HeroOther from "../components/HeroOther";
 import Footer from "../components/Footer";
 import { Link, useNavigate } from "react-router-dom";
 import { call_api } from "../api";
+import { jwtDecode } from "jwt-decode";
+import { resetLessonProgressByAssignmentIds } from "../services/progressService";
 import "../pages/css/Allvideo.css";
 
 /* global YT */ // Tell ESLint that YT is a global variable
@@ -47,6 +49,7 @@ const VideoLessonPage = ({
     quiz: 0,
   });
   const [savingPoints, setSavingPoints] = useState(false);
+  const [resettingProgress, setResettingProgress] = useState(false);
   const [statusMessage, setStatusMessage] = useState("");
 
   // Refs
@@ -331,6 +334,50 @@ const callNLPAPI = async (inputText) => {
     statusTimeoutRef.current = setTimeout(() => {
       setStatusMessage("");
     }, duration);
+  };
+
+  // Reset progress for this lesson only: delete assignment progress records by id (backend Progress API)
+  const handleResetLessonProgress = async () => {
+    if (resettingProgress) return;
+    const token = localStorage.getItem("token");
+    if (!token) {
+      showStatus("Please log in to reset progress", 3000);
+      return;
+    }
+    let userId;
+    try {
+      userId = jwtDecode(token).id;
+    } catch {
+      showStatus("Session invalid. Please log in again.", 3000);
+      return;
+    }
+    const assignmentTypes = ["lesson"];
+    if (hasWorksheet) assignmentTypes.push("worksheet");
+    if (hasQuiz) assignmentTypes.push("quiz");
+    if (
+      !window.confirm(
+        "Reset all progress for this lesson? Video, worksheet, and quiz progress will be cleared. You can redo them from scratch."
+      )
+    ) {
+      return;
+    }
+    try {
+      setResettingProgress(true);
+      showStatus("Resetting progress...", 2000);
+      await resetLessonProgressByAssignmentIds(userId, courseKey, lessonNumber, assignmentTypes);
+      setVideoWatched(0);
+      setWorksheetCompleted(false);
+      setQuizCompleted(false);
+      setPointsEarned({ video: 0, worksheet: 0, quiz: 0 });
+      const fresh = await call_api(null, "points", "GET");
+      if (fresh) setUserProgress(fresh);
+      showStatus("✓ Progress reset. You can redo this lesson.", 4000);
+    } catch (err) {
+      console.error("Error resetting lesson progress:", err);
+      showStatus("❌ Failed to reset progress", 3000);
+    } finally {
+      setResettingProgress(false);
+    }
   };
 
   // Token verification
@@ -1121,6 +1168,26 @@ const callNLPAPI = async (inputText) => {
               (hasQuiz ? pointsEarned.quiz : 0)}{" "}
             out of {totalPossiblePoints}
           </span>
+        </div>
+
+        <div className="points-row" style={{ marginTop: "12px" }}>
+          <button
+            type="button"
+            className="course-button"
+            onClick={handleResetLessonProgress}
+            disabled={resettingProgress || savingPoints}
+            style={{
+              background: "#8b4513",
+              color: "#fff",
+              border: "none",
+              padding: "8px 16px",
+              borderRadius: "6px",
+              cursor: resettingProgress || savingPoints ? "not-allowed" : "pointer",
+              opacity: resettingProgress || savingPoints ? 0.7 : 1,
+            }}
+          >
+            {resettingProgress ? "Resetting…" : "Reset progress for this lesson"}
+          </button>
         </div>
       </div>
 
